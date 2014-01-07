@@ -31,4 +31,5 @@
 class Listing < ActiveRecord::Base
   
   has_one :vendor
+  has_many :comments
 end

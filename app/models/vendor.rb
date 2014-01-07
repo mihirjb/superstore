@@ -29,5 +29,6 @@ class Vendor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
          has_many :listings
+         has_one :profile
          
 end
