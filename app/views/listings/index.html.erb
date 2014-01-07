@@ -1,2 +1,10 @@
-<h1>Listings#index</h1>
-<p>Find me in app/views/listings/index.html.erb</p>
+<section>
+	<div class="wrapper">
+		<% @listings.each do |l|%>
+			<h3><%= l.headline %></h3>
+			<p><%=l.description %>
+			<h4><%=l.devicecondition %></h4>
+			<h4><%= l.askprice %>SGD</h4>
+			<%end%>
+			</div>
+			</section>

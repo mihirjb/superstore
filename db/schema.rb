@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107051730) do
+ActiveRecord::Schema.define(version: 20140107083927) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.string   "subject"
+    t.text     "commentbody"
+    t.integer  "vendor_id"
+    t.integer  "listing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,6 +45,13 @@ ActiveRecord::Schema.define(version: 20140107051730) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vendor_id"
+    t.string   "paypalemail"
+    t.string   "devicename"
+    t.string   "devicecarrier"
+    t.string   "deviceimei"
+    t.string   "devicecolor"
+    t.string   "devicestorage"
+    t.string   "shippingdetails"
   end
 
   create_table "vendors", force: true do |t|

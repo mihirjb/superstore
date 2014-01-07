@@ -43,3 +43,12 @@
 </div>
 </div>
 </section>
+<section>
+	<div class="wrapper">
+		<% @listings.each do |l|%>
+			<h3><%= link_to l.headline, "/listings/#{l.id}" %></h3>
+			<p><%=l.description %>
+			<h4><%=l.devicecondition %></h4>
+			<h4><%= l.askprice %>SGD</h4>
+			<%end%>		</div>
+		</section>

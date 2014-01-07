@@ -19,6 +19,13 @@
 #  created_at          :datetime
 #  updated_at          :datetime
 #  vendor_id           :integer
+#  paypalemail         :string(255)
+#  devicename          :string(255)
+#  devicecarrier       :string(255)
+#  deviceimei          :string(255)
+#  devicecolor         :string(255)
+#  devicestorage       :string(255)
+#  shippingdetails     :string(255)
 #
 
 class Listing < ActiveRecord::Base

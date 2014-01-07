@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   def home
      @account = Account.new
      @owner = @account.build_owner
+     @listings = Listing.all
   end
   
   def help
