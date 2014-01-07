@@ -1,0 +1,37 @@
+<section class="hero">
+	<div class="wrap">
+		<div class="panel panel-default">
+  			<div class="panel-body"><%= form_for @account, :class=>"form-horizontal",  :role => "form" do |f| %>
+<div class="form-group">
+<div class="input-group input-group-lg">
+	<%= f.text_field :subdomain, :class=> "form-control", :placeholder=>"Subdomain" %>
+	<span class="input-group-addon">.storeapp.com</span><br/>
+</div>  
+</div>
+
+<%= f.fields_for :owner do |builder| %>
+<div class="form-group">
+<div class=" input-group-lg">
+	<%= builder.text_field :email, :class=> "form-control", :placeholder=>"Email" %>
+</div>  
+</div>
+<div class="form-group">
+<div class="input-group-lg">
+	<%= builder.password_field :password, :class=> "form-control", :placeholder=>"Password" %>
+</div>  
+</div>
+<div class="form-group">
+<div class="input-group-lg">
+	<%= builder.password_field :password_confirmation, :class=> "form-control", :placeholder=>"Password Confirmation" %>
+</div>  
+</div>
+
+<% end %>
+
+<div class="form-group">
+<%= f.submit "Signup", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg btn-block" %>
+<% end %>
+</div>
+</div>
+</div>
+</section>
