@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107083927) do
+ActiveRecord::Schema.define(version: 20140107085119) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -52,6 +52,22 @@ ActiveRecord::Schema.define(version: 20140107083927) do
     t.string   "devicecolor"
     t.string   "devicestorage"
     t.string   "shippingdetails"
+  end
+
+  create_table "profiles", force: true do |t|
+    t.string   "fullname"
+    t.string   "paypalemail"
+    t.string   "displayname"
+    t.string   "timezone"
+    t.string   "country"
+    t.string   "market"
+    t.string   "location"
+    t.string   "aboutme"
+    t.string   "twitterhandle"
+    t.string   "websiteurl"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "vendor_id"
   end
 
   create_table "vendors", force: true do |t|
