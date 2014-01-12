@@ -16,12 +16,15 @@ gem 'turbolinks'
 
 
 
-
+gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'better_errors'
 gem 'devise', '3.0.0.rc'
 gem 'annotate'
 gem 'acts_as_tenant'
+gem 'aws-sdk'
+gem 'nokogiri'
+gem "active_paypal_adaptive_payment"
 
 
 

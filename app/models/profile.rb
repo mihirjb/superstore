@@ -19,5 +19,23 @@
 #
 
 class Profile < ActiveRecord::Base
-  has_one :vendor
+  
+  validates_presence_of :fullname
+  validates_presence_of :displayname
+  validates_presence_of :paypalemail
+  validates_presence_of :country
+  validates_presence_of :timezone
+  validates_presence_of :location
+  
+  
+  
+  
+  
+  
+  
+  belongs_to :vendor
+  has_many :reviews, :dependent => :destroy
+  
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "30x30>" }, :default_url => "/images/:style/missing.png"
+  
 end

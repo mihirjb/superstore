@@ -27,3 +27,6 @@ Storeapp::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 end
+
+ActiveMerchant::Billing::Base.mode = :test
+

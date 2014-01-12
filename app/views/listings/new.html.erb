@@ -1,7 +1,7 @@
 <section>
 	<div class="wrapper">
 		
-		<%= form_for @listing, :class=>"form-horizontal",  :role => "form" do |f| %>
+		<%= form_for @listing, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 		
 			<div class="form-group">
 			<div class="input-group-lg">
@@ -60,8 +60,10 @@
 			<div class="form-group">
 			<div class="input-group-lg">
 			<h3>Device Details</h3>
-			<%= f.text_field :devicename, :class=> "form-control", :placeholder=>"Name or Model of you phone" %>
-			<%= f.text_field :devicecarrier, :class=> "form-control", :placeholder=>"Carrier or Service provider" %>
+			<%= f.text_field :devicename, :class=> "form-control", :value=> Phone.find(params[:pid]).modelname, :disabled => true %>
+			<%= f.text_field :devicecarrier, :class=> "form-control", :value=>Phone.find(params[:pid]).carrier, :disabled => true  %>
+			<%= f.hidden_field :phone_id, :value=> params[:pid] %>
+			
 			<%= f.text_field :deviceimei, :class=> "form-control", :placeholder=>"IMEI number" %>
 			<span class="helper-block">Will be kept private</span>
 			<%= f.text_field :devicecolor, :class=> "form-control", :placeholder=>"Color" %>
@@ -96,12 +98,30 @@
 					<%= f.text_area :returnpolicy, :class=> "form-control", :placeholder=>"Your return policy, if you accept reutrns." %>
 			
 			
+			</div>
+			</div>
+			
+			<div class="form-group">
+			<div class="input-group-lg">
+					<div class="newPaperclipFiles">
+
+					        <%= f.fields_for :assets do |asset| %>
+
+					           <% if asset.object.new_record? %>
+					                 <%= asset.file_field :image %>
+					           <% end %>
+
+					       <% end %>
+
+					</div>
 			
 			
 			
 			
 		</div>  
 		</div>
+		
+		
 
 		<div class="form-group">
 		<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>

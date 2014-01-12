@@ -1,7 +1,184 @@
 <section>
 	<div class="wrapper">
-		<h4>Listed by <%= @author.email %></h4>
-		<p>Member Since <%=@author.created_at %>
+			<div class="listing-header">
+			<div class="listing-pricing">
+				<div class="jumbtron"><h1>S$<%=@listing.askprice.to_i + 10 %></h1></div>
+			<h4><%=@listing.headline %></h4>
+			<p><%=@listing.description %></p>
+				<div class="listing-author">
+					<ul>
+				<li>Listed by <%= @author.email %></li>
+				<li>Member Since <%=@author.created_at.to_date() %></li>
+				<li>From <%= @profile.country unless @profile.nil? %></li>
+				<li>last updated on <%=@listing.updated_at.to_date %></li>
+				<li>listing expires on <%=@listing.expirydate %></li>
+				<li> <%=  link_to "View Seller's Profile",  "/profiles/#{@profile.id}" unless @profile.nil? %> </li>
+				</ul>
+				</div>
+				<% if vendor_signed_in? %>
+				<a href="/transactions/processtransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now</a>
+				<%else %>
+				<a href="/vendors/sign_in" class="btn btn-lg btn-success">Buy now</a>
+				<%end %>
+			</div>
+				<div class="listing-images">
+					<%= image_tag @listing.assets.last.image.url('large') unless @listing.assets.last.nil?  %>
+					</div>
+									
+			</div>
 		
+	
+		
+
+		<div class="listing-body">
+		<div class="listing-details">
+				<div class="listing-device-info">
+					<table class="table table-bordered table-condensed"><th>Device Name</th><th>Carrier</th><th>Color</th><th>Storage Capacity</th><th>Device Modified?</th>
+						<tr><td><%= @listing.devicename %></td><td><%= @listing.devicecarrier %></td><td><%= @listing.devicecolor %></td><td><%= @listing.devicestorage %></td><td><%= @listing.modified %></td></tr>
+						</table>
+				</div>
+				
+				<div class="mini-section">
+					
+				<div class="images-gallery">
+					<h4>Phone images uploaded by the seller</h2>
+					
+						<%  @listing.assets.each do |a| %>
+						<%= image_tag a.image.url('thumb') %>
+						<%end%>
+					</div>		
+			<div class="listing-condition">
+				<h4>Condition - <%= @listing.devicecondition %></h2>
+				
+				<% if @listing.devicecondition == "mint"%>
+					<ul>
+						<li>Functions flawlessly</li>
+						<li>Perfect screen condition</li>
+						<li>No signs of use</li>
+						</ul>
+						<% end %>
+						<% if @listing.devicecondition == "good"%>
+						
+					<ul>
+						<li>Functions flawlessly</li>
+						<li>Good screen condition</li>
+						<li>Few Cosmetic imperfections</li>
+						</ul>
+							<% end %>
+							<% if @listing.devicecondition == "fair"%>
+
+						<ul>
+							<li>Functions flawlessly</li>
+							<li>Good screen condition</li>
+							<li>Some scratches or worn paint</li>
+							</ul>
+								<% end %>
+								<% if @listing.devicecondition == "new"%>
+									<ul>
+										<li>Never activated, rooted, or refurbished</li>
+										<li>Includes original box and all accessories</li>
+										<li>No signs of use</li>
+										</ul>
+											<% end %>
+				
+				</div>
+				</div>
+				<div class="mini-section">
+				<div class="listing-shipping">
+					<h4>Shipping and Handling</h4>
+					<p>This device will ship from: <%= @listing.itemlocation %>
+					This seller will <% if !@listing.shipinternationally  %> NOT <% end %> ship internationally.
+					<p>
+					Sellers are expected to ship within two business days of receiving payment.<br/>
+					Standard shipping costs (ground shipping with tracking in the same country) should be included in listed price, unless otherwise stated in below description.</p>
+					
+					<% if !@listing.shippingdetails.empty? %>
+					<p>
+						<strong>Shipping Details: </strong><%=  @listing.shippingdetails %>
+					</p>
+					<% else %>
+					<p>No further shipping details provided</p>
+					<%end %>
+				</div>
+				
+				<div class="listing-return">
+					<h4>Returns Policy</h4>
+					<p>This seller will <% if !@listing.returnsallowed  %><strong> NOT </strong><% end %> accept returns.</p>
+						<% if !@listing.shippingdetails.empty? %>
+						<p>
+							<strong>Return policy: </strong><%=  @listing.returnpolicy %>
+						</p>
+						<% else %>
+						<p>No further returns details provided</p>
+						<%end %>
+						</div>
+					</div>				
+				
+				
+							</div>				
+		</div>
+		
+		
+		<div class="comments">
+			
+			<% if @comments.empty? %>
+			<div class="no-comments">
+			<h3>No comments for this listing. Be the first one to comment.</h3>
+			
+			<% if vendor_signed_in? %>
+			<div class="comment-form">
+			
+			<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+	<div class="form-group">
+		<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
+	</div>  
+		<%= f.hidden_field :listing_id, :value => @listing.id %>
+		<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+	<div class="form-group">
+		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
+	<% end %>
+	<% end %>
+	
+	</div>
+</div>
+			
+			
+			
+			<% else %>
+			<div class="comments-list">
+				<h4> Comments (<%= Comment.get_comment_count(@listing.id)%>)</h4>
+			<% @comments.each do  |c| %>
+			
+			<p class="comment-body"><%= image_tag @profile.avatar.url(:mini), :class => "img-circle" unless @profile.nil? %>
+			<strong><%= Comment.get_comment_author(c.vendor_id) unless @profile.nil?  %>: </strong>
+			<%
+			%>
+		<%	@commentbody = c.commentbody.gsub(/[_a-z0-9-]+(.[_a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)(.[a-z]{2,3})/i, 'forbidden')
+%>			<%= @commentbody
+		  %></p>
+			<% end %>
+			
+			
+			<% if vendor_signed_in? %>
+			<div class="comment-form">
+				<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+		<div class="form-group">
+			<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
+		</div>
+		<%= f.hidden_field :listing_id, :value => @listing.id %>
+		<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+		<div class="form-group">
+		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
+		<% end %>
+		</div>
+			<% end %>
+			<% end %>
+			</div>
+			
+			
+			</div>
+		
+		
+	
 </div>
 </section>

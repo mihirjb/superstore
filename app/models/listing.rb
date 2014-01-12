@@ -30,6 +30,22 @@
 
 class Listing < ActiveRecord::Base
   
+  
+  
+  belongs_to :phone
   has_one :vendor
-  has_many :comments
+  has_many :comments, :dependent => :destroy
+  has_many :assets, :dependent => :destroy
+  
+  accepts_nested_attributes_for :assets
+  
+private 
+ def self.get_listing_author(listing_vendor_id)
+   @author = Vendor.find(listing_vendor_id)
+ end  
+ 
+ def self.get_listing_author_profile(listing_vendor_id)
+   @profile = Profile.find_by_vendor_id(listing_vendor_id)
+ end 
+  
 end

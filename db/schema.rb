@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107085119) do
+ActiveRecord::Schema.define(version: 20140110100920) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assets", force: true do |t|
+    t.integer  "listing_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,6 +61,15 @@ ActiveRecord::Schema.define(version: 20140107085119) do
     t.string   "devicecolor"
     t.string   "devicestorage"
     t.string   "shippingdetails"
+    t.string   "status"
+    t.integer  "phone_id"
+  end
+
+  create_table "phones", force: true do |t|
+    t.string   "modelname"
+    t.string   "carrier"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "profiles", force: true do |t|
@@ -68,6 +86,19 @@ ActiveRecord::Schema.define(version: 20140107085119) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "vendor_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "author_id"
+    t.text     "reviewbody"
+    t.boolean  "thumbsup"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "profile_id"
   end
 
   create_table "vendors", force: true do |t|

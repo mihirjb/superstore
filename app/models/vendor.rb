@@ -21,14 +21,13 @@
 
 class Vendor < ActiveRecord::Base
 
-  acts_as_tenant(:account)
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
          
-         has_many :listings
+         has_many :listings, :dependent =>:destroy
          has_one :profile
          
 end

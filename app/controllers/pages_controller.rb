@@ -5,7 +5,8 @@ class PagesController < ApplicationController
   def home
      @account = Account.new
      @owner = @account.build_owner
-     @listings = Listing.all
+     @phones = Phone.all :limit => 50 
+     
   end
   
   def help
@@ -16,5 +17,6 @@ class PagesController < ApplicationController
   
   def dashboard
     @vendor = current_vendor
+     
   end
 end

@@ -1,0 +1,26 @@
+<section>
+	<div class="wrapper">
+		<h1><%= @phone.modelname %></h1>
+		<h4><%= @phone.carrier %></h4>
+		
+		
+		
+		<a class="btn btn-warning btn-lg" href="/listings/new?pid=<%= @phone.id %>">Sell your <%=@phone.modelname%></a>
+		
+		<div class="listing-heading">
+			<h2>Buy <%= @phone.modelname %> from the listings below</h2>
+			<ul class="phone-listings">
+			<% @listings.each do |l| %>
+			<a href ="/listings/<%=l.id%>"><li>
+				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
+			<h4><%= l.headline %></td>
+			<p><%= l.askprice %>
+			</p>
+			</li></p>
+			<% end %>
+			</ul>
+			</div>
+			
+		
+		</div>
+		</section>

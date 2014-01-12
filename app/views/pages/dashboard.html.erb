@@ -1,8 +1,18 @@
 <section>
 	<div class="wrapper">
 		<h1>Welcome <%= @vendor.email %></h1>
-		<%= link_to "Create a new Listing", new_listing_path %>
+		<table class="table table-bordered table-condesed">
+			<tr><td>
+		<%= link_to "Create a new Listing", new_listing_path %></td></tr>
+		<% @profil = Profile.find_by_vendor_id(current_vendor.id)  %>
+		<% if  @profil %>
+		<tr><td>
+		<%= link_to "Edit your Profile", "/profiles/#{@profil.id}/edit" %></td></tr>
+	<% else %>
+	<tr><td><%= link_to "Complete your Profile", new_profile_path %></td></tr>
+	<%end %>
 		
-	</div>
+		
+		
 </section>
 	
