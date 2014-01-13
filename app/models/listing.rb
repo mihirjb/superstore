@@ -32,6 +32,11 @@ class Listing < ActiveRecord::Base
   
   
   
+  validates :paypalemail, :presence => {:message => 'Paypal cannot be blank, Listing not saved'}
+  
+  
+  
+  
   belongs_to :phone
   has_one :vendor
   has_many :comments, :dependent => :destroy
@@ -48,4 +53,5 @@ private
    @profile = Profile.find_by_vendor_id(listing_vendor_id)
  end 
   
+
 end

@@ -21,6 +21,7 @@ class Asset < ActiveRecord::Base
         :large => "600x600>"
           }
           validates_attachment :image,
+          :presence => true,
             :size => { :in => 0..5.megabytes }
             
           validates_attachment_content_type :image, :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/, :message => 'file type is not allowed (only jpeg/png/gif images)'

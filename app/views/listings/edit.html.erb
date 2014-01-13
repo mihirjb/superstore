@@ -96,18 +96,27 @@
 			<div class="input-group-lg">
 			
 			<div class="existingPaperclipFiles">
+				
+				<% if @listing.assets.exists? %>
+				<h3>Existing images.</h3>
 
-			     <% f.fields_for :assets do |asset| %>
+					<%  @listing.assets.take(5).each do |a| %>
+					<%= image_tag a.image.url('thumb') %>
+					<% end %>
+	                
+					<% else %>
+					<h3>Upload you verification images.</h3>
+					<%= f.fields_for :assets do |asset| %>
+					 <%= asset.file_field :image, :class=> "form-control" %>
+	                <% end %>
+	
+					<% end %>
 
-			          <% unless asset.object.new_record? %>
+					
 
-			                <div class="thumbnail">
-			                        <%= link_to( image_tag(asset.object.image.url(:thumb)), asset.object.image.url(:original) ) %>
-			                </div>
-
-			          <% end %>        
-
-			     <% end %>
+					     				
+			
+			
 			</div>
 			
 			
@@ -119,6 +128,8 @@
 		</div>
 
 		<div class="form-group">
+			<%= f.hidden_field :status, :value=>"Pending" %>
+			
 		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-success btn-lg btn-block" %>
 		<% end %>
 		

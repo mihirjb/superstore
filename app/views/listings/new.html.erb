@@ -3,6 +3,9 @@
 		<div class="selling-form pull-left">
 		<%= form_for @listing, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 		
+
+		
+		
 			<div class="form-group">
 			<div class="input-group-lg">
 				<h3>Meta data about the listing</h3>
@@ -110,7 +113,7 @@
 					<div class="newPaperclipFiles">
 
 					        <%= f.fields_for :assets do |asset| %>
-
+						 
 					           <% if asset.object.new_record? %>
 					                 <%= asset.file_field :image, :class=> "form-control" %>
 					           <% end %>

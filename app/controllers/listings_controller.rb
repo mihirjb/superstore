@@ -40,7 +40,7 @@ class ListingsController < ApplicationController
   def update
     @listing = current_vendor.listings.find(params[:id])
      if @listing.update(listing_params())
-        redirect_to dashboard_url, :notice => "Congratulations, Listing updated Successfully."
+        redirect_to :back, :notice => "Congratulations, Listing updated Successfully."
       else
         redirect_to :back, :notice => "Alas, Listing could not be updated."
       end
