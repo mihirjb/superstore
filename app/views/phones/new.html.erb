@@ -1,0 +1,24 @@
+<section>
+	<div class="wrapper">
+		
+		<%= form_for @phone, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
+		
+			<div class="form-group">
+			<div class="input-group-lg">
+				<h3>Data about you</h3>
+				<%= f.label :image, "Upload your Profile picture" %><%= f.file_field :avatar %><br/>
+			  
+			<%= f.text_field :modelname, :class=> "form-control", :placeholder=>"Phone's model name" %>
+
+			<%= f.text_field :carrier, :class=> "form-control", :placeholder=>"Phone's carrier" %>
+			</div>
+			</div>
+	
+
+
+		<div class="form-group">
+		<%= f.submit "Add", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>
+		<% end %>
+		
+	</div>
+</section>

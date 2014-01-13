@@ -49,6 +49,7 @@
 		<% @phones.each do |l|%>
 		<li>
 			<% @list = Listing.find_all_by_phone_id(l.id, :order =>'askprice')%>
+			<%= image_tag l.image.url(:thumb) %>
 			<h3><%= link_to l.modelname, "/phones/#{l.id}" %></h3>
 			<p><%=l.carrier %></p>
 			<p><%= @list.first.askprice  unless @list.first.nil? %> - <%= @list.last.askprice  unless @list.last.nil? %>

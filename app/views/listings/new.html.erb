@@ -1,6 +1,6 @@
 <section>
 	<div class="wrapper">
-		
+		<div class="selling-form pull-left">
 		<%= form_for @listing, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 		
 			<div class="form-group">
@@ -14,7 +14,7 @@
 			</div>
 			<div class="form-group">
 			<div class="input-group-lg">
-				<h3>Condition of the device. Be honest. Err on the safer side.</h3>
+				<h3>Condition of the device.</h3>
 		
 			<%= f.radio_button :devicecondition, :mint %>	<%= f.label :devicecondition, " Mint" %>
 			<ul>
@@ -103,12 +103,16 @@
 			
 			<div class="form-group">
 			<div class="input-group-lg">
+				<%= f.hidden_field :status, :value=>"Pending" %>
+				
+				<h3>Upload pictures- [needed to get the listing verified]</h3>
+				
 					<div class="newPaperclipFiles">
 
 					        <%= f.fields_for :assets do |asset| %>
 
 					           <% if asset.object.new_record? %>
-					                 <%= asset.file_field :image %>
+					                 <%= asset.file_field :image, :class=> "form-control" %>
 					           <% end %>
 
 					       <% end %>
@@ -124,8 +128,47 @@
 		
 
 		<div class="form-group">
-		<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>
+				<div class="other-terms alert-info">
+					<h4>TERMS & CONDITIONS</h4>
+					<ul>
+					<li>Once your device sells you will be expected to ship it to the buyer within two (2) business days of receiving payment.</li><li>
+					Once your device sells you will need to ensure it is un-registered from your carrier's account (if applicable).</li><li>
+					If you have your device is listed on other services (e.g. eBay, Craigslist), it is your responsibility to remove the listing from our site immediately if your device sells elsewhere.</li><li>
+					You will be asked to provide a "verification photo" showing your listing code (assigned after listing is created) written on a piece of paper next to the device you're selling.</li><li>
+					You must be capable of receiving payments via PayPal and be willing to accept their fees.</li><li>
+					The same device cannot be listed in multiple international markets at the same time.</li></ul>
+					</div>
+			<%= f.check_box :terms %>  <%= f.label:terms, " I accept all the terms and conditions and hereby pledge to oblige to them." %>
+			
+			</div>
+<div class="form-group">
+			<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>
 		<% end %>
 		
+		</div>
+		</div>
+		
+		
+		<div class="selling-instructions pull-right">
+			<div class="instructions alert-success">
+				<h4>REQUIRED:</h4>
+<ul>
+			<li>	Device is fully functional, including all buttons and ports.</li><li>
+				Device is and ready for activation and not reported lost or stolen.</li><li>
+				Device is free of cracks and water damage and other non-cosmetic damage.</li><li>
+				Device has functional battery (not damaged) included with sale.</li><li>
+				The device and seller must otherwise qualify for sale in accordance with our Terms of Use.</li></ul>
+				
+				<h4>NOT ALLOWED:</h4>
+				<ul>
+							<li>
+				Device with bad ESN (or otherwise not able to activated).</li><li>
+				Device with cracks on screen or glass.</li><li>
+				Device with water damage (or missing moisture indicator stickers).</li><li>
+				Devices with an outstanding EIP balance (money owed to carrier).</li></ul>
+				</div>
+			
+				
+			</div>
 	</div>
 </section>

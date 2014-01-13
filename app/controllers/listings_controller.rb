@@ -53,7 +53,7 @@ class ListingsController < ApplicationController
   
     private 
     def listing_params
-     params.require(:listing).permit(:phone_id, :headline, :description, :devicecondition, :askprice,:expirydate, :modified, :accessories, :country, :itemlocation, :shipinternationally, :paypalconfirmed, :returnsallowed, :returnpolicy, :paypalemail,:devicename, :deviceimei, :devicecarrier, :devicecolor,:devicestorage,:shippingdetails, assets_attributes:[:image_file_name, :image_file_size, :image_content_type, :image], comments_attributes: [:commentbody,:vendor_id])
+     params.require(:listing).permit(:status, :terms, :phone_id, :headline, :description, :devicecondition, :askprice,:expirydate, :modified, :accessories, :country, :itemlocation, :shipinternationally, :paypalconfirmed, :returnsallowed, :returnpolicy, :paypalemail,:devicename, :deviceimei, :devicecarrier, :devicecolor,:devicestorage,:shippingdetails, assets_attributes:[:image_file_name, :image_file_size, :image_content_type, :image], comments_attributes: [:commentbody,:vendor_id])
     end
  
 end

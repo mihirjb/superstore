@@ -1,28 +1,47 @@
 == README
 
 This README would normally document whatever steps are necessary to get the
-application up and running.
+application up and running but I am going to write the things yet to be implemented.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Things yet to be covered:
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Pictures
+
+* Pictures in phone model
+* Editable pictures in listings model.
+* Better display of pictures in the listings view - carousel or lightbox.
+* Using Amazon S3 to store images.
+
+
+Admin
+
+* Admin interface. Approval system
+* Letting admin edit vendor listings too.
+
+
+Vendor
+
+* User / Vendor dashboard.
+* Auto populate country and show listings belonging to a certain market.
+* Show accessories and details of modification is listings view.
+* Better buying page listings display.
+
+
+General
+
+* Home page with filters and better layout.
+* Search functionality site wide.
+
+
+Legal
+
+* Terms and Conditions + legal faq 
+
+
+About Us
+
+* How it works or FAQ or more about us.
+
+
+

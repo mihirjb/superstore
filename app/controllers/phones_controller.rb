@@ -22,4 +22,28 @@ class PhonesController < ApplicationController
   end
   
   
+  def edit
+     @phone = Phone.find(params[:id])
+   end
+
+   def update
+     @phone = Phone.find(params[:id])
+      if @phone.update(profile_params())
+         redirect_to root_url, :notice => "Congratulations, phone updated Successfully."
+       else
+         redirect_to :back, :notice => "Alas, phone could not be updated."
+       end
+   end
+
+   def destroy
+     @phone = Phone.find(params[:id]).destroy
+   end
+  
+  
+  
+  private 
+   def profile_params
+    params.require(:phone).permit(:modelname, :carrier, :image, :image_file_name, :image_content_type, :image_file_size)
+   end
+  
 end

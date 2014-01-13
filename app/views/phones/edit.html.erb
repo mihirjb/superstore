@@ -1,0 +1,24 @@
+<section>
+	<div class="wrapper">
+		
+		<%= form_for @phone, :class=>"form-horizontal",  :role => "form" do |f| %>
+		
+			<div class="form-group">
+			<div class="input-group-lg">
+				<h3>Data about you</h3>
+				<%= image_tag @phone.image.url(:medium) %>
+				<%= f.label :image, "Upload your Profile picture" %><%= f.file_field :avatar %><br/>
+				
+				
+			<%= f.text_field :modelname, :class=> "form-control", :placeholder=>"Your full name" %>
+
+			<%= f.text_area :carrier, :class=> "form-control", :placeholder=>"Your Paypal email address" %>
+			</div>
+			</div>
+	
+		<div class="form-group">
+		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-success btn-lg btn-block" %>
+		<% end %>
+		
+	</div>
+</section>

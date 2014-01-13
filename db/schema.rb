@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112074514) do
+ActiveRecord::Schema.define(version: 20140113020205) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140112074514) do
     t.string   "shippingdetails"
     t.string   "status"
     t.integer  "phone_id"
+    t.string   "terms"
   end
 
   create_table "phones", force: true do |t|

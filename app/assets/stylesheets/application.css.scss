@@ -313,3 +313,33 @@ div.listing-heading ul li img
 	width:80px;
 	height:80px;
 }
+div.selling-form
+{
+	width:55%;
+}
+div.selling-instructions
+{
+	width:40%;
+}
+div.selling-instructions div.instructions, div.other-terms
+{
+	border: 1px solid #ddd;
+}
+div.selling-instructions h4, div.other-terms h4
+{
+	text-align:center;
+	color:#000;
+	padding:20px 0px 0px;
+}
+div.selling-instructions ul, div.other-terms ul
+{
+	padding-bottom:30px;
+}
+div.selling-instructions ul li, div.other-terms ul li
+{
+	width:95%;
+	margin:0 auto;
+	color:#3e3e3e;
+	padding:5px 10px;
+	text-align:justify;
+}
