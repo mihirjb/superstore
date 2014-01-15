@@ -1,18 +1,47 @@
-<section>
+<section class="dashboard">
 	<div class="wrapper">
-		<h1>Welcome <%= @vendor.email %></h1>
-		<table class="table table-bordered table-condesed">
-			<tr><td>
-		<%= link_to "Create a new Listing", new_listing_path %></td></tr>
 		<% @profil = Profile.find_by_vendor_id(current_vendor.id)  %>
+		
+		<div class="sidebar">
+			<table class="table table-condensed">
+				<tr><td><%=image_tag @profil.avatar.url(:medium) %></td></tr>
+				<tr><td><%= link_to "My profile", "/profiles/#{@profil.id}/edit" %></td></tr>
+				<tr><td><%= link_to "Listings", "#listings" %></td></tr>
+				<tr><td><%= link_to "Feedback", "#feedback" %></td></tr>
+			</table>
+		</div>
+		<div clas="content">	
+		
 		<% if  @profil %>
-		<tr><td>
-		<%= link_to "Edit your Profile", "/profiles/#{@profil.id}/edit" %></td></tr>
 	<% else %>
-	<tr><td><%= link_to "Complete your Profile", new_profile_path %></td></tr>
+	<%= link_to "Complete your Profile", new_profile_path %>
 	<%end %>
-		
-		
+		</div>
+		<div class="small-box">
+				<ul class="list">
+				<% @listings.each do |l| %>
+				<a href ="/listings/<%=l.id%>"><li>
+				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
+				<h4><%= l.headline %></h4>
+				<p><%= l.askprice %>
+				</p>
+				</li></a>
+				<% end %>
+				</ul>
+				</div>
+				
+				<div class="small-box">
+							<ul class="list">
+							<% @feedbacks.each do |l| %>
+						<li>
+							<%= image_tag Profile.find_by_vendor_id(l.author_id).avatar.url('thumb')  %>
+							<p><%= l.reviewbody %></p>
+							</p>
+							</li>
+							<% end %>
+							</ul>
+					</div>
+</div>		
 		
 </section>
 	

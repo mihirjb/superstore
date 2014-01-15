@@ -30,9 +30,11 @@
 
 class Listing < ActiveRecord::Base
   
+  validates :headline, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
+  validates :description, :presence => {:message => 'Atleast write a few words about your phone.'}
   
   
-  validates :paypalemail, :presence => {:message => 'Paypal cannot be blank, Listing not saved'}
+  validates :paypalemail, :presence => {:message => 'Paypal email cannot be blank, Listing not saved'}
   
   
   

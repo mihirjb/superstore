@@ -18,7 +18,7 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to dashboard_url, :notice => "Congratulations, Listing created Successfully."
     else
-      redirect_to :back, :notice => "Alas, Listing could not be created."
+     redirect_to :back, :notice => "Alas your listing could not be saved as there were errors."
     end
       
   end
@@ -40,9 +40,9 @@ class ListingsController < ApplicationController
   def update
     @listing = current_vendor.listings.find(params[:id])
      if @listing.update(listing_params())
-        redirect_to :back, :notice => "Congratulations, Listing updated Successfully."
+        render :edit, :notice => "Congratulations, Listing updated Successfully."
       else
-        redirect_to :back, :notice => "Alas, Listing could not be updated."
+        redirect_to :back, :notice => "Alas, Listing could not be created."
       end
   end
 

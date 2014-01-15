@@ -1,9 +1,11 @@
 <section>
 	<div class="wrapper">
 		<div class="selling-form pull-left">
+		
+			
 		<%= form_for @listing, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 		
-
+	
 		
 		
 			<div class="form-group">
@@ -56,15 +58,18 @@
 			<%= f.text_field :askprice, :class=> "form-control", :placeholder=>"Asking price" %>			
 			<%= f.text_field :paypalemail, :class=> "form-control", :placeholder=>"Your Paypal email address" %>
 			<span class="helper-block">Will be kept private</span>
-			<%= f.text_field :expirydate, :class=> "form-control", :placeholder=>"Expiry date of the listing" %>
+			<br/><br/><%= f.label :expirydate %>
+			<div id="expirydate">
+			  <%= f.date_select :expirydate, { :start_year => Time.now.year , :end_year => Time.now.year,:default => 15.days.from_now, :prompt => true, :order => [:day, :month, :year]} %>
+			</div>
 			</div>
 			</div>
 			
 			<div class="form-group">
 			<div class="input-group-lg">
 			<h3>Device Details</h3>
-			<%= f.text_field :devicename, :class=> "form-control", :value=> Phone.find(params[:pid]).modelname, :disabled => true %>
-			<%= f.text_field :devicecarrier, :class=> "form-control", :value=>Phone.find(params[:pid]).carrier, :disabled => true  %>
+			<%= f.text_field :devicename, :class=> "form-control", :value=> Phone.find(params[:pid]).modelname, :readonly => true %>
+			<%= f.text_field :devicecarrier, :class=> "form-control", :value=>Phone.find(params[:pid]).carrier, :readonly => true  %>
 			<%= f.hidden_field :phone_id, :value=> params[:pid] %>
 			
 			<%= f.text_field :deviceimei, :class=> "form-control", :placeholder=>"IMEI number" %>
@@ -80,9 +85,10 @@
 			<div class="form-group">
 			<div class="input-group-lg">
 			<h3>Shipping Details</h3>
-			<%= f.text_field :country, :class=> "form-control", :placeholder=>"Your Country" %>
-			<%= f.text_field :itemlocation, :class=> "form-control", :placeholder=>"Where is the item located?" %><br/>
-				<%= f.label:paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?" %><br/>
+			<h4>Use the drop-down menus to choose your country and itemlocation</h4>
+			<br/><%=f.label:country, "Country" %><%= f.country_select :country, ["United States"]%><br/><br/>
+			<%=f.label:itemlocation, "Item location" %> <%= f.country_select :itemlocation, ["United States"] %><br/><br/>
+				<%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?" %><br/>
 				<%= f.radio_button :paypalconfirmed, :true %> <%= f.label:paypalconfirmed, " Yes" %>
 				<%= f.radio_button :paypalconfirmed, :false %> <%= f.label:paypalconfirmed, " No" %><br/><br/>
 			<%= f.label:shipinternationally, "Will you ship internationally?" %><br/>

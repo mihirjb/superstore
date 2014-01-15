@@ -9,7 +9,6 @@ Things yet to be covered:
 Pictures
 
 * Pictures in phone model
-* Editable pictures in listings model.
 * Better display of pictures in the listings view - carousel or lightbox.
 * Using Amazon S3 to store images.
 
@@ -23,7 +22,6 @@ Admin
 Vendor
 
 * User / Vendor dashboard.
-* Auto populate country and show listings belonging to a certain market.
 * Show accessories and details of modification is listings view.
 * Better buying page listings display.
 

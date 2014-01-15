@@ -28,7 +28,7 @@ class PhonesController < ApplicationController
 
    def update
      @phone = Phone.find(params[:id])
-      if @phone.update(profile_params())
+      if @phone.update(phone_params())
          redirect_to root_url, :notice => "Congratulations, phone updated Successfully."
        else
          redirect_to :back, :notice => "Alas, phone could not be updated."
@@ -42,7 +42,7 @@ class PhonesController < ApplicationController
   
   
   private 
-   def profile_params
+   def phone_params
     params.require(:phone).permit(:modelname, :carrier, :image, :image_file_name, :image_content_type, :image_file_size)
    end
   

@@ -25,7 +25,7 @@ gem 'acts_as_tenant'
 gem 'aws-sdk'
 gem 'nokogiri'
 gem "active_paypal_adaptive_payment"
-
+gem 'country_select'
 
 
 

@@ -1,9 +1,11 @@
 <section class="hero">
 	<div class="wrap">
+		<% if vendor_signed_in? %>
+		
+		<%else%>
 	<h1 class="hero">Buy and Sell Mobile Phone & Tablets. Register now!</h1>
 <p class="hero">We are low-cost, secure and easy to use.<br/> Already have an account?  <%= link_to "Sign in", new_vendor_session_path %>
 </p>
-
 	<div class="panel panel-default">
 		<div class="panel-body"><%= form_for @account, :class=>"form-horizontal",  :role => "form" do |f| %>
 			<h1 class="hero">Sign up</h1>
@@ -41,6 +43,8 @@
 <% end %>
 </div>
 </div>
+
+<%end%>
 </div>
 </section>
 <section>
@@ -50,9 +54,19 @@
 		<li>
 			<% @list = Listing.find_all_by_phone_id(l.id, :order =>'askprice')%>
 			<%= image_tag l.image.url(:thumb) %>
-			<h3><%= link_to l.modelname, "/phones/#{l.id}" %></h3>
-			<p><%=l.carrier %></p>
-			<p><%= @list.first.askprice  unless @list.first.nil? %> - <%= @list.last.askprice  unless @list.last.nil? %>
+			<h3><%= link_to l.modelname, "/phones/#{l.id}" %> (<span class="carrier"><%=l.carrier %>)</h3>
+			<p></span>
+		<% if	@list.first.nil? %>
+		<span class="price"><%= @list.count %> Listings.</span></p>
+		<%else%>
+			<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %></span>  [<%= @list.count %>]</p>
+			<% end %>
+			
+			<a class="btn btn-success" href="/phones/<%= l.id %>">Buy</a> <a class="btn btn-danger" href="/phones/<%= l.id %>">Sell</a>
+			
+			
+			
 				</li>
+				
 			<%end%>		</div>
 		</section>

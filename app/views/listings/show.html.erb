@@ -149,7 +149,7 @@
 				<h4> Comments (<%= Comment.get_comment_count(@listing.id)%>)</h4>
 			<% @comments.each do  |c| %>
 			
-			<p class="comment-body"><%= image_tag @profile.avatar.url(:mini), :class => "img-circle" unless @profile.nil? %>
+			<p class="comment-body"><%= image_tag Profile.find_by_vendor_id(c.vendor_id).avatar.url(:mini), :class => "img-circle" unless @profile.nil? %>
 			<strong><%= Comment.get_comment_author(c.vendor_id) unless @profile.nil?  %>: </strong>
 			<%
 			%>
