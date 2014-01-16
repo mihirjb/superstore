@@ -1,24 +1,62 @@
 <section>
 	<div class="wrapper">
-		<h1><%= @phone.modelname %></h1>
+		<% if !vendor_signed_in? %>
+		<div class="alert alert-danger">
+			<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
+		</div>
+		<%end %>
+		<div class="phone-header">
+			
+			
+			<%= image_tag @phone.image.url('thumb')  %>
+					<h1><%= @phone.modelname %></h1>
 		<h4><%= @phone.carrier %></h4>
-		
-		
-		
 		<a class="btn btn-warning btn-lg" href="/listings/new?pid=<%= @phone.id %>">Sell your <%=@phone.modelname%></a>
 		
-		<div class="listing-heading">
-			<h2>Buy <%= @phone.modelname %> from the listings below</h2>
+		<% if @listings.count > 0 %>
+		
+		<div class="alert alert-warning">
+			<h4>All the listings below are verified, which means</h4>
+			<ul>
+				<li>All the listings have pictures.</li>
+				<li>None of the phones listed have bad ESN, cracks or water damage</li>
+				</ul>
+			</div>
+		</div>
+		<%else%>
+		
+		<h2>Sorry there are no listings for this phone yet.</h2>
+		<a class="" href="/listings/new?pid=<%= @phone.id %>">Be the first one to sell <%=@phone.modelname%></a>
+		
+		<%end%>
+		
+		<div class="listings">
+	
 			<ul class="phone">
 			<% @listings.each do |l| %>
 			<a href ="/listings/<%=l.id%>"><li>
 				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
-			<h4><%= l.headline %></td>
-			<p><%= l.askprice %>
+				<div class="basic">
+			<h4><%= l.headline %></h4>
+			<p><%= l.description %> <br/>
+			<span class="price">$<%= l.askprice.to_i + 10 %></span>
+				
 			</p>
-			</li></p>
+			</div>
+			<div class="intermediate">
+				<p><strong>Conditon: <%= l.devicecondition%></strong></p>
+				<p>Seller: <%=Profile.find_by_vendor_id(l.vendor_id).displayname%>
+					<p>Location: <%=l.country%>
+					
+			</div>
+			<div class="advanced">
+				<a class="btn btn-success" href="/listings/<%= l.id %>">Buy now</a>
+			</div>
+			</li></a>
 			<% end %>
 			</ul>
+		
+			
 			</div>
 			
 			

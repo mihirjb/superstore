@@ -1,6 +1,7 @@
 Storeapp::Application.routes.draw do
 
 
+  devise_for :admins
   get "transactions/processtransaction"
   get "transactions/completetransaction"
   get "transactions/failedtransaction"

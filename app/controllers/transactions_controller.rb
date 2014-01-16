@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_filter :authenticate_vendor!
   def processtransaction
     
       gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(

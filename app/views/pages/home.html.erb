@@ -59,7 +59,7 @@
 		<% if	@list.first.nil? %>
 		<span class="price"><%= @list.count %> Listings.</span></p>
 		<%else%>
-			<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %></span>  [<%= @list.count %>]</p>
+			<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %> [<%= @list.count %>]</span>  </p>
 			<% end %>
 			
 			<a class="btn btn-success" href="/phones/<%= l.id %>">Buy</a> <a class="btn btn-danger" href="/phones/<%= l.id %>">Sell</a>

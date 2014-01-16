@@ -1,4 +1,7 @@
 class PhonesController < ApplicationController
+  
+  before_filter :authenticate_admin!, :except => [:index,:show]
+  
   def index
     @phones = Phone.all
   end

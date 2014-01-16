@@ -1,7 +1,9 @@
 <section class="hero">
-	<div class="wrap">
+	<div class="wrapper">
+		<h2>Please Login or <%= link_to "Sign Up", new_account_path %> before continuing</h2>
 		<div class="panel panel-default">
   			<div class="panel-body">
+	
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
  	<div class="form-group">
 	<div class="input-group input-group-lg">

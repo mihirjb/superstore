@@ -1,6 +1,11 @@
 <section>
 	<div class="wrapper">
 			<div class="listing-header">
+					<% if !vendor_signed_in? %>
+					<div class="alert alert-danger">
+						<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
+					</div>
+					<%end %>
 			<div class="listing-pricing">
 				<div class="jumbtron"><h1>S$<%=@listing.askprice.to_i + 10 %></h1></div>
 			<h4><%=@listing.headline %></h4>
@@ -15,14 +20,11 @@
 				<li> <%=  link_to "View Seller's Profile",  "/profiles/#{@profile.id}" unless @profile.nil? %> </li>
 				</ul>
 				</div>
-				<% if vendor_signed_in? %>
 				<a href="/transactions/processtransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now</a>
-				<%else %>
-				<a href="/vendors/sign_in" class="btn btn-lg btn-success">Buy now</a>
-				<%end %>
+				
 			</div>
 				<div class="listing-images">
-					<%= image_tag @listing.assets.last.image.url('large') unless @listing.assets.last.nil?  %>
+					<%= image_tag @listing.assets.first.image.url('small') unless @listing.assets.last.nil?  %>
 					</div>
 									
 			</div>
@@ -41,15 +43,16 @@
 				<div class="mini-section">
 					
 				<div class="images-gallery">
-					<h4>Phone images uploaded by the seller</h2>
-					
+					<h4>Phone images uploaded by the seller</h4>
+					<p>
 						<%  @listing.assets.each do |a| %>
-						<%= image_tag a.image.url('thumb') %>
+						<%= image_tag a.image.url('small') %>
 						<%end%>
+						</p>
 					</div>		
 			<div class="listing-condition">
-				<h4>Condition - <%= @listing.devicecondition %></h2>
-				
+				<h4>Condition - <%= @listing.devicecondition %></h4>
+				<p class="devicecondition">
 				<% if @listing.devicecondition == "mint"%>
 					<ul>
 						<li>Functions flawlessly</li>
@@ -80,10 +83,14 @@
 										<li>No signs of use</li>
 										</ul>
 											<% end %>
-				
+				</p>
 				</div>
 				</div>
 				<div class="mini-section">
+					<div class="listing-condition">
+						<h4>Accessories</h4>
+							<p><%= @listing.accessories %></p>
+							</div>
 				<div class="listing-shipping">
 					<h4>Shipping and Handling</h4>
 					<p>This device will ship from: <%= @listing.itemlocation %>
@@ -148,14 +155,15 @@
 			<div class="comments-list">
 				<h4> Comments (<%= Comment.get_comment_count(@listing.id)%>)</h4>
 			<% @comments.each do  |c| %>
-			
-			<p class="comment-body"><%= image_tag Profile.find_by_vendor_id(c.vendor_id).avatar.url(:mini), :class => "img-circle" unless @profile.nil? %>
+			<div class="comment">
+				<%= image_tag Profile.find_by_vendor_id(c.vendor_id).avatar.url(:mini), :class => "img-circle" unless @profile.nil? %>
+			<p class="comment-body">
 			<strong><%= Comment.get_comment_author(c.vendor_id) unless @profile.nil?  %>: </strong>
 			<%
 			%>
 		<%	@commentbody = c.commentbody.gsub(/[_a-z0-9-]+(.[_a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)(.[a-z]{2,3})/i, 'forbidden')
 %>			<%= @commentbody
-		  %></p>
+		  %></p></div>
 			<% end %>
 			
 			
