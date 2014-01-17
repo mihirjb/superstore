@@ -9,6 +9,7 @@
 #  listing_id  :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  status      :string(255)
 #
 
 class Comment < ActiveRecord::Base

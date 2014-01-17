@@ -1,23 +1,21 @@
 <section class="dashboard">
 	<div class="wrapper">
 		<% @profil = Profile.find_by_vendor_id(current_vendor.id)  %>
-		
-		<div class="sidebar">
-			<table class="table table-condensed">
-				<tr><td><%=image_tag @profil.avatar.url(:medium) %></td></tr>
-				<tr><td><%= link_to "My profile", "/profiles/#{@profil.id}/edit" %></td></tr>
-				<tr><td><%= link_to "Listings", "#listings" %></td></tr>
-				<tr><td><%= link_to "Feedback", "#feedback" %></td></tr>
-			</table>
+			<div class="main-box">	
+					<%=image_tag @profil.avatar.url(:medium), :class => "main-avatar" %>
+					<%= link_to "Edit Profile", "/profiles/#{@profil.id}/edit" %> |
+					<%= link_to "Sell", "/profiles/#{@profil.id}/edit" %> |
+					<%= link_to "Buy", "/profiles/#{@profil.id}/edit" %>
+					
 		</div>
-		<div clas="content">	
-		
+		<div class="content">
 		<% if  @profil %>
 	<% else %>
 	<%= link_to "Complete your Profile", new_profile_path %>
 	<%end %>
 		</div>
 		<div class="small-box">
+			<h2 class="list-heading">Listings</h2>
 				<ul class="list">
 				<% @listings.each do |l| %>
 				<a href ="/listings/<%=l.id%>"><li>
@@ -31,7 +29,9 @@
 				</div>
 				
 				<div class="small-box">
+					<h2 class="list-heading">Reviews <span class="pull-right"><%= Review.where(:thumbsup => true).count%> <span class="glyphicon glyphicon-thumbs-up"></span></span></h2>
 							<ul class="list">
+								
 							<% @feedbacks.each do |l| %>
 						<li>
 							<%= image_tag Profile.find_by_vendor_id(l.author_id).avatar.url('thumb')  %>
@@ -41,6 +41,15 @@
 							<% end %>
 							</ul>
 					</div>
+					
+					
+					<div class="small-box">
+					<h2 class="list-heading">Orders</h2>
+					
+					</div>
+					
+					
+					
 </div>		
 		
 </section>

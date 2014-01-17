@@ -1,6 +1,6 @@
 <section>
 	<div class="wrapper">
-		
+		<div class="cushion">
 		
 		<%= form_for @listing, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 		
@@ -132,6 +132,6 @@
 			
 		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-success btn-lg btn-block" %>
 		<% end %>
-		
+	</div>	
 	</div>
 </section>

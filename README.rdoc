@@ -8,7 +8,6 @@ Things yet to be covered:
 
 Pictures
 
-* Pictures in phone model
 * Better display of pictures in the listings view - carousel or lightbox.
 * Using Amazon S3 to store images.
 
@@ -17,18 +16,17 @@ Admin
 
 * Admin interface. Approval system
 * Letting admin edit vendor listings too.
-
+* Mailer System
 
 Vendor
 
 * User / Vendor dashboard.
-* Show accessories and details of modification is listings view.
-* Better buying page listings display.
+* Profile Page
 
 
 General
 
-* Home page with filters and better layout.
+* Filters on homepage.
 * Search functionality site wide.
 
 

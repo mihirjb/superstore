@@ -1,47 +1,50 @@
-<section>
+<section class="profileinfo">
 	<div class="wrapper">
-		<div class="profile-page">
-		<div class="profile-info">
-		<%= image_tag @profile.avatar.url('medium')%>
-		<h4><%= @profile.displayname %></h4>
-		<p>Country: <%= @profile.country %></p>
-		<p>About: <%= @profile.aboutme %></p>
-		<p>Member since <%= @profile.created_at.to_date %><br/>
-		Has <%= Listing.find_all_by_vendor_id(@profile.vendor_id).count %> listings on phonestobuy</p>
+			<div class="main-box">	
+					<%=image_tag @profile.avatar.url(:medium), :class => "main-avatar" %>
+					<p><%= @profile.displayname %> |
+					<%= @profile.country%></p>
+					<p><%= @profile.aboutme %></p>
 		</div>
+		<div class="content">
+		<% if  @profile %>
+	<% else %>
+	<%= link_to "Complete your Profile", new_profile_path %>
+	<%end %>
+		</div>
+		<div class="small-box">
+			<h2 class="list-heading">Listings</h2>
+				<ul class="list">
+				<% @listings.each do |l| %>
+				<a href ="/listings/<%=l.id%>"><li>
+				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
+				<h4><%= l.headline %></h4>
+				<p><%= l.askprice %>
+				</p>
+				</li></a>
+				<% end %>
+				</ul>
+				</div>
+				
+				<div class="small-box">
+					<h2 class="list-heading">Reviews <span class="pull-right"><%= Review.where(:thumbsup => true).count%> <span class="glyphicon glyphicon-thumbs-up"></span></span></h2>
+							<ul class="list">
+								
+							<% @feedbacks.each do |l| %>
+						<li>
+							<%= image_tag Profile.find_by_vendor_id(l.author_id).avatar.url('thumb')  %>
+							<p><%= l.reviewbody %></p>
+							</p>
+							</li>
+							<% end %>
+							</ul>
+					</div>
+					
+					
+				
+					
+					
+					
+</div>		
 		
-		<div class="listing-info">
-			<h4>Listings by <%= @profile.displayname %></h4>
-		</div>
-		
-		<div class="review-section">
-			<div class="review-list">
-				<h4> Reviews </h4>
-			<% @reviews.each do  |r| %>
-			
-			<p class="review-body">
-			<%= image_tag Profile.find_by_vendor_id(r.author_id).avatar.url(:mini), :class => "img-circle" %>
-			<strong><%= Profile.find_by_vendor_id(r.author_id).displayname %>: </strong><%= r.reviewbody %></p>
-			<% end %>
-			</div>
-			<% if vendor_signed_in? %>
-			<h4>Write a review</h4>
-					<%= form_for @review, :class=>"form-horizontal",  :role => "form" do |f| %>
-			<div class="form-group">
-				<%= f.text_area :reviewbody, :class=> "form-control", :placeholder=>"Write something here" %>
-			</div>  
-			<%= f.hidden_field :thumbsup, :value => "true" %>
-			<%= f.hidden_field :profile_id, :value => params[:id] %>
-			<%= f.hidden_field :author_id, :value => current_vendor.id %>
-			<div class="form-group">
-			<%= f.submit "Add a review", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
-			</div>
-			<% end %>
-			<% end %>
-			
-		</div>
-		
-		</div>
-	</div>
-	
 </section>

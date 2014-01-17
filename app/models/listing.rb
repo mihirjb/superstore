@@ -26,13 +26,29 @@
 #  devicecolor         :string(255)
 #  devicestorage       :string(255)
 #  shippingdetails     :string(255)
+#  status              :string(255)
+#  phone_id            :integer
+#  terms               :string(255)
 #
 
 class Listing < ActiveRecord::Base
   
   validates :headline, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
   validates :description, :presence => {:message => 'Atleast write a few words about your phone.'}
+  validates :description, :length => {:maximum => 140}
+  validates :askprice, :presence => {:message => 'Ask Price cannot be left blank for obvious reasons.'}
   
+  validates :accessories, :presence => {:message => 'List of accessories needed to be declared. Write none for nothing.'}
+  validates :devicecondition, :presence => {:message => 'Device  condition has to be specified'}
+  validates :deviceimei, :presence => {:message => 'IMEI number needed for verification'}
+  validates :devicecolor, :presence => {:message => 'Color cannot be blank, Listing not saved'}
+  validates :devicestorage, :presence => {:message => 'Storage cannot be blank, Listing not saved'}
+  
+  
+  validates :itemlocation, :presence => {:message => 'Atleast write a few words about your phone.'}
+  
+  
+
   
   validates :paypalemail, :presence => {:message => 'Paypal email cannot be blank, Listing not saved'}
   
@@ -55,5 +71,17 @@ private
    @profile = Profile.find_by_vendor_id(listing_vendor_id)
  end 
   
+  def self.get_recent_count(vendorid)
+    @count = 0
+    listing = Listing.find_all_by_vendor_id(vendorid)
+    listing.each do |l|
+     if Time.now.day - l.updated_at.to_date.day <= 0 
+       @count = @count + 1
+     else
+       @count = @count
+     end
+   end
+		
+  end
 
 end

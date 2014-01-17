@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: reviews
+#
+#  id         :integer          not null, primary key
+#  author_id  :integer
+#  reviewbody :text
+#  thumbsup   :boolean
+#  created_at :datetime
+#  updated_at :datetime
+#  profile_id :integer
+#
+
 class Review < ActiveRecord::Base
   belongs_to :profile
 end

@@ -34,6 +34,7 @@
 	
 			<ul class="phone">
 			<% @listings.each do |l| %>
+			<% if Time.now.day - l.updated_at.to_date.day <= 7 %>
 			<a href ="/listings/<%=l.id%>"><li>
 				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
 				<div class="basic">
@@ -53,6 +54,8 @@
 				<a class="btn btn-success" href="/listings/<%= l.id %>">Buy now</a>
 			</div>
 			</li></a>
+			<% end %>
+			
 			<% end %>
 			</ul>
 		

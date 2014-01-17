@@ -178,8 +178,13 @@
 		<div class="form-group">
 		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
 		<% end %>
-		</div>
+		
+		<% else %>
+		<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
+		
 			<% end %>
+			</div>
+			
 			<% end %>
 			</div>
 			

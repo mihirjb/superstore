@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_filter :authenticate_vendor!
+  before_filter :authenticate_vendor!, :except => [:show]
    def index
      @profile = current_vendor.profiles.all
    end
@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
    def show
      @profile = Profile.find(params[:id])
      @listings = Listing.find_all_by_vendor_id(@profile.vendor_id)
-     @reviews = Review.find_all_by_profile_id(@profile.id)
+     @feedbacks = Review.find_all_by_profile_id(@profile.id)
      @review = @profile.reviews.build
    end
 
