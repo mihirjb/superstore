@@ -25,6 +25,12 @@ class Comment < ActiveRecord::Base
  def self.get_comment_author(comments_vendorid)
     @author = Profile.find_by_vendor_id(comments_vendorid).displayname
   end
+
+  private
+
+  def deny_to_visitors
+    redirect_to root_path unless user_signed_in? or admin_signed_in?
+  end
   
 
   

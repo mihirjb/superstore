@@ -20,13 +20,10 @@ Admin
 
 Vendor
 
-* User / Vendor dashboard.
-* Profile Page
 
 
 General
 
-* Filters on homepage.
 * Search functionality site wide.
 
 

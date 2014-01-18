@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_vendor!, :except => [:show]
+  before_filter :deny_to_visitor, :except => [:show]
   
  
   def new

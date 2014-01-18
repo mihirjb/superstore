@@ -1,6 +1,6 @@
 <section>
 	<div class="wrapper">
-		
+		<div class="cushion">
 		<%= form_for @profile, :class=>"form-horizontal",  :role => "form" do |f| %>
 		
 			<div class="form-group">
@@ -41,6 +41,7 @@
 		<div class="form-group">
 		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-success btn-lg btn-block" %>
 		<% end %>
+		</div>
 		
 	</div>
 </section>

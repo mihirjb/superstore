@@ -48,6 +48,17 @@
 </div>
 </section>
 <section>
+		<nav class="navbar navbar-default" role="navigation">
+		<ul class="nav navbar-nav">
+			<li><%= link_to "AT&T", "/?msp=AT&T"%></li>
+			<li><%= link_to "Sprint", "/?msp=Sprint"%></li>
+			<li><%= link_to "T-Mobile", "/?msp=T-Mobile"%></li>
+			<li><%= link_to "Verizon", "/?msp=Verizon"%></li>
+			<li><%= link_to "Unlocked", "/?msp=Unlocked"%></li>
+			<li><%= link_to "All", "/"%></li>
+</ul>
+</nav>
+		
 	<div class="wrapper">
 		<ul class="phones">
 		<% @phones.each do |l|%>

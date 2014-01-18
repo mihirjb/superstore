@@ -2,11 +2,21 @@ class PagesController < ApplicationController
   
   before_filter :authenticate_vendor!, :only => [:dashboard]
   
-  def home
+  def home    
      @account = Account.new
      @owner = @account.build_owner
-     @phones = Phone.all :limit => 50 
      
+     if params[:msp]
+       @phones = Phone.find_all_by_carrier(params[:msp], :limit => 50) 
+     else
+       @phones = Phone.all :limit => 50         
+     end
+     
+      if params[:search]
+        @phones = Phone.order(:modelname).where("modelname like ?", "%#{params[:search]}%") 
+        render json: @phones.map(&:modelname)  
+       
+     end
   end
   
   def help

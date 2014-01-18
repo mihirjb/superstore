@@ -16,6 +16,8 @@ Storeapp::Application.routes.draw do
   get  'pages/help' => 'pages#help'
   get  'pages/dashboard' => 'pages#dashboard', :as => :dashboard
   
+  
+  
   resources :accounts
   resources :listings
   resources :profiles
