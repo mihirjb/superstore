@@ -1,7 +1,7 @@
 <section class="hero">
 	<div class="wrap">
 		<% if vendor_signed_in? %>
-		
+
 		<%else%>
 	<h1 class="hero">Buy and Sell Mobile Phone & Tablets. Register now!</h1>
 <p class="hero">We are low-cost, secure and easy to use.<br/> Already have an account?  <%= link_to "Sign in", new_vendor_session_path %>
@@ -44,13 +44,14 @@
 </div>
 </div>
 
+ 
 <%end%>
 </div>
 </section>
 <section>
 		<nav class="navbar navbar-default" role="navigation">
 		<ul class="nav navbar-nav">
-			<li><%= link_to "AT&T", "/?msp=AT&T"%></li>
+			<li><%= link_to "AT&T", '/?msp=AT&T'%></li>
 			<li><%= link_to "Sprint", "/?msp=Sprint"%></li>
 			<li><%= link_to "T-Mobile", "/?msp=T-Mobile"%></li>
 			<li><%= link_to "Verizon", "/?msp=Verizon"%></li>

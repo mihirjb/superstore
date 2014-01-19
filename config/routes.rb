@@ -1,6 +1,9 @@
 Storeapp::Application.routes.draw do
 
-
+  get "adminactions/approvecomment"
+  get "adminactions/approvelisting"
+  get "adminactions/dashboard"
+  
   devise_for :admins
   get "transactions/processtransaction"
   get "transactions/completetransaction"
@@ -9,6 +12,8 @@ Storeapp::Application.routes.draw do
   get "phones/index"
   get "phones/new"
   get "phones/create"
+  get "pages/phones"
+  
   get "index/new"
   get "index/create"
   root :to => 'pages#home'

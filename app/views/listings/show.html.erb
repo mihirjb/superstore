@@ -10,17 +10,24 @@
 				<div class="jumbtron"><h1>S$<%=@listing.askprice.to_i + 10 %></h1></div>
 			<h4><%=@listing.headline %></h4>
 			<p><%=@listing.description %></p>
+			<% if @listing.status == "Approved"%>
+			
 				<div class="listing-author">
 					<ul>
 				<li>Listed by <%= @author.email %></li>
 				<li>Member Since <%=@author.created_at.to_date() %></li>
 				<li>From <%= @profile.country unless @profile.nil? %></li>
 				<li>last updated on <%=@listing.updated_at.to_date %></li>
-				<li>listing expires on <%=@listing.expirydate %></li>
 				<li> <%=  link_to "View Seller's Profile",  "/profiles/#{@profile.id}" unless @profile.nil? %> </li>
+				
 				</ul>
 				</div>
 				<a href="/transactions/processtransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now</a>
+				
+				<% else %>
+				<h4>Listing is yet to be approved by the admin.</h4>
+				
+				<% end%>
 				
 			</div>
 				<div class="listing-images">
@@ -35,8 +42,8 @@
 		<div class="listing-body">
 		<div class="listing-details">
 				<div class="listing-device-info">
-					<table class="table table-bordered table-condensed"><th>Device Name</th><th>Carrier</th><th>Color</th><th>Storage Capacity</th><th>Device Modified?</th>
-						<tr><td><%= @listing.devicename %></td><td><%= @listing.devicecarrier %></td><td><%= @listing.devicecolor %></td><td><%= @listing.devicestorage %></td><td><%= @listing.modified %></td></tr>
+					<table class="table table-bordered table-condensed"><th>Device Name</th><th>Carrier</th><th>Color</th><th>Storage Capacity</th><th>No. of views on this listing</th><th>Device Modified?</th>
+						<tr><td><%= @listing.devicename %></td><td><%= @listing.devicecarrier %></td><td><%= @listing.devicecolor %></td><td><%= @listing.devicestorage %></td><td><%=@listing.impressionist_count %></td><td><%= @listing.modified %></td></tr>
 						</table>
 				</div>
 				
@@ -46,7 +53,7 @@
 					<h4>Phone images uploaded by the seller</h4>
 					<p>
 						<%  @listing.assets.each do |a| %>
-						<%= image_tag a.image.url('small') %>
+						<a class="fancybox" href="<%= a.image.url('small')%>" rel="group"><%= image_tag a.image.url('small') %></a>
 						<%end%>
 						</p>
 					</div>		
@@ -175,6 +182,8 @@
 		</div>
 		<%= f.hidden_field :listing_id, :value => @listing.id %>
 		<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+		<%= f.hidden_field :status, :value => "Pending" %>
+		
 		<div class="form-group">
 		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
 		<% end %>

@@ -8,23 +8,39 @@ Things yet to be covered:
 
 Pictures
 
-* Better display of pictures in the listings view - carousel or lightbox.
+* Better display of pictures in the listings view - lightbox.
 * Using Amazon S3 to store images.
 
 
 Admin
 
-* Admin interface. Approval system
-* Letting admin edit vendor listings too.
 * Mailer System
 
 Vendor
 
+* Order and Order status
+
+
+Transactions
+
+* Storing transactional data in Orders
+
+
+
+Listings
+
+* Ajax form validation
+* Bot submission check
+* Applying filters to listings index 
+
+
+Comment
+* Bot submission check.
 
 
 General
 
-* Search functionality site wide.
+* Setting a Market - default and changeable.
 
 
 Legal

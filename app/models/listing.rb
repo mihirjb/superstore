@@ -32,6 +32,7 @@
 #
 
 class Listing < ActiveRecord::Base
+  is_impressionable
   
   validates :headline, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
   validates :description, :presence => {:message => 'Atleast write a few words about your phone.'}

@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
   
  private
  def self.get_comment_count(listing_id)
- @count = Comment.find_all_by_listing_id(listing_id).count
+ @count = Comment.where("status like ? AND listing_id = ?", "Approved", listing_id).count
  end
  
  def self.get_comment_author(comments_vendorid)

@@ -11,7 +11,11 @@
 			<div class="form-group">
 			<div class="input-group-lg">
 				<h3>Meta data about the listing</h3>
+				<br/><%=f.label:country, "Your Market" %>
 				
+				<%= f.select :country , [['United States','US'],['India','In']],  :autofocus => true%>
+				
+				<span class="helper-block">You can only sell in one market at one time. Currently we are live only in the US and India.</span><br/><br/>
 			<%= f.text_field :headline, :class=> "form-control", :placeholder=>"Give a heading to your listing" %>
 
 			<%= f.text_area :description, :class=> "form-control", :placeholder=>"Describe your phone a little" %>
@@ -85,8 +89,7 @@
 			<div class="form-group">
 			<div class="input-group-lg">
 			<h3>Shipping Details</h3>
-			<h4>Use the drop-down menus to choose your country and itemlocation</h4>
-			<br/><%=f.label:country, "Country" %><%= f.country_select :country, ["United States"]%><br/><br/>
+			<h4>Choose the country in which the item is located</h4>
 			<%=f.label:itemlocation, "Item location" %> <%= f.country_select :itemlocation, ["United States"] %><br/><br/>
 				<%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?" %><br/>
 				<%= f.radio_button :paypalconfirmed, :true %> <%= f.label:paypalconfirmed, " Yes" %>

@@ -8,7 +8,7 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:300,400' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100,400' rel='stylesheet' type='text/css'>
-
+<script type="text/javascript" src="../javascripts/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -35,12 +35,10 @@
 			<li><%= link_to "About", "/pages/about"%></li>
 			<li><%= link_to "Help", "/pages/help"%></li>		    
 		    </ul>
-		    <form class="navbar-form navbar-left" role="search" action ="#">
+		    <form class="navbar-form navbar-left" role="search" action ="<%= root_path %>">
 		      <div class="form-group">
-				<input type="text" class="form-control" placeholder="Search" data-autocomplete="products/autocomplete_brand_name">
-			
-		      </div>
-		      <button type="submit" class="btn btn-default">Submit</button>
+				<input type="text" name="search" placeholder ="Find your phone" class="typeahead form-control">		      </div>
+		      <button type="submit" class="btn btn-default">Go</button>
 		    </form>
 		    <ul class="nav navbar-nav navbar-right">
 		      <li>		<% if vendor_signed_in? %>
@@ -65,3 +63,16 @@
 </div>
 </body>
 </html>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$(".fancybox").fancybox();
+	
+  $('.typeahead').typeahead( {name: 'planets', remote: '/pages/phones.json?search=%QUERY', limit: 10
+// [ "Fuck", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ] 
+});
+});
+
+</script>
+

@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   
   before_filter :authenticate_vendor!, :except => [:show]
+  impressionist :actions=>[:show]
   
   def index
     @listings = current_vendor.listings.all
@@ -28,7 +29,7 @@ class ListingsController < ApplicationController
     @author = Listing.get_listing_author(@listing.vendor_id)
     @profile = Listing.get_listing_author_profile(@listing.vendor_id)
     @comment = @listing.comments.build
-    @comments = Comment.find_all_by_listing_id(@listing.id)
+    @comments = Comment.where("status like ? AND listing_id = ?", "Approved", @listing.id)
   end
 
   def edit

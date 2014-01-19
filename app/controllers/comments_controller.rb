@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :deny_to_visitor, :except => [:show]
+  before_filter :authenticate_vendor!, :except => [:show]
   
  
   def new
@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @listing = Listing.find(params[:comment][:listing_id])
     @comment = @listing.comments.create(comment_params())
     if @comment.save
-      redirect_to :back, :notice => "Congratulations, comment created Successfully."
+      redirect_to :back, :notice => "Congratulations, comment created Successfully. It is pending approval. If it is appropriate it will be published soon."
     else
       redirect_to :back, :notice => "Alas, comment could not be created."
     end
