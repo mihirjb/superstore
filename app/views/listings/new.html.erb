@@ -3,7 +3,7 @@
 		<div class="selling-form pull-left">
 		
 			
-		<%= form_for @listing, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
+		<%= form_for @listing, :class=>"form-horizontal", :id => "listing-form",  :role => "form", :html => { :multipart => true } do |f| %>
 		
 	
 		
@@ -16,7 +16,7 @@
 				<%= f.select :country , [['United States','US'],['India','In']],  :autofocus => true%>
 				
 				<span class="helper-block">You can only sell in one market at one time. Currently we are live only in the US and India.</span><br/><br/>
-			<%= f.text_field :headline, :class=> "form-control", :placeholder=>"Give a heading to your listing" %>
+			<%= f.text_field :headline, :class=> "form-control", :placeholder=>"Give a heading to your listing"%>
 
 			<%= f.text_area :description, :class=> "form-control", :placeholder=>"Describe your phone a little" %>
 			</div>
@@ -154,6 +154,8 @@
 			
 			</div>
 <div class="form-group">
+	<input type="text" name="foo" style="display: none;">
+	
 			<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>
 		<% end %>
 		
@@ -184,3 +186,4 @@
 			</div>
 	</div>
 </section>
+

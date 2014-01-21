@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118115332) do
+ActiveRecord::Schema.define(version: 20140121040751) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -108,6 +108,20 @@ ActiveRecord::Schema.define(version: 20140118115332) do
     t.string   "status"
     t.integer  "phone_id"
     t.string   "terms"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "vendor_id"
+    t.string   "devicename"
+    t.string   "devicecarrier"
+    t.string   "deviceimei"
+    t.string   "ordertotal"
+    t.string   "selleraddress"
+    t.date     "orderdate"
+    t.datetime "ordertime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "seller_id"
   end
 
   create_table "phones", force: true do |t|

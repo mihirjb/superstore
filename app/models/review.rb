@@ -13,4 +13,12 @@
 
 class Review < ActiveRecord::Base
   belongs_to :profile
+  
+  
+  validates :reviewbody, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
+  validates :reviewbody, :length => {:maximum => 140}
+  validates :thumbsup, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
+  
+  
+  
 end

@@ -9,9 +9,10 @@ class ListingsController < ApplicationController
   end
 
   def new
+    if !params[:foo]
     @listing = current_vendor.listings.new
     5.times { @listing.assets.build }
-    
+  end
   end
 
   def create
@@ -28,8 +29,11 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @author = Listing.get_listing_author(@listing.vendor_id)
     @profile = Listing.get_listing_author_profile(@listing.vendor_id)
+    if !params[:foo]
     @comment = @listing.comments.build
+  end
     @comments = Comment.where("status like ? AND listing_id = ?", "Approved", @listing.id)
+    
   end
 
   def edit

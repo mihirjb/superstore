@@ -19,28 +19,33 @@ Admin
 Vendor
 
 * Order and Order status
+* Review form in payment succeeded page 
+* Adding thumbs up to the review form
 
 
 Transactions
 
-* Storing transactional data in Orders
 
 
 
 Listings
 
-* Ajax form validation
 * Bot submission check
 * Applying filters to listings index 
 
 
 Comment
+
 * Bot submission check.
+
+Review
+
+
 
 
 General
 
-* Setting a Market - default and changeable.
+* Detailed specs table.
 
 
 Legal

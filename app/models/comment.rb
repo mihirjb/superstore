@@ -14,6 +14,8 @@
 
 class Comment < ActiveRecord::Base
   
+  validates :commentbody, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
+  validates :commentbody, :length => {:maximum => 140}
   
   
   

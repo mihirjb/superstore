@@ -31,10 +31,13 @@
 		<%end%>
 		
 		<div class="listings">
-	
+				<nav class="navbar navbar-default" role="navigation">
+				<ul class="nav navbar-nav">
+			
+	    
 			<ul class="phone">
 			<% @listings.each do |l| %>
-			<% if Time.now.day - l.updated_at.to_date.day <= 7 %>
+			<% if Time.now.day - l.updated_at.to_date.day <= 7 && l.status != "Sold" %>
 			<a href ="/listings/<%=l.id%>"><li>
 				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
 				<div class="basic">

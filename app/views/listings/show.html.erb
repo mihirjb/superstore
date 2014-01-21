@@ -148,9 +148,17 @@
 	</div>  
 		<%= f.hidden_field :listing_id, :value => @listing.id %>
 		<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+		<%= f.hidden_field :status, :value => "Pending" %>
+		
+		<input type="text" name="foo" style="display: none;">
+		
 	<div class="form-group">
 		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
 	<% end %>
+	
+	<% else %>
+	<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
+	
 	<% end %>
 	
 	</div>
@@ -183,9 +191,11 @@
 		<%= f.hidden_field :listing_id, :value => @listing.id %>
 		<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
 		<%= f.hidden_field :status, :value => "Pending" %>
+		<input type="text" name="foo" style="display: none;">
+		
 		
 		<div class="form-group">
-		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
+		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg submit" %>
 		<% end %>
 		
 		<% else %>
@@ -204,3 +214,4 @@
 	
 </div>
 </section>
+
