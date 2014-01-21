@@ -5,6 +5,8 @@
 					<p><%= @profile.displayname %> |
 					<%= @profile.country%></p>
 					<p><%= @profile.aboutme %></p>
+					
+				
 		</div>
 		<div class="content">
 		<% if  @profile %>
@@ -26,20 +28,44 @@
 				</ul>
 				</div>
 				
-				<div class="small-box">
+				<div class="small-box feedbacks">
 					<h2 class="list-heading">Reviews <span class="pull-right"><%= Review.where(:thumbsup => true).count%> <span class="glyphicon glyphicon-thumbs-up"></span></span></h2>
 							<ul class="list">
 								
 							<% @feedbacks.each do |l| %>
 						<li>
 							<%= image_tag Profile.find_by_vendor_id(l.author_id).avatar.url('thumb')  %>
-							<p><%= l.reviewbody %></p>
-							</p>
+							<h4><%= l.reviewbody %><h4>
 							</li>
 							<% end %>
 							</ul>
 					</div>
 					
+					<div class="cushion">
+								<% if vendor_signed_in? %>
+								<div class="review-form">
+
+								<%= form_for @review, :class=>"form-horizontal",  :role => "form" do |f| %>
+						<div class="form-group">
+							<%= f.text_area :reviewbody, :class=> "form-control", :placeholder=>"Write a review" %>
+						</div> 
+						<%= f.hidden_field :thumbsup, :value => true %>
+
+							<%= f.hidden_field :profile_id, :value => @profile.id %>
+							<%= f.hidden_field :author_id, :value => current_vendor.id %>
+							<input type="text" name="foo" style="display: none;">
+
+						<div class="form-group">
+							<%= f.submit 'Add', :disable_with => 'Adding...', :class =>"btn btn-primary btn-sm" %>
+							</div>
+							</div>
+
+						<% end %>
+						<% else %>
+						<%= link_to "Log in to review", new_vendor_session_path, :class => "btn btn-success" %> 
+
+						<% end %>
+						</div>
 					
 				
 					

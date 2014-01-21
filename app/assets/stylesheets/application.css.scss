@@ -486,6 +486,10 @@ div.small-box ul.list li img
 	float:left;
 	margin:10px 10px 10px 0;
 }
+div.feedbacks ul.list li img
+{
+	width:40px;
+}
 div.small-box ul.list li h4
 {
 	color:#3e3e3e;
@@ -534,7 +538,7 @@ margin-bottom:20px;
 
 form .form-control
 {
-	background:transparent;
+	background:#fff;
 	border-color:#86bbd4;
 }
 
@@ -584,7 +588,7 @@ padding:0px 10px;
 -webkit-appearance:none;
 border-radius:2px;
 }
-h3.center-block
+h3.center-block,h2.center-block
 {
 text-align:center;
 margin:20px 0px;
