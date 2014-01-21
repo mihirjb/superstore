@@ -17,7 +17,7 @@ class PagesController < ApplicationController
      end
      
       if params[:search]
-        @phones = Phone.order(:modelname).where("modelname like ?", "%#{params[:search]}%") 
+        @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%") 
        
      end
   end
@@ -37,7 +37,7 @@ class PagesController < ApplicationController
   
   
   def phones
-    @phones = Phone.order(:modelname).where("modelname like ?", "%#{params[:search]}%") 
+    @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%") 
     render json: @phones.map(&:modelname)  
   end
 end
