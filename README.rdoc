@@ -30,15 +30,7 @@ Transactions
 
 Listings
 
-* Bot submission check
 * Applying filters to listings index 
-
-
-Comment
-
-* Bot submission check.
-
-Review
 
 
 
@@ -46,6 +38,7 @@ Review
 General
 
 * Detailed specs table.
+* facebook and twitter conenect for credibility score
 
 
 Legal
