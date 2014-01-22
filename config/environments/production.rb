@@ -79,5 +79,24 @@ Storeapp::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   
   config.assets.initialize_on_precompile = false
+  Storeapp::Application.configure do
+    config.action_mailer.smtp_settings = {
+      :address   => "smtp.mandrillapp.com",
+      :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+      :enable_starttls_auto => true, # detects and uses STARTTLS
+      :user_name => "info@happyfellas.com",
+      :password  => ENV['MANDRILL_PWD'], # SMTP password is any valid API key
+      :authentication => 'login', # Mandrill supports 'plain' or 'login'
+      :domain => 'localhost', # your domain to identify your server when connecting
+    }
   
+  
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end

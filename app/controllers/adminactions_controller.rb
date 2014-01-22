@@ -6,6 +6,7 @@ class AdminactionsController < ApplicationController
     @listing  = Listing.find(params[:id])
     @listing.update_column("status","Approved")
     if @listing.save
+      VendorMailer.listing_confirmation(@listing).deliver
       redirect_to '/adminactions/dashboard', :notice => "Success, Approved!"
     else
       redirect_to '/adminactions/dashboard', :notice => "Failure, NOT Approved!"

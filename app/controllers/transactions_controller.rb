@@ -48,6 +48,9 @@ class TransactionsController < ApplicationController
 
     @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @listing.askprice, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now)
     
+    AdminMailer.order_confirmation(current_vendor, @listing).deliver
+    VendorMailer.order_confirmation(@listing).deliver
+    BuyerMailer.order_confirmation(current_vendor).deliver
     
     session[:listing_id] = nil
   else
