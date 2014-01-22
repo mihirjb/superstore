@@ -79,7 +79,7 @@ Storeapp::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   
   config.assets.initialize_on_precompile = false
-  Storeapp::Application.configure do
+   
     config.action_mailer.smtp_settings = {
       :address   => "smtp.mandrillapp.com",
       :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
