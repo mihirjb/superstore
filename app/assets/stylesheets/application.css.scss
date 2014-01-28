@@ -129,7 +129,7 @@ div.listings ul.phone h4
 
 div.listings ul.phone div.basic
 {
-	width:50%;
+	width:49%;
 	margin-right:1%;
 	float:left;
 	border-right: 1px solid #86bbd4;
@@ -141,7 +141,7 @@ div.listings ul.phone div.basic
 	margin-right:10px;
 	
 }
-div.listings ul.phone div.intermediate
+div.listings ul.phone div.advanced
 {
 	width:20%;
 	float:left;
@@ -152,12 +152,14 @@ div.listings ul a
 }
 div.listings ul li
 {
+	width:100%;
 	list-style:none;
 	min-height:120px;
 	border-bottom:1px #efefef solid;
 	border-radius:4px;
 	padding:10px;
 	margin:0px auto;
+	overflow:auto;
 }
 div.listings ul li:hover
 {
