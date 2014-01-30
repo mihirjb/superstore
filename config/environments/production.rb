@@ -87,7 +87,7 @@ Storeapp::Application.configure do
       :user_name => "info@happyfellas.com",
       :password  => ENV['MANDRILL_PWD'], # SMTP password is any valid API key
       :authentication => 'login', # Mandrill supports 'plain' or 'login'
-      :domain => 'localhost', # your domain to identify your server when connecting
+      :domain => 'zalpe.herokuapp.com', # your domain to identify your server when connecting
     }
   
   

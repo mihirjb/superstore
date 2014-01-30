@@ -5,7 +5,8 @@ Storeapp::Application.routes.draw do
   get "adminactions/dashboard"
   
   devise_for :admins 
-  get "transactions/processtransaction"
+  get "transactions/initiatetransaction"
+  post "transactions/processtransaction"
   get "transactions/completetransaction"
   get "transactions/failedtransaction"
   post "transactions/notify_action"  => 'transactions#notify_action'

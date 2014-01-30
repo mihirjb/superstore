@@ -1,2 +1,20 @@
-<h1>Thanks for purchasing your new phone from zalpe.com	</h1>
-<p>We have asked the seller to start the shipping process. Your order will arrive soon.</p>
+<p>Dear <%= @buyer.displayname %>,</p>
+<p>Greetings from Zalpe!</p>
+<p>We thank you for your order. This email contains your order summary. When the item in your order are shipped, you will receive an email with the Courier Tracking ID and the link where you can track your order. 
+Please find below the summary of your order at zalpe.com:</p>
+<h4>Order details table</h4>
+<table class="table table-bordered">
+	<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Estimated Shipping date</th></tr>
+	<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td><%= Time.now.to_date + 2 %></td></tr>
+</table><br/><br/>
+<h4>Shipping Address:</h4>
+<p>
+<%= @order.shipping_address %>
+</p>
+<br/><br/>
+<p>
+Please contact us should you have any questions or need further assistance.
+Thank you for shopping with us!</p>
+
+<p>Thanks and Regards,</p>
+<p><a href="www.zalpe.com">Zalpe Team</a></p>

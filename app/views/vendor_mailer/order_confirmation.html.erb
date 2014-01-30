@@ -1,2 +1,20 @@
-<h1>A new order has been placed on zalpe.com</h1>
-<p>Please acknowledge it and start the shipping process</p>
+<p>Dear <%= @seller.displayname %>,</p>
+<p>Greetings from Zalpe!</p>
+<p>Your <%= @order.devicename %> has been sold. We request to start preparing to ship the item within 2 days. Hereby we are sending you the order details. Please update the tracking information as soon as you ship the product so we can notify the customer. You can do it <%= link_to "here", "http://localhost:3000/pages/dashboard" %>.
+Please find below the summary of your order at zalpe.com:</p>
+<h4>Order details table</h4>
+<table>
+	<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Estimated Shipping date</th></tr>
+	<tr><td><%= @order.id%></td><td><%= @order.devicename%></td><td><%= @order.ordertotal%></td><td><%= Time.now.to_date + 2 %></td></tr>
+</table><br/><br/>
+<h4>Shipping Address:</h4>
+<p>
+<%= @order.shipping_address %>
+</p>
+<br/><br/>
+<p>
+Please contact us should you have any questions or need further assistance.
+Thank you for shopping with us!</p>
+
+<p>Thanks and Regards,</p>
+<p><a href="www.zalpe.com">Zalpe Team</a></p>

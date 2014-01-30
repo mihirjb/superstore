@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129083228) do
+ActiveRecord::Schema.define(version: 20140130084845) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140129083228) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "seller_id"
+    t.text     "shipping_address"
   end
 
   create_table "phones", force: true do |t|
@@ -153,6 +154,8 @@ ActiveRecord::Schema.define(version: 20140129083228) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text     "address"
+    t.string   "phone"
   end
 
   create_table "reviews", force: true do |t|

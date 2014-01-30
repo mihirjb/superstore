@@ -1,12 +1,19 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_vendor!
-  protect_from_forgery :except => [:notify_action]
+  skip_before_filter :verify_authenticity_token  
   
    include ActiveMerchant::Billing::Integrations   
+   
+   def initiatetransaction
+   end 
+   
+   
   def processtransaction
     session[:listing_id] = params[:l]
     session[:buyer_id] = current_vendor.id
+    session[:shipping_address] = params[:address]
     
+  
     if Listing.find(params[:l]).status == "Approved"
       gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
         :login => "mihir_api1.5ve.in",
@@ -46,11 +53,11 @@ class TransactionsController < ApplicationController
    @listing.update_column("status", "Sold")
     @lid = session[:listing_id]
 
-    @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @listing.askprice, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now)
+    @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @listing.askprice, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address])
     
     AdminMailer.order_confirmation(current_vendor, @listing).deliver
-    VendorMailer.order_confirmation(@listing).deliver
-    BuyerMailer.order_confirmation(current_vendor).deliver
+    VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
+    BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver
     
     session[:listing_id] = nil
   else
