@@ -34,7 +34,7 @@
 						<%	
 					
 						
-						@imgurl = "/phoneimages/" + @phone.modelname.gsub!(" ", "-").downcase + "-" + @phone.carrier.downcase + ".png" %>
+						@imgurl = "/phoneimages/" + @phone.modelname.gsub(" ", "-").downcase + "-" + @phone.carrier.downcase + ".png" %>
 
 							<%= image_tag @imgurl %>
 					</div>

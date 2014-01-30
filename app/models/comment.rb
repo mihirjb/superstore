@@ -25,7 +25,16 @@ class Comment < ActiveRecord::Base
  end
  
  def self.get_comment_author(comments_vendorid)
-    @author = Profile.find_by_vendor_id(comments_vendorid).displayname
+   @author = Profile.find_by_vendor_id(comments_vendorid).displayname
+   @vendor =  Vendor.find(comments_vendorid)
+   @newauthor  = Account.find(@vendor.account_id).subdomain
+   
+   if @author
+		@author
+	else 
+		@newauthor
+	end
+
   end
 
   private

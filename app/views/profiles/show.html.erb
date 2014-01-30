@@ -12,13 +12,20 @@
 		
 			<div class="main-box">	
 					<%=image_tag @profile.avatar.url(:medium), :class => "main-avatar" %>
-					<p><%= @profile.displayname %> |
+					<p><%  
+					if @profile.displayname %>
+					<%=  @profile.displayname %>
+					<% else
+						@vendor =  Vendor.find(@profile.vendor_id) %>
+					<%=	 Account.find(@vendor.account_id).subdomain %>
+				<%	end %> |
 					<%= @profile.country%></p>
 					<p><%= @profile.aboutme %></p>
 					</div>
+					<%if vendor_signed_in? %>
+					
 					<div class="content alert alert-info">
 					<h3>Quick review?
-					<%if vendor_signed_in? %>
 						<%    @found = current_vendor.votes.find_by_voteable_id(@profile.id) %>
 
 						<% if @found.nil? %>
@@ -38,9 +45,9 @@
 
 							<% end %>
 					
-					<% end %></h3>
+				</h3>
 				
-		</div>
+		</div>	<% end %>
 		<div class="content">
 		<% if  @profile %>
 	<% else %>
