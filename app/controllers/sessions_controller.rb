@@ -19,7 +19,6 @@ class SessionsController < Devise::SessionsController
      end
   
   def after_sign_out_path_for(vendor)
-    puts "called from after_sign_out_path"
-   root_url(:subdomain => false)  
+   root_url()  
   end
 end
