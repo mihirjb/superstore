@@ -36,6 +36,6 @@ class Profile < ActiveRecord::Base
   belongs_to :vendor
   has_many :reviews, :dependent => :destroy
   
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "30x30>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "30x30>" }, :default_url => "/images/profiles/avatars/:style/missing.png"
   
 end
