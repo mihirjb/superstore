@@ -41,6 +41,22 @@ class ProfilesController < ApplicationController
    def destroy
      @profile = profile.find(params[:id]).destroy
    end
+   
+   
+    def vote_for_profile
+        @profile = Profile.find(params[:id])
+        current_vendor.vote_exclusively_for(@profile)
+        respond_to do |format|
+          format.js
+        end
+    end
+    def vote_against_profile
+         @profile = Profile.find(params[:id])
+         current_vendor.vote_exclusively_against(@profile)
+         respond_to do |format|
+           format.js
+         end
+     end
 
 
      private 

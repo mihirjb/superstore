@@ -11,9 +11,8 @@
 			<h1 class="hero">Sign up</h1>
 			<div class="form-body">
 <div class="form-group">
-<div class="input-group input-group-lg">
-<%= f.text_field :subdomain, :class=> "form-control", :placeholder=>"Subdomain" %>
-<span class="input-group-addon">.storeapp.com</span><br/>
+<div class=" input-group-lg">
+<%= f.text_field :subdomain, :class=> "form-control", :placeholder=>"Display name" %>
 </div>  
 </div>
 
@@ -65,7 +64,9 @@
 		<% @phones.each do |l|%>
 		<li>
 			<% @list = Listing.find_all_by_phone_id(l.id, :order =>'askprice')%>
-			<%= image_tag l.image.url(:thumb) %>
+			<%	@imgurl = "/phoneimages/" + l.modelname.gsub!(" ", "-").downcase + "-" + l.carrier.downcase + ".png" %>
+
+				<div class="main-page-img"><%= image_tag @imgurl %></div>
 			<h3><%= link_to l.modelname, "/phones/#{l.id}" %> (<span class="carrier"><%=l.carrier %>)</h3>
 			<p></span>
 		<% if	@list.first.nil? %>

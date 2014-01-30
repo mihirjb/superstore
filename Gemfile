@@ -29,6 +29,7 @@ gem 'country_select'
 gem 'mechanize'
 gem 'twitter-typeahead-rails'
 gem 'impressionist'
+gem 'thumbs_up'
 
 
 

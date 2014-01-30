@@ -68,6 +68,12 @@ ul.phones li img
 	margin:0 auto;
 	
 }
+
+ul.phones li div.main-page-img img
+{
+	height:120px;
+}
+
 ul.phones li p
 {
 	padding:5px;
@@ -188,7 +194,6 @@ div.listings ul.phone li span.price
 	font-size:18px;
 	color:#000;
 }
-
 
 
 
@@ -510,6 +515,36 @@ section.profileinfo div.small-box
 }
 
 
+
+span.vote-img 
+{
+	width:0.5%;
+	color:#000;
+}
+
+span.vote-img a
+{
+	margin:0px;
+	font-size:1em;
+	color:#ccc;
+}
+span.vote-img a[disabled]
+{
+	
+	color:#f00;
+	opacity:.75;
+}
+
+div.review-form
+{
+	width:94%;
+	float:left;
+	margin:0px 0px 0px 20px;
+}
+div.review-section
+{
+	margin:50px 0px;
+}
 /***************Main page hero styles *******************/
 
 section.dashboard  div.wrapper

@@ -1,11 +1,44 @@
+
+
+
 <section class="profileinfo">
 	<div class="wrapper">
+		
+		<% if !@profile %>
+<div class="no-profile alert alert-danger">
+	<h3>The profile doesn't exist yet</h3>
+	</div>
+		<% else %>
+		
 			<div class="main-box">	
 					<%=image_tag @profile.avatar.url(:medium), :class => "main-avatar" %>
 					<p><%= @profile.displayname %> |
 					<%= @profile.country%></p>
 					<p><%= @profile.aboutme %></p>
+					</div>
+					<div class="content alert alert-info">
+					<h3>Quick review?
+					<%if vendor_signed_in? %>
+						<%    @found = current_vendor.votes.find_by_voteable_id(@profile.id) %>
+
+						<% if @found.nil? %>
+						<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true %>
+						<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true %></span>
+						<% else%>
+
+							<% if  @found.vote == false %>
+							<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true %>
+							<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true, :disabled => "disabled" %> 	
+							</span>
+
+							<% else %>
+								<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true, :disabled => "disabled" %>
+								<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true %></span>
+							<%end%>
+
+							<% end %>
 					
+					<% end %></h3>
 				
 		</div>
 		<div class="content">
@@ -29,7 +62,12 @@
 				</div>
 				
 				<div class="small-box feedbacks">
-					<h2 class="list-heading">Reviews <span class="pull-right"><%= Review.where(:thumbsup => true).count%> <span class="glyphicon glyphicon-thumbs-up"></span></span></h2>
+					<h2 class="list-heading">Reviews <span class="pull-right">
+						<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
+						<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
+						
+						
+						</span></h2>
 							<ul class="list">
 								
 							<% @feedbacks.each do |l| %>
@@ -41,10 +79,12 @@
 							</ul>
 					</div>
 					
-					<div class="cushion">
+					<div class="review-section">
 								<% if vendor_signed_in? %>
-								<div class="review-form">
 
+									
+											<div class="review-form">
+											
 								<%= form_for @review, :class=>"form-horizontal",  :role => "form" do |f| %>
 						<div class="form-group">
 							<%= f.text_area :reviewbody, :class=> "form-control", :placeholder=>"Write a review" %>
@@ -70,7 +110,9 @@
 				
 					
 					
+						<%end %>
 					
 </div>		
 		
 </section>
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121040751) do
+ActiveRecord::Schema.define(version: 20140129083228) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -164,6 +164,49 @@ ActiveRecord::Schema.define(version: 20140121040751) do
     t.integer  "profile_id"
   end
 
+  create_table "specifications", force: true do |t|
+    t.string   "manufacturer"
+    t.string   "providers"
+    t.string   "speed"
+    t.string   "ram"
+    t.string   "storage"
+    t.string   "microsd"
+    t.string   "resolution"
+    t.string   "displaysize"
+    t.string   "features"
+    t.string   "size"
+    t.string   "weight"
+    t.string   "formfactor"
+    t.string   "colors"
+    t.string   "megapixels"
+    t.string   "camfeatures"
+    t.string   "phonetype"
+    t.string   "cariiers"
+    t.string   "networks"
+    t.string   "releasedate"
+    t.string   "wifi"
+    t.string   "bluetooth"
+    t.string   "gps"
+    t.string   "fourg"
+    t.string   "microusb"
+    t.string   "audiojack"
+    t.string   "radio"
+    t.string   "speakerphone"
+    t.string   "lion"
+    t.string   "replace"
+    t.string   "batreplace"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "phone_id"
+  end
+
+  create_table "trackcodes", force: true do |t|
+    t.string   "code"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "vendors", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -200,5 +243,19 @@ ActiveRecord::Schema.define(version: 20140121040751) do
 
   add_index "views", ["email"], name: "index_views_on_email", unique: true
   add_index "views", ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
+
+  create_table "votes", force: true do |t|
+    t.boolean  "vote",          default: false, null: false
+    t.integer  "voteable_id",                   null: false
+    t.string   "voteable_type",                 null: false
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type"
+  add_index "votes", ["voter_id", "voter_type", "voteable_id", "voteable_type"], name: "fk_one_vote_per_user_per_entity", unique: true
+  add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type"
 
 end

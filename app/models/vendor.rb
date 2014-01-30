@@ -27,6 +27,9 @@ class Vendor < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
          
+         
+         acts_as_voter    
+         
          has_many :listings, :dependent =>:destroy
          has_one :profile
          

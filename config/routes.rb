@@ -4,7 +4,7 @@ Storeapp::Application.routes.draw do
   get "adminactions/approvelisting"
   get "adminactions/dashboard"
   
-  devise_for :admins
+  devise_for :admins 
   get "transactions/processtransaction"
   get "transactions/completetransaction"
   get "transactions/failedtransaction"
@@ -23,16 +23,22 @@ Storeapp::Application.routes.draw do
   get  'pages/dashboard' => 'pages#dashboard', :as => :dashboard
   
   
-  
+  resources :comments
+   resources :reviews
+   resources :phones
   resources :accounts
   resources :listings
-  resources :profiles
-  resources :comments
-  resources :reviews
-  resources :phones
+  resources :profiles do
+     member do
+        get :vote_for_profile
+        get :vote_against_profile
+        
+     end
+  end
   
+ 
   
-  devise_for :vendors, :controllers => { :sessions => "sessions" }
+  devise_for :vendors, :controllers => { :sessions => "sessions" } 
 
 
 

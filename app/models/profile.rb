@@ -32,6 +32,7 @@ class Profile < ActiveRecord::Base
   validates_presence_of :location
   
   
+  acts_as_voteable
   
   
   

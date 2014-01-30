@@ -72,6 +72,23 @@ $(document).ready(function() {
 
 
 
+$("#up").click(function() {
+ 
+	$('#up').attr('disabled','disabled'); 
+	$("#down").removeAttr('disabled');
+	
+});
+
+	$("#down").click(function() {
+		
+			
+		$("#up").removeAttr('disabled');
+		$('#down').attr('disabled','disabled'); 
+		
+			
+	});
+	});
+
 
 </script>
 
