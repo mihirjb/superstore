@@ -27,6 +27,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @phone = Phone.find(@listing.phone_id)
     @author = Listing.get_listing_author(@listing.vendor_id)
     @profile = Listing.get_listing_author_profile(@listing.vendor_id)
     if !params[:foo]

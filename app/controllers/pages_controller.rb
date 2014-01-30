@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     
      @account = Account.new
      @owner = @account.build_owner
+     @profile = @owner.build_profile
      
      if params[:msp]
        if params[:msp] == "AT"

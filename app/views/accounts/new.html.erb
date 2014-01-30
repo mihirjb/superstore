@@ -1,11 +1,11 @@
 <section class="hero">
 	<div class="wrap">
 		<div class="panel panel-default">
-  			<div class="panel-body"><%= form_for @account, :class=>"form-horizontal",  :role => "form" do |f| %>
+  			<div class="panel-body">
+<%= form_for @account, :class=>"form-horizontal",  :role => "form" do |f| %>
 <div class="form-group">
-<div class="input-group input-group-lg">
-	<%= f.text_field :subdomain, :class=> "form-control", :placeholder=>"Subdomain" %>
-	<span class="input-group-addon">.storeapp.com</span><br/>
+<div class="input-group-lg">
+	<%= f.text_field :subdomain, :class=> "form-control", :placeholder=>"Display name" %>
 </div>  
 </div>
 
@@ -25,6 +25,16 @@
 	<%= builder.password_field :password_confirmation, :class=> "form-control", :placeholder=>"Password Confirmation" %>
 </div>  
 </div>
+
+<%= builder.fields_for :profile do |p| %>
+<div class="form-group">
+<div class=" input-group-lg">
+<%=p.label:country, "Country" %> <%= p.country_select :country, ["United States"] %>
+</div>  
+</div>
+
+<% end %>
+
 
 <% end %>
 

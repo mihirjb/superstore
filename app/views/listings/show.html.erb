@@ -31,7 +31,12 @@
 				
 			</div>
 				<div class="listing-images">
-					<%= image_tag @listing.assets.first.image.url('small') unless @listing.assets.last.nil?  %>
+						<%	
+					
+						
+						@imgurl = "/phoneimages/" + @phone.modelname.gsub!(" ", "-").downcase + "-" + @phone.carrier.downcase + ".png" %>
+
+							<%= image_tag @imgurl %>
 					</div>
 									
 			</div>

@@ -24,13 +24,8 @@
 
 class Profile < ActiveRecord::Base
   
-  validates_presence_of :fullname
-  validates_presence_of :displayname
-  validates_presence_of :paypalemail
   validates_presence_of :country
-  validates_presence_of :timezone
-  validates_presence_of :location
-  
+ 
   
   acts_as_voteable
   
