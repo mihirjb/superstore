@@ -1,5 +1,6 @@
 Storeapp::Application.routes.draw do
 
+
   get "adminactions/approvecomment"
   get "adminactions/approvelisting"
   get "adminactions/dashboard"
@@ -23,7 +24,7 @@ Storeapp::Application.routes.draw do
   get  'pages/help' => 'pages#help'
   get  'pages/dashboard' => 'pages#dashboard', :as => :dashboard
   
-  
+  resources :trackcodes
   resources :comments
    resources :reviews
    resources :phones

@@ -13,7 +13,7 @@
 				<h3>Meta data about the listing</h3>
 				<br/><%=f.label:country, "Your Market" %>
 				
-				<%= f.select :country , [['United States','United States'],  :autofocus => true%>
+				<%= f.select :country , [['United States','United States']],  :autofocus => true%>
 				
 				<span class="helper-block">You can only sell in one market at one time. Currently we are live only in the US. Stay tuned for more markets.</span><br/><br/>
 			<%= f.text_field :headline, :class=> "form-control", :placeholder=>"Give a heading to your listing"%>

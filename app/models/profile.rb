@@ -20,6 +20,8 @@
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  address             :text
+#  phone               :string(255)
 #
 
 class Profile < ActiveRecord::Base
