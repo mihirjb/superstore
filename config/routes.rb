@@ -16,6 +16,12 @@ Storeapp::Application.routes.draw do
   get "phones/new"
   get "phones/create"
   get "pages/phones"
+  get "pages/contact"
+  get "pages/faq"
+  get "pages/terms"
+  get "pages/buy"
+  get "pages/sell"
+  
   
   get "index/new"
   get "index/create"
