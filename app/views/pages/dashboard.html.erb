@@ -29,7 +29,12 @@
 				</div>
 				
 				<div class="small-box">
-					<h2 class="list-heading">Reviews <span class="pull-right"><%= Review.where(:thumbsup => true).count%> <span class="glyphicon glyphicon-thumbs-up"></span></span></h2>
+						<h2 class="list-heading">Reviews <span class="pull-right">
+							<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
+							<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
+
+
+							</span></h2>
 							<ul class="list">
 								
 							<% @feedbacks.each do |l| %>
