@@ -31,9 +31,10 @@ class PagesController < ApplicationController
   
   def dashboard
     @vendor = current_vendor
-     @listings = Listing.find_all_by_vendor_id(@vendor.id)
+     @listings = Listing.where('vendor_id == ? AND status != ?', @vendor.id, "Sold")
      @profile = Profile.find_by_vendor_id(@vendor.id)
      @feedbacks = Review.find_all_by_profile_id(@profile.id)
+     @orders = Order.where('seller_id == ? OR vendor_id == ?', @vendor.id,@vendor.id) #this works on heroku
   end
   
   

@@ -3,14 +3,15 @@ class TrackcodesController < ApplicationController
 
     def new
        @order = Order.find(params[:id])
-       @trackcode = @order.trackcodes.new
+       @trackcode = @order.build_trackcode
      end
 
      def create
        @order = Order.find(params[:trackcode][:order_id])
-       @trackcode = @order.trackcodes.create(trackcode_params())
+       @trackcode = @order.create_trackcode(trackcode_params())
        if @trackcode.save
-         redirect_to :back, :notice => "Congratulations, trackcode created Successfully."
+         BuyerMailer.shipping_confirmation(@order,@trackcode).deliver
+         redirect_to :dashboard, :notice => "Congratulations, trackcode created Successfully."
        else
          redirect_to :back, :notice => "Alas, trackcode could not be created."
        end
@@ -30,9 +31,9 @@ class TrackcodesController < ApplicationController
 
          def update
            @order = Order.find(params[:trackcode][:order_id])
-           @trackcode = @order.trackcodes.update_attributes(trackcode_params())
+           @trackcode = @order.update_trackcode(trackcode_params())
            if @trackcode.save
-             redirect_to :back, :notice => "Congratulations, trackcode created Successfully."
+             redirect_to :dashboard, :notice => "Congratulations, trackcode created Successfully."
            else
              redirect_to :back, :notice => "Alas, trackcode could not be created."
            end
@@ -49,7 +50,7 @@ class TrackcodesController < ApplicationController
 
        private 
        def trackcode_params
-        params.require(:trackcode).permit(:code,:order_id, :shipping_details)
+        params.require(:trackcode).permit(:code,:order_id, :shipping_company, :shipping_city, :shippingto_city, :shipping_date)
        end
    end
 

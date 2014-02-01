@@ -1,2 +1,27 @@
-<h1>Phones#index</h1>
-<p>Find me in app/views/phones/index.html.erb</p>
+<section>
+<div class="wrapper">
+<ul class="phones">
+<% @phones.each do |l|%>
+<li>
+	<% @list = Listing.find_all_by_phone_id(l.id, :order =>'askprice')%>
+	<%	@imgurl = "/phoneimages/" + l.modelname.gsub(" ", "-").downcase + "-" + l.carrier.downcase + ".png" %>
+
+		<div class="main-page-img"><%= image_tag @imgurl %></div>
+	<h3><%= link_to l.modelname, "/phones/#{l.id}" %> (<span class="carrier"><%=l.carrier %>)</h3>
+	<p></span>
+<% if	@list.first.nil? %>
+<span class="price"><%= @list.count %> Listings.</span></p>
+<%else%>
+	<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %> [<%= @list.count %>]</span>  </p>
+	<% end %>
+	
+	<a class="btn btn-success" href="/phones/<%= l.id %>">Buy</a> <a class="btn btn-danger" href="/phones/<%= l.id %>">Sell</a>
+	
+	
+	
+		</li>
+		
+	<%end%>	
+	</ul>
+	</div>
+	</section>

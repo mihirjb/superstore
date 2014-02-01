@@ -40,7 +40,7 @@ ul.phones li
 {
 	background-color:#fff;
 	width:380px;
-	height:280px;
+	height:300px;
 	margin:0px;
 	padding:20px 20px;
 	min-height:250px;
@@ -707,4 +707,26 @@ section#address-confirmation form
 {
 	width:600px;
 	margin:0 auto;
+}
+
+/****************footer **************/
+
+footer
+{
+	min-height:100px;
+	background-color:#fff;
+}
+footer div.links
+{
+	padding:40px 20px;
+	width:450px;
+	margin: 0 auto;
+	text-align:center;
+	color:#ccc;
+}
+footer div.links a
+{
+	padding:0px 20px;
+	font-size:11px;
+	color:#3e3e3e;
 }

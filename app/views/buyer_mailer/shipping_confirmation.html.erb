@@ -1,0 +1,20 @@
+<p>Dear <%= @buyerprofile.displayname %>,</p>
+<p>Greetings from Zalpe!</p>
+<p>Your order for <%= @order.devicename %> has been shipped. 
+Please find below the tracking info as below</p>
+<div class="wrapper">
+	<div class="cushion">
+		<h1>Tracking info for your Order</h1>
+<table class="table table-bordered">
+	<tr><th>Shipping Company</th><th>Shipped from</th><th>Shipped to</th><th>Shipped on</th><th>Tracking Code</th></tr>
+	<tr><td><%=@trackcode.shipping_company%></td><td><%=@trackcode.shipping_city%></td><td><%=@trackcode.shippingto_city %></td><td><%=@trackcode.shipping_date %></td><td><%=@trackcode.code %></td></tr>
+</div>
+	
+</div>
+<p>
+	You can also find your tracking information in your <%= link_to "dashboard", "http://www.zalpe/pages/dashboard"%>.
+Please contact us should you have any questions or need further assistance.
+Thank you for shopping with us!</p>
+
+<p>Thanks and Regards,</p>
+<p><a href="www.zalpe.com">Zalpe Team</a></p>

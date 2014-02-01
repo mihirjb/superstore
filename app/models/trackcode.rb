@@ -8,6 +8,9 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  shipping_company :string(255)
+#  shipping_date    :date
+#  shipping_city    :string(255)
+#  shippingto_city  :string(255)
 #
 
 class Trackcode < ActiveRecord::Base

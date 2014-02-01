@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130095514) do
+ActiveRecord::Schema.define(version: 20140201034035) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -209,6 +209,9 @@ ActiveRecord::Schema.define(version: 20140130095514) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "shipping_company"
+    t.date     "shipping_date"
+    t.string   "shipping_city"
+    t.string   "shippingto_city"
   end
 
   create_table "vendors", force: true do |t|

@@ -5,37 +5,13 @@ application up and running but I am going to write the things yet to be implemen
 
 Things yet to be covered:
 
-
-Pictures
-
-* Better display of pictures in the listings view - lightbox.
-* Using Amazon S3 to store images.
-
-
-Admin
-
-* Better Mails
-
-Vendor
-
-
-
-Transactions
-
-
-
-
-Listings
-
-* Applying filters to listings index 
-
-
-
-
 General
 
 * Detailed specs table.
 * facebook and twitter conenect for credibility score
+* Better display of pictures in the listings view - lightbox.
+* Applying filters to listings index 
+* Multi country and multi curreny.
 
 
 Legal

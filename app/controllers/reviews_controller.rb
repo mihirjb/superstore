@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
 
       private 
       def review_params
-       params.require(:review).permit(:reviewbody,:author_id, :thumbsup)
+       params.require(:review).permit(:reviewbody,:author_id)
       end
   end
   
