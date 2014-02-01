@@ -34,7 +34,7 @@ class PagesController < ApplicationController
      @listings = Listing.find_all_by_vendor_id(@vendor.id)
      @profile = Profile.find_by_vendor_id(@vendor.id)
      @feedbacks = Review.find_all_by_profile_id(@profile.id)
-     @orders = Order.where('seller_id = ? OR vendor_id = ?', @vendor.id,@vendor.id) #this works on heroku
+     @orders = Order.where('seller_id = ? OR vendor_id = ?', @vendor.id,@vendor.id) 
   end
   
   

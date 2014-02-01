@@ -114,28 +114,28 @@
 			</div>
 			
 			<div class="form-group">
-			<div class="input-group-lg">
-				<%= f.hidden_field :status, :value=>"Pending" %>
-				
-				<h3>Upload pictures- [needed to get the listing verified]</h3>
-				
-					<div class="newPaperclipFiles">
+						<div class="input-group-lg">
+							<%= f.hidden_field :status, :value=>"Pending" %>
 
-					        <%= f.fields_for :assets do |asset| %>
-						 
-					           <% if asset.object.new_record? %>
-					                 <%= asset.file_field :image, :class=> "form-control" %>
-					           <% end %>
+							<h3>Upload pictures- [needed to get the listing verified]</h3>
 
-					       <% end %>
+								<div class="newPaperclipFiles">
 
+								        <%= f.fields_for :assets do |asset| %>
+
+								           <% if asset.object.new_record? %>
+								                 <%= asset.file_field :image, :class=> "form-control" %>
+								           <% end %>
+
+								       <% end %>
+
+								</div>
+
+
+
+
+					</div>  
 					</div>
-			
-			
-			
-			
-		</div>  
-		</div>
 		
 		
 

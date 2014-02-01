@@ -1,6 +1,7 @@
 Storeapp::Application.routes.draw do
 
 
+ 
   get "adminactions/approvecomment"
   get "adminactions/approvelisting"
   get "adminactions/dashboard"

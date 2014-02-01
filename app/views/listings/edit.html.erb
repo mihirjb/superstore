@@ -2,7 +2,7 @@
 	<div class="wrapper">
 		<div class="cushion">
 		
-		<%= form_for @listing, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
+		<%= form_for @listing, :class=>"form-horizontal", :role => "form", :html => { :multipart => true } do |f| %>
 		
 			<div class="form-group">
 			<div class="input-group-lg">
@@ -91,41 +91,33 @@
 			
 			</div>
 			</div>
-			
-			<div class="form-group">
-			<div class="input-group-lg">
-			
-			<div class="existingPaperclipFiles">
-				
-				<% if @listing.assets.exists? %>
-				<h3>Existing images.</h3>
+				<div class="form-group">
+				<div class="input-group-lg">
 
-					<%  @listing.assets.take(5).each do |a| %>
-					<%= image_tag a.image.url('thumb') %>
-					<% end %>
-	                
-					<% else %>
-					<h3>Upload you verification images.</h3>
-					<%= f.fields_for :assets do |asset| %>
-					 <%= asset.file_field :image, :class=> "form-control" %>
-	                <% end %>
-	
-					<% end %>
+				<div class="existingPaperclipFiles">
 
-					
+					<% if @listing.assets.exists? %>
+					<h3>Existing images.</h3>
 
-					     				
-			
-			
+						<%  @listing.assets.take(5).each do |a| %>
+						<%= image_tag a.image.url('thumb') %>
+						<% end %>
+
+						<% else %>
+						<h3>Upload you verification images.</h3>
+						<%= f.fields_for :assets do |asset| %>
+						 <%= asset.file_field :image, :class=> "form-control" %>
+			            <% end %>
+
+						<% end %>
+
+
+
+
+
+
+				</div>
 			</div>
-			
-			
-			
-			
-			
-			
-		</div>  
-		</div>
 
 		<div class="form-group">
 			<%= f.hidden_field :status, :value=>"Pending" %>
