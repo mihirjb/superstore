@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201034035) do
+ActiveRecord::Schema.define(version: 20140203140306) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -110,6 +110,9 @@ ActiveRecord::Schema.define(version: 20140201034035) do
     t.string   "terms"
   end
 
+  add_index "listings", ["id"], name: "index_listings_on_id"
+  add_index "listings", ["vendor_id"], name: "index_listings_on_vendor_id"
+
   create_table "orders", force: true do |t|
     t.integer  "vendor_id"
     t.string   "devicename"
@@ -135,6 +138,9 @@ ActiveRecord::Schema.define(version: 20140201034035) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  add_index "phones", ["carrier"], name: "index_phones_on_carrier"
+  add_index "phones", ["modelname"], name: "index_phones_on_modelname"
 
   create_table "profiles", force: true do |t|
     t.string   "fullname"
