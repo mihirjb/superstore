@@ -584,7 +584,7 @@ form .form-control
 	border-color:#86bbd4;
 }
 
-div.container .panel
+div.container section.hero .panel
 {
 width:30%;
 background-color:#3e3e3e;
@@ -729,4 +729,75 @@ footer div.links a
 	padding:0px 20px;
 	font-size:11px;
 	color:#3e3e3e;
+}
+
+/*********About page************/
+section div#about
+{
+	margin:0;
+	background: -webkit-gradient(linear,  50% 100%,  50% 0%,  color-stop(0%,  #ededed),  color-stop(100%,  #fafafa));
+    background: -webkit-linear-gradient(bottom,  #ededed, #fafafa 7px);
+    background: -moz-linear-gradient(bottom,  #ededed, #fafafa 7px);
+    background: -o-linear-gradient(bottom,  #ededed, #fafafa 7px);
+    background: linear-gradient(bottom,  #ededed, #fafafa 7px);
+}
+section div#about h1
+{
+	margin-top:0;
+}
+div#whyus
+{
+	border-bottom:1px solid #ccc;
+}
+
+section div.mini-section
+{
+width:500px;
+margin:60px auto;
+}
+div.mini-section h2.round
+{
+text-align:center;
+width:60px;
+border-radius:40px;
+padding:14px;
+margin:0 auto;
+background-color:#efefef;
+-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+-o-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+div.mini-section h3
+{
+text-align:center;
+color:#5cb85c;
+}
+div.mini-section p
+{
+padding:10px;
+padding-bottom:20px;
+border-bottom: 1px solid #000;
+line-height:1.5em;
+}
+
+ul.hero li
+{
+list-style:none;
+word-spacing:0.1em;
+text-align:center;
+font-size:20px;
+color:#555;
+line-height:30px;
+background-color:#fff;
+opacity:0.90;
+padding:15px;
+border-bottom: 1px dotted #ccc;
+border-radius:5px;
+width:300px;
+-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+-o-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
 }
