@@ -14,7 +14,7 @@
 			
 				<div class="listing-author">
 					<ul>
-				<li>Listed by <%= @author.email %></li>
+				<li>Listed by <%= @author.email.split("@")[0] %></li>
 				<li>Member Since <%=@author.created_at.to_date() %></li>
 				<li>From <%= @profile.country unless @profile.nil? %></li>
 				<li>last updated on <%=@listing.updated_at.to_date %></li>
@@ -23,13 +23,15 @@
 				</ul>
 				</div>
 				<a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now</a>
+				<% elsif  @listing.status == "Sold" %>
+				
+				<h4>Listing is already sold. Thanks for viewing</h4>
 				
 				<% else %>
 				<h4>Listing is yet to be approved by the admin.</h4>
 				
 				<% end%>
-				
-			</div>
+						</div>
 				<div class="listing-images">
 						<%	
 					
@@ -96,6 +98,7 @@
 										</ul>
 											<% end %>
 				</p>
+				<p><%=@listing.moddetails%></p>
 				</div>
 				</div>
 				<div class="mini-section">

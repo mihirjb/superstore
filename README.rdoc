@@ -17,7 +17,5 @@ General
 * Adding phone pictures to s3
 * Reviews for phone.
 * Possibly accepting COD.
-* Showing listings as well orders for users to comment in dashboard. [sold and active]
-
 
 

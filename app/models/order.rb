@@ -15,6 +15,7 @@
 #  updated_at       :datetime
 #  seller_id        :integer
 #  shipping_address :text
+#  listing_id       :integer
 #
 
 class Order < ActiveRecord::Base

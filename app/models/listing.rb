@@ -29,6 +29,7 @@
 #  status              :string(255)
 #  phone_id            :integer
 #  terms               :string(255)
+#  moddetails          :string(255)
 #
 
 class Listing < ActiveRecord::Base

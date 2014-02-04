@@ -83,6 +83,8 @@
 			<%= f.label:modified, "Has the device been modified in any way. rooted or something?" %><br/>
 			<%= f.radio_button :modified, :true %> <%= f.label:modified, " Yes" %>
 			<%= f.radio_button :modified, :false %> <%= f.label:modified, " No" %><br/><br/>
+			<%= f.text_area :moddetails, :class=> "form-control", :placeholder=>"Describe your modification if you have modified the device in any way." %>
+			
 			<%= f.text_field :accessories, :class=> "form-control", :placeholder=>"List of accessories with the phone" %>
 			</div>
 			</div>

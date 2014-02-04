@@ -306,6 +306,7 @@ margin:50px 0px;
 }
 div.mini-section
 {
+	width:100%;
 min-height:250px;
 overflow:auto
 }
@@ -758,12 +759,12 @@ div#whyus
 	border-bottom:1px solid #ccc;
 }
 
-section div.mini-section
+section div#whyus div.mini-section
 {
 width:500px;
 margin:60px auto;
 }
-div.mini-section h2.round
+div#whyus div.mini-section h2.round
 {
 text-align:center;
 width:60px;
@@ -776,12 +777,12 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 -o-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
-div.mini-section h3
+div#whyus div.mini-section h3
 {
 text-align:center;
 color:#5cb85c;
 }
-div.mini-section p
+div#whyus div.mini-section p
 {
 padding:10px;
 padding-bottom:20px;

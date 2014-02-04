@@ -4,8 +4,8 @@
 			<div class="main-box">	
 					<%=image_tag @profil.avatar.url(:medium), :class => "main-avatar" %>
 					<%= link_to "Edit Profile", "/profiles/#{@profil.id}/edit" %> <span class="glyphicon glyphicon-asterisk"></span>
-					<%= link_to "Sell", "/profiles/#{@profil.id}/edit" %> <span class="glyphicon glyphicon-asterisk"></span>
-					<%= link_to "Buy", "/profiles/#{@profil.id}/edit" %>
+					<%= link_to "Sell", "/pages/about#sell" %> <span class="glyphicon glyphicon-asterisk"></span>
+					<%= link_to "Buy", "/profiles/about#buy" %>
 					
 		</div>
 		<div class="content">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204050452) do
+ActiveRecord::Schema.define(version: 20140204054216) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20140204050452) do
     t.string   "status"
     t.integer  "phone_id"
     t.string   "terms"
+    t.string   "moddetails"
   end
 
   add_index "listings", ["id"], name: "index_listings_on_id"

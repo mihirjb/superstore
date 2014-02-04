@@ -56,8 +56,14 @@
 		</div>
 		<div class="small-box">
 			<h2 class="list-heading">Listings</h2>
-				<ul class="list">
+			<ul class="nav nav-tabs">
+			  <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
+			  <li><a href="#sold" data-toggle="tab">Sold</a></li>
+			</ul>
+			<div class="tab-content">
+			  <div class="tab-pane active" id="active">	<ul class="list">
 				<% @listings.each do |l| %>
+				<% if l.status == 'Approved'%>
 				<a href ="/listings/<%=l.id%>"><li>
 				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
 				<h4><%= l.headline %></h4>
@@ -65,8 +71,27 @@
 				</p>
 				</li></a>
 				<% end %>
-				</ul>
-				</div>
+				<% end %>
+				</ul></div>
+			  <div class="tab-pane" id="sold">
+				<ul class="list">
+					<% @listings.each do |l| %>
+					<% if l.status == 'Sold'%>
+				
+					<a href ="/listings/<%=l.id%>"><li>
+					<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
+					<h4><%= l.headline %></h4>
+					<p><%= l.askprice %>
+					</p>
+					</li></a>
+					<% end %>
+					<% end %>
+					</ul>  	
+			
+			  </div>
+			
+			</div>
+			</div>
 				
 				<div class="small-box feedbacks">
 					<h2 class="list-heading">Reviews <span class="pull-right">
