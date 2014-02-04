@@ -10,7 +10,6 @@ General
 Now
 * Better display of pictures in the listings view - lightbox.
 * Applying filters to listings index 
-* Social sharing button with each listing.
 
 
 
