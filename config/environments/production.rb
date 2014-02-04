@@ -87,9 +87,10 @@ Storeapp::Application.configure do
       :user_name => "info@happyfellas.com",
       :password  => ENV['MANDRILL_PWD'], # SMTP password is any valid API key
       :authentication => 'login', # Mandrill supports 'plain' or 'login'
-      :domain => 'zalpe.herokuapp.com', # your domain to identify your server when connecting
+      :domain => 'zalpe.com', # your domain to identify your server when connecting
     }
-  
+    config.action_mailer.default_url_options = { :host => 'zalpe.com' }
+    
   
   config.paperclip_defaults = {
     :storage => :s3,
