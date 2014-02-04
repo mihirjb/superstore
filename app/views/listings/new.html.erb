@@ -90,7 +90,7 @@
 			<div class="input-group-lg">
 			<h3>Shipping Details</h3>
 			<h4>Choose the country in which the item is located</h4>
-			<%=f.label:itemlocation, "Item location" %> <%= f.country_select :itemlocation, ["United States"] %><br/><br/>
+			<%= f.text_field :itemlocation, :class=> "form-control", :placeholder=>"Name of the city where the item is" %><br/>
 				<%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?" %><br/>
 				<%= f.radio_button :paypalconfirmed, :true %> <%= f.label:paypalconfirmed, " Yes" %>
 				<%= f.radio_button :paypalconfirmed, :false %> <%= f.label:paypalconfirmed, " No" %><br/><br/>

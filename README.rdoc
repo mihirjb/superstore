@@ -11,17 +11,13 @@ General
 * facebook and twitter conenect for credibility score
 * Better display of pictures in the listings view - lightbox.
 * Applying filters to listings index 
-* Multi country and multi curreny.
-
-
-Legal
-
-* Terms and Conditions + legal faq 
-
-
-About Us
-
-* How it works or FAQ or more about us.
+* Multi country and multi currency.
+* Photos should be updated seperately
+* Social sharing button with each listing.
+* Adding phone pictures to s3
+* Reviews for phone.
+* Possibly accepting COD.
+* Showing listings as well orders for users to comment in dashboard. [sold and active]
 
 
 

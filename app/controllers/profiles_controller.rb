@@ -61,7 +61,7 @@ class ProfilesController < ApplicationController
 
      private 
      def profile_params
-      params.require(:profile).permit(:fullname, :paypalemail, :displayname, :aboutme, :twitterhandle, :websiteurl, :country, :timezone, :location, :avatar)
+      params.require(:profile).permit(:fullname, :paypalemail, :displayname, :aboutme, :twitterhandle, :websiteurl, :country, :timezone, :location, :avatar, :address, :phone)
      end
  
 end
