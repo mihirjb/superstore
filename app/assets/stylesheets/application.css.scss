@@ -139,25 +139,7 @@ div.listings ul.phone h4
 	font-weight:bold;
 }
 
-div.listings ul.phone div.basic
-{
-	width:49%;
-	margin-right:1%;
-	float:left;
-	border-right: 1px solid #86bbd4;
-}
- div.listings ul.phone div.intermediate
-{
-	width:29%;
-	float:left;
-	margin-right:10px;
-	
-}
-div.listings ul.phone div.advanced
-{
-	width:10%;
-	float:left;
-}
+
 div.listings ul a
 {
 	text-decoration:none;
@@ -208,15 +190,12 @@ div.listings ul.phone li span.price
 
 div.phone-info
 {
-float:left;
-width:400px;
+
 margin:0 15px;
 }
 div.listing-info
 {
-overflow:auto;
-width:600px;
-float:left;
+
 }
 div.listing-header
 {
@@ -235,8 +214,6 @@ box-shadow:0px 0px 5px #ccc;
 }
 div.listing-header div.listing-images
 {
-	width:30%;
-	float:left;
 	padding:0;
 	margin:0;
 }
@@ -250,9 +227,7 @@ div.listing-header div.listing-images img
 
 div.listing-pricing
 {
-	width:70%;
 overflow:auto;
-float:left;
 padding:20px;
 padding-top:0px;
 color:#000;
@@ -261,14 +236,9 @@ div.listing-pricing div.jumbotron h1
 {
 color:#3e3e3e;
 }
-div.listing-info div.listing-author
-{
-width:30%;
-float:left;
-}
+
 div.listing-condition,div.listing-shipping, div.listing-return, div.images-gallery
 {
-float:left;
 width:100%;
 margin:0px;
 border-bottom:1px solid #ccc;
@@ -315,7 +285,6 @@ overflow:auto
 div.profile-info, div.listing-info, div.review-section
 {
 width:100%;
-float:left;
 min-height:500px;
 }
 
@@ -830,4 +799,8 @@ div.wrap
 padding: 0px;
 }
 
+div.listing-header div.listing-images img
+{
+	height:100px;
+}
 }
