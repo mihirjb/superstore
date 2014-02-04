@@ -7,15 +7,20 @@ Things yet to be covered:
 
 General
 
-* Detailed specs table.
-* facebook and twitter conenect for credibility score
+Now
 * Better display of pictures in the listings view - lightbox.
 * Applying filters to listings index 
+* Social sharing button with each listing.
+
+
+
+
+Later 
+* Detailed specs table.
+* facebook and twitter conenect for credibility score
 * Multi country and multi currency.
 * Photos should be updated seperately
-* Social sharing button with each listing.
-* Adding phone pictures to s3
-* Reviews for phone.
 * Possibly accepting COD.
-* Paypal custom logo and all. - try!
+* Reviews for phone.
+
 

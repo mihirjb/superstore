@@ -18,18 +18,16 @@ gem 'turbolinks'
 
 gem 'paperclip'
 gem 'bootstrap-sass'
-gem 'better_errors'
 gem 'devise', '3.0.0.rc'
 gem 'annotate'
 gem 'acts_as_tenant'
 gem 'aws-sdk'
-gem 'nokogiri'
 gem "active_paypal_adaptive_payment"
 gem 'country_select'
-gem 'mechanize'
 gem 'twitter-typeahead-rails'
 gem 'impressionist'
 gem 'thumbs_up'
+gem 'social-share-button'
 
 
 
@@ -42,6 +40,9 @@ group :doc do
 end
 group :development do
   gem 'sqlite3'
+  gem 'better_errors'
+  gem 'nokogiri'
+  gem 'mechanize'
 end 
 group :production do
  gem 'pg'
