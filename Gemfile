@@ -28,7 +28,7 @@ gem 'twitter-typeahead-rails'
 gem 'impressionist'
 gem 'thumbs_up'
 gem 'social-share-button'
-
+gem 'newrelic_rpm'
 
 
 

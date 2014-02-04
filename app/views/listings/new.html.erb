@@ -16,14 +16,14 @@
 				<%= f.select :country , [['United States','United States']],  :autofocus => true%>
 				
 				<span class="helper-block">You can only sell in one market at one time. Currently we are live only in the US. Stay tuned for more markets.</span><br/><br/>
-			<%= f.text_field :headline, :class=> "form-control", :placeholder=>"Give a heading to your listing"%>
+			<%= f.text_field :headline, :class=> "form-control", :placeholder=>"Give a heading to your listing*"%>
 
-			<%= f.text_area :description, :class=> "form-control", :placeholder=>"Describe your phone a little" %>
+			<%= f.text_area :description, :class=> "form-control", :placeholder=>"Describe your phone a little*" %>
 			</div>
 			</div>
 			<div class="form-group">
 			<div class="input-group-lg">
-				<h3>Condition of the device.</h3>
+				<h3>Condition of the device*</h3>
 		
 			<%= f.radio_button :devicecondition, :mint %>	<%= f.label :devicecondition, " Mint" %>
 			<ul>
