@@ -21,9 +21,8 @@
 				<li> <%=  link_to "View Seller's Profile",  "/profiles/#{@profile.id}" unless @profile.nil? %> </li>
 				
 				</ul>
-				
-				<%= social_share_button_tag(@listing.headline) %></div>
-				
+					<%= social_share_button_tag(@listing.headline) %><br/>
+							
 				</div>
 				
 				<a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now</a>
