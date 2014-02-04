@@ -17,5 +17,5 @@ General
 * Adding phone pictures to s3
 * Reviews for phone.
 * Possibly accepting COD.
-
+* Paypal custom logo and all. - try!
 
