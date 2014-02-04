@@ -1,12 +1,15 @@
 <section class="hero">
-	<div class="wrap">
+	<div class="wrap row">
 		<% if vendor_signed_in? %>
 
 		<%else%>
 	<h1 class="hero">Buy and Sell Mobile Phone & Tablets. Register now!</h1>
 <p class="hero">We are low-cost, secure and easy to use.<br/> Already have an account?  <%= link_to "Sign in", new_vendor_session_path %>
 </p>
-	<div class="panel panel-default">
+<div class=" col-md-4">
+	</div>
+
+	<div class="panel panel-default col-md-4">
 		<div class="panel-body">
 		<%= form_for @account, :class=>"form-horizontal",  :role => "form" do |f| %>
 			<h1 class="hero">Sign up</h1>
@@ -55,6 +58,8 @@
 
  
 <%end%>
+	<div class=" col-md-4">
+</div>
 </div>
 </section>
 <section>
