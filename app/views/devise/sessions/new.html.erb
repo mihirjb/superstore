@@ -10,9 +10,9 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
  	<div class="form-group">
 	<div class="input-group input-group-lg">
- <%= f.email_field :email, :class=> "form-control", :placeholder=>"Email" %>
+ <%= f.email_field :email, :class=> "form-control required", :placeholder=>"Email", :required => true %>
 
- <%= f.password_field :password, :class=> "form-control", :placeholder=>"Password" %>
+ <%= f.password_field :password, :class=> "form-control required", :placeholder=>"Password", :required => true %>
 </div>
 </div>
   <% if devise_mapping.rememberable? -%>

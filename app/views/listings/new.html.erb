@@ -16,16 +16,16 @@
 				<%= f.select :country , [['United States','United States']],  :autofocus => true%>
 				
 				<span class="helper-block">You can only sell in one market at one time. Currently we are live only in the US. Stay tuned for more markets.</span><br/><br/>
-			<%= f.text_field :headline, :class=> "form-control", :placeholder=>"Give a heading to your listing*"%>
+			<%= f.text_field :headline, :class=> "form-control required", :placeholder=>"Give a heading to your listing*"%>
 
-			<%= f.text_area :description, :class=> "form-control", :placeholder=>"Describe your phone a little*" %>
+			<%= f.text_area :description, :class=> "form-control required", :placeholder=>"Describe your phone a little*" %>
 			</div>
 			</div>
 			<div class="form-group">
 			<div class="input-group-lg">
 				<h3>Condition of the device*</h3>
 		
-			<%= f.radio_button :devicecondition, :mint %>	<%= f.label :devicecondition, " Mint" %>
+			<%= f.radio_button :devicecondition, :mint %>	<%= f.label :devicecondition, " Mint", :class => "required" %>
 			<ul>
 				<li>Functions flawlessly</li>
 				<li>Perfect screen condition</li>
@@ -59,8 +59,8 @@
 			<div class="form-group">
 			<div class="input-group-lg">
 			<h3>Listing pricing and other details</h3>
-			<%= f.text_field :askprice, :class=> "form-control", :placeholder=>"Asking price" %>			
-			<%= f.text_field :paypalemail, :class=> "form-control", :placeholder=>"Your Paypal email address" %>
+			<%= f.text_field :askprice, :class=> "form-control required", :placeholder=>"Asking price" %>			
+			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address" %>
 			<span class="helper-block">Will be kept private</span>
 			<br/><br/><%= f.label :expirydate %>
 			<div id="expirydate">
@@ -76,23 +76,22 @@
 			<%= f.text_field :devicecarrier, :class=> "form-control", :value=>Phone.find(params[:pid]).carrier, :readonly => true  %>
 			<%= f.hidden_field :phone_id, :value=> params[:pid] %>
 			
-			<%= f.text_field :deviceimei, :class=> "form-control", :placeholder=>"IMEI number" %>
+			<%= f.text_field :deviceimei, :class=> "form-control required", :placeholder=>"IMEI number" %>
 			<span class="helper-block">Will be kept private</span>
-			<%= f.text_field :devicecolor, :class=> "form-control", :placeholder=>"Color" %>
-			<%= f.text_field :devicestorage, :class=> "form-control", :placeholder=>"Phone Storage capacity" %><br/>
+			<%= f.text_field :devicecolor, :class=> "form-control required", :placeholder=>"Color" %>
+			<%= f.text_field :devicestorage, :class=> "form-control required", :placeholder=>"Phone Storage capacity" %><br/>
 			<%= f.label:modified, "Has the device been modified in any way. rooted or something?" %><br/>
 			<%= f.radio_button :modified, :true %> <%= f.label:modified, " Yes" %>
 			<%= f.radio_button :modified, :false %> <%= f.label:modified, " No" %><br/><br/>
 			<%= f.text_area :moddetails, :class=> "form-control", :placeholder=>"Describe your modification if you have modified the device in any way." %>
 			
-			<%= f.text_field :accessories, :class=> "form-control", :placeholder=>"List of accessories with the phone" %>
+			<%= f.text_field :accessories, :class=> "form-control required", :placeholder=>"List of accessories with the phone" %>
 			</div>
 			</div>
 			<div class="form-group">
 			<div class="input-group-lg">
 			<h3>Shipping Details</h3>
-			<h4>Choose the country in which the item is located</h4>
-			<%= f.text_field :itemlocation, :class=> "form-control", :placeholder=>"Name of the city where the item is" %><br/>
+			<%= f.text_field :itemlocation, :class=> "form-control required", :placeholder=>"Name of the city where the item is" %><br/>
 				<%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?" %><br/>
 				<%= f.radio_button :paypalconfirmed, :true %> <%= f.label:paypalconfirmed, " Yes" %>
 				<%= f.radio_button :paypalconfirmed, :false %> <%= f.label:paypalconfirmed, " No" %><br/><br/>
