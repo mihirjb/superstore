@@ -29,7 +29,8 @@ gem 'impressionist'
 gem 'thumbs_up'
 gem 'social-share-button'
 gem 'newrelic_rpm'
-
+gem 'nokogiri'
+gem 'mechanize'
 
 
 
@@ -41,8 +42,7 @@ end
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
-  gem 'nokogiri'
-  gem 'mechanize'
+  
 end 
 group :production do
  gem 'pg'
