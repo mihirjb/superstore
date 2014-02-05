@@ -7,10 +7,10 @@ task :add_phone_data => :environment do
 
   url = "http://swappa.com/devices/all/us"
   doc = Nokogiri::HTML(open(url))
-  ul = doc.css('.dev_grid ul li')
+  ul = doc.css('.dev_cell_wide')
    ul.each do |t|
-    modelname =  t.css('.dev_cell .title a').text
-    carrier = t.css('.subtitle a').text
+    modelname =  t.css('.title a').text.strip
+    carrier = t.css('.subtitle a').text.strip
      @phone = Phone.create(:modelname => modelname, :carrier => carrier)
   end
 end
