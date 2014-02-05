@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204054216) do
+ActiveRecord::Schema.define(version: 20140205024943) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -130,6 +130,10 @@ ActiveRecord::Schema.define(version: 20140204054216) do
     t.integer  "listing_id"
   end
 
+  add_index "orders", ["listing_id"], name: "index_orders_on_listing_id"
+  add_index "orders", ["seller_id"], name: "index_orders_on_seller_id"
+  add_index "orders", ["vendor_id"], name: "index_orders_on_vendor_id"
+
   create_table "phones", force: true do |t|
     t.string   "modelname"
     t.string   "carrier"
@@ -166,6 +170,8 @@ ActiveRecord::Schema.define(version: 20140204054216) do
     t.string   "phone"
   end
 
+  add_index "profiles", ["vendor_id"], name: "index_profiles_on_vendor_id"
+
   create_table "reviews", force: true do |t|
     t.integer  "author_id"
     t.text     "reviewbody"
@@ -174,6 +180,8 @@ ActiveRecord::Schema.define(version: 20140204054216) do
     t.datetime "updated_at"
     t.integer  "profile_id"
   end
+
+  add_index "reviews", ["profile_id"], name: "index_reviews_on_profile_id"
 
   create_table "specifications", force: true do |t|
     t.string   "manufacturer"
@@ -221,6 +229,8 @@ ActiveRecord::Schema.define(version: 20140204054216) do
     t.string   "shipping_city"
     t.string   "shippingto_city"
   end
+
+  add_index "trackcodes", ["order_id"], name: "index_trackcodes_on_order_id"
 
   create_table "vendors", force: true do |t|
     t.string   "email",                  default: "", null: false
