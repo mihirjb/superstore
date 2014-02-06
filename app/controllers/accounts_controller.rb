@@ -6,6 +6,7 @@ class AccountsController < ApplicationController
      end
 
    def create
+     
       @account = Account.create(account_params)
        if @account.save 
          redirect_to root_path, :notice => "Signed up successfully"

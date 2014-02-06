@@ -31,6 +31,10 @@ gem 'social-share-button'
 gem 'newrelic_rpm'
 gem 'nokogiri'
 gem 'mechanize'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
+gem 'rails-observers'
+
 
 
 

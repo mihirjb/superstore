@@ -1,5 +1,7 @@
 <section>
 	<div class="wrapper">
+		<% cache @listing do %>
+		
 			<div class="listing-header row">
 					<% if !vendor_signed_in? %>
 					<div class="alert alert-danger">
@@ -143,85 +145,76 @@
 							</div>				
 		</div>
 		
+		<% end %>
 		
-		<div class="comments">
-			
-			<% if @comments.empty? %>
-			<div class="no-comments">
-			<h3>No comments for this listing. Be the first one to comment.</h3>
-			
-			<% if vendor_signed_in? %>
-			<div class="comment-form">
-			
+			<div class="comments">
+
+				<% if @comments.empty? %>
+				<div class="no-comments">
+				<h3>No comments for this listing. Be the first one to comment.</h3>
+
+				<% if vendor_signed_in? %>
+				<div class="comment-form">
+
+				<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+		<div class="form-group">
+			<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
+		</div>  
+			<%= f.hidden_field :listing_id, :value => @listing.id %>
+			<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+			<%= f.hidden_field :status, :value => "Pending" %>
+
+			<input type="text" name="foo" style="display: none;">
+
+		<div class="form-group">
+			<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
+		<% end %>
+
+		<% else %>
+		<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
+
+		<% end %>
+
+		</div>
+		</div>
+
+
+
+				<% else %>
+		
+		
+		<% cache @comments do %>
+		
+		<%= render partial: 'listings/comments' %>
+	<% end %>
+	
+		<% if vendor_signed_in? %>
+		<div class="comment-form">
 			<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
 	<div class="form-group">
-		<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
-	</div>  
-		<%= f.hidden_field :listing_id, :value => @listing.id %>
-		<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
-		<%= f.hidden_field :status, :value => "Pending" %>
-		
-		<input type="text" name="foo" style="display: none;">
-		
+		<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
+	</div>
+	<%= f.hidden_field :listing_id, :value => @listing.id %>
+	<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+	<%= f.hidden_field :status, :value => "Pending" %>
+	<input type="text" name="foo" style="display: none;">
+	
+	
 	<div class="form-group">
-		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
+	<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg submit" %>
 	<% end %>
 	
 	<% else %>
 	<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
 	
-	<% end %>
-	
-	</div>
-</div>
-			
-			
-			
-			<% else %>
-			<div class="comments-list">
-				<h4> Comments (<%= Comment.get_comment_count(@listing.id)%>)</h4>
-			<% @comments.each do  |c| %>
-			<div class="comment">
-				<%= image_tag Profile.find_by_vendor_id(c.vendor_id).avatar.url(:mini), :class => "img-circle" unless @profile.nil? %>
-			<p class="comment-body">
-			<strong><%= Comment.get_comment_author(c.vendor_id) unless @profile.nil?  %>: </strong>
-			<%
-			%>
-		<%	@commentbody = c.commentbody.gsub(/[_a-z0-9-]+(.[_a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)(.[a-z]{2,3})/i, 'forbidden')
-%>			<%= @commentbody
-		  %></p></div>
-			<% end %>
-			
-			
-			<% if vendor_signed_in? %>
-			<div class="comment-form">
-				<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
-		<div class="form-group">
-			<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
-		</div>
-		<%= f.hidden_field :listing_id, :value => @listing.id %>
-		<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
-		<%= f.hidden_field :status, :value => "Pending" %>
-		<input type="text" name="foo" style="display: none;">
-		
-		
-		<div class="form-group">
-		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg submit" %>
 		<% end %>
+		</div>
 		
-		<% else %>
-		<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
-		
-			<% end %>
-			</div>
-			
-			<% end %>
-			</div>
-			
-			
-			</div>
+		<% end %>
+		</div>
 		
 		
+		</div>
 	
 </div>
 </section>

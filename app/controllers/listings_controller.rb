@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
   before_filter :authenticate_vendor!, :except => [:show]
   impressionist :actions=>[:show]
   
+  
   def index
     @listings = current_vendor.listings.all
     
@@ -16,6 +17,7 @@ class ListingsController < ApplicationController
   end
 
   def create
+    
     @listing = current_vendor.listings.create(listing_params())
     if @listing.save
       redirect_to dashboard_url, :notice => "Congratulations, Listing created Successfully."
@@ -44,15 +46,17 @@ class ListingsController < ApplicationController
   end
 
   def update
+    
     @listing = current_vendor.listings.find(params[:id])
      if @listing.update(listing_params())
-        render :edit, :notice => "Congratulations, Listing updated Successfully."
+        redirect_to "/listings/#{@listing.id}", :notice => "Congratulations, Listing updated Successfully."
       else
         redirect_to :back, :notice => "Alas, Listing could not be created."
       end
   end
 
   def destroy
+    
     @listing = Listing.find(params[:id]).destroy
   end
   

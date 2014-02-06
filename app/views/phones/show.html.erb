@@ -5,12 +5,11 @@
 			<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
 		</div>
 		<%end %>
-		<div class="phone-header">
-		<%	@imgurl = "/phoneimages/" + @phone.modelname.gsub(" ", "-").downcase + "-" + @phone.carrier.downcase + ".png" %>
-			
-			<%= image_tag @imgurl   %>
-					<h1><%= @phone.modelname %></h1>
-		<h4><%= @phone.carrier %></h4>
+		<% cache @phone do %>
+		
+		<%= render partial: 'phones/phone' %>
+	  
+	<% end %>
 		<a class="btn btn-warning btn-lg" href="/listings/new?pid=<%= @phone.id %>">Sell your <%=@phone.modelname%></a>
 		
 		<% if @listings.count > 0 %>
@@ -30,39 +29,12 @@
 		
 		<%end%>
 		
-		<div class="listings">
-			
-			<ul class="phone">
-			<% @listings.each do |l| %>
-			<% if Time.now.day - l.updated_at.to_date.day <= 7 && l.status != "Sold" %>
-			<a href ="/listings/<%=l.id%>"><li class="row">
-				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
-				<div class="col-md-6 col-sm-4 col-xs-12">
-			<h4><%= l.headline %></h4>
-			<p><%= l.description %> <br/>
-			<span class="price">$<%= l.askprice.to_i + 10 %></span>
-				
-			</p>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-12">
-				<p><strong>Conditon: <%= l.devicecondition%></strong></p>
-				<p>Seller: <%=Profile.find_by_vendor_id(l.vendor_id).displayname%>
-					<p>Location: <%=l.country%>
-					
-			</div>
-			<div class="col-md-2 col-sm-4 col-xs-12">
-				<a class="btn btn-success" href="/listings/<%= l.id %>">Buy now</a>
-			</div>
-			</li></a>
+	
+				<% cache @listings do %>
+
+				<%= render partial: 'phones/listings' %>
+
 			<% end %>
-			
-			<% end %>
-			</ul>
-		
-			
-			</div>
-			
-			
 		
 		</div>
 		</section>

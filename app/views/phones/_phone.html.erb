@@ -1,0 +1,6 @@
+<div class="phone-header">
+<%	@imgurl = "/phoneimages/" + @phone.modelname.gsub(" ", "-").downcase + "-" + @phone.carrier.downcase + ".png" %>
+	
+	<%= image_tag @imgurl   %>
+			<h1><%= @phone.modelname %></h1>
+<h4><%= @phone.carrier %></h4>

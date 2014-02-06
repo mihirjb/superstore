@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   
   before_filter :authenticate_vendor!, :only => [:dashboard]
+ 
   
   def home
     
@@ -30,6 +31,8 @@ class PagesController < ApplicationController
   end
   
   def dashboard
+    
+    
     @vendor = current_vendor
      @listings = Listing.find_all_by_vendor_id(@vendor.id)     
      @profile = Profile.find_by_vendor_id(@vendor.id)

@@ -14,6 +14,8 @@
 
 class Comment < ActiveRecord::Base
   
+  belongs_to :listing, touch: true
+  
   validates :commentbody, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
   validates :commentbody, :length => {:maximum => 140}
   

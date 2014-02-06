@@ -2,6 +2,7 @@ class PhonesController < ApplicationController
   
   before_filter :authenticate_admin!, :except => [:index,:show]
   
+  
   def index
     @phones = Phone.all
   end
@@ -10,7 +11,8 @@ class PhonesController < ApplicationController
     @phone = Phone.new
   end
 
-  def create
+  def create    
+    
     @phone = Phone.create(phone_params)
     if @phone.save
       redirect_to :root_path, :notice =>"Phone added Successfully."
@@ -20,6 +22,7 @@ class PhonesController < ApplicationController
   end
   
   def show
+    
     @phone = Phone.find(params[:id])
     @listings = Listing.find_all_by_phone_id(@phone.id)
   end
@@ -30,6 +33,7 @@ class PhonesController < ApplicationController
    end
 
    def update
+     
      @phone = Phone.find(params[:id])
       if @phone.update(phone_params())
          redirect_to root_url, :notice => "Congratulations, phone updated Successfully."
@@ -38,7 +42,8 @@ class PhonesController < ApplicationController
        end
    end
 
-   def destroy
+   def destroy     
+     
      @phone = Phone.find(params[:id]).destroy
    end
   
