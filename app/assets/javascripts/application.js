@@ -28,7 +28,15 @@ $(document).ready(function() {
 	}, 3000);
 	
 	
+	
+		$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+		  e.target // activated tab
+		  e.relatedTarget // previous tab
+		});
 
+	  $('.typeahead').typeahead( {name: 'planets', remote: '/pages/phones.json?search=%QUERY', limit: 10
+	// [ "Fuck", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ] 
+	});
 
 
 
