@@ -30,6 +30,8 @@
 				<h4><%= l.headline %></h4>
 				<p><%= l.askprice %>
 				</p>
+				<a href="/listings/<%= l.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
+				
 				</li></a>
 				<% end %>
 				<% end %>
@@ -43,7 +45,7 @@
 					<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
 					<h4><%= l.headline %></h4>
 					<p><%= l.askprice %>
-					</p>
+					</p>					
 					</li></a>
 					<% end %>
 					<% end %>
@@ -60,6 +62,7 @@
 					<h4><%= l.headline %></h4>
 					<p><%= l.askprice %>
 					</p>
+					<a href="/listings/<%= l.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
 					</li></a>
 					<% end %>
 					<% end %>

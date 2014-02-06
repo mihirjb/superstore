@@ -40,8 +40,13 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    
     @listing = current_vendor.listings.find(params[:id])
+    if @listing.status == "Sold"
+      redirect_to :root, :notice => "Listing has already been Sold. Sorry you cannot perform edit on it now."
+      else 
     5.times { @listing.assets.build }
+  end
     
   end
 

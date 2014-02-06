@@ -1,14 +1,17 @@
 <section>
 	<div class="wrapper">
-		<% cache @listing do %>
-		
 			<div class="listing-header row">
 					<% if !vendor_signed_in? %>
 					<div class="alert alert-danger">
 						<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
 					</div>
+					<% elsif current_vendor.id == @listing.vendor_id %>
+					<a href="/listings/<%=@listing.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
+					
+					
 					<%end %>
-			<div class="listing-pricing col-md-8 col-sm-4 col-xs-10">
+		<% cache @listing do %>
+					<div class="listing-pricing col-md-8 col-sm-4 col-xs-10">
 				<div class="jumbtron"><h1>S$<%=@listing.askprice.to_i + 10 %></h1></div>
 			<h4><%=@listing.headline %></h4>
 			<p><%=@listing.description %></p>
