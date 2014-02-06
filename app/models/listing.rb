@@ -36,8 +36,10 @@ class Listing < ActiveRecord::Base
   is_impressionable
   
   validates :headline, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
+  validates :headline, :length => {:in => 6..60}
+  
   validates :description, :presence => {:message => 'Atleast write a few words about your phone.'}
-  validates :description, :length => {:maximum => 140}
+  validates :description, :length => {:in => 6..140}
   validates :askprice, :presence => {:message => 'Ask Price cannot be left blank for obvious reasons.'}
   
   validates :accessories, :presence => {:message => 'List of accessories needed to be declared. Write none for nothing.'}

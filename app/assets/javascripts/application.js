@@ -166,6 +166,7 @@ required: true,
 "listing[askprice]": {
 required: true,
 digits: true,
+rangelength: [1,6],
 },
 "listing[accessories]": {
 required: true,
@@ -176,12 +177,14 @@ required: true,
 },
 "listing[devicestorage]": {
 required: true,
+rangelength: [1,10]
 },
 "listing[modified]": {
 required: true,
 },
 "listing[itemlocation]": {
 required: true,
+rangelength: [1,60]
 },
 "listing[shipinternationally]": {
 required: true,
@@ -222,6 +225,8 @@ required: true,
 		"listing[askprice]": {
 		required: "You need to enter a price for your phone",
 		digits: "Please enter only digits",
+		rangelength: "Really? your phone is worth that much",
+		
 		},
 		"listing[accessories]": {
 		required: "Enter all the accessories that come with the phone. Enter none for nothing",
@@ -232,12 +237,16 @@ required: true,
 		},
 		"listing[devicestorage]": {
 		required: "Enter the storage capacity of the phone",
+		rangelength: "Type a realistic value",
+		
 		},
 		"listing[modified]": {
 		required: "Please select if you have modified the device",
 		},
 		"listing[itemlocation]": {
 		required: "Enter a valid location where your phone is located",
+		rangelength: "Just write name of the city.",
+		
 		},
 		"listing[shipinternationally]": {
 		required: "Please select if you will ship internationally",
@@ -269,6 +278,8 @@ required: true,
 	        }
 	    });
 	  });
+	
+	
 	
 	
 	
@@ -334,6 +345,57 @@ required: true,
 	        }
 	    });
 	  });
+	
+	
+	
+	
+		$(function() {
+
+		    $("form.edit_listing").validate({
+		        rules: {
+		            "listing[headline]": {
+						required: true,
+						rangelength: [6,60],
+						},
+
+					"listing[askprice]": {
+						required: true,
+						digits: true,
+						},
+
+		           "listing[paypalemail]": {
+		                required: true,
+		                email: true,
+		            }
+
+		        },
+		        messages: {
+		            "listing[headline]": {
+						required: "Please enter a heading",
+						rangelength: "Enter a heading between 6 to 60 chararcters",
+
+										},
+
+					"listing[askprice]": {
+						required: "You need to enter a price for your phone",
+						digits: "Please enter only digits",
+										},
+			           "listing[paypalemail]": {
+				         required: "Enter the paypal email address where you want to receive the money",
+				         email: "Please enter a valid email address",
+						}
+		        },
+
+
+			    debug: true,
+
+
+		        submitHandler: function(form) {
+		            form.submit();
+		        }
+		    });
+		  });
+
 	
 
 

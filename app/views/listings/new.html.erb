@@ -6,11 +6,10 @@
 		<%= form_for @listing, :class=>"form-horizontal", :id => "listing-form",  :role => "form", :html => { :multipart => true } do |f| %>
 		
 	
-		
+		<h4 class="form-title">All the inputs with the <span class="green">asterisk (*)</span> sign are compulsory to fill.</h4>
 		
 			<div class="form-group">
 			<div class="input-group-lg">
-				<h3>Important data about the listing</h3>
 				<br/><%=f.label:country, "Your Market" %>
 				
 				<%= f.select :country , [['United States','United States']],  :autofocus => true%>
@@ -23,9 +22,9 @@
 			</div>
 			<div class="form-group">
 			<div class="input-group-lg">
-				<h3>Condition of the device*</h3>
+				<h3 class = "required">Condition of the device (required)</h3>
 		
-			<%= f.radio_button :devicecondition, :mint %>	<%= f.label :devicecondition, " Mint", :class => "required" %>
+			<%= f.radio_button :devicecondition, :mint  %>	<%= f.label :devicecondition, " Mint" %>
 			<ul>
 				<li>Functions flawlessly</li>
 				<li>Perfect screen condition</li>
@@ -59,8 +58,8 @@
 			<div class="form-group">
 			<div class="input-group-lg">
 			<h3>Listing pricing and other details</h3>
-			<%= f.text_field :askprice, :class=> "form-control required", :placeholder=>"Asking price" %>			
-			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address" %>
+			<%= f.text_field :askprice, :class=> "form-control required", :placeholder=>"Your selling price*" %>			
+			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address*" %>
 			<span class="helper-block">Will be kept private</span>
 			<br/><br/><%= f.label :expirydate %>
 			<div id="expirydate">
@@ -76,26 +75,26 @@
 			<%= f.text_field :devicecarrier, :class=> "form-control", :value=>Phone.find(params[:pid]).carrier, :readonly => true  %>
 			<%= f.hidden_field :phone_id, :value=> params[:pid] %>
 			
-			<%= f.text_field :deviceimei, :class=> "form-control required", :placeholder=>"IMEI number" %>
+			<%= f.text_field :deviceimei, :class=> "form-control required", :placeholder=>"IMEI number*" %>
 			<span class="helper-block">Will be kept private</span>
-			<%= f.text_field :devicecolor, :class=> "form-control required", :placeholder=>"Color" %>
-			<%= f.text_field :devicestorage, :class=> "form-control required", :placeholder=>"Phone Storage capacity" %><br/>
-			<%= f.label:modified, "Has the device been modified in any way. rooted or something?" %><br/>
+			<%= f.text_field :devicecolor, :class=> "form-control required", :placeholder=>"Color*" %>
+			<%= f.text_field :devicestorage, :class=> "form-control required", :placeholder=>"Phone Storage capacity*" %><br/>
+			<%= f.label:modified, "Has the device been modified in any way. rooted or something? (required)" %><br/>
 			<%= f.radio_button :modified, :true %> <%= f.label:modified, " Yes" %>
 			<%= f.radio_button :modified, :false %> <%= f.label:modified, " No" %><br/><br/>
 			<%= f.text_area :moddetails, :class=> "form-control", :placeholder=>"Describe your modification if you have modified the device in any way." %>
 			
-			<%= f.text_field :accessories, :class=> "form-control required", :placeholder=>"List of accessories with the phone" %>
+			<%= f.text_field :accessories, :class=> "form-control required", :placeholder=>"List of accessories with the phone*" %>
 			</div>
 			</div>
 			<div class="form-group">
 			<div class="input-group-lg">
 			<h3>Shipping Details</h3>
-			<%= f.text_field :itemlocation, :class=> "form-control required", :placeholder=>"Name of the city where the item is" %><br/>
-				<%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?" %><br/>
+			<%= f.text_field :itemlocation, :class=> "form-control required", :placeholder=>"Name of the city where the item is*" %><br/>
+				<%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?*" %><br/>
 				<%= f.radio_button :paypalconfirmed, :true %> <%= f.label:paypalconfirmed, " Yes" %>
 				<%= f.radio_button :paypalconfirmed, :false %> <%= f.label:paypalconfirmed, " No" %><br/><br/>
-			<%= f.label:shipinternationally, "Will you ship internationally?" %><br/>
+			<%= f.label:shipinternationally, "Will you ship internationally? (required)" %><br/>
 			<%= f.radio_button :shipinternationally, :true %>  <%= f.label:shipinternationally, " Yes" %>
 			<%= f.radio_button :shipinternationally, :false %> <%= f.label:shipinternationally, " No" %><br/><br/>
 			
@@ -105,7 +104,7 @@
 				<div class="form-group">
 				<div class="input-group-lg">
 				<h3>Return policy</h3>
-					<%= f.label:returnsallowed, "Will you accept returns?" %><br/>
+					<%= f.label:returnsallowed, "Will you accept returns? (required)" %><br/>
 					<%= f.radio_button :returnsallowed, :true %> <%= f.label:returnsallowed, " Yes" %>
 					<%= f.radio_button :returnsallowed, :false %> <%= f.label:returnsallowed, " No" %><br/><br/>
 					<%= f.text_area :returnpolicy, :class=> "form-control", :placeholder=>"Your return policy, if you accept reutrns." %>
@@ -125,7 +124,7 @@
 								        <%= f.fields_for :assets do |asset| %>
 
 								           <% if asset.object.new_record? %>
-								                 <%= asset.file_field :image, :class=> "form-control" %>
+								                 <%= asset.file_field :image, :class=> "" %>
 								           <% end %>
 
 								       <% end %>
