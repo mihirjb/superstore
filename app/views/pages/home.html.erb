@@ -174,14 +174,26 @@
     
 <section>
 		<nav class="navbar navbar-default" role="navigation">
-		<ul class="nav navbar-nav">
-			<li><%= link_to "AT&T", '/?msp=AT&T'%></li>
-			<li><%= link_to "Sprint", "/?msp=Sprint"%></li>
-			<li><%= link_to "T-Mobile", "/?msp=T-Mobile"%></li>
-			<li><%= link_to "Verizon", "/?msp=Verizon"%></li>
-			<li><%= link_to "Unlocked", "/?msp=Unlocked"%></li>
-			<li><%= link_to "All", "/"%></li>
-</ul>
+			<div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#carrier-nav">
+			      <span class="sr-only">Toggle navigation</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>
+			</div>
+			  <div class="collapse navbar-collapse" id="carrier-nav">
+
+					<ul class="nav navbar-nav">
+						<li><%= link_to "AT&T", '/?msp=AT&T'%></li>
+						<li><%= link_to "Sprint", "/?msp=Sprint"%></li>
+						<li><%= link_to "T-Mobile", "/?msp=T-Mobile"%></li>
+						<li><%= link_to "Verizon", "/?msp=Verizon"%></li>
+						<li><%= link_to "Unlocked", "/?msp=Unlocked"%></li>
+						<li><%= link_to "All", "/"%></li>
+			</ul>
+			  </div>
+	
 </nav>
 		
 	<div class="wrapper">
