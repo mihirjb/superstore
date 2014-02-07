@@ -15,7 +15,8 @@
 //= require turbolinks
 //= require bootstrap
 //= require social-share-button
-//= require twitter/typeahead                                                                                                                                                                                                                             
+//= require twitter/typeahead   
+//= require jquery.turbolinks                                                                                                                                                                                                                          
 //= require_tree .
 
 $(document).ready(function() {
