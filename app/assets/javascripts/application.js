@@ -18,6 +18,15 @@
 //= require twitter/typeahead                                                                                                                                                                                                                             
 //= require_tree .
 
+
+	$( ".typeahead" ).change(function() {
+
+  $('.typeahead').typeahead( {name: 'planets', remote: '/pages/phones.json?search=%QUERY', limit: 10
+// [ "Fuck", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ] 
+});
+	});
+
+
 $(document).ready(function() {
 	
 	
@@ -34,10 +43,7 @@ $(document).ready(function() {
 		  e.relatedTarget // previous tab
 		});
 
-	  $('.typeahead').typeahead( {name: 'planets', remote: '/pages/phones.json?search=%QUERY', limit: 10
-	// [ "Fuck", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ] 
-	});
-
+	
 
 
 $("#up").click(function() {
