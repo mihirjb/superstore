@@ -28,6 +28,7 @@ div.wrapper
 
 div.cushion
 {
+	margin:10px;
 	padding:20px;
 }
 h1,h2,h3,h4,h5,h6
@@ -565,7 +566,48 @@ section.dashboard  div.wrapper
 	padding:0;
 	
 }
+.btn-hero
+{
+	background-color:#ffc51c;
+	color:#000;
+	font-weight:bold;
+}
+p.hero button
+{
+	font-weight:bold;
+	
+}
 
+section.hero p.hero span.btn-seperator
+{
+	margin:0px 10px;
+	padding:15px 0px;
+	font-weight:bold;
+	font-size:18px;
+	line-height:36px;
+}
+.announcement
+{
+background-image: -webkit-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
+background-image: -moz-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
+background-image: -ms-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
+background-image: -o-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
+background-image: radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
+border-radius:20px;
+margin: 0 auto 30px;
+max-width: 650px;
+padding:30px;
+}
+
+.announcement h2 {
+	text-align:center;
+color: #AD2BAD;
+font-size: 22px;
+line-height: 36px;
+margin: 0 auto 30px;
+text-shadow: 3px 5px 5px rgba(255, 255, 255, 0.4);
+
+}
 
 h1.hero
 {
@@ -581,10 +623,12 @@ p.hero
 {
 word-spacing:0.1em;
 text-align:center;
-font-size:14px;
-color:#000;
-line-height:20px;
-margin-bottom:20px;
+font-size:16px;
+color: #ccc;
+line-height:27px;
+margin-bottom:15px;
+text-shadow: 3px 5px 5px rgba(255, 255, 255, 0.4);
+
 }
 
 form .form-control
@@ -630,7 +674,7 @@ section.hero .panel span.helper-block
 {
 color:#f1f2f3;
 }
-div.container form select {
+form select {
 	font-size:18px;
 	color:#000;
 	font-weight:bold;
@@ -655,8 +699,33 @@ margin:20px 0px;
 margin-bottom:0px;
 }
 
+section#hero-intro
+{
+	background-color:#fff;
+	margin:0 0 60px;
+	margin-top:-40px;
+	
+}
+section#hero-intro div.col-md-4
+{
+	text-align:center;
+	margin:50px 0px;
+}
+section#hero-intro div span.glyphicon
+{
+	font-size:48px;
+	color:#888;
+}
+div.row-space-top-3 
+{
+	padding-bottom:60px;
+}
+.row {margin-right:60px;}
 
-
+h1.text-special
+{
+	padding:50px 0 0 0;
+}
 
 /************typeahead styles***********/
 
