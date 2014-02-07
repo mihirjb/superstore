@@ -8,7 +8,6 @@ Things yet to be covered:
 General
 
 Now
-* Better display of pictures in the listings view - lightbox.
 * Applying filters to listings index 
 
 

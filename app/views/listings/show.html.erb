@@ -65,9 +65,10 @@
 					
 				<div class="images-gallery">
 					<h4>Phone images uploaded by the seller</h4>
+					<p class="notice">Please click on the image to view a larger image</p>
 					<p>
 						<%  @listing.assets.each do |a| %>
-						<a class="fancybox" href="<%= a.image.url('small')%>" rel="group"><%= image_tag a.image.url('small') %></a>
+						<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
 						<%end%>
 						</p>
 					</div>		

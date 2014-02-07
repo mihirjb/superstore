@@ -5,9 +5,9 @@
 		
 			<div class="form-group">
 			<div class="input-group-lg">
-				<h3>Data about you</h3>
-				<%= image_tag @profile.avatar.url(:medium) %>
-				<%= f.label :avatar, "Upload your Profile picture" %><%= f.file_field :avatar %><br/>
+				<h3>Helpful details about you.</h3>
+				<%= image_tag @profile.avatar.url(:medium) %><br/>
+				<%= f.label :avatar, "Upload your Profile picture" %><%= f.file_field :avatar, :class=> "btn btn-file btn-sm" %><br/>
 				
 				
 			<%= f.text_field :fullname, :class=> "form-control", :placeholder=>"Your full name" %>
@@ -19,7 +19,7 @@
 			
 			<div class="form-group">
 			<div class="input-group-lg">
-			<h3>More info about you, visible to puplic</h3>
+			<h3>More info about you, visible to public</h3>
 			<%= f.text_field :displayname, :class=> "form-control", :placeholder=>"Display Name" %>			
 			<%= f.text_area :aboutme, :class=> "form-control", :placeholder=>"About yourself" %>
 			<span class="helper-block">Will be kept private</span>

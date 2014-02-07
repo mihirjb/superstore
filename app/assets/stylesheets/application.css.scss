@@ -1,4 +1,8 @@
-
+/*
+ *= require_self
+ *= require fancybox
+ *= require_tree .
+ */
 
 @import 'bootstrap';
 @import 'social-share-button';
@@ -20,6 +24,8 @@ div.wrapper
 	  -webkit-box-shadow:  0 0 3px 1px #ccc;
 	  box-shadow:          0 0 3px 1px #ccc;
 }
+
+
 div.cushion
 {
 	padding:20px;
@@ -32,7 +38,25 @@ h1,h2,h3,h4,h5,h6
 
 
 /***************Navbar********************/
-
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
 
 
 

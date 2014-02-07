@@ -16,11 +16,16 @@
 //= require bootstrap
 //= require social-share-button
 //= require twitter/typeahead   
-//= require jquery.turbolinks                                                                                                                                                                                                                          
+//= require fancybox
+//= require jquery.turbolinks
 //= require_tree .
 
 $(document).ready(function() {
 	
+	
+	jQuery(function() {
+	  $("a.fancybox").fancybox();
+	});
 	
 	window.setTimeout(function() {
 	    $(".top-alert").fadeTo(500, 0).slideUp(500, function(){
