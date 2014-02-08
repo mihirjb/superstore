@@ -1,12 +1,7 @@
 
 		</div>
 		<section id="hero-intro">
-				<% if !vendor_signed_in? %>
-				<div class="alert alert-danger">
-					<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
-				</div>
-				<%end %>
-
+			
 			 	<% cache @phone do %>
 
 				<%= render partial: 'phones/phone' %>
@@ -29,10 +24,10 @@
 				</ul>
 			</div>
 		<%else%>
-		
+		<div class="no-posts cushion">
 		<h2>Sorry there are no listings for this phone yet.</h2>
 		<a class="" href="/listings/new?pid=<%= @phone.id %>">Be the first one to sell <%=@phone.modelname%></a>
-		
+		</div>
 		<%end%>
 		
 	
