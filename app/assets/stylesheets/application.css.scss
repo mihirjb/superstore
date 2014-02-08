@@ -132,8 +132,16 @@ h1,h2,h3,h4,h5,h6
 
 section .navbar-default
 {
+	background-color:#f8f8f8;
+	border-color: #DDD;
 	border-radius:8px;
 }
+
+/* link */
+section .navbar-default .navbar-nav > li > a {
+    color: #3e3e3e;
+}
+
 /*************Main Page Styles *****************/
 
 ul.phones
@@ -365,7 +373,6 @@ div.listing-details table.table
 	width:98%;
 	margin:0px 1%;
 }
-
 
 
 
@@ -770,6 +777,7 @@ margin:20px 0px;
 .alert
 {
 margin-bottom:0px;
+z-index:9999;
 }
 
 section#hero-intro
@@ -777,6 +785,7 @@ section#hero-intro
 	background-color:#fff;
 	margin:0 0 60px;
 	margin-top:-40px;
+	z-index:0;
 	
 }
 section#hero-intro div.col-md-4
@@ -799,6 +808,7 @@ h1.text-special
 {
 	padding:50px 0 0 0;
 }
+
 
 /************typeahead styles***********/
 
@@ -993,4 +1003,8 @@ label.error
 span.green
 {
 	color:#4cae4c;
+}
+body section#hero-intro div.phone-page span.glyphicon
+{
+	font-size:150px;
 }

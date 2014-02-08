@@ -1,5 +1,5 @@
 class VendorMailer < ActionMailer::Base
-  default :from => "info@happyfellas.com"
+  default :from => "notifications@zalpe.com"
 
    def order_confirmation(seller, buyer, order)
      @order = order

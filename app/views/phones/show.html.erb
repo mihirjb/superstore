@@ -1,16 +1,23 @@
-<section>
-	<div class="wrapper">
-		<% if !vendor_signed_in? %>
-		<div class="alert alert-danger">
-			<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
+
 		</div>
-		<%end %>
-		<% cache @phone do %>
-		
-		<%= render partial: 'phones/phone' %>
-	  
-	<% end %>
-		<a class="btn btn-warning btn-lg" href="/listings/new?pid=<%= @phone.id %>">Sell your <%=@phone.modelname%></a>
+		<section id="hero-intro">
+				<% if !vendor_signed_in? %>
+				<div class="alert alert-danger">
+					<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
+				</div>
+				<%end %>
+
+			 	<% cache @phone do %>
+
+				<%= render partial: 'phones/phone' %>
+
+			<% end %>
+					</section>
+<div class="container">
+					<section>
+						<div class="wrapper">
+
+
 		
 		<% if @listings.count > 0 %>
 		
@@ -21,7 +28,6 @@
 				<li>None of the phones listed have bad ESN, cracks or water damage</li>
 				</ul>
 			</div>
-		</div>
 		<%else%>
 		
 		<h2>Sorry there are no listings for this phone yet.</h2>
