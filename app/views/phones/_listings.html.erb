@@ -16,7 +16,6 @@
 			<p><strong>Conditon: <%= l.devicecondition%></strong></p>
 			<p>Seller: <%=Profile.find_by_vendor_id(l.vendor_id).displayname%>
 				<p>Location: <%=l.country%>
-				
 		</div>
 		<div class="col-md-2 col-sm-4 col-xs-12">
 			<a class="btn btn-success" href="/listings/<%= l.id %>">Buy now</a>

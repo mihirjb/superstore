@@ -37,7 +37,7 @@ gem 'rails-observers'
 gem 'jquery-turbolinks'
 gem 'fancybox-rails'
 gem 'will_paginate', '~> 3.0'
-
+gem  'paypal-sdk-adaptiveaccounts'
 
 
 

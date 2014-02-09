@@ -48,7 +48,6 @@ class Listing < ActiveRecord::Base
   validates :devicecolor, :presence => {:message => 'Color cannot be blank, Listing not saved'}
   validates :devicestorage, :presence => {:message => 'Storage cannot be blank, Listing not saved'}
   
-  
   validates :itemlocation, :presence => {:message => 'Atleast write a few words about your phone.'}
   
   
@@ -87,5 +86,26 @@ private
    end
 		
   end
+  
+  
+  def self.get_paypal_status(paypalemail,lid)
+    require 'paypal-sdk-adaptiveaccounts'
+    @api = PayPal::SDK::AdaptiveAccounts::API.new( :device_ipaddress => "127.0.0.1" )
+@listing = Listing.find(lid)
+    # Build request object
+    @get_verified_status = @api.build_get_verified_status({
+      :emailAddress => paypalemail,
+      :matchCriteria => "NONE" })
 
+    # Make API call & get response
+    @get_verified_status_response = @api.get_verified_status(@get_verified_status)
+
+    # Access Response
+    if @get_verified_status_response.success?
+    Listing.find(lid).update_column("paypalstatus", "Verified")
+    else
+      @get_verified_status_response.error
+      @listing.update_column("paypalstatus", "Not Verified")
+    end
+  end
 end
