@@ -25,7 +25,7 @@ class AdminactionsController < ApplicationController
   
   def dashboard
     @listings = Listing.find_all_by_status("Pending")
-    @comments = Comment.all
+    @comments = Comment.find_all_by_status("Pending")
     
   end
   
