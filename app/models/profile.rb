@@ -40,4 +40,7 @@ class Profile < ActiveRecord::Base
   
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "30x30>" }, :default_url => "/images/profiles/avatars/:style/missing.png"
   
+  validates_attachment_content_type :file_name, :content_type => %w(image/jpeg image/jpg image/png)
+  
+  
 end
