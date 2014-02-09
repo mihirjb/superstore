@@ -16,7 +16,9 @@
 			<p><strong>Conditon: <%= l.devicecondition%></strong></p>
 			<p>Seller: <%=Profile.find_by_vendor_id(l.vendor_id).displayname%>
 				<p>Location:<%=l.itemlocation %>, <%=l.country%></p>
-				
+				<% if l.paypalstatus == "Verified" %>
+				<%= image_tag("/paypal.png", size: "16x16", alt: "Paypal verified", :class=>"icon") %>
+				<% end %>
 				<% if l.status == "Approved" %>
 				<span class="glyphicon glyphicon-ok success"></span>
 				<% end %>
