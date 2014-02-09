@@ -24,7 +24,7 @@ class PhonesController < ApplicationController
   def show
     
     @phone = Phone.find(params[:id])
-    @listings = Listing.find_all_by_phone_id(@phone.id)
+    @listings = Listing.where("phone_id = ?",@phone.id).paginate :page => params[:page],:per_page=>30
   end
   
   

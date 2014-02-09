@@ -34,7 +34,7 @@
 				<% cache @listings do %>
 
 				<%= render partial: 'phones/listings' %>
-
+				<%= will_paginate @listings %>
 			<% end %>
 		
 		</div>

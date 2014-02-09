@@ -19,7 +19,7 @@ class PagesController < ApplicationController
      end
      
       if params[:search]
-        @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%") 
+        @phones = Phone.order(:modelname).where("modelname Like ?", "%#{params[:search]}%")
        
      end
   end
