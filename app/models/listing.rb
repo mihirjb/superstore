@@ -91,12 +91,7 @@ private
   def self.get_paypal_status(paypalemail,lid)
     require 'paypal-sdk-adaptiveaccounts'
     
-    PayPal::SDK.configure(
-      :mode      => "live",  # Set "live" for production
-      :endpoint    => "api.paypal.com",
-      :client_id  => "AeceUxA79VTjDJ6AzNPsL6ufhDmPpbYyHYr1SUP-vw9Gkwvgu88mvHrIzO7z",
-      :client_signature  => "EAqYuRBSkw1At84_DrIMJddvl3OMqallA0UxZR1toc1nnrqKEfe5SBXPe3Uy")
-      
+  
       
     @api = PayPal::SDK::AdaptiveAccounts::API.new( :device_ipaddress => "127.0.0.1" )
     
