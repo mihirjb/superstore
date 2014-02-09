@@ -147,11 +147,12 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    paypal-sdk-adaptiveaccounts (1.102.0)
-      paypal-sdk-core (~> 0.2.3)
     paypal-sdk-core (0.2.7)
       multi_json (~> 1.0)
       xml-simple
+    paypal-sdk-rest (0.6.0)
+      paypal-sdk-core (~> 0.2.4)
+      uuidtools (~> 2.1)
     pg (0.17.1)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -250,7 +251,7 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   paperclip
-  paypal-sdk-adaptiveaccounts
+  paypal-sdk-rest
   pg
   rails (= 4.0.0)
   rails-observers
