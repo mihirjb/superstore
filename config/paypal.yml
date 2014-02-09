@@ -30,4 +30,4 @@ production:
   
   endpoint:  api.paypal.com
 client_id: AeceUxA79VTjDJ6AzNPsL6ufhDmPpbYyHYr1SUP-vw9Gkwvgu88mvHrIzO7z
-client_signature: EAqYuRBSkw1At84_DrIMJddvl3OMqallA0UxZR1toc1nnrqKEfe5SBXPe3Uy
+client_secret: EAqYuRBSkw1At84_DrIMJddvl3OMqallA0UxZR1toc1nnrqKEfe5SBXPe3Uy
