@@ -27,8 +27,3 @@ development:
 production:
   <<: *default
   mode: live
-
-  app_id: ENV['PAYPAL_APPID']
-    username: ENV['PAYPAL_LOGIN']
-    password: ENV['PAYPAL_PWD']
-    signature: ENV['PAYPAL_SIGNATURE']
