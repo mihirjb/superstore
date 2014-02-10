@@ -1,4 +1,4 @@
-<section>
+<section class="listing">
 	<div class="wrapper">
 		<div class="cushion">
 		<%= form_for @profile, :class=>"form-horizontal",  :role => "form" do |f| %>
@@ -12,7 +12,9 @@
 				
 			<%= f.text_field :fullname, :class=> "form-control", :placeholder=>"Your full name" %>
 
-			<%= f.text_area :paypalemail, :class=> "form-control", :placeholder=>"Your Paypal email address" %>
+			<%= f.text_field :paypalemail, :class=> "form-control", :placeholder=>"Your Paypal email address" %>
+			<span class="helper-block">Will be kept private</span>
+			
 			</div>
 			</div>
 	
@@ -22,7 +24,6 @@
 			<h3>More info about you, visible to public</h3>
 			<%= f.text_field :displayname, :class=> "form-control", :placeholder=>"Display Name" %>			
 			<%= f.text_area :aboutme, :class=> "form-control", :placeholder=>"About yourself" %>
-			<span class="helper-block">Will be kept private</span>
 			<%= f.text_field :twitterhandle, :class=> "form-control", :placeholder=>"Twitter username" %>
 			<%= f.text_field :websiteurl, :class=> "form-control", :placeholder=>"Your website address" %>
 			</div>
@@ -34,7 +35,7 @@
 			<%= f.text_field :country, :class=> "form-control", :placeholder=>"Country you live in" %>
 			<%= f.text_field :timezone, :class=> "form-control", :placeholder=>"Your timezone" %>
 			<%= f.text_field :location, :class=> "form-control", :placeholder=>"Your city or location" %>
-			<%= f.text_field :address, :class=> "form-control", :placeholder=>"Shipping address in full." %>
+			<%= f.text_area :address, :class=> "form-control", :placeholder=>"Shipping address in full. e.g. Street Address, City, Country - Pincode." %>
 			<%= f.text_field :phone, :class=> "form-control", :placeholder=>"Your phone number" %>
 			
 		</div>  

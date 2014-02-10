@@ -6,7 +6,7 @@
 		<% if !Profile.find_by_vendor_id(current_vendor.id).address.blank? %>
 		
 <form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST">
-	<textarea class="form-control" name="address" type="text" size="25" value="<%= Profile.find_by_vendor_id(current_vendor.id).address%>">
+	<textarea class="form-control" name="address" type="text" size="50" value="<%= Profile.find_by_vendor_id(current_vendor.id).address%>">
 	<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
 	<input class="btn btn-success btn-lg" type="Submit" value="Buy now!">
 	
@@ -15,9 +15,9 @@
 	
 	<% else %>
 	
-		<h4> We didn't find any shipping address on your profile, please enter it below</h4>
+		<h3 class="center-block"> We didn't find any shipping address on your profile, please enter it below</h3>
 	<form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST">
-		<input class="form-control"name="address" type="text" size="25" placeholder="Enter your full shipping address here (Address line1, Address line 2 , City, State, Pin code, Country)!">
+		<input class="form-control"name="address" type="text" size="50" placeholder="Enter your full shipping address here (Address line1, Address line 2 , City, State, Pin code, Country)!">
 		<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
 		<input class="btn btn-success btn-lg" type="Submit" value="Buy now!">
 

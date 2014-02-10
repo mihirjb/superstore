@@ -195,7 +195,11 @@
 	<div class="wrapper">
 	
 			<%= render partial: 'pages/phones' %>
-			
+			<% if params[:search] %>
+				<div class="cushion">
+				<%= will_paginate @phones, renderer: BootstrapPagination::Rails  %>
+				</div>
+				<% end %>
 	
 				</div>
 		</section>

@@ -3,30 +3,34 @@
 		<ul class="phone">
 		<% @listings.each do |l| %>
 		<% if Time.now.day - l.updated_at.to_date.day <= 7 && l.status != "Sold" %>
-		<a href ="/listings/<%=l.id%>"><li class="row">
-			<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
-			<div class="col-md-6 col-sm-4 col-xs-12">
-		<h4><%= l.headline %></h4>
-		<p><%= l.description %> <br/>
-		<span class="price">$<%= l.askprice.to_i + 10 %></span>
-			
-		</p>
-		</div>
-		<div class="col-md-4 col-sm-4 col-xs-12">
-			<p><strong>Conditon: <%= l.devicecondition%></strong></p>
-			<p>Seller: <%=Profile.find_by_vendor_id(l.vendor_id).displayname%>
-				<p>Location:<%=l.itemlocation %>, <%=l.country%></p>
-				
-				<% if l.status == "Approved" %>
-				<span class="glyphicon glyphicon-ok success"></span>
-				<% end %>
-			<% if	!l.assets.first.nil? %>
-			<span class="glyphicon glyphicon-camera success"></span>
-			<% end %>
-		</div>
-		<div class="col-md-2 col-sm-4 col-xs-12">
-			<a class="btn btn-success" href="/listings/<%= l.id %>">Buy now</a>
-		</div>
+		<a href ="/listings/<%=l.id%>">
+			<li>
+			<div class="row">
+					<div class="col-md-6 col-sm-4 col-xs-12">
+				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
+				<h4><%= l.headline %></h4>
+				<p><%= l.description %> <br/>
+
+				</p>
+				</div>			 
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<p><strong>Conditon: <%= l.devicecondition%></strong></p>
+					<p>Seller: <%=Profile.find_by_vendor_id(l.vendor_id).displayname%>
+						<p>Location: <%=l.itemlocation %>, <%=l.country%></p>
+						<p>Color: <%=l.devicecolor %></p>
+						<p>Storage: <%=l.devicestorage %></p>
+
+						<% if l.status == "Approved" %>
+						<span class="glyphicon glyphicon-ok success"></span>
+						<% end %>
+					<% if	!l.assets.first.nil? %>
+					<span class="glyphicon glyphicon-camera success"></span>
+					<% end %>
+				</div>
+				<div class="col-md-2 col-sm-4 col-xs-12">
+					<a class="btn btn-success btn-lg" href="/listings/<%= l.id %>">$<%= l.askprice.to_i + 10 %> - Buy now</a>
+				</div>
+			</div>
 		</li></a>
 		<% end %>
 		

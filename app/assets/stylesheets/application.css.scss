@@ -266,16 +266,16 @@ div.listings ul a
 {
 	text-decoration:none;
 }
-div.listings ul li
+section div.wrapper div.listings ul li
 {
 	width:100%;
+	padding:1%;
+	overflow:auto;
 	list-style:none;
 	min-height:120px;
 	border-bottom:1px #efefef solid;
 	border-radius:4px;
-	padding:10px;
-	margin:0px auto;
-	overflow:auto;
+	margin:0px;
 }
 div.listings ul li:hover
 {
@@ -1017,4 +1017,18 @@ span.green
 body section#hero-intro div.phone-page span.glyphicon
 {
 	font-size:150px;
+}
+
+
+section.listing div.wrapper form div.form-group
+{
+	margin:80px 0px;
+}
+section.listing div.wrapper form div.form-group h3
+{
+	color:#0072c6;
+	font-size:18px;
+	margin-bottom:20px;
+	padding-bottom:10px;
+	border-bottom:5px solid #000;
 }
