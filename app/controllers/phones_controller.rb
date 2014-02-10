@@ -24,7 +24,23 @@ class PhonesController < ApplicationController
   def show
     
     @phone = Phone.find(params[:id])
-    @listings = Listing.where("phone_id = ?",@phone.id).paginate :page => params[:page],:per_page=>30
+    if params['sort']
+      if params['sort'] == "l2h"
+      @listings = Listing.where("phone_id = ? AND status iLIKE",@phone.id, "Approved").order("askprice ASC").paginate :page => params[:page],:per_page=>30
+    elsif params['sort'] == "h2l"
+      @listings = Listing.where("phone_id = ? AND status iLIKE",@phone.id, "Approved").order("askprice DESC").paginate :page => params[:page],:per_page=>30
+    elsif params['sort'] == "n2o"
+      @listings = Listing.where("phone_id = ? AND status iLIKE",@phone.id, "Approved").order("created_at DESC").paginate :page => params[:page],:per_page=>30
+    elsif params['sort'] == "o2n"
+      @listings = Listing.where("phone_id = ? AND status iLIKE",@phone.id, "Approved").order("created_at ASC").paginate :page => params[:page],:per_page=>30
+    end
+      
+      
+    else
+      @listings = Listing.where("phone_id = ? AND status iLIKE",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30
+      
+    end
+    
   end
   
   

@@ -1,8 +1,28 @@
 	<div class="listings" id="buy">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#carrier-nav">
+				      <span class="sr-only">Toggle navigation</span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				    </button>
+				</div>
+				  <div class="collapse navbar-collapse" id="carrier-nav">
+
+						<ul class="nav navbar-nav">
+							<li><%= link_to "Price: low to high", "/phones/#{@phone.id}?sort=l2h"%></li>
+							<li><%= link_to "Price: high to low", "/phones/#{@phone.id}?sort=h2l"%></li>
+							<li><%= link_to "Listed: New to old", "/phones/#{@phone.id}?sort=n2o"%></li>
+							<li><%= link_to "Listed: Old to new", "/phones/#{@phone.id}?sort=o2n"%></li>
+				</ul>
+				  </div>
+
+	</nav>
+		
 		
 		<ul class="phone">
 		<% @listings.each do |l| %>
-		<% if Time.now.day - l.updated_at.to_date.day <= 7 && l.status != "Sold" %>
 		<a href ="/listings/<%=l.id%>">
 			<li>
 			<div class="row">
@@ -34,7 +54,6 @@
 		</li></a>
 		<% end %>
 		
-		<% end %>
 		</ul>
 	
 		
