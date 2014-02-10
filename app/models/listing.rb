@@ -88,5 +88,29 @@ private
   end
   
   
+ def self.get_paypal_status(paypalemail, lid)
+   require 'paypal-sdk-adaptiveaccounts'
+   @api = PayPal::SDK::AdaptiveAccounts::API.new( :device_ipaddress => "127.0.0.1" )
+
+   # Build request object
+   @get_verified_status = @api.build_get_verified_status({
+     :emailAddress => paypalemail,
+     :matchCriteria => "NONE" })
+
+   # Make API call & get response
+   @get_verified_status_response = @api.get_verified_status(@get_verified_status)
+
+   # Access Response
+   if @get_verified_status_response.success?
+     Listing.find(lid).update_column("paypalstatus", "Verified")
+     @get_verified_status_response.accountStatus
+     @get_verified_status_response.countryCode
+     @get_verified_status_response.userInfo
+   else
+     Listing.find(lid).update_column("paypalstatus", "Unverified")
+     @get_verified_status_response.error
+   end
+ end
+ 
  
 end
