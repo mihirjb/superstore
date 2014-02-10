@@ -8,13 +8,12 @@ Things yet to be covered:
 General
 
 Now
-* Applying filters to listings index 
-* facebook and twitter conenect for credibility score
 
 
 
 
 Later 
+* facebook and twitter conenect for credibility score
 * Detailed specs table.
 * Multi country and multi currency.
 * Photos should be updated seperately
