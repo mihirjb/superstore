@@ -24,10 +24,7 @@ test: &default
 development:
   <<: *default
 
-production: &default
+production:
+  <<: *default
   mode: live
   
-  app_id: APP-48740994H8080701U
-   username: payments_api1.zalpe.com
-   password: S5RJKQ9RLTPADADE
-   signature: AFcWxV21C7fd0v3bYYYRCpSSRl31Aii9lcKtUZeqZqK--YilDkC9pBw.
