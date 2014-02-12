@@ -21,7 +21,7 @@
 						<p>Color: <%=l.devicecolor %></p>
 						<p>Storage: <%=l.devicestorage %></p>
 							<% if l.paypalstatus == "Verified" %>
-							<%= image_tag ("/paypal.png") %>
+							<%= image_tag ("/paypal.png"), :class => "icon" %>
 							<% end %>
 						<% if l.status == "Approved" %>
 						<span class="glyphicon glyphicon-ok success"></span>
