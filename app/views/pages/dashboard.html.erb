@@ -100,6 +100,8 @@
 					<% else %>
 				<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
 				<% end %>
+				
+				
 					</li>
 					<% end %>
 					<% end %>
@@ -123,10 +125,10 @@
 						<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
 				<% end %>
 				
-				<% @reviewfound = Review.where("profile_id = ? AND author_id = ? AND order_id = ?",@profile.id, o.vendor_id, o.id)%>
+				<% @reviewfound = Review.find_by_profile_id(@profile.id, :conditions => ["author_id = ? AND order_id = ?", o.vendor_id, o.id]) %>
 				
 				
-					<% if !@reviewfound && !review.empty? %>
+					<% if @reviewfound.nil? %>
 					<button class="btn btn-hero" data-toggle="modal" data-target="#something">
 					Write a review</button>
 
@@ -136,7 +138,33 @@
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						        <h1 class="modal-title hero" id="somethingLabel">Your Review</h1>
+						        <h1 class="modal-title hero" id="somethingLabel">Your Review -- 
+							
+							
+										<%    @found = current_vendor.votes.find_by_voteable_id(@profile.id) %>
+
+										<% if @found.nil? %>
+										<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true %>
+										<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true %></span>
+										<% else%>
+
+											<% if  @found.vote == false %>
+											<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true %>
+											<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true, :disabled => "disabled" %> 	
+											</span>
+
+											<% else %>
+												<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true, :disabled => "disabled" %>
+												<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true %></span>
+											<%end%>
+
+											<% end %>
+							
+							
+							
+							
+							
+							</h1>
 						      </div>
 						      <div class="modal-body">
 									<%= form_for @review, :class=>"form-horizontal",  :role => "form" do |f| %>
