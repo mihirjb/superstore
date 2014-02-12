@@ -18,16 +18,17 @@ class TransactionsController < ApplicationController
       
       @listing =  Listing.find(params[:l])
       
+    
       gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-      :login => "mihir_api1.5ve.in",
-      :password => "1389502930",
-      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A37B4GKmRmqL1Nge8gFcGqGEtswk",
-      :appid => "APP-80W284485P519543T" )
+      :login => "payments_api1.zalpe.com",
+      :password => "S5RJKQ9RLTPADADE",
+      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Aii9lcKtUZeqZqK--YilDkC9pBw.",
+      :appid => "APP-48740994H8080701U" )
             
              recipients = [{:email => Listing.find(params[:l]).paypalemail,
                :amount => @listing.askprice,
                         :primary => false},
-                       {:email => "info@happyfellas.com",
+                       {:email => "payments@zalpe.com",
                          :amount => 10,
                         :primary => false}
                         ]
@@ -60,7 +61,7 @@ class TransactionsController < ApplicationController
             }
           },
           {
-            :receiver => { :email => "info@happyfellas.com" },
+            :receiver => { :email => "payments@zalpe.com" },
             :invoice_data => {
               :item => [
                 { 

@@ -9,7 +9,7 @@
 		<h4 class="form-title">All the inputs with the <span class="green">asterisk (*)</span> sign are compulsory to fill.</h4>
 		
 			<div class="form-group">
-			<div class="input-group-lg">
+			<div class="">
 				<br/><%=f.label:country, "Your Market" %>
 				
 				<%= f.select :country , [['United States','United States']],  :autofocus => true%>
@@ -21,7 +21,7 @@
 			</div>
 			</div>
 			<div class="form-group">
-			<div class="input-group-lg">
+			<div class="">
 				<h3 class = "required">Condition of the device (required)</h3>
 		
 			<%= f.radio_button :devicecondition, :mint  %>	<%= f.label :devicecondition, " Mint" %>
@@ -56,39 +56,46 @@
 			</div>
 			
 			<div class="form-group">
-			<div class="input-group-lg">
-			<h3>Listing pricing and other details</h3>
+			<div class="">
+			<h3>Listing pricing and payment details</h3>
 			<%= f.text_field :askprice, :class=> "form-control required", :placeholder=>"Your selling price*" %>			
 			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address*" %>
 			<span class="helper-block">Will be kept private</span>
-			<br/><br/><%= f.label :expirydate %>
-			<div id="expirydate">
-			  <%= f.date_select :expirydate, { :start_year => Time.now.year , :end_year => Time.now.year,:default => 15.days.from_now, :prompt => true, :order => [:day, :month, :year]} %>
-			</div>
+			<br/><br/>
+		
 			</div>
 			</div>
 			
 			<div class="form-group">
-			<div class="input-group-lg">
+			<div class="">
 			<h3>Device Details</h3>
 			<%= f.text_field :devicename, :class=> "form-control", :value=> Phone.find(params[:pid]).modelname, :readonly => true %>
 			<%= f.text_field :devicecarrier, :class=> "form-control", :value=>Phone.find(params[:pid]).carrier, :readonly => true  %>
 			<%= f.hidden_field :phone_id, :value=> params[:pid] %>
-			
-			<%= f.text_field :deviceimei, :class=> "form-control required", :placeholder=>"IMEI number*" %>
-			<span class="helper-block">Will be kept private</span>
+			</div><br/><br/>
+			<div>
+			<%= f.text_field :deviceimei, :class=> "form-control required", :placeholder=>"IMEI/ESN/MEID number*" %>
+			<span class="helper-block">Will be kept private</span><br/><br/>
 			<%= f.text_field :devicecolor, :class=> "form-control required", :placeholder=>"Color*" %>
-			<%= f.text_field :devicestorage, :class=> "form-control required", :placeholder=>"Phone Storage capacity*" %><br/>
+			</div>
+			<div class=" input-group ">
+			
+			<%= f.text_field :devicestorage, :class=> "form-control required", :placeholder=>"Phone Storage capacity*" %><span class="input-group-addon">e.g. 2GB / 256MB
+			</span>
+			</div>
+		  <br/>
+			<div class="">
+		
 			<%= f.label:modified, "Has the device been modified in any way. rooted or something? (required)" %><br/>
 			<%= f.radio_button :modified, :true %> <%= f.label:modified, " Yes" %>
 			<%= f.radio_button :modified, :false %> <%= f.label:modified, " No" %><br/><br/>
-			<%= f.text_area :moddetails, :class=> "form-control", :placeholder=>"Describe your modification if you have modified the device in any way." %>
+			<%= f.text_area :moddetails, :class=> "form-control", :placeholder=>"Describe your modification if you have modified the device in any way." %><br/><br/>
 			
 			<%= f.text_field :accessories, :class=> "form-control required", :placeholder=>"List of accessories with the phone*" %>
 			</div>
 			</div>
 			<div class="form-group">
-			<div class="input-group-lg">
+			<div class="">
 			<h3>Shipping Details</h3>
 			<%= f.text_field :itemlocation, :class=> "form-control required", :placeholder=>"Name of the city where the item is*" %><br/>
 				<%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?*" %><br/>
@@ -98,11 +105,11 @@
 			<%= f.radio_button :shipinternationally, :true %>  <%= f.label:shipinternationally, " Yes" %>
 			<%= f.radio_button :shipinternationally, :false %> <%= f.label:shipinternationally, " No" %><br/><br/>
 			
-			<%= f.text_area :shippingdetails, :class=> "form-control", :placeholder=>"Details on how you will ship, if you do." %>
+			<%= f.text_area :shippingdetails, :class=> "form-control", :placeholder=>"Details on how you will ship internationally, if you do." %>
 			</div>
 			</div>
 				<div class="form-group">
-				<div class="input-group-lg">
+				<div class="">
 				<h3>Return policy</h3>
 					<%= f.label:returnsallowed, "Will you accept returns? (required)" %><br/>
 					<%= f.radio_button :returnsallowed, :true %> <%= f.label:returnsallowed, " Yes" %>
@@ -114,11 +121,12 @@
 			</div>
 			
 			<div class="form-group">
-						<div class="input-group-lg">
+						<div>
 							<%= f.hidden_field :status, :value=>"Pending" %>
 
-							<h3>Upload pictures- [needed to get the listing verified]</h3>
-
+							<h3>Upload pictures.</h3>
+<p class="helper-block alert alert-danger">If you upload pictures now, then you'll not be allowed to add more pictures later. But if you don't then you can add pictures by editing the listing. So we say upload them later by editing the same listing.</p></div><br/>
+<div>
 								<div class="newPaperclipFiles">
 
 								        <%= f.fields_for :assets do |asset| %>
@@ -167,7 +175,7 @@
 			<div class="instructions alert-success">
 				<h4>REQUIRED:</h4>
 <ul>
-			<li>	Device is fully functional, including all buttons and ports.</li><li>
+			<li>Device is fully functional, including all buttons and ports.</li><li>
 				Device is and ready for activation and not reported lost or stolen.</li><li>
 				Device is free of cracks and water damage and other non-cosmetic damage.</li><li>
 				Device has functional battery (not damaged) included with sale.</li><li>

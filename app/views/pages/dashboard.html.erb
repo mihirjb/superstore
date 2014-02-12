@@ -14,7 +14,8 @@
 	<%= link_to "Complete your Profile", new_profile_path %>
 	<%end %>
 		</div>
-		<div class="small-box">
+		<div class="row">
+		<div class="small-box col-md-4 col-sm-4 col-xs-12">
 			<h2 class="list-heading">Listings</h2>
 			<ul class="nav nav-tabs">
 			  <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
@@ -35,7 +36,9 @@
 				</li></a>
 				<% end %>
 				<% end %>
-				</ul></div>
+				
+				</ul>
+			</div>
 			  <div class="tab-pane" id="sold">
 				<ul class="list">
 					<% @listings.each do |l| %>
@@ -49,7 +52,9 @@
 					</li></a>
 					<% end %>
 					<% end %>
-					</ul>  	
+					
+					</ul>
+						
 			
 			  </div>
 			  <div class="tab-pane" id="pending">
@@ -66,13 +71,67 @@
 					</li></a>
 					<% end %>
 					<% end %>
+				
 					</ul>
-			
+					
 			  </div>
 			</div>
+			
+			
 				</div>
 				
-				<div class="small-box">
+				<div class="small-box col-md-4 col-sm-4 col-xs-12">
+				<h2 class="list-heading">Orders</h2>
+				<ul class="nav nav-tabs" id="myTab">
+				  <li class="active"><a href="#sales" data-toggle="tab">Sold</a></li>
+				  <li><a href="#bought" data-toggle="tab">Bought</a></li>
+				</ul>
+
+				<div class="tab-content">
+				  <div class="tab-pane active" id="sales">	<ul class="list">
+					<% @orders.each do |o| %>
+					<% if current_vendor.id == o.seller_id  %>
+					
+					<li>
+				<h4><%= o.devicename %> sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %></h4>
+				<p><%=o.shipping_address%></p>
+				<% if Trackcode.find_by_order_id(o.id) %>
+					<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+					<% else %>
+				<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
+				<% end %>
+					</li>
+					<% end %>
+					<% end %>
+					
+				</ul>
+				
+				</div>
+				  <div class="tab-pane" id="bought">
+				  	
+					<ul class="list">
+						<% @orders.each do |o| %>
+						<% if current_vendor.id == o.vendor_id  %>
+
+						<li>
+				<h4><%= o.devicename %> bought from <%= Profile.find_by_vendor_id(o.seller_id).displayname %> at $<%= o.ordertotal %></h4>
+					<p><%=o.shipping_address%></p>
+						<a href="/listings/<%o.listing_id%>" class="btn btn-warning btn-sm">View Listing</a>
+					<% if Trackcode.find_by_order_id(o.id) %>
+						<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+				<% end %>
+						</li>
+						<% end %>
+						<% end %>
+					
+					</ul>
+					
+				  </div>
+				</div>
+				</div>
+				
+				
+				<div class="small-box col-md-4 col-sm-4 col-xs-12">
 						<h2 class="list-heading">Reviews <span class="pull-right">
 							<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
 							<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
@@ -88,57 +147,15 @@
 							</p>
 							</li>
 							<% end %>
+							
 							</ul>
-					</div>
-					
-					
-					<div class="small-box">
-					<h2 class="list-heading">Orders</h2>
-					<ul class="nav nav-tabs" id="myTab">
-					  <li class="active"><a href="#sales" data-toggle="tab">Sold</a></li>
-					  <li><a href="#bought" data-toggle="tab">Bought</a></li>
-					</ul>
-
-					<div class="tab-content">
-					  <div class="tab-pane active" id="sales">	<ul class="list">
-						<% @orders.each do |o| %>
-						<% if current_vendor.id == o.seller_id  %>
 						
-						<li>
-					<h4><%= o.devicename %> sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %></h4>
-					<p><%=o.shipping_address%></p>
-					<% if Trackcode.find_by_order_id(o.id) %>
-						<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
-						<% else %>
-					<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
-					<% end %>
-						</li>
-						<% end %>
-						<% end %>
-					</ul>
 					</div>
-					  <div class="tab-pane" id="bought">
-					  	
-						<ul class="list">
-							<% @orders.each do |o| %>
-							<% if current_vendor.id == o.vendor_id  %>
-
-							<li>
-					<h4><%= o.devicename %> bought from <%= Profile.find_by_vendor_id(o.seller_id).displayname %> at $<%= o.ordertotal %></h4>
-						<p><%=o.shipping_address%></p>
-							<a href="/listings/<%o.listing_id%>" class="btn btn-warning btn-sm">View Listing</a>
-						<% if Trackcode.find_by_order_id(o.id) %>
-							<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
-					<% end %>
-							</li>
-							<% end %>
-							<% end %>
-						</ul>
-					  </div>
-					</div>
+					
+					
 
 
-					</div>
+
 					
 					
 					
