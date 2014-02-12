@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209041831) do
+ActiveRecord::Schema.define(version: 20140212050219) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20140209041831) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "profile_id"
+    t.integer  "order_id"
   end
 
   add_index "reviews", ["profile_id"], name: "index_reviews_on_profile_id"

@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
              recipients = [{:email => Listing.find(params[:l]).paypalemail,
                :amount => @listing.askprice,
                         :primary => false},
-                       {:email => "payments@zalpe.com",
+                       {:email => ENV['PAYPAL_EMAIL'],
                          :amount => 10,
                         :primary => false}
                         ]
@@ -61,7 +61,7 @@ class TransactionsController < ApplicationController
             }
           },
           {
-            :receiver => { :email => "payments@zalpe.com" },
+            :receiver => { :email => ENV['PAYPAL_EMAIL'] },
             :invoice_data => {
               :item => [
                 { 

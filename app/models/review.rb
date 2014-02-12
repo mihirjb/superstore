@@ -13,6 +13,7 @@
 
 class Review < ActiveRecord::Base
   belongs_to :profile
+  belongs_to :order
   
   
   validates :reviewbody, :presence => {:message => 'Heading cannot be blank, Listing not saved'}

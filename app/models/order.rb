@@ -21,4 +21,6 @@
 class Order < ActiveRecord::Base
   
   has_one :trackcode
+  has_many :reviews
+  
 end

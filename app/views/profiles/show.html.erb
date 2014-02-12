@@ -26,6 +26,9 @@
 					
 					<div class="content alert alert-info">
 					<h3>Quick review?
+						
+					
+						
 						<%    @found = current_vendor.votes.find_by_voteable_id(@profile.id) %>
 
 						<% if @found.nil? %>
@@ -47,14 +50,21 @@
 					
 				</h3>
 				
-		</div>	<% end %>
+				
+				
+				
+		</div>
+		
+	
+		<% end %>
 		<div class="content">
 		<% if  @profile %>
 	<% else %>
 	<%= link_to "Complete your Profile", new_profile_path %>
 	<%end %>
 		</div>
-		<div class="small-box">
+		<div class="row">
+		<div class="small-box col-md-6 col-sm-6 col-xs-12">
 			<h2 class="list-heading">Listings</h2>
 			<ul class="nav nav-tabs">
 			  <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
@@ -93,7 +103,7 @@
 			</div>
 			</div>
 				
-				<div class="small-box feedbacks">
+				<div class="small-box feedbacks col-md-6 col-sm-6 col-xs-12">
 					<h2 class="list-heading">Reviews <span class="pull-right">
 						<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
 						<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
@@ -139,11 +149,12 @@
 </div>
 						<% end %>
 						</div>
-					
 				
 					
 					
 						<%end %>
+						</div>
+						
 					
 </div>		
 		

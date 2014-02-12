@@ -9,7 +9,7 @@
 
 body
 {
-	background-color:#fcfcfc;
+	background-color:#fff;
 	background-image: -webkit-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
 	background-image: -moz-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
 	background-image: -ms-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
@@ -531,7 +531,7 @@ div.content
 	overflow:auto;
 	padding-bottom:60px;
 }
-section.dashboard div.wrapper div.row
+section.dashboard div.wrapper div.row, section.profileinfo div.wrapper div.row
 {
 	width:96%;
 	padding-bottom:60px;
@@ -599,10 +599,6 @@ div.small-box ul.list li p
 	font-size:12px;
 	color:#3e3e3e;
 	
-}
-section.profileinfo div.small-box
-{
-	width:45%;
 }
 
 
