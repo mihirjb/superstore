@@ -24,8 +24,7 @@ test: &default
 development:
   <<: *default
 
-production:
-  <<: *default
+production: &default
   mode: live
   
   app_id: APP-48740994H8080701U
