@@ -37,7 +37,7 @@ class PhonesController < ApplicationController
       
       
     else
-      @listings = Listing.where("phone_id = ? AND status iLIKE ?",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30
+      @listings = Listing.where("phone_id = ? AND status LIKE ?",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30
       
     end
     
