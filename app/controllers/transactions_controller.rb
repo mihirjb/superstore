@@ -109,8 +109,10 @@ class TransactionsController < ApplicationController
       @listing  =  Listing.find(session[:listing_id])
    @listing.update_column("status", "Sold")
     @lid = session[:listing_id]
+    
+    @ordertotal = @listing.askprice.to_i + 10
 
-    @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @listing.askprice, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address], :listing_id => session[:listing_id])
+    @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address], :listing_id => session[:listing_id])
     
     AdminMailer.order_confirmation(current_vendor, @listing).deliver
     VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
