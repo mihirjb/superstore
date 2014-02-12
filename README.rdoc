@@ -9,7 +9,6 @@ General
 
 Now
 * buyer seller reviews
-* buy/sell pages
 
 
 
