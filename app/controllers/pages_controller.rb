@@ -42,6 +42,14 @@ class PagesController < ApplicationController
   end
   
   
+  def sell
+     @account = Account.new
+     @owner = @account.build_owner
+     @profile = @owner.build_profile
+     @vendor  = Vendor.new
+  end
+  
+  
   def phones
     @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%") 
     render json: @phones.map(&:modelname)  

@@ -9,7 +9,7 @@
 
 body
 {
-	background-color:#fff;
+	background-color:#fcfcfc;
 	background-image: -webkit-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
 	background-image: -moz-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
 	background-image: -ms-radial-gradient(50% 50%,contain,rgba(255, 255, 255, .33) 25%,rgba(255, 255, 255, 0) 100%);
@@ -25,11 +25,11 @@ div.wrapper
 	overflow:auto;
 	min-height:560px;
 	background-color:#fff;
-	-moz-box-shadow:     0 0 3px 1px #ccc;
-	  -webkit-box-shadow:  0 0 3px 1px #ccc;
-	  box-shadow:          0 0 3px 1px #ccc;
+	border-radius: 2px;
+	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+	-moz-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.07);
 }
-
 
 div.cushion
 {
@@ -1016,4 +1016,68 @@ section.listing div.wrapper form div.form-group h3
 	margin-bottom:20px;
 	padding-bottom:10px;
 	border-bottom:5px solid #000;
+}
+
+/*********Sellpage**************/
+section#sell div.wrapper
+{
+	padding:0;
+}
+div#aboutsellpage
+{
+	padding:0;
+	margin:0px;
+	border-bottom: 1px solid #ccc;
+	color: #383834;
+	font-size: 18px;
+	border-radius: 2px 2px 0 0;
+	background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ededed), color-stop(100%, #fafafa));
+	background: -webkit-linear-gradient(bottom, #ededed,#fafafa 7px);
+	background: -moz-linear-gradient(bottom, #ededed,#fafafa 7px);
+	background: -o-linear-gradient(bottom, #ededed,#fafafa 7px);
+	background: linear-gradient(bottom, #ededed,#fafafa 7px);
+	box-shadow: 0 1px 0 #fff inset;
+	margin-bottom:50px;
+	
+}
+div#aboutsellpage h2
+{	margin:0;
+	padding:20px 20px 10px;
+	font-weight: 600;
+	font-family: "Sentinel A","Sentinel B",Georgia,serif;
+	color: #4f4d4b;
+	margin-bottom: 20px;
+	
+}
+div#aboutsellpage p
+{
+	padding: 0px 20px;
+}
+
+section#sell div.wrapper section
+{
+	min-height:300px;
+	border-bottom:1px solid #ccc;
+	margin-bottom:60px;
+}
+section#sell div.wrapper section h3
+{
+	padding-bottom:40px;
+	font-weight: 600;
+	font-family: "Sentinel A","Sentinel B",Georgia,serif;
+	color: #4f4d4b;
+	margin-bottom: 20px;
+}
+section#sell div.wrapper section  form .form-control, section#sell div.wrapper section .tt-hint
+{
+	width:600px;
+}
+
+section#sell div.wrapper section img
+{
+	width:90%;
+	padding:10px;
+	background-color:#ececec;
+	margin: 10px auto 40px;
+	border:1px solid #ccc;
 }

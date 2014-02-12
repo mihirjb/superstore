@@ -8,6 +8,8 @@ Things yet to be covered:
 General
 
 Now
+* buyer seller reviews
+* buy/sell pages
 
 
 
