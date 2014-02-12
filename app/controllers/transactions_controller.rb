@@ -20,10 +20,10 @@ class TransactionsController < ApplicationController
       
     
       gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-      :login => "payments_api1.zalpe.com",
-      :password => "S5RJKQ9RLTPADADE",
-      :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Aii9lcKtUZeqZqK--YilDkC9pBw.",
-      :appid => "APP-48740994H8080701U" )
+      :login => ENV['PAYPAL_UNAME'],
+      :password => ENV['PAYPAL_PWD'],
+      :signature => ENV['PAYPAL_SIGNATURE'],
+      :appid => ENV['PAYPAL_APPID'] )
             
              recipients = [{:email => Listing.find(params[:l]).paypalemail,
                :amount => @listing.askprice,
