@@ -75,14 +75,14 @@
 			<div class="listing-condition">
 				<h4>Condition - <%= @listing.devicecondition %></h4>
 				<p class="devicecondition">
-				<% if @listing.devicecondition == "mint"%>
+				<% if @listing.devicecondition == "Mint"%>
 					<ul>
 						<li>Functions flawlessly</li>
 						<li>Perfect screen condition</li>
 						<li>No signs of use</li>
 						</ul>
 						<% end %>
-						<% if @listing.devicecondition == "good"%>
+						<% if @listing.devicecondition == "Good"%>
 						
 					<ul>
 						<li>Functions flawlessly</li>
@@ -90,7 +90,7 @@
 						<li>Few Cosmetic imperfections</li>
 						</ul>
 							<% end %>
-							<% if @listing.devicecondition == "fair"%>
+							<% if @listing.devicecondition == "Fair"%>
 
 						<ul>
 							<li>Functions flawlessly</li>
@@ -98,7 +98,7 @@
 							<li>Some scratches or worn paint</li>
 							</ul>
 								<% end %>
-								<% if @listing.devicecondition == "new"%>
+								<% if @listing.devicecondition == "New"%>
 									<ul>
 										<li>Never activated, rooted, or refurbished</li>
 										<li>Includes original box and all accessories</li>
