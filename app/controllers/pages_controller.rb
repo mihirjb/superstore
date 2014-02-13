@@ -21,7 +21,11 @@ class PagesController < ApplicationController
                    :order => "listing_count DESC",
                    :limit => 6)
                    
-                   
+                   @mostpopularphones =  Phone.all(:select => "phones.*, COUNT(impressionable_id) as impression_count",
+                              :joins => "LEFT JOIN impressions AS impressions ON impressions.impressionable_id = phones.id",
+                              :group => "impressions.impressionable_id, phones.id",
+                              :order => "impression_count DESC",
+                              :limit => 6)
 
                     @mostviewedlistings =  Listing.all(:select => "listings.*, COUNT(impressionable_id) as impression_count",
                                :joins => "LEFT JOIN impressions AS impressions ON impressions.impressionable_id = listings.id",
