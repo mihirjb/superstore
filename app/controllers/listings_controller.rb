@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   
   before_filter :authenticate_vendor!, :except => [:show]
-  impressionist :actions=>[:show], :unique => [:impressionable_type, :impressionable_id, :ip_address]
+  impressionist :actions=>[:show], :unique => [:impressionable_id, :ip_address]
   
   
   def index
