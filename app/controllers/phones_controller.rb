@@ -4,7 +4,7 @@ class PhonesController < ApplicationController
   
   
   def index
-    @phones = Phone.all
+    @phones = Phone.all.paginate :page => params[:page],:per_page=>30
   end
 
   def new
