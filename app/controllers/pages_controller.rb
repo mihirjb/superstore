@@ -15,12 +15,25 @@ class PagesController < ApplicationController
        end
        @phones = Phone.find_all_by_carrier(params[:msp], :limit => 51) 
      else
-       @phones = Phone.all :limit => 51         
-     end
+        @mostlistedphones =  Phone.all(:select => "phones.*, COUNT(phone_id) as listing_count",
+                   :joins => "LEFT JOIN listings AS listings ON listings.phone_id = phones.id",
+                   :group => "listings.phone_id",
+                   :order => "listing_count DESC",
+                   :limit => 6)
+
+                    @mostviewedlistings =  Listing.all(:select => "listings.*, COUNT(impressionable_id) as impression_count",
+                               :joins => "LEFT JOIN impressions AS impressions ON impressions.impressionable_id = listings.id",
+                               :group => "impressions.impressionable_id",
+                               :order => "impression_count DESC",
+                               :limit => 6)
+               end
      
       if params[:search]
+       
         @phones = Phone.order(:modelname).where("modelname Like ?", "%#{params[:search]}%").paginate :page => params[:page],:per_page=>30 
      end
+     
+
   end
   
   def help
@@ -32,6 +45,8 @@ class PagesController < ApplicationController
   def dashboard
     
     
+    
+    
     @vendor = current_vendor
      @listings = Listing.where('vendor_id = ?',@vendor.id).limit(50)
      @profile = Profile.find_by_vendor_id(@vendor.id)
@@ -39,6 +54,7 @@ class PagesController < ApplicationController
      @orders = Order.where('seller_id = ? OR vendor_id = ?', @vendor.id,@vendor.id) .limit(50)
      @review = @profile.reviews.build
      
+   
   end
   
   
@@ -55,6 +71,8 @@ class PagesController < ApplicationController
      @profile = @owner.build_profile
      @vendor  = Vendor.new
   end
+  
+  
   
   
   def phones
