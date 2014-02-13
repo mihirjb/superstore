@@ -21,9 +21,9 @@ body
 div.wrapper
 {
 	padding:0px;
-	margin:20px auto;
+	margin:20px auto 80px;
 	overflow:auto;
-	min-height:560px;
+	min-height:400px;
 	background-color:#fff;
 	border-radius: 2px;
 	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
@@ -142,9 +142,18 @@ section .navbar-default
 	border-radius:8px;
 }
 
+
+
 /* link */
 section .navbar-default .navbar-nav > li > a {
     color: #3e3e3e;
+}
+section .navbar-default .navbar-nav > li > h4.nav
+{
+	padding:4px 40px 4px 6px;
+	font-weight: 600;
+	font-family: "Sentinel A","Sentinel B",Georgia,serif;
+	color: #0072c6;
 }
 
 /*************Main Page Styles *****************/
@@ -243,12 +252,14 @@ section.home div.wrapper h2
 	font-family: "Sentinel A","Sentinel B",Georgia,serif;
 	color: #0072c6;
 	margin-bottom: 20px;
-	background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ededed), color-stop(100%, #fafafa));
-	background: -webkit-linear-gradient(bottom, #ededed,#fafafa 7px);
-	background: -moz-linear-gradient(bottom, #ededed,#fafafa 7px);
-	background: -o-linear-gradient(bottom, #ededed,#fafafa 7px);
-	background: linear-gradient(bottom, #ededed,#fafafa 7px);
+	background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ededed), color-stop(100%, #fff));
+	background: -webkit-linear-gradient(bottom, #ededed,#fff 7px);
+	background: -moz-linear-gradient(bottom, #ededed,#fff 7px);
+	background: -o-linear-gradient(bottom, #ededed,#fff 7px);
+	background: linear-gradient(bottom, #ededed,#fff 7px);
 	box-shadow: 0 1px 0 #fff inset;
+	border: 1px solid #DDD;
+	border-bottom: 0;
 }
 section.home div.wrapper h2 span.double
 {

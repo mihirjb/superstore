@@ -19,19 +19,19 @@ class PagesController < ApplicationController
                    :joins => "LEFT JOIN listings AS listings ON listings.phone_id = phones.id",
                    :group => "listings.phone_id, phones.id",
                    :order => "listing_count DESC",
-                   :limit => 6)
+                   :limit => 3)
                    
                    @mostpopularphones =  Phone.all(:select => "phones.*, COUNT(impressionable_id) as impression_count",
                               :joins => "LEFT JOIN impressions AS impressions ON impressions.impressionable_id = phones.id",
                               :group => "impressions.impressionable_id, phones.id",
                               :order => "impression_count DESC",
-                              :limit => 6)
+                              :limit => 3)
 
                     @mostviewedlistings =  Listing.all(:select => "listings.*, COUNT(impressionable_id) as impression_count",
                                :joins => "LEFT JOIN impressions AS impressions ON impressions.impressionable_id = listings.id",
                                :group => "impressions.impressionable_id, listings.id",
                                :order => "impression_count DESC",
-                               :limit => 6)
+                               :limit => 3)
                end
      
       if params[:search]
