@@ -1,5 +1,6 @@
 <% if !params[:search] && !params[:msp]%>
 <h2>Most <span class="double">Listed</span> Phones</h2>
+<% cache  @mostlistedphones, :expire_in => 2.hours  do%>
 	<ul class="phones row">
 	<% @mostlistedphones.each do |l|%>
 	<li class="col-sm-4 col-md-4 col-xs-12">
@@ -23,11 +24,14 @@
 
 		<%end%>	
 		</ul>
+		<% end %>
 		</div>
 		</section>
 		<section class="home">
 			<div class="wrapper">
 				<h2>Most <span class="double">Popular</span> Phones</h2>
+				<% cache  @mostpopularphones, :expire_in => 2.hours  do%>
+				
 					<ul class="phones row">
 					<% @mostpopularphones.each do |l|%>
 					<li class="col-sm-4 col-md-4 col-xs-12">
@@ -51,11 +55,14 @@
 
 						<%end%>	
 						</ul>
+						<% end %>
+						
 						</div>
 						</section>
 						<section class="home">
 							<div class="wrapper">
 				<h2>Most <span class="double">Popular Listings</span></h2>
+				<% cache  @mostviewedlistings, :expire_in => 2.hours  do%>
 		
 		<ul class="phones row">
 		<% @mostviewedlistings.each do |l|%>
@@ -76,6 +83,7 @@
 
 			<%end%>	
 			</ul>
+			<%end%>	
 	
 						
 						<%else %>
