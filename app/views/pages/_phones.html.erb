@@ -27,24 +27,20 @@
 		</section>
 		<section class="home">
 			<div class="wrapper">
-				<h2>Most Popular Phones</h2>
+				<h2>Most Popular Listings</h2>
 		
 		<ul class="phones row">
 		<% @mostviewedlistings.each do |l|%>
 		<li class="col-sm-4 col-md-4 col-xs-12">
-			<% @list = Listing.where('phone_id = ? AND status Like ?', l.phone_id, "Approved") %>
 			<%	@imgurl = "/phoneimages/" + l.devicename.gsub(" ", "-").downcase + "-" + l.devicecarrier.downcase + ".png" %>
 
 				<div class="main-page-img"><%= image_tag @imgurl %></div>
-			<h3><%= link_to l.devicename, "/phones/#{l.phone_id}" %> (<span class="carrier"><%=l.devicecarrier %>)</h3>
+			<h3><%= link_to l.devicename, "/listings/#{l.id}" %> (<span class="carrier"><%=l.devicecarrier %>)</h3>
 			<p></span>
-		<% if	@list.first.nil? %>
-		<span class="price"><%= @list.count %> Listings.</span></p>
-		<%else%>
-			<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %> [<%= @list.count %>]</span>  </p>
-			<% end %>
+	
+			<span class="price">$<%= l.askprice.to_i + 10  %></span>  </p>
 
-			<a class="btn btn-success" href="/phones/<%= l.phone_id %>">Buy</a> <a class="btn btn-danger" href="/phones/<%= l.phone_id %>">Sell</a>
+			<a class="btn btn-success" href="/listings/<%= l.id %>">Buy</a> <a class="btn btn-danger" href="/phones/<%= l.phone_id %>">Sell this phone</a>
 
 
 
