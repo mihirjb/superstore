@@ -1,7 +1,7 @@
 class PhonesController < ApplicationController
   
   before_filter :authenticate_admin!, :except => [:index,:show]
-  impressionist :actions=>[:show]
+  impressionist :actions=>[:show], :unique => [:impressionable_type, :impressionable_id, :ip_address]
   
   
   def index
