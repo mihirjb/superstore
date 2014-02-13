@@ -241,7 +241,7 @@ section.home div.wrapper h2
 	padding:40px 20px;
 	font-weight: 600;
 	font-family: "Sentinel A","Sentinel B",Georgia,serif;
-	color: #4f4d4b;
+	color: #0072c6;
 	margin-bottom: 20px;
 	background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #ededed), color-stop(100%, #fafafa));
 	background: -webkit-linear-gradient(bottom, #ededed,#fafafa 7px);
@@ -249,6 +249,11 @@ section.home div.wrapper h2
 	background: -o-linear-gradient(bottom, #ededed,#fafafa 7px);
 	background: linear-gradient(bottom, #ededed,#fafafa 7px);
 	box-shadow: 0 1px 0 #fff inset;
+}
+section.home div.wrapper h2 span.double
+{
+	padding-bottom:5px;
+	border-bottom:5px double #0072c6;
 }
 /*************Mobile Phone show Page Styles *****************/
 
