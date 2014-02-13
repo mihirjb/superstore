@@ -122,7 +122,7 @@
 					Sellers are expected to ship within two business days of receiving payment.<br/>
 					Standard shipping costs (ground shipping with tracking in the same country) should be included in listed price, unless otherwise stated in below description.</p>
 					
-					<% if !@listing.shippingdetails.empty? %>
+					<% if !@listing.shippingdetails.nil? %>
 					<p>
 						<strong>Shipping Details: </strong><%=  @listing.shippingdetails %>
 					</p>
@@ -134,7 +134,7 @@
 				<div class="listing-return">
 					<h4>Returns Policy</h4>
 					<p>This seller will <% if !@listing.returnsallowed  %><strong> NOT </strong><% end %> accept returns.</p>
-						<% if !@listing.shippingdetails.empty? %>
+						<% if !@listing.shippingdetails.nil? %>
 						<p>
 							<strong>Return policy: </strong><%=  @listing.returnpolicy %>
 						</p>

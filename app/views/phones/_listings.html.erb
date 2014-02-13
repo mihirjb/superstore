@@ -16,7 +16,7 @@
 				</div>			 
 				<div class="col-md-4 col-sm-4 col-xs-12">
 					<p><strong>Conditon: <%= l.devicecondition%></strong></p>
-					<p>Seller: <%=Profile.find_by_vendor_id(l.vendor_id).displayname%>
+					<p>Seller: <%= Profile.find_by_vendor_id(l.vendor_id).displayname%></p>
 						<p>Location: <%=l.itemlocation %>, <%=l.country%></p>
 						<p>Color: <%=l.devicecolor %></p>
 						<p>Storage: <%=l.devicestorage %></p>

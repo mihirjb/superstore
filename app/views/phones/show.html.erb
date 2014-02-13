@@ -51,13 +51,11 @@
 		<%end%>
 		
 	
-				<% cache @listings do %>
 
 				<%= render partial: 'phones/listings' %>
 				<div class="cushion">
 				<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
 				</div>
-			<% end %>
 		
 		</div>
 		</section>
