@@ -9,22 +9,40 @@ class PagesController < ApplicationController
      @owner = @account.build_owner
      @profile = @owner.build_profile
      @vendor  = Vendor.new
-     if params[:msp]
-       if params[:msp] == "AT"
-         params[:msp] ="AT&T"
-       end
-       @phones = Phone.find_all_by_carrier(params[:msp], :limit => 51) 
-     else
+    
        @phones = Phone.all.limit(51)
-               end
-     
-      if params[:search]
-       
-        @phones = Phone.order(:modelname).where("modelname Like ?", "%#{params[:search]}%").paginate :page => params[:page],:per_page=>30 
-     end
-     
-
   end
+  
+  
+  def searchresults
+     @phones = Phone.order(:modelname).where("modelname Like ?", "%#{params[:search]}%").paginate :page => params[:page],:per_page=>30  
+  end 
+  
+  
+  def att
+    @phones = Phone.where("carrier Like ?","AT&T").paginate :page => params[:page],:per_page=>30  
+  end
+  
+  def sprint
+     @phones = Phone.where("carrier Like ?","Sprint").paginate :page => params[:page],:per_page=>30  
+  end
+   
+   def tmobile
+      @phones = Phone.where("carrier Like ?","T-Mobile").paginate :page => params[:page],:per_page=>30  
+   end
+  
+  def verizon
+       @phones = Phone.where("carrier Like ?","Verizon").paginate :page => params[:page],:per_page=>30  
+  end
+  def unlocked
+        @phones = Phone.where("carrier Like ?","Unlocked").paginate :page => params[:page],:per_page=>30  
+  end  
+  
+  
+  
+  
+  
+  
   
   def help
   end

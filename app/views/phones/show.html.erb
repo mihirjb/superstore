@@ -2,9 +2,9 @@
 		</div>
 		<section id="hero-intro">
 			
-
+<% cache @phone do%>
 				<%= render partial: 'phones/phone' %>
-
+<% end %>
 					</section>
 <div class="container">
 					<section>
@@ -51,8 +51,10 @@
 		<%end%>
 		
 	
+		<% cache @listings do%>
 
 				<%= render partial: 'phones/listings' %>
+				<% end %>
 				<div class="cushion">
 				<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
 				</div>

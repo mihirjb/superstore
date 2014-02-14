@@ -10,6 +10,7 @@
 					
 					
 					<%end %>
+					<% cache @listing do %>
 					<div class="listing-pricing col-md-8 col-sm-4 col-xs-10">
 				<div class="jumbtron"><h1>$<%=@listing.askprice.to_i + 10 %></h1></div>
 			<h4><%=@listing.headline %></h4>
@@ -51,7 +52,7 @@
 									
 			</div>
 		
-	
+	<%end%>
 
 		<div class="listing-body">
 		<div class="listing-details">
@@ -60,6 +61,7 @@
 						<tr><td><%= @listing.devicename %></td><td><%= @listing.devicecarrier %></td><td><%= @listing.devicecolor %></td><td><%= @listing.devicestorage %></td><td><%=@listing.impressionist_count %></td><td><%= @listing.modified %></td></tr>
 						</table>
 				</div>
+			
 				
 				<div class="mini-section">
 					
@@ -148,7 +150,6 @@
 							</div>	
 										
 		</div>
-		
 		
 			<div class="comments">
 
