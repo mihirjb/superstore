@@ -24,15 +24,16 @@
 			</ul>
 			<div class="tab-content">
 			  <div class="tab-pane active" id="active">	<ul class="list">
-				<% @listings.each do |l| %>
-				<% if l.status == 'Approved'%>
-				<a href ="/listings/<%=l.id%>"><li>
-				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
-				<h4><%= l.headline %></h4>
-				<p><%= l.askprice.to_i + 10 %>
+				<% @listings.each do |dlisting| %>
+				<% if dlisting.status == 'Approved'%>
+				<a href ="/listings/<%=dlisting.id%>"><li>
+					<% cache dlisting do %>
+				<%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %>
+				<h4><%= dlisting.headline %></h4>
+				<p><%= dlisting.askprice.to_i + 10 %>
 				</p>
-				<a href="/listings/<%= l.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
-				
+				<a href="/listings/<%= dlisting.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
+				<% end %>
 				</li></a>
 				<% end %>
 				<% end %>
@@ -41,14 +42,17 @@
 			</div>
 			  <div class="tab-pane" id="sold">
 				<ul class="list">
-					<% @listings.each do |l| %>
-					<% if l.status == 'Sold'%>
+					<% @listings.each do |dlisting| %>
+					<% if dlisting.status == 'Sold'%>
 				
-					<a href ="/listings/<%=l.id%>"><li>
-					<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
-					<h4><%= l.headline %></h4>
-					<p><%= l.askprice %>
-					</p>					
+					<a href ="/listings/<%=dlisting.id%>"><li>
+							<% cache dlisting do %>
+						<%= image_tag dlsiting.assets.first.image.url('thumb') unless dlsiting.assets.first.nil? %>
+						<h4><%= dlisting.headline %></h4>
+						<p><%= dlisting.askprice.to_i + 10 %>
+						</p>
+						<a href="/listings/<%= dlisting.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
+						<% end %>				
 					</li></a>
 					<% end %>
 					<% end %>
@@ -60,14 +64,14 @@
 			  <div class="tab-pane" id="pending">
 			  	
 				<ul class="list">
-					<% @listings.each do |l| %>
-					<% if l.status == 'Pending'%>
-					<a href ="/listings/<%=l.id%>"><li>
-					<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
-					<h4><%= l.headline %></h4>
-					<p><%= l.askprice.to_i + 10 %>
+					<% @listings.each do |dlisting| %>
+					<% if dlisting.status == 'Pending'%>
+					<a href ="/listings/<%=dlisting.id%>"><li>
+					<%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %>
+					<h4><%= dlisting.headline %></h4>
+					<p><%= dlisting.askprice.to_i + 10 %>
 					</p>
-					<a href="/listings/<%= l.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
+					<a href="/listings/<%= dlisting.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
 					</li></a>
 					<% end %>
 					<% end %>
