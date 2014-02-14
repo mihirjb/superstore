@@ -15,7 +15,7 @@ class PagesController < ApplicationController
        end
        @phones = Phone.find_all_by_carrier(params[:msp], :limit => 51) 
      else
-       @phones = Phone.all.order(:askprice).limit(51)
+       @phones = Phone.all.limit(51)
                end
      
       if params[:search]
