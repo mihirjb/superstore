@@ -20,8 +20,8 @@ class ProfilesController < ApplicationController
 
    def show
      @profile = Profile.find(params[:id])
-     @listings = Listing.find_all_by_vendor_id(@profile.vendor_id)
-     @feedbacks = Review.find_all_by_profile_id(@profile.id)
+     @listings = Listing.find_all_by_vendor_id(@profile.vendor_id).limit(50)
+     @feedbacks = Review.find_all_by_profile_id(@profile.id).limit(50)
      @review = @profile.reviews.build
    end
 
