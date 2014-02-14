@@ -31,7 +31,7 @@
 <li class="col-sm-4 col-md-4 col-xs-12">
 	<% cache l do %>
 	
-	<% @list = Listing.where('phone_id = ? AND status Like ?', l.id, "Approved") %>
+	<% @list = Listing.where('phone_id = ? AND status Like ?', l.id, "Approved").order("askprice ASC") %>
 
 	<%	@imgurl = "/phoneimages/" + l.modelname.gsub(" ", "-").downcase + "-" + l.carrier.downcase + ".png" %>
 
