@@ -15,23 +15,7 @@ class PagesController < ApplicationController
        end
        @phones = Phone.find_all_by_carrier(params[:msp], :limit => 51) 
      else
-        @mostlistedphones =  Phone.all(:select => "phones.*, COUNT(phone_id) as listing_count",
-                   :joins => "LEFT JOIN listings AS listings ON listings.phone_id = phones.id",
-                   :group => "listings.phone_id, phones.id",
-                   :order => "listing_count DESC",
-                   :limit => 3)
-                   
-                   @mostpopularphones =  Phone.all(:select => "phones.*, COUNT(impressionable_id) as impression_count",
-                              :joins => "LEFT JOIN impressions AS impressions ON impressions.impressionable_id = phones.id",
-                              :group => "impressions.impressionable_id, phones.id",
-                              :order => "impression_count DESC",
-                              :limit => 3)
-
-                    @mostviewedlistings =  Listing.all(:select => "listings.*, COUNT(impressionable_id) as impression_count",
-                               :joins => "LEFT JOIN impressions AS impressions ON impressions.impressionable_id = listings.id",
-                               :group => "impressions.impressionable_id, listings.id",
-                               :order => "impression_count DESC",
-                               :limit => 3)
+       @phones = Phone.all.order(:askprice).limit(51)
                end
      
       if params[:search]
