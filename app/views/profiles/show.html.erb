@@ -38,27 +38,33 @@
 			</ul>
 			<div class="tab-content">
 			  <div class="tab-pane active" id="active">	<ul class="list">
-				<% @listings.each do |l| %>
-				<% if l.status == 'Approved'%>
-				<a href ="/listings/<%=l.id%>"><li>
-				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
-				<h4><%= l.headline %></h4>
-				<p><%= l.askprice %>
+				<% @listings.each do |pl| %>
+				<% if pl.status == 'Approved'%>
+				<a href ="/listings/<%=pl.id%>"><li>
+					<% cache pl do %>
+					
+				<%= image_tag pl.assets.first.image.url('thumb') unless pl.assets.first.nil? %>
+				<h4><%= pl.headline %></h4>
+				<p><%= pl.askprice.to_i + 10 %>
 				</p>
+				<% end %>
 				</li></a>
 				<% end %>
 				<% end %>
 				</ul></div>
 			  <div class="tab-pane" id="sold">
 				<ul class="list">
-					<% @listings.each do |l| %>
-					<% if l.status == 'Sold'%>
+					<% @listings.each do |pl| %>
+					<% if pl.status == 'Sold'%>
 				
-					<a href ="/listings/<%=l.id%>"><li>
-					<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
-					<h4><%= l.headline %></h4>
-					<p><%= l.askprice %>
+					<a href ="/listings/<%=pl.id%>"><li>
+						<% cache pl do %>
+						
+					<%= image_tag pl.assets.first.image.url('thumb') unless pl.assets.first.nil? %>
+					<h4><%= pl.headline %></h4>
+					<p><%= pl.askprice.to_i + 10 %>
 					</p>
+					<% end %>
 					</li></a>
 					<% end %>
 					<% end %>
@@ -78,10 +84,13 @@
 						</span></h2>
 							<ul class="list">
 								
-							<% @feedbacks.each do |l| %>
+							<% @feedbacks.each do |feedback| %>
 						<li>
-							<%= image_tag Profile.find_by_vendor_id(l.author_id).avatar.url('thumb')  %>
-							<h4><%= l.reviewbody %><h4>
+							<% cache feedback do %>
+							<%= image_tag Profile.find_by_vendor_id(feedback.author_id).avatar.url('thumb')  %>
+							<h4><%= feedback.reviewbody %><h4>
+							<% end %>
+								
 							</li>
 							<% end %>
 							</ul>

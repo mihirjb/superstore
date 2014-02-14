@@ -29,7 +29,7 @@
 				<a href ="/listings/<%=l.id%>"><li>
 				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
 				<h4><%= l.headline %></h4>
-				<p><%= l.askprice %>
+				<p><%= l.askprice.to_i + 10 %>
 				</p>
 				<a href="/listings/<%= l.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
 				
@@ -65,7 +65,7 @@
 					<a href ="/listings/<%=l.id%>"><li>
 					<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
 					<h4><%= l.headline %></h4>
-					<p><%= l.askprice %>
+					<p><%= l.askprice.to_i + 10 %>
 					</p>
 					<a href="/listings/<%= l.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
 					</li></a>
@@ -216,11 +216,12 @@
 							</span></h2>
 							<ul class="list">
 								
-							<% @feedbacks.each do |l| %>
+							<% @feedbacks.each do |dfeedback| %>
 						<li>
-							<%= image_tag Profile.find_by_vendor_id(l.author_id).avatar.url('thumb')  %>
-							<h4><%= l.reviewbody %></h4>
-
+							<% cache dfeedback do %>
+							<%= image_tag Profile.find_by_vendor_id(dfeedback.author_id).avatar.url('thumb')  %>
+							<h4><%= dfeedback.reviewbody %></h4>
+							<% end %>
 							</li>
 							<% end %>
 							
