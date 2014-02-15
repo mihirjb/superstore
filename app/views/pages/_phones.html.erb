@@ -33,7 +33,7 @@
 	
 	<% @list = Listing.where('phone_id = ? AND status Like ?', l.id, "Approved").order("askprice ASC") %>
 
-	<%	@imgurl = "/phoneimages/" + l.modelname.gsub(" ", "-").downcase + "-" + l.carrier.downcase + ".png" %>
+	<%	@imgurl = "/newphoneimages/" + l.modelname.gsub(" ", "-").downcase + ".png" %>
 
 		<div class="main-page-img"><%= image_tag @imgurl %></div>
 	<h3><%= link_to l.modelname, "/phones/#{l.id}" %> (<span class="carrier"><%=l.carrier %>)</h3>

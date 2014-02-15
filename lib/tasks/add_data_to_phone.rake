@@ -9,8 +9,9 @@ task :add_phone_data => :environment do
   doc = Nokogiri::HTML(open(url))
   ul = doc.css('.dev_cell_wide')
    ul.each do |t|
+     country = "United States"
     modelname =  t.css('.title a').text.strip
     carrier = t.css('.subtitle a').text.strip
-     @phone = Phone.create(:modelname => modelname, :carrier => carrier)
+     @phone = Phone.create(:modelname => modelname, :carrier => carrier, :market => country)
   end
 end
