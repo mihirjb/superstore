@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
        @account = Account.new
        @owner = @account.build_owner
       @profile = @owner.build_profile
+      @profile.update_column("displayname",@account.subdomain)
       
      end
 
@@ -10,7 +11,6 @@ class AccountsController < ApplicationController
      
       @account = Account.create(account_params)
        if @account.save 
-         
          redirect_to new_vendor_session_path, :notice => "Signed up successfully, now you may login."
        else
          render action: 'new' , :notice => "Sign up failed"

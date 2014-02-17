@@ -10,6 +10,13 @@ class SessionsController < Devise::SessionsController
     account_id = current_vendor.account_id
     @account = Account.find(account_id)
     subdomain = @account.subdomain
+    
+    @profile = Profile.find_by_vendor_id(current_vendor.id)
+    
+    if @profile.displayname.nil?
+      @profile.update_column("displayname",@account.subdomain)
+    end
+    
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')  
       if (request.referer == sign_in_url)
         super

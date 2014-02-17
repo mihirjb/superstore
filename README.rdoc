@@ -8,7 +8,6 @@ Things yet to be covered:
 General
 
 Now
-* buyer seller reviews
 
 
 
@@ -20,5 +19,7 @@ Later
 * Photos should be updated seperately
 * Possibly accepting COD.
 * Reviews for phone.
+* buyer reviews
+
 
 
