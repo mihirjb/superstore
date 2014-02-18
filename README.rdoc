@@ -1,0 +1,25 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running but I am going to write the things yet to be implemented.
+
+Things yet to be covered:
+
+General
+
+Now
+
+
+
+
+Later 
+* facebook and twitter conenect for credibility score
+* Detailed specs table.
+* Multi country and multi currency.
+* Photos should be updated seperately
+* Possibly accepting COD.
+* Reviews for phone.
+* buyer reviews
+
+
+

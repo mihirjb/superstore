@@ -1,0 +1,36 @@
+<section>
+	<div class="wrapper">
+		<div class="cushion">
+			<h2> Unapproved Listings</h2>
+		<table class= "table">
+			<tr><th>Listing id</th><th>Device Name</th><th>Carrier</th><th>IMEI no.</th><th>Photos</th><th>Action</th></tr>
+			<% @listings.each do |l|%>
+			
+			
+				<tr><td><a href="/listings/<%=l.id %>"><%=l.id%></a></td>
+				<td><%=l.devicename%></td><td><%=l.devicecarrier%></td>
+				<td><%=l.deviceimei%></td>
+				<td><%= l.assets.count %>
+				<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=l.id%>">Approve</a></td></tr>
+			<%end%>
+			</table>
+			</div>
+			
+			<div class="cushion">
+				<h2> Unapproved Comments</h2>
+			<table class= "table">
+				<tr><th>Comment id</th><th>Comment</th><th>Listing Id</th></tr>
+				<% @comments.each do |l|%>
+
+
+					<tr><td><a href="/comments/<%=l.id %>"><%=l.id%></a></td>
+				<td><%=l.commentbody %></td>
+				<td><%= l.listing_id %></td>
+				
+					
+					<td><a class="btn btn-success" href="/adminactions/approvecomment?id=<%=l.id%>">Approve</a></td></tr>
+				<%end%>
+				</table>
+				</div>
+		</div>
+			</section>

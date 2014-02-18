@@ -1,0 +1,50 @@
+<section class="listing">
+	<div class="wrapper">
+		<div class="cushion">
+		<%= form_for @profile, :class=>"form-horizontal",  :role => "form" do |f| %>
+		
+			<div class="form-group">
+			<div class="input-group-lg">
+				<h3>Helpful details about you.</h3>
+				<%= image_tag @profile.avatar.url(:medium) %><br/>
+				<%= f.label :avatar, "Upload your Profile picture" %><%= f.file_field :avatar, :class=> "btn btn-file btn-sm" %><br/>
+				
+				
+			<%= f.text_field :fullname, :class=> "form-control", :placeholder=>"Your full name" %>
+
+			<%= f.text_field :paypalemail, :class=> "form-control", :placeholder=>"Your Paypal email address" %>
+			<span class="helper-block">Will be kept private</span>
+			
+			</div>
+			</div>
+	
+			
+			<div class="form-group">
+			<div class="input-group-lg">
+			<h3>More info about you, visible to public</h3>
+			<%= f.text_field :displayname, :class=> "form-control", :placeholder=>"Display Name" %>			
+			<%= f.text_area :aboutme, :class=> "form-control", :placeholder=>"About yourself" %>
+			<%= f.text_field :twitterhandle, :class=> "form-control", :placeholder=>"Twitter username" %>
+			<%= f.text_field :websiteurl, :class=> "form-control", :placeholder=>"Your website address" %>
+			</div>
+			</div>
+			
+			<div class="form-group">
+			<div class="input-group-lg">
+			<h3>Shipping Details</h3>
+			<%= f.text_field :country, :class=> "form-control", :placeholder=>"Country you live in" %>
+			<%= f.text_field :timezone, :class=> "form-control", :placeholder=>"Your timezone" %>
+			<%= f.text_field :location, :class=> "form-control", :placeholder=>"Your city or location" %>
+			<%= f.text_area :address, :class=> "form-control", :placeholder=>"Shipping address in full. e.g. Street Address, City, Country - Pincode." %>
+			<%= f.text_field :phone, :class=> "form-control", :placeholder=>"Your phone number" %>
+			
+		</div>  
+		</div>
+
+		<div class="form-group">
+		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-success btn-lg btn-block" %>
+		<% end %>
+		</div>
+		
+	</div>
+</section>

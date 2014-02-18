@@ -1,0 +1,57 @@
+<section class="home">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#carrier-nav">
+			      <span class="sr-only">Toggle navigation</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>
+			</div>
+			  <div class="collapse navbar-collapse" id="carrier-nav">
+
+					<ul class="nav navbar-nav">
+						<li><h4 class="nav">Search by Carrier</h4></li>
+						<li><%= link_to "AT&T", '/pages/att'%></li>
+						<li><%= link_to "Sprint", "/pages/sprint"%></li>
+						<li><%= link_to "T-Mobile", "/pages/tmobile"%></li>
+						<li><%= link_to "Verizon", "/pages/verizon"%></li>
+						<li><%= link_to "Unlocked", "/pages/unlocked"%></li>
+						<li><%= link_to "All", "/"%></li>
+			</ul>
+			  </div>
+	
+</nav>
+		
+	<div class="wrapper">
+		
+<ul class="phones row">
+<% @phones.each do |l|%>
+
+<li class="col-sm-4 col-md-4 col-xs-12">
+	<% cache l do %>
+	
+	<% @list = Listing.where('phone_id = ? AND status Like ?', l.id, "Approved").order("askprice ASC") %>
+
+	<%	@imgurl = "/newphoneimages/" + l.modelname.gsub(" ", "-").downcase + ".png" %>
+
+		<div class="main-page-img"><%= image_tag @imgurl %></div>
+	<h3><%= link_to l.modelname, "/phones/#{l.id}" %> (<span class="carrier"><%=l.carrier %>)</h3>
+		
+	<p></span>
+<% if	@list.first.nil? %>
+<span class="price"><%= @list.count %> Listings.</span></p>
+<%else%>
+	<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %> [<%= @list.count %>]</span>  </p>
+	<% end %>
+	
+	<a class="btn btn-info btn-sm" href="/phones/<%= l.id %>">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/phones/<%= l.id %>">Sell</a>
+	
+	
+	<% end %>
+	
+		</li>
+		
+	<%end%>	
+	</ul>
+	

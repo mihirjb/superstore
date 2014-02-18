@@ -1,0 +1,27 @@
+<section>
+	<div class="wrapper">
+		<div class="cushion">
+		<%= form_for @trackcode, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
+		
+			<div class="form-group">
+			<div class="input-group-lg">
+				<h3>Tracking info</h3>
+			  
+			<%= f.text_field :shipping_company, :class=> "form-control", :placeholder=>"Courier company's name" %>
+			<%= f.text_field :shipping_city, :class=> "form-control", :placeholder=>"Shipped from city" %>
+			<%= f.text_field :shippingto_city, :class=> "form-control", :placeholder=>"Shipped to city" %>
+			<%= f.text_field :trackcode, :class=> "form-control", :placeholder=>"Tracking Code" %>
+			<%= f.label :shipping_date, "Shipping Date" %>
+			 <%= f.date_select :shipping_date, { :start_year => Time.now.year , :end_year => Time.now.year,:default => Time.now.to_date, :prompt => true, :order => [:day, :month, :year]} %>
+			</div>
+			</div>
+	
+
+
+		<div class="form-group">
+		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-success btn-lg btn-block" %>
+		<% end %>
+	</div>
+		
+	</div>
+</section>

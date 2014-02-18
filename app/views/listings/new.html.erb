@@ -1,0 +1,197 @@
+<section class="listing">
+	<div class="wrapper">
+		<div class="selling-form pull-left">
+		
+			
+		<%= form_for @listing, :class=>"form-horizontal", :id => "listing-form",  :role => "form", :html => { :multipart => true } do |f| %>
+		
+	
+		<h4 class="form-title">All the inputs with the <span class="green">asterisk (*)</span> sign are compulsory to fill.</h4>
+		
+			<div class="form-group">
+			<div class="">
+				<br/><%=f.label:country, "Your Market" %>
+				
+				<%= f.select :country , [['United States','United States']],  :autofocus => true%>
+				
+				<span class="helper-block">You can only sell in one market at one time. Currently we are live only in the US. Stay tuned for more markets.</span><br/><br/>
+			<%= f.text_field :headline, :class=> "form-control required", :placeholder=>"Give a heading to your listing*"%>
+
+			<%= f.text_area :description, :class=> "form-control required", :placeholder=>"Describe your phone a little*" %>
+			</div>
+			</div>
+			<div class="form-group">
+			<div class="">
+				<h3 class = "required">Condition of the device (required)</h3>
+		
+			<%= f.radio_button :devicecondition, :Mint  %>	<%= f.label :devicecondition, " Mint" %>
+			<ul>
+				<li>Functions flawlessly</li>
+				<li>Perfect screen condition</li>
+				<li>No signs of use</li>
+				</ul>
+			
+			<%= f.radio_button :devicecondition, :Good %> <%= f.label :devicecondition, " Good" %>
+			<ul>
+				<li>Functions flawlessly</li>
+				<li>Good screen condition</li>
+				<li>Few Cosmetic imperfections</li>
+				</ul>
+			
+			<%= f.radio_button :devicecondition, :Fair %> <%= f.label :devicecondition, " Fair" %>
+				<ul>
+					<li>Functions flawlessly</li>
+					<li>Good screen condition</li>
+					<li>Some scratches or worn paint</li>
+					</ul>
+					
+						<%= f.radio_button :devicecondition, :New %> <%= f.label :devicecondition, " New" %>
+							<ul>
+								<li>Never activated, rooted, or refurbished</li>
+								<li>Includes original box and all accessories</li>
+								<li>No signs of use</li>
+								</ul>
+			
+			</div>
+			</div>
+			
+			<div class="form-group">
+			<div class="">
+			<h3>Listing pricing and payment details</h3>
+			<%= f.text_field :askprice, :class=> "form-control required", :placeholder=>"Your selling price*" %>			
+			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address*" %>
+			<span class="helper-block">Will be kept private</span>
+			<br/><br/>
+		
+			</div>
+			</div>
+			
+			<div class="form-group">
+			<div class="">
+			<h3>Device Details</h3>
+			<%= f.text_field :devicename, :class=> "form-control", :value=> Phone.find(params[:pid]).modelname, :readonly => true %>
+			<%= f.text_field :devicecarrier, :class=> "form-control", :value=>Phone.find(params[:pid]).carrier, :readonly => true  %>
+			<%= f.hidden_field :phone_id, :value=> params[:pid] %>
+			</div><br/><br/>
+			<div>
+			<%= f.text_field :deviceimei, :class=> "form-control required", :placeholder=>"IMEI/ESN/MEID number*" %>
+			<span class="helper-block">Will be kept private</span><br/><br/>
+			<%= f.text_field :devicecolor, :class=> "form-control required", :placeholder=>"Color*" %>
+			</div>
+			<div class=" input-group ">
+			
+			<%= f.text_field :devicestorage, :class=> "form-control required", :placeholder=>"Phone Storage capacity*" %><span class="input-group-addon">e.g. 2GB / 256MB
+			</span>
+			</div>
+		  <br/>
+			<div class="">
+		
+			<%= f.label:modified, "Has the device been modified in any way. rooted or something? (required)" %><br/>
+			<%= f.radio_button :modified, :true %> <%= f.label:modified, " Yes" %>
+			<%= f.radio_button :modified, :false %> <%= f.label:modified, " No" %><br/><br/>
+			<%= f.text_area :moddetails, :class=> "form-control", :placeholder=>"Describe your modification if you have modified the device in any way." %><br/><br/>
+			
+			<%= f.text_field :accessories, :class=> "form-control required", :placeholder=>"List of accessories with the phone*" %>
+			</div>
+			</div>
+			<div class="form-group">
+			<div class="">
+			<h3>Shipping Details</h3>
+			<%= f.text_field :itemlocation, :class=> "form-control required", :placeholder=>"Name of the city where the item is*" %><br/>
+				<%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?*" %><br/>
+				<%= f.radio_button :paypalconfirmed, :true %> <%= f.label:paypalconfirmed, " Yes" %>
+				<%= f.radio_button :paypalconfirmed, :false %> <%= f.label:paypalconfirmed, " No" %><br/><br/>
+			<%= f.label:shipinternationally, "Will you ship internationally? (required)" %><br/>
+			<%= f.radio_button :shipinternationally, :true %>  <%= f.label:shipinternationally, " Yes" %>
+			<%= f.radio_button :shipinternationally, :false %> <%= f.label:shipinternationally, " No" %><br/><br/>
+			
+			<%= f.text_area :shippingdetails, :class=> "form-control", :placeholder=>"Details on how you will ship internationally, if you do." %>
+			</div>
+			</div>
+				<div class="form-group">
+				<div class="">
+				<h3>Return policy</h3>
+					<%= f.label:returnsallowed, "Will you accept returns? (required)" %><br/>
+					<%= f.radio_button :returnsallowed, :true %> <%= f.label:returnsallowed, " Yes" %>
+					<%= f.radio_button :returnsallowed, :false %> <%= f.label:returnsallowed, " No" %><br/><br/>
+					<%= f.text_area :returnpolicy, :class=> "form-control", :placeholder=>"Your return policy, if you accept reutrns." %>
+			
+			
+			</div>
+			</div>
+			
+			<div class="form-group">
+						<div>
+							<%= f.hidden_field :status, :value=>"Pending" %>
+
+							<h3>Upload pictures.</h3>
+<p class="helper-block alert alert-danger">If you upload pictures now, then you'll not be allowed to add more pictures later. But if you don't then you can add pictures by editing the listing. So we say upload them later by editing the same listing.</p></div><br/>
+<div>
+								<div class="newPaperclipFiles">
+
+								        <%= f.fields_for :assets do |asset| %>
+
+								           <% if asset.object.new_record? %>
+								                 <%= asset.file_field :image, :class=> "" %>
+								           <% end %>
+
+								       <% end %>
+
+								</div>
+
+
+
+
+					</div>  
+					</div>
+		
+		
+
+		<div class="form-group">
+				<div class="other-terms alert-info">
+					<h4>TERMS & CONDITIONS</h4>
+					<ul>
+					<li>Once your device sells you will be expected to ship it to the buyer within two (2) business days of receiving payment.</li><li>
+					Once your device sells you will need to ensure it is un-registered from your carrier's account (if applicable).</li><li>
+					If you have your device is listed on other services (e.g. eBay, Craigslist), it is your responsibility to remove the listing from our site immediately if your device sells elsewhere.</li><li>
+					You will be asked to provide a "verification photo" showing your listing code (assigned after listing is created) written on a piece of paper next to the device you're selling.</li><li>
+					You must be capable of receiving payments via PayPal and be willing to accept their fees.</li><li>
+					The same device cannot be listed in multiple international markets at the same time.</li></ul>
+					</div><br/><br/>
+	 <h4>I accept all the terms and conditions and hereby when I click the Go button.</h4>
+			
+			</div>
+<div class="form-group">
+	<input type="text" name="foo" style="display: none;">
+	
+			<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>
+		<% end %>
+		
+		</div>
+		</div>
+		
+		
+		<div class="selling-instructions pull-right">
+			<div class="instructions alert-success">
+				<h4>REQUIRED:</h4>
+<ul>
+			<li>Device is fully functional, including all buttons and ports.</li><li>
+				Device is and ready for activation and not reported lost or stolen.</li><li>
+				Device is free of cracks and water damage and other non-cosmetic damage.</li><li>
+				Device has functional battery (not damaged) included with sale.</li><li>
+				The device and seller must otherwise qualify for sale in accordance with our Terms of Use.</li></ul>
+				
+				<h4>NOT ALLOWED:</h4>
+				<ul>
+							<li>
+				Device with bad ESN (or otherwise not able to activated).</li><li>
+				Device with cracks on screen or glass.</li><li>
+				Device with water damage (or missing moisture indicator stickers).</li><li>
+				Devices with an outstanding EIP balance (money owed to carrier).</li></ul>
+				</div>
+			
+				
+			</div>
+	</div>
+</section>
+

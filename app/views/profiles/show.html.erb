@@ -1,0 +1,109 @@
+
+
+
+<section class="profileinfo">
+	<div class="wrapper">
+		
+		<% if !@profile %>
+<div class="no-profile alert alert-danger">
+	<h3>The profile doesn't exist yet</h3>
+	</div>
+		<% else %>
+		
+			<div class="main-box">	
+					<%=image_tag @profile.avatar.url(:medium), :class => "main-avatar" %>
+					<p><%  
+					if @profile.displayname %>
+					<%=  @profile.displayname %>
+					<% else
+						@vendor =  Vendor.find(@profile.vendor_id) %>
+					<%=	 Account.find(@vendor.account_id).subdomain %>
+				<%	end %> |
+					<%= @profile.country%></p>
+					<p><%= @profile.aboutme %></p>
+					</div>
+
+		<div class="content">
+		<% if  @profile %>
+	<% else %>
+	<%= link_to "Complete your Profile", new_profile_path %>
+	<%end %>
+		</div>
+		<div class="row">
+		<div class="small-box col-md-6 col-sm-6 col-xs-12">
+			<h2 class="list-heading">Listings</h2>
+			<ul class="nav nav-tabs">
+			  <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
+			  <li><a href="#sold" data-toggle="tab">Sold</a></li>
+			</ul>
+			<div class="tab-content">
+			  <div class="tab-pane active" id="active">	<ul class="list">
+				<% @listings.each do |pl| %>
+				<% if pl.status == 'Approved'%>
+				<a href ="/listings/<%=pl.id%>"><li>
+					<% cache pl do %>
+					
+				<%= image_tag pl.assets.first.image.url('thumb') unless pl.assets.first.nil? %>
+				<h4><%= pl.headline %></h4>
+				<p><%= pl.askprice.to_i + 10 %>
+				</p>
+				<% end %>
+				</li></a>
+				<% end %>
+				<% end %>
+				</ul></div>
+			  <div class="tab-pane" id="sold">
+				<ul class="list">
+					<% @listings.each do |pl| %>
+					<% if pl.status == 'Sold'%>
+				
+					<a href ="/listings/<%=pl.id%>"><li>
+						<% cache pl do %>
+						
+					<%= image_tag pl.assets.first.image.url('thumb') unless pl.assets.first.nil? %>
+					<h4><%= pl.headline %></h4>
+					<p><%= pl.askprice.to_i + 10 %>
+					</p>
+					<% end %>
+					</li></a>
+					<% end %>
+					<% end %>
+					</ul>  	
+			
+			  </div>
+			
+			</div>
+			</div>
+				
+				<div class="small-box feedbacks col-md-6 col-sm-6 col-xs-12">
+					<h2 class="list-heading">Reviews <span class="pull-right">
+						<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
+						<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
+						
+						
+						</span></h2>
+							<ul class="list">
+								
+							<% @feedbacks.each do |feedback| %>
+						<li>
+							<% cache feedback do %>
+							<%= image_tag Profile.find_by_vendor_id(feedback.author_id).avatar.url('thumb')  %>
+							<h4><%= feedback.reviewbody %><h4>
+							<% end %>
+								
+							</li>
+							<% end %>
+							</ul>
+					</div>
+					
+				
+					
+					
+						<%end %>
+						</div>
+						
+					
+</div>		
+		
+</section>
+

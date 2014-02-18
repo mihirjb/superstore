@@ -1,0 +1,62 @@
+<section class="listing">
+	<div class="wrapper">
+		<div class="cushion">
+		
+		<%= form_for @listing, :class=>"form-horizontal", :role => "form", :html => { :multipart => true } do |f| %>
+		<h4 class="form-title">All the inputs with the <span class="green">asterisk (*)</span> sign are compulsory to fill.</h4>
+		
+			<div class="form-group">
+			<div class="input-group-lg">
+				
+			<%= f.text_field :headline, :class=> "form-control required", :placeholder=>"Give a heading to your listing*" %>
+
+			</div>
+			</div>
+		
+			<div class="form-group">
+			<div class="input-group-lg">
+			<h3>Listing pricing and other details</h3>
+			<%= f.text_field :askprice, :class=> "form-control required", :placeholder=>"Your selling price*" %>
+			<span class="helper-block">Price in USD</span>
+			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address*" %>
+			<span class="helper-block">Paypal email will be kept private</span>
+			</div>
+			</div>
+			
+		
+		
+				<div class="form-group">
+				<div class="input-group-lg">
+
+				<div class="existingPaperclipFiles">
+
+					<% if @listing.assets.exists? %>
+					<h3>Existing images.</h3>
+
+						<%  @listing.assets.take(5).each do |a| %>
+						<%= image_tag a.image.url('thumb') %>
+						<% end %>
+
+						<% else %>
+						<h3>Upload you verification images.</h3>
+						<%= f.fields_for :assets do |asset| %>
+						 <%= asset.file_field :image, :class=> "form-control" %>
+			            <% end %>
+
+						<% end %>
+
+
+
+
+
+
+				</div>
+			</div>
+
+		<div class="form-group">
+			
+		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-success btn-lg btn-block" %>
+		<% end %>
+	</div>	
+	</div>
+</section>
