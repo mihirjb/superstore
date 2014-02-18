@@ -3,7 +3,6 @@ class AccountsController < ApplicationController
        @account = Account.new
        @owner = @account.build_owner
       @profile = @owner.build_profile
-      @profile.update_column("displayname",@account.subdomain)
       
      end
 

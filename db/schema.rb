@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20140214063731) do
   end
 
   add_index "listings", ["id"], name: "index_listings_on_id"
+  add_index "listings", ["phone_id"], name: "index_listings_on_phone_id"
   add_index "listings", ["vendor_id"], name: "index_listings_on_vendor_id"
 
   create_table "orders", force: true do |t|
@@ -253,24 +254,6 @@ ActiveRecord::Schema.define(version: 20140214063731) do
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
   add_index "vendors", ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true
-
-  create_table "views", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "views", ["email"], name: "index_views_on_email", unique: true
-  add_index "views", ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
 
   create_table "votes", force: true do |t|
     t.boolean  "vote",          default: false, null: false
