@@ -7,19 +7,25 @@
 		<a href ="/listings/<%=l.id%>">
 			<li>
 			<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<%= image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url('thumb') %>
+						
+						<span class="price">$<%= l.askprice.to_i + 10 %></span>
+						<p><strong>Condition: <span class="different"><%= l.devicecondition%></span></strong></p>
+			
+						
+					</div>
 					<div class="col-md-6 col-sm-4 col-xs-12">
-				<%= image_tag l.assets.first.image.url('thumb') unless l.assets.first.nil? %>
 				<h4><%= l.headline %></h4>
 				<p><%= l.description %> <br/>
 
 				</p>
+				<p><strong>Seller:</strong> <%= Profile.find_by_vendor_id(l.vendor_id).displayname%></p>
+				<p><strong>Location:</strong> <%=l.itemlocation %>, <%=l.country%></p>
 				</div>			 
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<p><strong>Conditon: <%= l.devicecondition%></strong></p>
-					<p>Seller: <%= Profile.find_by_vendor_id(l.vendor_id).displayname%></p>
-						<p>Location: <%=l.itemlocation %>, <%=l.country%></p>
-						<p>Color: <%=l.devicecolor %></p>
-						<p>Storage: <%=l.devicestorage %></p>
+				<div class="col-md-2 col-sm-4 col-xs-12">
+						<p><strong>Color:</strong> <%=l.devicecolor %></p>
+						<p><strong>Storage:</strong> <%=l.devicestorage %></p>
 							<% if l.paypalstatus == "Verified" %>
 							<%= image_tag ("/paypal.png"), :class => "icon" %>
 							<% end %>
@@ -30,9 +36,7 @@
 					<span class="glyphicon glyphicon-camera success"></span>
 					<% end %>
 				</div>
-				<div class="col-md-2 col-sm-4 col-xs-12">
-					<a class="btn btn-success btn-lg" href="/listings/<%= l.id %>">$<%= l.askprice.to_i + 10 %> - Buy now</a>
-				</div>
+			
 			</div>
 		</li></a>
 		<% end %>

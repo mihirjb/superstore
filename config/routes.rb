@@ -24,6 +24,7 @@ Storeapp::Application.routes.draw do
   get "pages/devicesfaq"
   get "pages/paymentsfaq"
   get "pages/terms"
+  get "pages/listing"
   get "pages/buy"
   get "pages/sell"
   get "pages/att"

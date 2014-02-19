@@ -444,9 +444,9 @@ ul.phones li
 	padding:60px 0px;
 	list-style:none;
 	text-align:center;
-	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
-	-moz-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
-	box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+	-webkit-box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
+	-moz-box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
+	box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
 }
 
 ul.phones li h3
@@ -693,9 +693,9 @@ div.phone-header
 	border-bottom:1px #86bbd4 solid;
 	
 }
-div.phone-header div.alert
+div.listings div.alert
 {
-	margin-top:20px;
+	margin:20px 0px;
 }
 div.phone-header img
 {
@@ -715,7 +715,7 @@ div.listings ul
 }
 div.listings ul.phone h4
 {
-	font-size:22px;
+	font-size:16px;
 	margin:0px;
 	font-weight:bold;
 }
@@ -742,6 +742,7 @@ div.listings ul li:hover
 }
 div.listings ul li p
 {
+	font-size:12px;
 	margin:2px;
 	color:#3e3e3e;
 }
@@ -760,7 +761,7 @@ div.listings ul li img
 }
 div.listings ul.phone li span.price
 {
-	font-size:18px;
+	font-size:30px;
 	color:#000;
 }
 
@@ -1211,3 +1212,27 @@ div.listing-header div.listing-images img
 }
 }
 
+
+
+div.side-info
+{
+	padding:20px;
+	margin-bottom:10px;
+	background-color:#fff;
+	-webkit-box-shadow: 0px 0px 2px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 2px 0 rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 2px 0 rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 0px 0px 2px 0 rgba(0, 0, 0, 0.3);
+}
+div.side-info h4
+{
+	color:#0072c6;
+}
+div.side-info img
+{
+	width:80px;
+}
+span.different
+{
+	color: #ca0202; 
+}

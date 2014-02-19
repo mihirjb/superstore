@@ -81,7 +81,17 @@ class PagesController < ApplicationController
   end
   
   
-  
+  def listing
+    @listing = Listing.find(params[:id])
+    @phone = Phone.find(@listing.phone_id)
+    @author = Listing.get_listing_author(@listing.vendor_id)
+    @profile = Listing.get_listing_author_profile(@listing.vendor_id)
+    if !params[:foo]
+    @comment = @listing.comments.build
+  end
+    @comments = Comment.where("status like ? AND listing_id = ?", "Approved", @listing.id)
+    
+  end
   
   def phones
     @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%") 
