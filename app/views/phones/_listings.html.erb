@@ -15,7 +15,7 @@
 			
 						
 					</div>
-					<div class="col-md-6 col-sm-4 col-xs-12">
+					<div class="col-md-6 col-sm-6 col-xs-12">
 				<h4><%= l.headline %></h4>
 				<p><%= l.description %> <br/>
 
@@ -23,7 +23,7 @@
 				<p><strong>Seller:</strong> <%= Profile.find_by_vendor_id(l.vendor_id).displayname%></p>
 				<p><strong>Location:</strong> <%=l.itemlocation %>, <%=l.country%></p>
 				</div>			 
-				<div class="col-md-2 col-sm-4 col-xs-12">
+				<div class="col-md-2 col-sm-2 col-xs-12">
 						<p><strong>Color:</strong> <%=l.devicecolor %></p>
 						<p><strong>Storage:</strong> <%=l.devicestorage %></p>
 							<% if l.paypalstatus == "Verified" %>
