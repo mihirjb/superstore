@@ -145,9 +145,12 @@ h1,h2,h3,h4,h5,h6
 
 section .navbar-default
 {
-	background-color:#f8f8f8;
-	border-color: #DDD;
+	background-color:#fff;
+	border-color: #fff;
 	border-radius:8px;
+	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+	-moz-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.07);
 }
 
 
@@ -429,17 +432,21 @@ h1.text-special
 
 ul.phones
 {
-	margin:0;
+	margin:20px 0px 60px;
 	padding:0;
 }
 ul.phones li
 {
+	width:32.5%;
 	background-color:#fff;
 	height:300px;
-	margin:60px 0px;
-	padding:0px 0px;
+	margin:0.4%;
+	padding:60px 0px;
 	list-style:none;
 	text-align:center;
+	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+	-moz-box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.07);
 }
 
 ul.phones li h3
