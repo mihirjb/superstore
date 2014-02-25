@@ -3,10 +3,12 @@
 <section id="address-confirmation">
 	<div class="wrapper">
 		<div class="cushion">
-		<% if !Profile.find_by_vendor_id(current_vendor.id).address.blank? %>
-		
+			<%@address = Profile.find_by_vendor_id(current_vendor.id).address%>
+		<% if !@address.blank? %>
+<h3 class="center-block">Confirm your Shipping address, change if necessary</h3> 
 <form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST">
-	<textarea class="form-control" name="address" type="text" size="50" value="<%= Profile.find_by_vendor_id(current_vendor.id).address%>">
+	<textarea class="form-control" name="address" type="text" size="50" value="
+	<%= @address %>">
 	<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
 	<input class="btn btn-success btn-lg" type="Submit" value="Buy now!">
 	
