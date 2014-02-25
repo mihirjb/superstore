@@ -24,10 +24,11 @@
 
 
 								<div class= "side-info">
-								<h4><%= @listing.devicename %></h4>
+									<%= image_tag @imgurl %>
+									
+								<h4><%= @listing.devicename %>  [<%= @listing.devicecarrier %>]</h4>
 								<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now - $<%=@listing.askprice.to_i + 10 %></a>
-										</h1><br />
-										<%= image_tag @imgurl %>
+										</h1>
 										
 									</div>
 
@@ -130,8 +131,10 @@
 									
 									<h4><%=@listing.headline %></h4>
 									<p><%=@listing.description %></p>
+									<p><strong>Viewed <%=@listing.impressionist_count %> times.</strong></p>
 								
 								</div>
+								
 								<div class ="side-info">
 									<h4>Condition - <%= @listing.devicecondition %></h4>
 									<p class="devicecondition">
@@ -166,8 +169,17 @@
 															</ul>
 																<% end %>
 									</p>
-									<p><%=@listing.moddetails%></p>
 									</div>
+										<div class ="side-info">
+
+											<% if @listing.modified == true %>
+											<h4>Device Modified: Yes</h4>
+											<p><%=@listing.moddetails %></p>
+											<% else %>
+											<h4>Device Modified: No</h4>
+											<p>The phone has not been rooted, jailbroken or modified in any other way</p>
+											<% end %>
+										</div>
 										<div class ="side-info">
 											<h4>Accessories</h4>
 												<p><%= @listing.accessories %></p>

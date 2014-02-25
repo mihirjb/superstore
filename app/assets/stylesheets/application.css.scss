@@ -1216,6 +1216,7 @@ div.listing-header div.listing-images img
 
 div.side-info
 {
+	overflow:auto;
 	padding:20px;
 	margin-bottom:10px;
 	background-color:#fff;
@@ -1230,7 +1231,9 @@ div.side-info h4
 }
 div.side-info img
 {
-	width:80px;
+	width:60px;
+	float:left;
+	margin:0px 10px 0px 0px;
 }
 span.different
 {
