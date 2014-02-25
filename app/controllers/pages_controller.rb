@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   
   
   def searchresults
-     @phones = Phone.order(:modelname).where("modelname Like ?", "%#{params[:search]}%").paginate :page => params[:page],:per_page=>30  
+     @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%").paginate :page => params[:page],:per_page=>30  
   end 
   
   
