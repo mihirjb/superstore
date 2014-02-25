@@ -49,7 +49,7 @@
 							<div class="col-md-6 center-img">
 								<div class="center-image">
 										<p>
-											<%= image_tag assets.first.image.url('original') %>s
+											<%= image_tag @listing.assets.first.image.url('original') %>s
 											<%  @listing.assets.each do |a| %>
 											<br />
 											
