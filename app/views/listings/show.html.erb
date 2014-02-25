@@ -49,8 +49,9 @@
 							<div class="col-md-6 center-img">
 								<div class="center-image">
 										<p>
+											<%= image_tag assets.first.image.url('original') %>s
 											<%  @listing.assets.each do |a| %>
-											<%= image_tag a.first.image.url('original') %><br />
+											<br />
 											
 											
 											<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
