@@ -12,7 +12,7 @@
 										<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
 									</div>
 									<% elsif current_vendor.id == @listing.vendor_id %>
-								
+									<a href="/listings/<%=@listing.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
 
 
 									<%end %>
@@ -57,73 +57,10 @@
 											<%end%>
 											</p>
 							</div>
-								<div class="comments">
+							
+								
 
-									<% if @comments.empty? %>
-									<div class="no-comments">
-									<h3>No comments for this listing. Be the first one to comment.</h3>
-
-									<% if vendor_signed_in? %>
-									<div class="comment-form">
-
-									<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
-							<div class="form-group">
-								<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
-							</div>  
-								<%= f.hidden_field :listing_id, :value => @listing.id %>
-								<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
-								<%= f.hidden_field :status, :value => "Pending" %>
-
-								<input type="text" name="foo" style="display: none;">
-
-							<div class="form-group">
-								<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
-							<% end %>
-
-							<% else %>
-							<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
-
-							<% end %>
-
-							</div>
-							</div>
-
-
-
-									<% else %>
-
-
-							<% cache @comments do %>
-
-							<%= render partial: 'listings/comments' %>
-						<% end %>
-
-							<% if vendor_signed_in? %>
-							<div class="comment-form">
-								<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
-						<div class="form-group">
-							<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
-						</div>
-						<%= f.hidden_field :listing_id, :value => @listing.id %>
-						<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
-						<%= f.hidden_field :status, :value => "Pending" %>
-						<input type="text" name="foo" style="display: none;">
-
-
-						<div class="form-group">
-						<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg submit" %>
-						<% end %>
-
-						<% else %>
-						<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
-
-							<% end %>
-							</div>
-
-							<% end %>
-
-
-
+							
 							
 							</div>
 							<div class="col-md-3">
