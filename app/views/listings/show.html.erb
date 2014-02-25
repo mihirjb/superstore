@@ -1,225 +1,219 @@
-<section>
-	<div class="wrapper">
-			<div class="listing-header row">
-					<% if !vendor_signed_in? %>
-					<div class="alert alert-danger">
-						<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
-					</div>
-					<% elsif current_vendor.id == @listing.vendor_id %>
-					<a href="/listings/<%=@listing.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
-					
-					
-					<%end %>
-					<% cache @listing do %>
-					<div class="listing-pricing col-md-8 col-sm-4 col-xs-10">
-				<div class="jumbtron"><h1>$<%=@listing.askprice.to_i + 10 %></h1></div>
-			<h4><%=@listing.headline %></h4>
-			<p><%=@listing.description %></p>
-			<p>Paypal Account: <%= @listing.paypalstatus %></p>
-			<% if @listing.status == "Approved"%>
-			
-				<div class="listing-author ">
-					<ul>
-				<li>Listed by <%= @author.email.split("@")[0] %></li>
-				<li>Member Since <%=@author.created_at.to_date() %></li>
-				<li>From <%= @profile.country unless @profile.nil? %></li>
-				<li>last updated on <%=@listing.updated_at.to_date %></li>
-				<li> <%=  link_to "View Seller's Profile",  "/profiles/#{@profile.id}" unless @profile.nil? %> </li>
-				
-				</ul>
-					<%= social_share_button_tag(@listing.headline) %><br/>
-							
-				</div>
-				
-				<a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now</a>
-				<% elsif  @listing.status == "Sold" %>
-				
-				<h4>Listing is already sold. Thanks for viewing</h4>
-				
-				<% else %>
-				<h4>Listing is yet to be approved by the admin.</h4>
-				
-				<% end%>
-						</div>
-				<div class="listing-images col-md-4 col-sm-4 col-xs-2">
-						<%	
-					
-						
-						@imgurl = "/newphoneimages/" + @phone.modelname.gsub(" ", "-").downcase + ".png" %>
 
-							<%= image_tag @imgurl %>
-					</div>
-									
-			</div>
 		
-	<%end%>
-
-		<div class="listing-body">
-		<div class="listing-details">
-				<div class="listing-device-info">
-					<table class="table table-bordered table-condensed"><th>Device Name</th><th>Carrier</th><th>Color</th><th>Storage Capacity</th><th>No. of views on this listing</th><th>Device Modified?</th>
-						<tr><td><%= @listing.devicename %></td><td><%= @listing.devicecarrier %></td><td><%= @listing.devicecolor %></td><td><%= @listing.devicestorage %></td><td><%=@listing.impressionist_count %></td><td><%= @listing.modified %></td></tr>
-						</table>
-				</div>
-			
-				
-				<div class="mini-section">
 					
-				<div class="images-gallery">
-					<h4>Phone images uploaded by the seller</h4>
-					<p class="notice">Please click on the image to view a larger image</p>
-					<p>
-						<%  @listing.assets.each do |a| %>
-						<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
-						<%end%>
-						</p>
-					</div>		
-			<div class="listing-condition">
-				<h4>Condition - <%= @listing.devicecondition %></h4>
-				<p class="devicecondition">
-				<% if @listing.devicecondition == "Mint"%>
-					<ul>
-						<li>Functions flawlessly</li>
-						<li>Perfect screen condition</li>
-						<li>No signs of use</li>
-						</ul>
-						<% end %>
-						<% if @listing.devicecondition == "Good"%>
+					
+					
+					
+					</div><section>
 						
-					<ul>
-						<li>Functions flawlessly</li>
-						<li>Good screen condition</li>
-						<li>Few Cosmetic imperfections</li>
-						</ul>
-							<% end %>
-							<% if @listing.devicecondition == "Fair"%>
+						
+									<% if !vendor_signed_in? %>
+									<div class="alert alert-danger">
+										<p>You are not logged in. Please make sure you <%= link_to "Log in", new_vendor_session_path %> or <%= link_to "Sign up", new_account_path %> before you move ahead.</p>
+									</div>
+									<% elsif current_vendor.id == @listing.vendor_id %>
+									<a href="/listings/<%=@listing.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
 
-						<ul>
-							<li>Functions flawlessly</li>
-							<li>Good screen condition</li>
-							<li>Some scratches or worn paint</li>
-							</ul>
-								<% end %>
-								<% if @listing.devicecondition == "New"%>
-									<ul>
-										<li>Never activated, rooted, or refurbished</li>
-										<li>Includes original box and all accessories</li>
-										<li>No signs of use</li>
-										</ul>
-											<% end %>
-				</p>
-				<p><%=@listing.moddetails%></p>
-				</div>
-				</div>
-				<div class="mini-section">
-					<div class="listing-condition">
-						<h4>Accessories</h4>
-							<p><%= @listing.accessories %></p>
-							</div>
-				<div class="listing-shipping">
-					<h4>Shipping and Handling</h4>
-					<p>This device will ship from: <%= @listing.itemlocation %>
-					This seller will <% if !@listing.shipinternationally  %> NOT <% end %> ship internationally.
-					<p>
-					Sellers are expected to ship within two business days of receiving payment.<br/>
-					Standard shipping costs (ground shipping with tracking in the same country) should be included in listed price, unless otherwise stated in below description.</p>
-					
-					<% if !@listing.shippingdetails.nil? %>
-					<p>
-						<strong>Shipping Details: </strong><%=  @listing.shippingdetails %>
-					</p>
-					<% else %>
-					<p>No further shipping details provided</p>
-					<%end %>
-				</div>
-				
-				<div class="listing-return">
-					<h4>Returns Policy</h4>
-					<p>This seller will <% if !@listing.returnsallowed  %><strong> NOT </strong><% end %> accept returns.</p>
-						<% if !@listing.shippingdetails.nil? %>
-						<p>
-							<strong>Return policy: </strong><%=  @listing.returnpolicy %>
-						</p>
-						<% else %>
-						<p>No further returns details provided</p>
-						<%end %>
-						</div>
-					</div>				
-				
-				
-							</div>	
+
+									<%end %>
+						<%	@imgurl = "/newphoneimages/" + @phone.modelname.gsub(" ", "-").downcase + ".png" %>
+
+						<div class="cushion row">
+							<div class="col-md-3">
+								
+
+
+								<div class= "side-info">
+								<h4><%= @listing.devicename %></h4>
+								<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now - $<%=@listing.askprice.to_i + 10 %></a>
+										</h1><br />
+										<%= image_tag @imgurl %>
 										
-		</div>
+									</div>
+
+								<div class="listing-author side-info">
+									<ul>
+											<li>Paypal Account: <%= @listing.paypalstatus %></li>
+								<li>Listed by <%= @author.email.split("@")[0] %></li>
+								<li>Member Since <%=@author.created_at.to_date() %></li>
+								<li>From <%= @profile.country unless @profile.nil? %></li>
+								<li>last updated on <%=@listing.updated_at.to_date %></li>
+								<li> <%=  link_to "View Seller's Profile",  "/profiles/#{@profile.id}" unless @profile.nil? %> </li>
+
+								</ul>
+									<%= social_share_button_tag(@listing.headline) %><br/>
+
+								</div>
+					 		</div>
+							<div class="col-md-6 center-img">
+								<div class="center-image">
+										<p>
+											<%  @listing.assets.each do |a| %>
+											<%= image_tag a.first.image.url('original') %><br />
+											
+											
+											<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
+											<%end%>
+											</p>
+							</div>
+								<div class="comments">
+
+									<% if @comments.empty? %>
+									<div class="no-comments">
+									<h3>No comments for this listing. Be the first one to comment.</h3>
+
+									<% if vendor_signed_in? %>
+									<div class="comment-form">
+
+									<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+							<div class="form-group">
+								<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
+							</div>  
+								<%= f.hidden_field :listing_id, :value => @listing.id %>
+								<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+								<%= f.hidden_field :status, :value => "Pending" %>
+
+								<input type="text" name="foo" style="display: none;">
+
+							<div class="form-group">
+								<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
+							<% end %>
+
+							<% else %>
+							<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
+
+							<% end %>
+
+							</div>
+							</div>
+
+
+
+									<% else %>
+
+
+							<% cache @comments do %>
+
+							<%= render partial: 'listings/comments' %>
+						<% end %>
+
+							<% if vendor_signed_in? %>
+							<div class="comment-form">
+								<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+						<div class="form-group">
+							<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
+						</div>
+						<%= f.hidden_field :listing_id, :value => @listing.id %>
+						<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+						<%= f.hidden_field :status, :value => "Pending" %>
+						<input type="text" name="foo" style="display: none;">
+
+
+						<div class="form-group">
+						<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg submit" %>
+						<% end %>
+
+						<% else %>
+						<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
+
+							<% end %>
+							</div>
+
+							<% end %>
+
+
+
+							
+							</div>
+							<div class="col-md-3">
+								<div class ="side-info">
+									
+									<h4><%=@listing.headline %></h4>
+									<p><%=@listing.description %></p>
+								
+								</div>
+								<div class ="side-info">
+									<h4>Condition - <%= @listing.devicecondition %></h4>
+									<p class="devicecondition">
+									<% if @listing.devicecondition == "Mint"%>
+										<ul>
+											<li>Functions flawlessly</li>
+											<li>Perfect screen condition</li>
+											<li>No signs of use</li>
+											</ul>
+											<% end %>
+											<% if @listing.devicecondition == "Good"%>
+
+										<ul>
+											<li>Functions flawlessly</li>
+											<li>Good screen condition</li>
+											<li>Few Cosmetic imperfections</li>
+											</ul>
+												<% end %>
+												<% if @listing.devicecondition == "Fair"%>
+
+											<ul>
+												<li>Functions flawlessly</li>
+												<li>Good screen condition</li>
+												<li>Some scratches or worn paint</li>
+												</ul>
+													<% end %>
+													<% if @listing.devicecondition == "New"%>
+														<ul>
+															<li>Never activated, rooted, or refurbished</li>
+															<li>Includes original box and all accessories</li>
+															<li>No signs of use</li>
+															</ul>
+																<% end %>
+									</p>
+									<p><%=@listing.moddetails%></p>
+									</div>
+										<div class ="side-info">
+											<h4>Accessories</h4>
+												<p><%= @listing.accessories %></p>
+												</div>
+
+												<div class="side-info">
+													<h4>Shipping and Handling</h4>
+													<p>This device will ship from: <%= @listing.itemlocation %>
+													This seller will <% if !@listing.shipinternationally  %> NOT <% end %> ship internationally.
+													<p>
+													Sellers are expected to ship within two business days of receiving payment.<br/>
+													Standard shipping costs (ground shipping with tracking in the same country) should be included in listed price, unless otherwise stated in below description.</p>
+
+													<% if !@listing.shippingdetails.nil? %>
+													<p>
+														<strong>Shipping Details: </strong><%=  @listing.shippingdetails %>
+													</p>
+													<% else %>
+													<p>No further shipping details provided</p>
+													<%end %>
+												</div>
+
+												<div class="side-info">
+													<h4>Returns Policy</h4>
+													<p>This seller will <% if !@listing.returnsallowed  %><strong> NOT </strong><% end %> accept returns.</p>
+														<% if !@listing.shippingdetails.nil? %>
+														<p>
+															<strong>Return policy: </strong><%=  @listing.returnpolicy %>
+														</p>
+														<% else %>
+														<p>No further returns details provided</p>
+														<%end %>
+														</div>
+													</div>				
+
+
+															</div>	
+															
+															
+															
+															
+															
+
+						</div>
+						
+						
+					</section>
+				
 		
-			<div class="comments">
-
-				<% if @comments.empty? %>
-				<div class="no-comments">
-				<h3>No comments for this listing. Be the first one to comment.</h3>
-
-				<% if vendor_signed_in? %>
-				<div class="comment-form">
-
-				<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
-		<div class="form-group">
-			<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
-		</div>  
-			<%= f.hidden_field :listing_id, :value => @listing.id %>
-			<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
-			<%= f.hidden_field :status, :value => "Pending" %>
-
-			<input type="text" name="foo" style="display: none;">
-
-		<div class="form-group">
-			<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %>
-		<% end %>
-
-		<% else %>
-		<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
-
-		<% end %>
-
-		</div>
-		</div>
-
-
-
-				<% else %>
-		
-		
-		<% cache @comments do %>
-		
-		<%= render partial: 'listings/comments' %>
-	<% end %>
-	
-		<% if vendor_signed_in? %>
-		<div class="comment-form">
-			<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
-	<div class="form-group">
-		<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
-	</div>
-	<%= f.hidden_field :listing_id, :value => @listing.id %>
-	<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
-	<%= f.hidden_field :status, :value => "Pending" %>
-	<input type="text" name="foo" style="display: none;">
-	
-	
-	<div class="form-group">
-	<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg submit" %>
-	<% end %>
-	
-	<% else %>
-	<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
-	
-		<% end %>
-		</div>
-		
-		<% end %>
-		</div>
-		
-		
-		</div>
-	
-</div>
-</section>
-
