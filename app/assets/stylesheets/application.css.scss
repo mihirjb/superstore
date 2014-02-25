@@ -1256,16 +1256,22 @@ div.center-img img
 {
 	height:400px;
 }
+div.center-img div.listing-images a
+{
+	display:inline-block;
+	float:left;
+	margin:10px;
+}
 div.center-img div.listing-images img
 {
 	display:inline-block;
 	background-color:#fcfcfc;
 	padding:10px;
 	height:100px;
-	float:left;
-	margin:10px;
+	
 }
  div.listing-images
 {
+	margin-bottom:30px;
 	overflow:auto;
 }
