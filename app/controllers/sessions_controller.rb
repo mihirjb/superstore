@@ -2,7 +2,7 @@ class SessionsController < Devise::SessionsController
   
   before_filter :authenticate_vendor!
   
-  def stored_location_for(resource_or_scope)
+  def stored_location_for(vendor)
       nil
     end
  
@@ -16,7 +16,6 @@ class SessionsController < Devise::SessionsController
     if @profile.displayname.nil?
       @profile.update_column("displayname",@account.subdomain)
     end
-    
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')  
       if (request.referer == sign_in_url)
         super
