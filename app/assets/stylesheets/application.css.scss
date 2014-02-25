@@ -1258,7 +1258,14 @@ div.center-img img
 }
 div.center-img div.listing-images img
 {
+	display:inline-block;
+	background-color:#fcfcfc;
+	padding:10px;
 	height:100px;
 	float:left;
 	margin:10px;
+}
+ div.listing-images
+{
+	overflow:auto;
 }
