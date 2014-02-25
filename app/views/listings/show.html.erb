@@ -60,9 +60,76 @@
 							
 								
 
+								<div class="comments">
+									<% if @comments.empty? %>
+									
+									<div class="no-comments">
+									<h3>No comments for this listing. Be the first one to comment.</h3>
+									</div>
+									<% if vendor_signed_in? %>
+									<div class="comment-form">
+
+									<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+							<div class="form-group">
+								<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
+							</div>  
+								<%= f.hidden_field :listing_id, :value => @listing.id %>
+								<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+								<%= f.hidden_field :status, :value => "Pending" %>
+
+								<input type="text" name="foo" style="display: none;">
+
+							<div class="form-group">
+								<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %></div>
 							
-							
+							<% end %>
+								</div>
+
+							<% else %>
+							<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
+
+							<% end %>
+
+ 
+
+
+									<% else %>
+
+
+							<% cache @comments do %>
+
+							<%= render partial: 'listings/comments' %>
+						<% end %>
+
+							<% if vendor_signed_in? %>
+							<div class="comment-form">
+								<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+						<div class="form-group">
+							<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
+						</div>
+						<%= f.hidden_field :listing_id, :value => @listing.id %>
+						<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
+						<%= f.hidden_field :status, :value => "Pending" %>
+						<input type="text" name="foo" style="display: none;">
+
+
+						<div class="form-group">
+						<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg submit" %></div>
+						</div>
+						<% end %>
+
+						<% else %>
+						<%= link_to "Log in to comment", new_vendor_session_path, :class => "btn btn-success" %> 
+
+							<% end %>
 							</div>
+
+							<% end %>
+
+
+							</div>
+
+														</div>
 							<div class="col-md-3">
 								<div class ="side-info">
 									
