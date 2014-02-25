@@ -48,7 +48,7 @@
 					 		</div>
 							<div class="col-md-6 center-img">
 								<div class="center-image">
-											<%= image_tag @listing.assets.first.image.url('original') unless @listing.assets.first.nil %>
+											<%= image_tag @listing.assets.first.image.url('original') unless @listing.assets.first.nil? %>
 											<div class="listing-images">
 											<%  @listing.assets.each do |a| %>											
 											
