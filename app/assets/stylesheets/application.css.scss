@@ -1191,43 +1191,7 @@ footer div.links a
 	font-size:11px;
 	color:#3e3e3e;
 }
-
-/****************responsive styles*************/
-
-
-@media (max-width: 1000px) {
-
-
-
-}
-@media (max-width: 500px) {
-
-
-div.wrap
-{
-padding: 0px;
-}
-
-div.listing-header div.listing-images img
-{
-	height:100px;
-}
-
-ul.phones li.col-md-4, ul.phones li.col-sm-4
-{
-	width:99%;
-	background-color:#fff;
-	height:300px;
-	margin:0.5%;
-	padding:60px 0px;
-	list-style:none;
-	text-align:center;
-	-webkit-box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
-	-moz-box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
-	box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
-}
-
-}
+/**************Listing show styles ************/
 
 
 
@@ -1292,4 +1256,43 @@ div.center-img div.listing-images img
 {
 	margin-bottom:30px;
 	overflow:auto;
+}
+
+
+
+/****************responsive styles*************/
+
+
+@media (max-width: 1000px) {
+
+
+
+}
+@media (max-width: 500px) {
+
+
+div.wrap
+{
+padding: 0px;
+}
+
+div.listing-header div.listing-images img
+{
+	height:100px;
+}
+
+ul.phones li.col-md-4, ul.phones li.col-sm-4
+{
+	width:99%;
+	background-color:#fff;
+	height:300px;
+	margin:0.5%;
+	padding:60px 0px;
+	list-style:none;
+	text-align:center;
+	-webkit-box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
+	-moz-box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
+	box-shadow: 0 0px 4px 0 rgba(0,0,0,0.07);
+}
+
 }
