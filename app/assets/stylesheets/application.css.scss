@@ -1266,8 +1266,9 @@ div.center-img
 }
 div.center-image
 {
+	overflow:auto;
 	padding:20px;
-height:520px;
+min-height:520px;
 }
 div.center-img img
 {
