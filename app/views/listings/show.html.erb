@@ -19,7 +19,7 @@
 						<%	@imgurl = "/newphoneimages/" + @phone.modelname.gsub(" ", "-").downcase + ".png" %>
 
 						<div class="cushion row">
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-3 col-xs-12">
 								
 
 
@@ -46,7 +46,7 @@
 
 								</div>
 					 		</div>
-							<div class="col-md-6 center-img">
+							<div class="col-md-6 col-sm-6 col-xs-12 center-img">
 								<div class="center-image">
 											<%= image_tag @listing.assets.first.image.url('original') unless @listing.assets.first.nil? %>
 											<div class="listing-images">
@@ -129,7 +129,7 @@
 							</div>
 
 														</div>
-							<div class="col-md-3">
+							<div class="col-md-3 col-sm-3 col-xs-12">
 								<div class ="side-info">
 									
 									<h4><%=@listing.headline %></h4>
