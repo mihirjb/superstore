@@ -358,7 +358,7 @@ section#hero-intro
 	-moz-box-shadow:     0 0 3px 1px #fcfcfc;
 	  -webkit-box-shadow:  0 0 3px 1px #fcfcfc;
 	  box-shadow:          0 0 3px 1px #fcfcfc;
-	
+	min-height:560px;
 	
 }
 
@@ -1235,7 +1235,8 @@ div.center-image
 min-height:520px;
 }
 div.center-img img
-{
+{ 
+	width:90%;
 	height:400px;
 }
 div.center-img div.listing-images a
