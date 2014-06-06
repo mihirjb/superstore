@@ -26,6 +26,6 @@ development:
 
 production:
   <<: *default
-  mode: sandbox
+  mode: live
   
  
