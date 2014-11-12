@@ -1,186 +1,79 @@
-
 </div>
-<% if !vendor_signed_in?%>
-<section id="hero-intro">
-
-	      <div class="text-center">
-	        <h1 class="text-special">
-	          Welcome to Zalpe!
-	        </h1>
-	      </div>
-	      <div class="text-center">
-	        <p class="text-lead">
-	          Buy gently used mobile phones and tablets, without getting cheated.
-	        </p>
-	      </div>
-		<div class="row">
-	      <div class="col-md-4 ">
-	        <span  class="glyphicon glyphicon-search"></span>
-	        <div class="point-text">
-	          <h3 class="text-special">
-	            Search
-	          </h3>
-	          <p>
-	            Find your desired phone.
-	          </p>
-	        </div>
-	      </div>
-
-	      <div class="col-md-4">
-	        <span  class="glyphicon glyphicon-tasks"></span>
-	        <div class="point-text">
-	          <h3 class="text-special">
-	            Analyze
-	          </h3>
-	          <p>
-				Go through all the listings >>
-	            Communicate with sellers.
-	          </p>
-	        </div>
-	      </div>
-
-	      <div class="col-md-4">
-	        <span  class="glyphicon glyphicon-gift"></span>
-	        <div class="point-text">
-	          <h3 class="text-special">
-	            Buy
-	          </h3>
-	          <p>
-				Pay with paypal >>
-	            Receive your phone.
-	          </p>
-	        </div>
-	      </div>
-	    </div>
-	<!--
-		<div class="main-form">
-			<form class="form-inline" role="search" action ="/pages/searchresults">
-		      <div class="form-group">
-			      <div class="input-group-lg">
-				<input type="text" name="search" placeholder ="Find a phone to buy or sell" class="typeahead form-control">		      </div>
-				</div>
-		      <button type="submit" class="btn btn-default">Go</button>
-		    </form>
-			</div>
-			
-			-->
-	      <div class="row-space-top-3 row-space-8 text-center">
-		
-				 <br /><br />
-						
-	        
-				<p class="hero"><button class="btn btn-info" data-toggle="modal" data-target="#something">
-				Sign in</button>
-
-				<span class="btn-seperator">OR </span>
-			      <button class="btn btn-hero" data-toggle="modal" data-target="#myModal">
-				Create a free account</button></p><br/>
-
-				<p class="hero">No credit card required • No commitment • Free to sell</p>
-				
-				<a href="/pages/about" class="h4">
-		          More about Zalpe »
-		        </a><br/>
-				
-			</div>
-
-				<div class="modal fade" id="something" tabindex="-1" role="dialog" aria-labelledby="somethingLabel" aria-hidden="true">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				        <h1 class="modal-title hero" id="somethingLabel">Sign in</h1>
-				      </div>
-				      <div class="modal-body">
-						<%= form_for(@vendor, :url => session_path(@vendor)) do |f| %>
-						 	<div class="form-group">
-							<div class="input-group-lg">
-						 <%= f.email_field :email, :class=> "form-control required", :placeholder=>"Email", :required => true %>
-						 <%= f.password_field :password, :class=> "form-control required", :placeholder=>"Password", :required => true %>
-						</div>
-						</div>
-
-
-				      </div>
-				      <div class="modal-footer">
-				        	<div class="form-group"> <%= f.submit "Sign in", :disable_with => 'Signing in...', :class =>"btn btn-primary btn-lg" %></div>
-						<% end %>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-
-
-
-
-					<!-- Modal -->
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					  <div class="modal-dialog">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					        <h1 class="modal-title hero" id="myModalLabel">Create a free account
-							</h1>
-					      </div>
-					      <div class="modal-body">
-								<%= form_for @account, :class=>"form-horizontal",:id=> "account-form",  :role => "form" do |f| %>
-									<div class="form-body">
-										<div class="form-group">
-										<div class="input-group-lg">
-											<%= f.text_field :subdomain, :class=> "form-control required", :placeholder=>"Display name" %>
-										</div>  
-										</div>
-
-										<%= f.fields_for :owner do |builder| %>
-										<div class="form-group">
-										<div class=" input-group-lg">
-											<%= builder.text_field :email, :class=> "form-control required", :placeholder=>"Email" %>
-										</div>  
-										</div>
-										<div class="form-group">
-										<div class="input-group-lg">
-											<%= builder.password_field :password, :class=> "form-control required", :placeholder=>"Password" %>
-										</div>  
-										</div>
-										<div class="form-group">
-										<div class="input-group-lg">
-											<%= builder.password_field :password_confirmation, :class=> "form-control required", :placeholder=>"Password Confirmation" %>
-										</div>  
-										</div>
-
-										<%= builder.fields_for :profile do |p| %>
-										<div class="form-group">
-										<div class=" input-group-lg">
-										<%=p.label:country, "Country" %> <%= p.country_select :country, ["United States"] %>
-										</div>  
-										</div>
-
-										<% end %>
-
-										<% end %>
-
-
-
-					      </div>
-					      <div class="modal-footer">
-					       			<div class="form-group">
-									<%= f.submit "Signup", :disable_with => 'Adding...', :class =>"btn btn-primary btn-lg" %></div>	<% end %></div>
-
-
-
-					    </div>
-					  </div>
-					</div>
-
-
-
-
-	
+<div id="content">
+	<section class="listings softshadow">
+<h2 class="content-heading">Most popular phones</h2>
+<ul class="phones row">
+	<li class="col-md-2">
+		<img src="../iphone6.png" alt="iphone 6" /><h4>iPhone 6</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../iphone5s.png" alt="iphone 5s" /><h4>iPhone 5S</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../iphone5.png" alt="iphone 5" /><h4>iPhone 5</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../iphone4s.png" alt="iphone 4s" /><h4>iPhone 4S</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../iphone4.png" alt="iphone 4" /><h4>iPhone 4</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../iphone3gs.png" alt="iphone 3gs" /><h4>iPhone 3GS</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	</ul>
 	</section>
+	<section class="listings offshadow tablets">
+	<h2 class="content-heading">Top selling tablets</h3>
+	<ul class="row">
 	
-	<%end%>
-	<div class="container">
-    
-			<%= render partial: 'pages/phones' %>
-				</div>
-		</section>
+	<li class="col-md-2">
+		<img src="../ipad.png" alt="iPad" /><h4>iPad</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../ipadmini.png" alt="ipad mini" /><h4>iPad Mini</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../ipadair.png" alt="ipad air" /><h4>iPad Air </h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../ipad2.png" alt="iPad 2" /><h4>iPad 2</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../ipadmini.png" alt="ipad mini 2" /><h4>iPad mini 2</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+	<li class="col-md-2">
+		<img src="../ipadair.png" alt="iphone air 2" /><h4>iPad Air 2</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+	</li>
+</ul>
+</section>
+
+<section class="listings softshadow" id="howitworks">
+<h2 class="content-heading">No junk devices allowed. Great phones for less!</h2>
+<div class="row">
+	<div class="col-md-4"><span class="glyphicon glyphicon-tint"></span>
+		<h3 class="content-heading">no water damaged phones</h3>
+		<p class="feature-explanation">We don't allow users to list phones with water damage.</p>
+	</div>
+	<div class="col-md-4">
+		<span class="glyphicon glyphicon-phone"></span>
+		<h3 class="content-heading">no phones with cracked screens</h3>
+		<p class="feature-explanation">Every listing is verified to see if the screen of the phone is cracked, if it is so then the listing is rejected.</p>
+	</div>
+	<div class="col-md-4">
+		<span class="glyphicon glyphicon-check"></span>
+		<h3 class="content-heading">we use paypal so you are safe</h3>
+		<p class="feature-explanation">Paypal has a buyer as well as seller protection policy which protects you.</p>
+		
+	</div>
+</div>
+</section>
+<section class="listings offshadow" id="mission">
+<h1 class="large-logo">zalpe</h1>
+	<p class="mission-slogan">Make money selling your old iOS devices online. <br/>Get the best deal for your old phone <br/>&<br/> <strong>keep all your money</strong>.</p>
+		<a class="btn redround" href="/accounts/new" >
+		Get started </a>
+</section>
+</div>
+
+<div class="container">

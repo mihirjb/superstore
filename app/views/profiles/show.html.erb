@@ -1,109 +1,142 @@
+	<div class="outer">
 
-
-
-<section class="profileinfo">
-	<div class="wrapper">
-		
-		<% if !@profile %>
-<div class="no-profile alert alert-danger">
-	<h3>The profile doesn't exist yet</h3>
-	</div>
-		<% else %>
-		
-			<div class="main-box">	
-					<%=image_tag @profile.avatar.url(:medium), :class => "main-avatar" %>
-					<p><%  
-					if @profile.displayname %>
-					<%=  @profile.displayname %>
-					<% else
-						@vendor =  Vendor.find(@profile.vendor_id) %>
-					<%=	 Account.find(@vendor.account_id).subdomain %>
-				<%	end %> |
-					<%= @profile.country%></p>
-					<p><%= @profile.aboutme %></p>
-					</div>
-
-		<div class="content">
-		<% if  @profile %>
-	<% else %>
-	<%= link_to "Complete your Profile", new_profile_path %>
-	<%end %>
+							<div class="centered-800 section rounded row">
+	<div class="col-md-8 phoneshow">
+						
+			
+			<div class="table-responsive" id="listings">
+			<h3 class="listing-heading">Hey, here are all of the listings from <span class="propernoun"><%=  Account.find(@profile.vendor_id).subdomain  %></span></h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Image</th>
+					<th>Title</th>
+					<th>Price</th>
+					<th>Status</th>
+				
+				</tr>
+				<% @listings.each do |dlisting| 
+				if dlisting.status != "Pending" %>
+				
+				<tr  class='<%=
+				@class = ""
+					if dlisting.status == "Approved"
+					@class = "active"
+				end
+				if
+					dlisting.status == "Pending"
+					@class = "danger"
+				end
+				if dlisting.status == "Sold"
+					@class = "success"
+				end
+				
+				 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
+				
+				<td>
+					<a href ="/listings/<%=dlisting.id%>">
+				<%= dlisting.headline %>
+				</a>
+				
+				</td>
+				<td>
+					
+				
+			<%= dlisting.askprice.to_i + 10 %></td>
+					<td>
+						<%= dlisting.status %>
+						</td>
+					
+					</tr>
+				<% end %>
+				<% end %>
+				
+				</table>			
 		</div>
-		<div class="row">
-		<div class="small-box col-md-6 col-sm-6 col-xs-12">
-			<h2 class="list-heading">Listings</h2>
-			<ul class="nav nav-tabs">
-			  <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
-			  <li><a href="#sold" data-toggle="tab">Sold</a></li>
-			</ul>
-			<div class="tab-content">
-			  <div class="tab-pane active" id="active">	<ul class="list">
-				<% @listings.each do |pl| %>
-				<% if pl.status == 'Approved'%>
-				<a href ="/listings/<%=pl.id%>"><li>
-					<% cache pl do %>
-					
-				<%= image_tag pl.assets.first.image.url('thumb') unless pl.assets.first.nil? %>
-				<h4><%= pl.headline %></h4>
-				<p><%= pl.askprice.to_i + 10 %>
-				</p>
-				<% end %>
-				</li></a>
-				<% end %>
-				<% end %>
-				</ul></div>
-			  <div class="tab-pane" id="sold">
-				<ul class="list">
-					<% @listings.each do |pl| %>
-					<% if pl.status == 'Sold'%>
-				
-					<a href ="/listings/<%=pl.id%>"><li>
-						<% cache pl do %>
-						
-					<%= image_tag pl.assets.first.image.url('thumb') unless pl.assets.first.nil? %>
-					<h4><%= pl.headline %></h4>
-					<p><%= pl.askprice.to_i + 10 %>
-					</p>
-					<% end %>
-					</li></a>
-					<% end %>
-					<% end %>
-					</ul>  	
-			
-			  </div>
-			
-			</div>
-			</div>
-				
-				<div class="small-box feedbacks col-md-6 col-sm-6 col-xs-12">
-					<h2 class="list-heading">Reviews <span class="pull-right">
-						<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
-						<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
-						
-						
-						</span></h2>
-							<ul class="list">
-								
-							<% @feedbacks.each do |feedback| %>
-						<li>
-							<% cache feedback do %>
-							<%= image_tag Profile.find_by_vendor_id(feedback.author_id).avatar.url('thumb')  %>
-							<h4><%= feedback.reviewbody %><h4>
-							<% end %>
-								
-							</li>
-							<% end %>
-							</ul>
-					</div>
-					
-				
-					
-					
-						<%end %>
-						</div>
-						
-					
-</div>		
 		
-</section>
+		
+		
+		
+		
+	
+		
+			<div class="table-responsive" id="sellerreview">
+				<h2 class="list-heading">Reviews <span class="pull-right">
+					<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
+					<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
+					
+					
+					</span></h2>
+						<ul class="list">
+						<% @feedbacks.each do |feedback| %>
+					<li>
+						<% cache feedback do %>
+						<%= image_tag Profile.find_by_vendor_id(feedback.author_id).avatar.url('thumb')  %>
+						<h4><%= feedback.reviewbody %><h4>
+						<% end %>
+							
+						</li>
+						<% end %>
+						</ul>
+		</div>
+		
+		
+		
+			
+		
+		
+		
+		
+	
+	</div>
+	
+		<div class="col-md-4 phoneshow yellowtop">
 
+
+				<% if !@profile %>
+		<div class="no-profile alert alert-danger">
+			<h3>The profile doesn't exist yet</h3>
+			</div>
+				<% else %>
+
+					<div class="main-box">	
+							<%=image_tag @profile.avatar.url(:medium), :class => "main-avatar" %>
+							<p><%  
+							if @profile.displayname %>
+							<%=  @profile.displayname %>
+							<% else
+								@vendor =  Vendor.find(@profile.vendor_id) %>
+							<%=	 Account.find(@vendor.account_id).subdomain %>
+						<%	end %> |
+							<%= @profile.country%></p>
+							<p><%= @profile.aboutme %></p>
+							</div>
+							<%	end %> 
+
+				<div class="content">
+				<% if  @profile %>
+			<% else %>
+			<%= link_to "Complete your Profile", new_profile_path %>
+			<%end %>
+				</div>
+<hr class="gray">
+<h4>Listings</h4>
+<ul class="nav" id="myTab">
+<li class="active"><a href="#listings" id="listingbtn">All Listings</a></li>
+
+</ul>	
+
+
+<hr class="gray">
+<h4>Reviews</h4>
+<ul class="nav" id="myTab">
+
+<li><a href="#sellerreview" id="sellerreviewbtn">Feedback as a seller</a></li>
+</ul>
+
+<hr class="gray">
+
+
+</div>			
+	</div>		
+	</div>

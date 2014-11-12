@@ -21,7 +21,194 @@
 
 $(document).ready(function() {
 	
+	$("#orders").hide("slow");
+	  $("#reviews").hide("slow");
+	  $("#listings").show("slow");
+	  $("#activelistings").hide("slow");
+	  $("#pendinglistings").hide("slow");
+	  $("#soldlistings").hide("slow");
+	  $("#soldorders").hide("slow");
+	  $("#boughtorders").hide("slow");
+	  $("#buyerreview").hide("slow");
+	  $("#sellerreview").hide("slow");
+
+
+
+	$( "#listingbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").show("slow");
+		  $("#activelistings").hide("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").hide("slow");
+
+	});
+
+	$( "#activelistingbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").hide("slow");
+		  $("#activelistings").show("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").hide("slow");
+
+	});
+
+
+	$( "#pendinglistingbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").hide("slow");
+		  $("#activelistings").hide("slow");
+		  $("#pendinglistings").show("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").hide("slow");
+
+	});
+
+
+	$( "#soldlistingbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").hide("slow");
+		  $("#activelistings").hide("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").show("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").hide("slow");
+
+	});
+
+
+
+	$( "#orderbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").show("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").hide("slow"); 
+		$("#activelistings").hide("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").hide("slow");
+	});
 	
+	
+	$( "#boughtorderbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").hide("slow"); 
+		$("#activelistings").hide("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").show("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").hide("slow");
+	});
+
+
+
+	$( "#soldorderbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").hide("slow"); 
+		$("#activelistings").hide("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").show("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").hide("slow");
+	});
+	
+	
+	$( "#reviewbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").show("slow");
+		  $("#listings").hide("slow"); 
+		$("#activelistings").hide("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").hide("slow");
+	});
+
+
+	$( "#buyerreviewbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").hide("slow"); 
+		$("#activelistings").hide("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").show("slow");
+		  $("#sellerreview").hide("slow");
+	});
+
+
+	$( "#sellerreviewbtn" ).click(function( event ) {
+
+	    event.preventDefault();
+
+		$("#orders").hide("slow");
+		  $("#reviews").hide("slow");
+		  $("#listings").hide("slow"); 
+		$("#activelistings").hide("slow");
+		  $("#pendinglistings").hide("slow");
+		  $("#soldlistings").hide("slow");
+		  $("#soldorders").hide("slow");
+		  $("#boughtorders").hide("slow");
+		  $("#buyerreview").hide("slow");
+		  $("#sellerreview").show("slow");
+	});
+
+
 	jQuery(function() {
 	  $("a.fancybox").fancybox();
 	});

@@ -1,32 +1,24 @@
-<section class="listing">
-	<div class="wrapper">
-		<div class="cushion">
+<div class="outer">
+					<div class="main">
+						<div class="centered-800 section rounded offshadow">
 		
 		<%= form_for @listing, :class=>"form-horizontal", :role => "form", :html => { :multipart => true } do |f| %>
 		<h4 class="form-title">All the inputs with the <span class="green">asterisk (*)</span> sign are compulsory to fill.</h4>
 		
-			<div class="form-group">
-			<div class="input-group-lg">
-				
+		
 			<%= f.text_field :headline, :class=> "form-control required", :placeholder=>"Give a heading to your listing*" %>
 
-			</div>
-			</div>
 		
-			<div class="form-group">
-			<div class="input-group-lg">
 			<h3>Listing pricing and other details</h3>
 			<%= f.text_field :askprice, :class=> "form-control required", :placeholder=>"Your selling price*" %>
 			<span class="helper-block">Price in USD</span>
 			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address*" %>
 			<span class="helper-block">Paypal email will be kept private</span>
-			</div>
-			</div>
+			
 			
 		
 		
-				<div class="form-group">
-				<div class="input-group-lg">
+			
 
 				<div class="existingPaperclipFiles">
 
@@ -51,12 +43,12 @@
 
 
 				</div>
-			</div>
-
-		<div class="form-group">
+<br/>
+<br/>
+	
 			
-		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-success btn-lg btn-block" %>
+		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn redround" %>
 		<% end %>
 	</div>	
 	</div>
-</section>
+</div>

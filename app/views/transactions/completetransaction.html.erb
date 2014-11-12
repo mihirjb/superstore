@@ -1,6 +1,6 @@
-<section>
-	<div class="wrapper">
-		<div class="cushion">
+<div class="outer">
+<div class="main">
+						<div class="centered-800 section rounded phoneshow">
 		<h1>Transaction complete</h1>
 <p>Thanks <%= Profile.find_by_vendor_id(session[:buyer_id]).displayname %> for your payment.</p>
 <p>This device will ship from: <%= Listing.find(@lid).country %>.<br/>
@@ -11,4 +11,4 @@ Sellers are expected to ship within two business days of receiving payment.
 <p>Meanwhile free free to <%= link_to "Browse More", root_path %></p>
 </div>
 </div>
-</section>
+</div>

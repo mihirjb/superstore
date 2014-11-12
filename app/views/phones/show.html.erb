@@ -1,63 +1,100 @@
+		<div class="outer">
 
-		</div>
-		<section id="hero-intro">
-			
-<% cache @phone do%>
-				<%= render partial: 'phones/phone' %>
-<% end %>
-					</section>
-<div class="container">
-					<section>
-						<div class="wrapper">
+								<div class="centered-800 section rounded offshadow row">
+									<div class="col-md-4 offshadow">
+										<h2 class="listing-heading">iPhone 4</h2>
+										<img src="../iphone4.png" alt="iphone 4" />
+										<br/><br/>
+										<a href="#">Specs</a> | 
+										<a href="#">Sell</a>
+
+										<hr class="gray">
+										<table class="pricing_table table table-condensed table-bordered">
+
+															<tbody><tr>
+																<td>New (Retail)</td>
+																<td>
+
+																	n/a
+
+																</td>
+															</tr>
+															<tr>
+																<td>New (Resale)</td>
+																<td>
+
+																	$295 - 300
+
+																</td>
+															</tr>
+															<tr>
+																<td>Mint</td>
+																<td>
+
+																	$250 - 335
+
+																</td>
+															</tr>
+															<tr>
+																<td>Good</td>
+																<td>
+
+																	$200 - 300
+
+																</td>
+															</tr>
+															<tr>
+																<td>Fair</td>
+																<td>
+
+																	$278 - 278
+
+																</td>
+															</tr>
 
 
-		
-		<% if @listings.count > 0 %>
-		
-		<div class="alert alert-warning">
-			<h4>All the listings below are verified, which means</h4>
-			<ul>
-				<li>All the listings have pictures.</li>
-				<li>None of the phones listed have bad ESN, cracks or water damage</li>
-				</ul>
-			</div>
-			
-				<nav class="navbar navbar-default" role="navigation">
-					<div class="navbar-header">
-					    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#carrier-nav">
-					      <span class="sr-only">Toggle navigation</span>
-					      <span class="icon-bar"></span>
-					      <span class="icon-bar"></span>
-					      <span class="icon-bar"></span>
-					    </button>
-					</div>
-					  <div class="collapse navbar-collapse" id="carrier-nav">
+														</tbody></table>
 
-							<ul class="nav navbar-nav">
-								<li><%= link_to "Price: low to high", "/phones/#{@phone.id}?sort=l2h"%></li>
-								<li><%= link_to "Price: high to low", "/phones/#{@phone.id}?sort=h2l"%></li>
-								<li><%= link_to "Listed: New to old", "/phones/#{@phone.id}?sort=n2o"%></li>
-								<li><%= link_to "Listed: Old to new", "/phones/#{@phone.id}?sort=o2n"%></li>
-					</ul>
-					  </div>
+									</div>
+									<div class="col-md-8 listings-section">
+										<% if @listings.count > 0 %>
 
-		</nav>
-			
-		<%else%>
-		<div class="no-posts cushion">
-		<h2>Sorry there are no listings for this phone yet.</h2>
-		<a class="" href="/listings/new?pid=<%= @phone.id %>">Be the first one to sell <%=@phone.modelname%></a>
-		</div>
-		<%end%>
-		
-	
-		<% cache @listings do%>
+										<div class="alert alert-warning">
+											<h4>All the listings below are verified, which means</h4>
+											<ul>
+												<li>All the listings have pictures.</li>
+												<li>None of the phones listed have bad ESN, cracks or water damage</li>
+												</ul>
+											</div>
 
-				<%= render partial: 'phones/listings' %>
-				<% end %>
-				<div class="cushion">
-				<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
-				</div>
-		
-		</div>
-		</section>
+											<ul class="nav nav-pills" role="tablist">
+											  <li role="presentation" class="active"><a href="#">All</a></li>
+											  <li role="presentation"><a href="#">New</a></li>
+											  <li role="presentation"><a href="#">Mint</a></li>
+											  <li role="presentation"><a href="#">Good</a></li>
+											  <li role="presentation"><a href="#">Fair</a></li>
+
+
+											</ul>							
+												<hr class="gray">
+									<%else%>
+									<div class="no-posts cushion">
+									<h2>Sorry there are no listings for this phone yet.</h2>
+									<a class="" href="/listings/new?pid=<%= @phone.id %>">Be the first one to sell <%=@phone.modelname%></a>
+									</div>
+									<%end%>
+
+
+
+											<%= render partial: 'phones/listings' %>
+											<div class="cushion">
+											<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
+											</div>
+
+									</div>
+										<hr class="gray">
+
+									</div>
+
+								</div>	
+		</div>	

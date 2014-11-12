@@ -1,47 +1,81 @@
-	<div class="listings" id="buy">
-		
-		
-		
-		<ul class="phone">
-		<% @listings.each do |l| %>
-		<a href ="/listings/<%=l.id%>">
-			<li>
-			<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12">
-						<%= image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url('thumb') %>
-						
-						<span class="price">$<%= l.askprice.to_i + 10 %></span>
-						<p><strong>Condition: <span class="different"><%= l.devicecondition%></span></strong></p>
-			
-						
-					</div>
-					<div class="col-md-6 col-sm-6 col-xs-12">
-				<h4><%= l.headline %></h4>
-				<p><%= l.description %> <br/>
 
-				</p>
-				<p><strong>Seller:</strong> <%= Profile.find_by_vendor_id(l.vendor_id).displayname%></p>
-				<p><strong>Location:</strong> <%=l.itemlocation %>, <%=l.country%></p>
-				</div>			 
-				<div class="col-md-2 col-sm-2 col-xs-12">
-						<p><strong>Color:</strong> <%=l.devicecolor %></p>
-						<p><strong>Storage:</strong> <%=l.devicestorage %></p>
-							<% if l.paypalstatus == "Verified" %>
-							<%= image_tag ("/paypal.png"), :class => "icon" %>
-							<% end %>
-						<% if l.status == "Approved" %>
-						<span class="glyphicon glyphicon-ok success"></span>
-						<% end %>
-					<% if	!l.assets.first.nil? %>
-					<span class="glyphicon glyphicon-camera success"></span>
-					<% end %>
+		
+		<div class="listing_preview featured">
+			<ul class="phone">
+			<% @listings.each do |l| %>
+			<li>
+				<div class="headline">
+					<a href="/listings/<%=l.id%>"><h4><%= l.headline %></h4></a>
 				</div>
-			
+			<div class="inner">
+
+				<div class="media">
+					<a href="/listings/<%=l.id%>" class="pull-left">
+
+						<%= image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url('thumb'), :class => "seller_img" %>
+
+					</a>
+					<div class="media-body">
+						<div class="row" style="">
+							<div class="col-xs-2 col-md-2">
+								<a href="/listing/VVW879/view" class="price">
+								$<%= l.askprice.to_i + 10 %>
+								</a>
+							</div>
+							<div class="col-xs-2 col-md-2">
+								<span class="condition nowrap"><%= l.devicecondition%></span>
+							</div>
+
+
+							<div class="col-xs-2 col-md-2">
+								<div class="icons nowrap">
+
+										<% if l.paypalstatus == "Verified" %>
+										<%= image_tag ("/paypal.png"), :class => "icon" %>
+										<% end %>
+									<% if l.status == "Approved" %>
+									<span class="glyphicon glyphicon-ok success"></span>
+									<% end %>
+								<% if	!l.assets.first.nil? %>
+								<span class="glyphicon glyphicon-camera success"></span>
+								<% end %>
+
+								</div>
+							</div>
+							<div class="col-xs-2 col-md-2">
+								<span class="storage nowrap"><%=l.devicestorage %></span>
+							</div>
+							<div class="col-xs-2 col-md-2">
+								<div class="nowrap">
+									<a class="btn btn-sm btn-success" href="#">Buy now!</a>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+
+							
+							<div class="col-xs-2 col-md-2">
+								<span class="seller_info nowrap"><%= Profile.find_by_vendor_id(l.vendor_id).displayname%></span>
+							</div>
+							<div class="col-xs-2 col-md-2">
+							</div>
+						
+							<div class="col-xs-2 col-md-2">
+								<span class="hidden-xs" style="display: inline;"><%=l.itemlocation %></span>
+							</div>
+							<div class="col-xs-2 col-md-2">
+							<span class="hidden-xs" style="display: inline;"><%=l.devicecolor %></span>
+							</div>
+							
+						</div>
+						<div class="more_area">
+							
+						</div>
+					</div>
+				</div>
 			</div>
-		</li></a>
-		<% end %>
-		
-		</ul>
-	
-		
-		</div>
+			 </li>
+			<hr class="gray">
+			<% end %>
+			</ul>
+			</div>

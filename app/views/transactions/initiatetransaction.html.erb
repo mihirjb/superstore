@@ -1,15 +1,15 @@
 <% if params[:l] %>
 
-<section id="address-confirmation">
-	<div class="wrapper">
-		<div class="cushion">
+<div class="outer">
+<div class="main">
+						<div class="centered-800 section rounded phoneshow">
 			<%@address = Profile.find_by_vendor_id(current_vendor.id).address%>
 		<% if !@address.blank? %>
 <h3 class="center-block">Confirm your Shipping address, change if necessary</h3> 
 <form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST">
 	<input  class="form-control"name="address" type="text" size="50" value="<%= @address %>">
 	<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
-	<input class="btn btn-success btn-lg" type="Submit" value="Buy now!">
+	<input class="btn redround" type="Submit" value="Buy now!">
 	
 	</form>
 	
@@ -18,9 +18,9 @@
 	
 		<h3 class="center-block"> We didn't find any shipping address on your profile, please enter it below</h3>
 	<form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST">
-		<input class="form-control"name="address" type="text" size="50" placeholder="Enter your full shipping address here (Address line1, Address line 2 , City, State, Pin code, Country)!">
+		<input name="address" type="text" size="50" placeholder="Enter your full shipping address here (Address line1, Address line 2 , City, State, Pin code, Country)!">
 		<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
-		<input class="btn btn-success btn-lg" type="Submit" value="Buy now!">
+		<input class="btn redround" type="Submit" value="Buy now!">
 
 		</form>
 		
@@ -28,7 +28,7 @@
 		
 		</div>
 	</div>
-</section>
+</div>
 
 <% else %>
 <% redirect_to root_url() %>
