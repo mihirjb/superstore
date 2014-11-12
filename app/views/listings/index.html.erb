@@ -2,7 +2,7 @@
 	<div class="main">
 						<div class="centered-800 section rounded offshadow ">
 		<% @listings.each do |l|%>
-			<a href='<%= "listings/#{l.id}"%>'>
+			<a href='<%= "/listings/#{l.id}"%>'>
 			<div class="listings"><h3><%= l.headline %></h3>
 			<p><%=l.description %>
 			<h4><%=l.devicecondition %></h4>
