@@ -209,9 +209,8 @@ $(document).ready(function() {
 	});
 
 
-	jQuery(function() {
-	  $("a.fancybox").fancybox();
-	});
+  $("a.fancybox").fancybox();
+
 	
 	window.setTimeout(function() {
 	    $(".top-alert").fadeTo(500, 0).slideUp(500, function(){
