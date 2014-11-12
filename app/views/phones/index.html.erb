@@ -1,5 +1,6 @@
-<section>
-<div class="wrapper">
+<div class="outer">
+	<div class="main">
+						<div class="centered-800 section rounded offshadow">
 <ul class="phones row">
 <% @phones.each do |l|%>
 <li class="col-md-4 col-sm-4 col-xs-12">
@@ -28,4 +29,5 @@
 		<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
 		</div>
 	</div>
-	</section>
+	</div>
+	</div>
