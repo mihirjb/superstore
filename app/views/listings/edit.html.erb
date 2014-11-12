@@ -31,8 +31,10 @@
 			            <% end %>
 
 						<h3>Upload you verification images.</h3>
+						<% 5.times %>
 						<%= f.fields_for :assets do |asset| %>
 						 <%= asset.file_field :image, :class=> "form-control" %>
+						<% end %>
 
 						<% end %>
 
