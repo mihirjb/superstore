@@ -1,10 +1,17 @@
-<section>
-	<div class="wrapper">
+<div class="outer">
+	<div class="main">
+						<div class="centered-800 section rounded offshadow ">
 		<% @listings.each do |l|%>
-			<h3><%= l.headline %></h3>
+			<a href='<%= "listings/#{l.id}"%>'>
+			<div class="listings"><h3><%= l.headline %></h3>
 			<p><%=l.description %>
 			<h4><%=l.devicecondition %></h4>
-			<h4><%= l.askprice %>SGD</h4>
+			<h4><%= l.askprice %> SGD</h4>
+			</div>
+			</a>
+			<hr class="gray">
+			
 			<%end%>
 			</div>
-			</section>
+			</div>
+			</div>
