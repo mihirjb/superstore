@@ -26,13 +26,13 @@ class ProfilesController < ApplicationController
    end
 
    def edit
-     @profile = Profile.find(current_vendor.id)
+     @profile = Profile.find_by_vendor_id(current_vendor.id)
    end
 
    def update
     
-     @profile = Profile.find(current_vendor.id)
-      if profile.update(profile_params())
+     @profile = Profile.find_by_vendor_id(current_vendor.id)
+      if @profile.update(profile_params())
          redirect_to dashboard_url, :notice => "Congratulations, profile updated Successfully."
        else
          redirect_to :back, :notice => "Alas, profile could not be updated."
