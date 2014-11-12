@@ -1,4 +1,13 @@
+/*
+ *= require_self
+ *= require fancybox
+ *= require_tree .
+ */
+
+
 @import 'bootstrap';
+@import 'social-share-button';
+
 body {
 background-color:#E7E7E9;
 background-image: url("../dots.png");
