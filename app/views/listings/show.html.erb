@@ -1,13 +1,9 @@
 
-				
-				
-
 					<div class="outer">
 
 											<div class="centered-800 section rounded row">
 												<div class="col-md-4 phoneshow yellowtop">
 													
-														<div class= "side-info">
 															<div class="center-image">
 																		<%= image_tag @listing.assets.first.image.url('original') unless @listing.assets.first.nil? %>
 																		<div class="listing-images">
@@ -22,9 +18,7 @@
 														<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now - $<%=@listing.askprice.to_i + 10 %></a>
 																</h1>
 
-															</div>
 
-														<div class="listing-author side-info">
 															<ul>
 																	<li>Paypal Account: <%= @listing.paypalstatus %></li>
 														<li>Listed by <%= @author.email.split("@")[0] %></li>
@@ -36,7 +30,6 @@
 														</ul>
 															<%= social_share_button_tag(@listing.headline) %><br/>
 
-														</div>
 												</div>
 												<div class="col-md-8 listings-section phoneshow greentop">
 
@@ -190,7 +183,6 @@
 
 																				</div>
 													</div>
-																	
 																	
 											</div>
 
