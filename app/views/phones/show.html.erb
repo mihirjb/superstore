@@ -6,54 +6,12 @@
 										<%= image_tag @phone.image.url(:medium) %>
 										<br/><br/>
 										<a href="#">Specs</a> | 
-										<a href="#">Sell</a>
+										<a class="" href="/listings/new?pid=<%= @phone.id %>">Sell one like this</a>
 
 										<hr class="gray">
-										<table class="pricing_table table table-condensed table-bordered">
-
-															<tbody><tr>
-																<td>New (Retail)</td>
-																<td>
-
-																	n/a
-
-																</td>
-															</tr>
-															<tr>
-																<td>New (Resale)</td>
-																<td>
-
-																	$295 - 300
-
-																</td>
-															</tr>
-															<tr>
-																<td>Mint</td>
-																<td>
-
-																	$250 - 335
-
-																</td>
-															</tr>
-															<tr>
-																<td>Good</td>
-																<td>
-
-																	$200 - 300
-
-																</td>
-															</tr>
-															<tr>
-																<td>Fair</td>
-																<td>
-
-																	$278 - 278
-
-																</td>
-															</tr>
-
-
-														</tbody></table>
+										<% @list = Listing.find_all_by_phone_id(@phone.id, :order =>'askprice')%>
+										
+									<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %> [<%= @list.count %>]</span>
 
 									</div>
 									<div class="col-md-8 listings-section">
