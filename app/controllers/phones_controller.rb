@@ -16,9 +16,9 @@ class PhonesController < ApplicationController
     
     @phone = Phone.create(phone_params)
     if @phone.save
-      redirect_to :root_path, :notice =>"Phone added Successfully."
+      redirect_to :root, :notice =>"Phone added Successfully."
     else
-      redirect_to :root_path, :notice => "Phone could not be added"
+      redirect_to :root, :notice => "Phone could not be added"
     end
   end
   
