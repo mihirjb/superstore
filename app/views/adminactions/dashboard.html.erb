@@ -10,7 +10,7 @@
 					<th>Title</th>
 					<th>Price</th>
 					<th>Status</th>
-					<th>Assets Count</th>
+					<th>Number of Images</th>
 					<th>Actions</th>
 				</tr>
 				<% @listings.each do |dlisting| 
@@ -49,8 +49,8 @@
 						</td>
 
 					
-						<td><%= dlistings.assets.count %>
-						<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=dlistings.id%>">Approve</a></td>
+						<td><%=dlisting.assets.count %></td>
+						<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=dlisting.id%>">Approve</a></td>
 					
 					</tr>
 				<% end %>
