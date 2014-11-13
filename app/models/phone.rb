@@ -19,4 +19,7 @@ class Phone < ActiveRecord::Base
   
   has_many :listings
    has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "30x30>" }, :default_url => "/images/phones/:style/missing.png"
+   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
+
 end
