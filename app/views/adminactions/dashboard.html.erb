@@ -1,20 +1,59 @@
-<section>
 		<div class="outer">
-
+<div class="main">
 								<div class="centered-800 section rounded row">
 			<h2> Unapproved Listings</h2>
-		<table class= "table">
-			<tr><th>Listing id</th><th>Device Name</th><th>Carrier</th><th>IMEI no.</th><th>Photos</th><th>Action</th></tr>
-			<% @listings.each do |l|%>
-			
-			
-				<tr><td><a href="/listings/<%=l.id %>"><%=l.id%></a></td>
-				<td><%=l.devicename%></td><td><%=l.devicecarrier%></td>
-				<td><%=l.deviceimei%></td>
-				<td><%= l.assets.count %>
-				<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=l.id%>">Approve</a></td></tr>
-			<%end%>
-			</table>
+			<div class="table-responsive cushion" id="listings">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Image</th>
+					<th>Title</th>
+					<th>Price</th>
+					<th>Status</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<% @listings.each do |dlisting| 
+					
+					if dlisting.status == "Pending"
+					
+					%>
+
+				<tr  class='<%=
+				@class = ""
+					if dlisting.status == "Approved"
+					@class = "active"
+				end
+				if
+					dlisting.status == "Pending"
+					@class = "danger"
+				end
+				if dlisting.status == "Sold"
+					@class = "success"
+				end
+
+				 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
+
+				<td>
+					<a href ="/listings/<%=dlisting.id%>">
+				<%= dlisting.headline %>
+				</a>
+
+				</td>
+				<td>
+
+
+			<%= dlisting.askprice.to_i + 10 %></td>
+					<td>
+						<%= dlisting.status %>
+						</td>
+
+					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><a href="/listings/<%= dlisting.id%>" action="delete" ><span class="glyphicon glyphicon-remove"></span></a></td></tr>
+				<% end %>
+				<% end %>
+				
+				</table>			
+		</div>
+		
 			
 			<div class="cushion">
 				<h2> Unapproved Comments</h2>
@@ -33,4 +72,5 @@
 				</table>
 				</div>
 		</div>
+			</div>
 			</div>
