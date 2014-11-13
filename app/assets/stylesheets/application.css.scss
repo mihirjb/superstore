@@ -69,7 +69,7 @@ div.pane button.btn-hero
 }
 
 
-footer
+div#footer
 {
 	width:100%;
 	text-align:center;
@@ -77,7 +77,7 @@ footer
 	background-color:#e1e1e1;
 	
 }
-footer div.footer-links a
+div#footer div.footer-links a
 {
 	display:inline-block;
 	color:#888;
@@ -2116,6 +2116,32 @@ ul.phones li p span.price
 }
 
 
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
+}
 
 /******************media Queries***************/
 

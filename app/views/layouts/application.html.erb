@@ -14,6 +14,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="wrap">
 	<div class="top">
 		<div class="centered-text">
 			<h1 class="normal-logo">zalpe</h1>
@@ -27,13 +28,18 @@
 	<% end %>
 <%= yield %>
 </div>
-<footer class="softshadow">
-	<div class="footer-links">
+</div>
+
+<div id="footer" class="softshadow">
+	<div class="container">
+		<div class="footer-links">
 	<a href="#">About</a> 
 	<a href="#">FAQ</a> 
 	<a href="#">Terms & Conditions</a> 
 	<a href="#">Sign in</a> 
 	</div>
-</footer>
+</div>
+
+</div>
 </body>
 </html>
