@@ -21,7 +21,7 @@
 	<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %> [<%= @list.count %>]</span>  </p>
 	<% end %>
 	
-	<a class="btn btn-success" href="/phones/<%= l.id %>">Buy</a> <a class="btn btn-danger" href="/phones/<%= l.id %>">Sell</a>
+	<a class="btn btn-success" href="/phones/<%= l.id %>">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=<%= l.id %>">Sell</a>
 	
 	
 	
