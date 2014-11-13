@@ -1,8 +1,9 @@
 		<div class="outer">
 <div class="main">
 								<div class="centered-800 section rounded row">
-			<h2> Unapproved Listings</h2>
 			<div class="table-responsive cushion" id="listings">
+				<h2> Unapproved Listings</h2>
+			
 			<table class="table table-condensed">
 				<tr class="active">
 					<th>Image</th>
@@ -48,8 +49,8 @@
 						</td>
 
 					
-						<td><%= l.assets.count %>
-						<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=l.id%>">Approve</a></td>
+						<td><%= dlistings.assets.count %>
+						<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=dlistings.id%>">Approve</a></td>
 					
 					</tr>
 				<% end %>
