@@ -1673,6 +1673,15 @@ h2.listing-heading
 	font-family: 'Open Sans', sans-serif;
 }
 
+h2.page-heading
+{
+	font-weight:bold;
+	padding:20px;
+	text-align:center;
+	line-height:1.5em;
+	font-size:24px;
+	font-family: 'Open Sans', sans-serif;
+}
 
 
 
@@ -2140,6 +2149,21 @@ body {
 /* Set the fixed height of the footer here */
 #footer {
   height: 40px;
+}
+
+div.phoneindex
+{
+	background:#fff;
+	margin:30px auto;
+}
+
+div.section-heading
+{
+	background: rgba(128,146,167,0.5);
+	border: 1px solid #acb8c5;
+	color: #636a76;
+	padding:0;
+	margin:0;
 }
 
 /******************media Queries***************/
