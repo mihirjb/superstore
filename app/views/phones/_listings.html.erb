@@ -18,8 +18,8 @@
 					<div class="media-body">
 						<div class="row" style="">
 							<div class="col-xs-2 col-md-2">
-								<a href="/listing/VVW879/view" class="price">
-								$<%= l.askprice.to_i + 10 %>
+<a href="/listings/<%=l.id%>" class="price">		
+							$<%= l.askprice.to_i + 10 %>
 								</a>
 							</div>
 							<div class="col-xs-2 col-md-2">
@@ -47,7 +47,7 @@
 							</div>
 							<div class="col-xs-2 col-md-2">
 								<div class="nowrap">
-									<a class="btn btn-sm btn-success" href="#">Buy now!</a>
+									<a href="/listings/<%=l.id%>" class="btn btn-sm btn-success">$<%= l.askprice.to_i + 10 %></a>
 								</div>
 							</div>
 						</div>
