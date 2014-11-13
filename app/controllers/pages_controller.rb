@@ -20,32 +20,7 @@ class PagesController < ApplicationController
      @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%").paginate :page => params[:page],:per_page=>30  
   end 
   
-  
-  def att
-    @phones = Phone.where("carrier Like ?","AT&T").paginate :page => params[:page],:per_page=>30  
-  end
-  
-  def sprint
-     @phones = Phone.where("carrier Like ?","Sprint").paginate :page => params[:page],:per_page=>30  
-  end
-   
-   def tmobile
-      @phones = Phone.where("carrier Like ?","T-Mobile").paginate :page => params[:page],:per_page=>30  
-   end
-  
-  def verizon
-       @phones = Phone.where("carrier Like ?","Verizon").paginate :page => params[:page],:per_page=>30  
-  end
-  def unlocked
-        @phones = Phone.where("carrier Like ?","Unlocked").paginate :page => params[:page],:per_page=>30  
-  end  
-  
-  
-  
-  
-  
-  
-  
+ 
   def help
   end
   

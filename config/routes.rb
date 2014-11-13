@@ -27,11 +27,6 @@ Storeapp::Application.routes.draw do
   get "pages/listing"
   get "pages/buy"
   get "pages/sell"
-  get "pages/att"
-  get "pages/sprint"
-  get "pages/tmobile"
-  get "pages/verizon"
-  get "pages/unlocked"
   get "pages/searchresults"
   
   
