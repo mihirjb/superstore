@@ -1986,6 +1986,76 @@ div.listing-images img
 	width:18%;
 	margin:1%;
 }
+
+
+
+
+ ul.list
+{
+	height:400px;
+	overflow:scroll;
+	padding:0;
+	width:100%;
+}
+
+
+
+ ul.list li
+{
+	padding:0px 0px 10px;
+	margin:10px 0px;
+	display:inline-block;
+	width:100%;
+	border-bottom:1px solid #ccc;
+}
+
+ul.list li img
+{
+	width:90px;
+	background-color:#ececec;
+	padding:5px;
+	border:1px solid #ccc;
+	float:left;
+	margin:10px 10px 10px 0;
+}
+div.feedbacks ul.list li img
+{
+	width:40px;
+}
+ ul.list li h4
+{
+	color:#3e3e3e;
+	font-size:14px;
+	line-height:21px;
+}
+ ul.list li p
+{
+	font-size:12px;
+	color:#3e3e3e;
+	
+}
+
+
+
+span.vote-img 
+{
+	width:0.5%;
+	color:#000;
+}
+
+span.vote-img a
+{
+	margin:0px;
+	font-size:1em;
+	color:#ccc;
+}
+span.vote-img a[disabled]
+{
+	
+	color:#f00;
+	opacity:.75;
+}
+
 /******************media Queries***************/
 
 
