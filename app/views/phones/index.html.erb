@@ -5,7 +5,7 @@
 <% @phones.each do |l|%>
 <li class="col-md-4 col-sm-4 col-xs-12">
 	<% @list = Listing.find_all_by_phone_id(l.id, :order =>'askprice')%>
-	<%= image_tag phone.image.url(:thumb) %>
+	<%= image_tag l.image.url(:thumb) %>
 
 		<div class="main-page-img"><%= image_tag @imgurl %></div>
 	<h3><%= link_to l.modelname, "/phones/#{l.id}" %> (<span class="carrier"><%=l.carrier %>)</h3>
