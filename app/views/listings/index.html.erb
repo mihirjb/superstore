@@ -1,17 +1,60 @@
 <div class="outer">
 	<div class="main">
-						<div class="centered-800 section rounded offshadow phoneshow">
-		<% @listings.each do |l|%>
-			<a href='<%= "/listings/#{l.id}"%>'>
-			<div class="listings"><h3><%= l.headline %></h3>
-			<p><%=l.description %>
-			<h4><%=l.devicecondition %></h4>
-			<h4><%= l.askprice %> SGD</h4>
-			</div>
-			</a>
-			<hr class="gray">
-			
-			<%end%>
+						<div class="centered-800 section rounded offshadow">
+							<div class="section-heading">
+								<h2 class="page-heading">All Listings</h2>
+								</div>
+								<hr class="gray">
+	
+	
+								<div class="table-responsive" id="listings">
+								<table class="table table-condensed">
+									<tr class="active">
+										<th>Image</th>
+										<th>Title</th>
+										<th>Price</th>
+										<th>Status</th>
+										<th>Edit</th>
+										<th>Delete</th>
+									</tr>
+									<% @listings.each do |dlisting| %>
+
+									<tr  class='<%=
+									@class = ""
+										if dlisting.status == "Approved"
+										@class = "active"
+									end
+									if
+										dlisting.status == "Pending"
+										@class = "danger"
+									end
+									if dlisting.status == "Sold"
+										@class = "success"
+									end
+
+									 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
+
+									<td>
+										<a href ="/listings/<%=dlisting.id%>">
+									<%= dlisting.headline %>
+									</a>
+
+									</td>
+									<td>
+
+
+								<%= dlisting.askprice.to_i + 10 %></td>
+										<td>
+											<%= dlisting.status %>
+											</td>
+
+										<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><a href="/listings/<%= dlisting.id%>" action="delete" ><span class="glyphicon glyphicon-remove"></span></a></td></tr>
+									<% end %>
+									</table>			
+							</div>
+	
+	
+	
 			</div>
 			</div>
 			</div>
