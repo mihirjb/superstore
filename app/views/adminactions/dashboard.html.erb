@@ -9,8 +9,8 @@
 					<th>Title</th>
 					<th>Price</th>
 					<th>Status</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th>Assets Count</th>
+					<th>Actions</th>
 				</tr>
 				<% @listings.each do |dlisting| 
 					
@@ -47,7 +47,11 @@
 						<%= dlisting.status %>
 						</td>
 
-					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><a href="/listings/<%= dlisting.id%>" action="delete" ><span class="glyphicon glyphicon-remove"></span></a></td></tr>
+					
+						<td><%= l.assets.count %>
+						<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=l.id%>">Approve</a></td>
+					
+					</tr>
 				<% end %>
 				<% end %>
 				
