@@ -1,7 +1,7 @@
 		<div class="outer">
 
 								<div class="centered-800 section rounded offshadow row">
-									<div class="col-md-4 offshadow">
+									<div class="col-md-4 offshadow phoneshow">
 										<h2 class="listing-heading"><%= @phone.modelname%></h2>
 										<%= image_tag @phone.image.url(:medium) %>
 										<br/><br/>
@@ -17,7 +17,7 @@
 <% end %>
 </div>
 									</div>
-									<div class="col-md-8 listings-section">
+									<div class="col-md-8 listings-section phoneshow">
 										<% if @listings.count > 0 %>
 
 										<div class="alert alert-warning">
