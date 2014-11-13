@@ -16,6 +16,7 @@
 class Phone < ActiveRecord::Base
   is_impressionable
   
+  validates_attachment :image, content_type: { content_type: /\Aimage\/.*\Z/ }
   
   has_many :listings
    has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "30x30>" }, :default_url => "/images/phones/:style/missing.png"
