@@ -9,10 +9,14 @@
 										<a class="" href="/listings/new?pid=<%= @phone.id %>">Sell one like this</a>
 
 										<hr class="gray">
+										<div class="responsive-table cushion">
 										<% @list = Listing.find_all_by_phone_id(@phone.id, :order =>'askprice')%>
 										
+										<%if @list %>
+										
 									<span class="price">$<%= @list.first.askprice.to_i + 10  %> - $<%= @list.last.askprice.to_i + 10 %> [<%= @list.count %>]</span>
-
+<% end %>
+</div>
 									</div>
 									<div class="col-md-8 listings-section">
 										<% if @listings.count > 0 %>
