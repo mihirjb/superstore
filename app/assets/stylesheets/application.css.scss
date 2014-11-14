@@ -1596,6 +1596,7 @@ div.row
 h1,h2,h3,h4,h5,h6
 {
 	font-family: 'Oxygen', sans-serif;
+	line-height:1.5em;
 }
 
 
@@ -1743,6 +1744,7 @@ form.search input.form-control
 span.twitter-typeahead,span.twitter-typeahead input,input.tt-hint
 {
 	width:100%;
+	background-color:#fff;
 }
 
 /************typeahead styles***********/
@@ -2220,6 +2222,11 @@ div.main, div.pane
 }
 @media (max-width: 500px) {
 
+
+	div.outer div.phoneshow
+	{
+		border:none;
+	}
 
 	div.main, div.pane
 	{
