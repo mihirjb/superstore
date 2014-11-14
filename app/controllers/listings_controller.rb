@@ -55,10 +55,11 @@ class ListingsController < ApplicationController
     
     @listing = current_vendor.listings.find(params[:id])
      if @listing.update(listing_params())
+       @err = get_paypal_status(@listing.paypalemail,@listing.id)
        Listing.get_paypal_status(@listing.paypalemail,@listing.id)
-        redirect_to "/listings/#{@listing.id}", :notice => "Congratulations, Listing updated Successfully."
+        redirect_to "/listings/#{@listing.id}", :notice => "Congratulations, Listing updated Successfully. #{@err}"
       else
-        redirect_to :back, :notice => "Alas, Listing could not be created."
+        redirect_to :back, :notice => "Alas, Listing could not be updated."
       end
   end
 
