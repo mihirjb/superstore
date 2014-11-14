@@ -100,8 +100,8 @@ private
    # Build request object
    @get_verified_status = @api.build_get_verified_status({
      :emailAddress => paypalemail,
-     :firstName => "Mihir",
-     :lastName => "Buch",
+     :firstName => Listing.find(lid).paypalfname,
+     :lastName => Listing.find(lid).paypalfname,
      :matchCriteria => "NAME" })
 
    # Make API call & get response
