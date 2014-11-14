@@ -113,11 +113,10 @@ private
      @get_verified_status_response.accountStatus
      @get_verified_status_response.countryCode
      @get_verified_status_response.userInfo
-     return @get_verified_status_response.accountStatus
+    @get_verified_status_response.accountStatus
      
    else
      @error = @get_verified_status_response.error
-     return @error
    end
  end
  
