@@ -13,8 +13,15 @@
 											
 										<% @list = Listing.find_all_by_phone_id(@phone.id, :order =>'askprice')%>
 										<% if !@list.blank? %>
-									<span class="price">Total [<%= @list.count %>] listings starting from $<%= @list.first.askprice.to_i + 10  %></span>
+									<span class="price">Total <%= @list.count %> listings starting from $<%= @list.first.askprice.to_i + 10  %></span>
 <% end %>
+
+<hr class="gray">
+
+<p class="to-do"><span class="glyphicon glyphicon-check big-green"></span> Always communicate with the seller before buying.</p>
+<p class="to-do"><span class="glyphicon glyphicon-check big-green"></span> A <span class="glyphicon glyphicon-ok"> mark shows the listing is approved.</span></p>
+<p class="to-do"><span class="glyphicon glyphicon-check big-green"></span> A <span class="glyphicon glyphicon-camera"> shows the listing has pictures.</span></p>
+<p class="to-do"><span class="glyphicon glyphicon-check big-green"></span>  <%= image_tag ("/paypal.png"), :class => "icon" %> image shows that the seller has a verified paypal account.</span></p>
 </div>
 									</div>
 									<div class="col-md-8 listings-section phoneshow">

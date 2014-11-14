@@ -2179,9 +2179,13 @@ img.icon
 	margin:0;
 	border:0;
 }
-div.listings ul li span.glyphicon-ok 
+span.glyphicon-ok, .big-green
 {
 	color:green;
+}
+.big-green
+{
+	font-size:1.5em;
 }
 
 /******************media Queries***************/
