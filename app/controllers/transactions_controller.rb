@@ -23,7 +23,9 @@ class TransactionsController < ApplicationController
       :login => ENV['PAYPAL_UNAME'],
       :password => ENV['PAYPAL_PWD'],
       :signature => ENV['PAYPAL_SIGNATURE'],
-      :appid => ENV['PAYPAL_APPID'] )
+      :appid => ENV['PAYPAL_APPID'] 
+      
+      )
             
              recipients = [{:email => Listing.find(params[:l]).paypalemail,
                :amount => @listing.askprice,

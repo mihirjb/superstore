@@ -90,8 +90,13 @@ private
   
  def self.get_paypal_status(paypalemail, lid)
    require 'paypal-sdk-adaptiveaccounts'
-   @api = PayPal::SDK::AdaptiveAccounts::API.new( :device_ipaddress => "127.0.0.1" )
-
+   @api = PayPal::SDK::AdaptiveAccounts::API.new(
+     :mode      => "live",  # Set "live" for production
+     :login => ENV['PAYPAL_UNAME'],
+     :password => ENV['PAYPAL_PWD'],
+     :signature => ENV['PAYPAL_SIGNATURE'],
+     :appid => ENV['PAYPAL_APPID'],
+     :device_ipaddress => "127.0.0.1")
    # Build request object
    @get_verified_status = @api.build_get_verified_status({
      :emailAddress => paypalemail,

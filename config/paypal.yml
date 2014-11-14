@@ -28,10 +28,3 @@ production:
   <<: *default
   mode: live
   
-login: ENV['PAYPAL_UNAME']
-password: ENV['PAYPAL_PWD']
-signature: ENV['PAYPAL_SIGNATURE']
-appid: ENV['PAYPAL_APPID'] 
-  
-  
- 
