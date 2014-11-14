@@ -2186,11 +2186,23 @@ span.glyphicon-ok
 
 li.to-do
 {
-	list-style-type:square;
 	list-style-color:green;
 	line-height:1.5em;
 }
 
+li.to-do:before
+ {
+    content: '✔';   
+    margin-left: -1em; margin-right: .100em;
+ }
+
+ ul.to-do
+{
+   padding-left:20px;
+   text-indent:2px;
+   list-style: none;
+   list-style-position:outside;
+}
 /******************media Queries***************/
 
 
