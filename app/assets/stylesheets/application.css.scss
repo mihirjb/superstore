@@ -2179,17 +2179,15 @@ img.icon
 	margin:0;
 	border:0;
 }
-span.glyphicon-ok, .big-green
+span.glyphicon-ok
 {
 	color:green;
 }
-.big-green
-{
-	font-size:1.2em;
-}
 
-p.to-do
+li.to-do
 {
+	list-style-type:square;
+	list-style-color:green;
 	line-height:1.5em;
 }
 
