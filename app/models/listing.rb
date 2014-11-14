@@ -95,7 +95,7 @@ private
      :username => ENV['PAYPAL_UNAME'],
      :password => ENV['PAYPAL_PWD'],
      :signature => ENV['PAYPAL_SIGNATURE'],
-     :appid => ENV['PAYPAL_APPID'],
+     :app_id => ENV['PAYPAL_APPID'],
      :device_ipaddress => "127.0.0.1")
    # Build request object
    @get_verified_status = @api.build_get_verified_status({
