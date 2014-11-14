@@ -14,7 +14,8 @@
 			<span class="helper-block">Price in USD</span>
 			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address*" %>
 			<span class="helper-block">Paypal email will be kept private</span>
-			
+				<%= f.text_field :paypalfname, :class=> " required", :placeholder=>"Your First name in Paypal, required for verification*" %>
+				<%= f.text_field :paypallname, :class=> " required", :placeholder=>"Your Last name in Paypal, required for verification*" %>
 			
 		
 		

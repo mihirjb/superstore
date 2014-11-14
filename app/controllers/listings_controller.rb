@@ -55,7 +55,7 @@ class ListingsController < ApplicationController
     
     @listing = current_vendor.listings.find(params[:id])
      if @listing.update(listing_params())
-          @err = Listing.get_paypal_status(@listing.paypalemail,@listing.id)
+          @err = Listing.get_paypal_status(@listing.paypalemail,@listing.paypalfname,@listing.paypallname,@listing.id)
         redirect_to "/listings/#{@listing.id}", :notice => "Congratulations, Listing updated Successfully. #{@err}"
       else
         redirect_to :back, :notice => "Alas, Listing could not be updated."
@@ -72,7 +72,7 @@ class ListingsController < ApplicationController
   
     private 
     def listing_params
-     params.require(:listing).permit(:paypalstatus,:status, :terms, :phone_id, :headline, :description, :devicecondition, :askprice,:expirydate, :modified, :accessories, :country, :itemlocation, :shipinternationally, :paypalconfirmed, :returnsallowed, :returnpolicy, :paypalemail,:devicename, :deviceimei, :devicecarrier, :moddetails, :devicecolor,:devicestorage,:shippingdetails, assets_attributes:[:image_file_name, :image_file_size, :image_content_type, :image], comments_attributes: [:commentbody,:vendor_id])
+     params.require(:listing).permit(:paypalstatus,:status, :terms, :phone_id, :headline, :description, :devicecondition, :askprice,:expirydate, :modified, :accessories, :country, :itemlocation, :shipinternationally, :paypalconfirmed, :returnsallowed, :returnpolicy, :paypalemail,:paypalfname,:paypallname,:devicename, :deviceimei, :devicecarrier, :moddetails, :devicecolor,:devicestorage,:shippingdetails, assets_attributes:[:image_file_name, :image_file_size, :image_content_type, :image], comments_attributes: [:commentbody,:vendor_id])
     end
  
 end

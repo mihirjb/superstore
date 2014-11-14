@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214063731) do
+ActiveRecord::Schema.define(version: 20141114065332) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 20140214063731) do
     t.string   "terms"
     t.string   "moddetails"
     t.string   "paypalstatus"
+    t.string   "paypalfname"
+    t.string   "paypallname"
   end
 
   add_index "listings", ["id"], name: "index_listings_on_id"

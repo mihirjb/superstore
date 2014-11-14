@@ -88,7 +88,7 @@ private
   end
   
   
- def self.get_paypal_status(paypalemail, lid)
+ def self.get_paypal_status(paypalemail,paypalfirstname,paypallastname, lid)
    require 'paypal-sdk-adaptiveaccounts'
    @api = PayPal::SDK::AdaptiveAccounts::API.new(
      :mode      => "live",  # Set "live" for production
@@ -100,8 +100,8 @@ private
    # Build request object
    @get_verified_status = @api.build_get_verified_status({
      :emailAddress => paypalemail,
-     :firstName => "Mihir",
-     :lastName => "Buch",
+     :firstName => "paypalfirstname",
+     :lastName => "paypallastname",
      :matchCriteria => "NAME" })
 
    # Make API call & get response
@@ -109,7 +109,7 @@ private
 
    # Access Response
    if @get_verified_status_response.success?
-     Listing.find(lid).update_column("paypalstatus", "Verified")
+     Listing.find(lid).update_column("paypalstatus", @get_verified_status_response.accountStatus)
      @get_verified_status_response.accountStatus
      @get_verified_status_response.countryCode
      @get_verified_status_response.userInfo
