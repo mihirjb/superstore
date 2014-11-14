@@ -34,10 +34,10 @@
 										<%= image_tag ("/paypal.png"), :class => "icon" %>
 										<% end %>
 									<% if l.status == "Approved" %>
-									<span class="glyphicon glyphicon-ok success"></span>
+									<span class="glyphicon glyphicon-ok"></span>
 									<% end %>
 								<% if	!l.assets.first.nil? %>
-								<span class="glyphicon glyphicon-camera success"></span>
+								<span class="glyphicon glyphicon-camera"></span>
 								<% end %>
 									<% if l.paypalstatus == "VERIFIED" %>
 									<%= image_tag ("/paypal.png"), :class => "icon" %>
