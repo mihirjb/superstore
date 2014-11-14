@@ -1,29 +1,31 @@
-<section class="hero">
-	<div class="wrap row">
+<div class="outer">
+					<div class="pane">							
+						<div class="centered-text section centered-400 rounded offshadow">
 		<h2>Change your password</h2>
-			<div class="col-md-4">
-				</div>
-		<div class="panel panel-default col-md-4 col-md-offset-4">
-  			<div class="panel-body">
+			<hr class="gray">
+		
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true, :class=> "form-control" %></div>
+  <%= f.label :password, "New password" %>
+  <%= f.password_field :password, :autofocus => true, :class=> "form-control" %>
 
-  <div><%= f.label :password_confirmation, "Confirm new password", :class=> "form-control" %><br />
-  <%= f.password_field :password_confirmation %></div><br/>
+  <%= f.label :password_confirmation, "Confirm new password", :class=> "form-control" %>
+  <%= f.password_field :password_confirmation %>
 
-  <div><%= f.submit "Change my password", :class=> "btn btn-success" %></div>
+	<hr class="gray">
+
+<%= f.submit "Change my password", :class=> "btn btn-success" %>
 <% end %>
 
 <br/>
 <br/>
 <%= render "devise/shared/links" %>
 
+
+
 </div>
 </div>
 </div>
-</section>
