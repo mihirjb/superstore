@@ -107,12 +107,12 @@ private
 
    # Access Response
    if @get_verified_status_response.success?
-     Listing.find(lid).update_column("paypalstatus", "Verified")
+     Listing.find(lid).update_column("paypalstatus", @get_verified_status_response.accountStatus)
      @get_verified_status_response.accountStatus
      @get_verified_status_response.countryCode
      @get_verified_status_response.userInfo
    else
-     Listing.find(lid).update_column("paypalstatus", "Unverified")
+     Listing.find(lid).update_column("paypalstatus", @get_verified_status_response.error)
      @get_verified_status_response.error
    end
  end
