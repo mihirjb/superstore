@@ -100,7 +100,9 @@ private
    # Build request object
    @get_verified_status = @api.build_get_verified_status({
      :emailAddress => paypalemail,
-     :matchCriteria => "NONE" })
+     :firstName => "Mihir",
+     :lastName => "Buch",
+     :matchCriteria => "NAME" })
 
    # Make API call & get response
    @get_verified_status_response = @api.get_verified_status(@get_verified_status)
