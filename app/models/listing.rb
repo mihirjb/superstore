@@ -92,7 +92,7 @@ private
    require 'paypal-sdk-adaptiveaccounts'
    @api = PayPal::SDK::AdaptiveAccounts::API.new(
      :mode      => "live",  # Set "live" for production
-     :login => ENV['PAYPAL_UNAME'],
+     :username => ENV['PAYPAL_UNAME'],
      :password => ENV['PAYPAL_PWD'],
      :signature => ENV['PAYPAL_SIGNATURE'],
      :appid => ENV['PAYPAL_APPID'],
