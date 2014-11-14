@@ -8,10 +8,10 @@
   <%= devise_error_messages! %>
 
   <%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true, :class=> "form-control" %>
+  <%= f.email_field :email, :autofocus => true %>
 
 
-<%= f.submit "Send me reset password instructions", :class=> "btn btn-success" %>
+<%= f.submit "Send me reset password instructions", :class=> "btn redround" %>
 <% end %>
 <br/><br/>
 <%= render "devise/shared/links" %>
