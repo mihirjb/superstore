@@ -2079,7 +2079,13 @@ ul.phones
 	margin:20px 0px 60px;
 	padding:0px;
 }
-
+ul.phones li.col-md-4, ul.phones li.col-sm-4
+{
+	
+	list-style:none;
+	text-align:center;
+	
+}
 
 ul.phones li h3
 {
