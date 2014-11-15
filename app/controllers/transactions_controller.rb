@@ -37,8 +37,8 @@ class TransactionsController < ApplicationController
             
       purchase = gateway.setup_purchase(
         :action_type => "CREATE",
-        :return_url => url_for(:action => 'completetransaction', :only_path => false),
-        :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
+         :return_url => url_for(:action => 'failedtransaction', :only_path => false),
+          :cancel_url => url_for(:action => 'completetransaction', :only_path => false),
         :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
         :currency_code => "SGD",
         :receiver_list => recipients
@@ -84,8 +84,8 @@ class TransactionsController < ApplicationController
       
      
       response = gateway.setup_purchase(
-      :return_url => url_for(:action => 'completetransaction', :only_path => false),
-      :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
+      :return_url => url_for(:action => 'failedtransaction', :only_path => false),
+      :cancel_url => url_for(:action => 'completetransaction', :only_path => false),
       :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
       :currency_code => "SGD",
       :receiver_list => recipients
