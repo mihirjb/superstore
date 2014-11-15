@@ -23,6 +23,7 @@ class TransactionsController < ApplicationController
       :login => ENV['PAYPAL_UNAME'],
       :password => ENV['PAYPAL_PWD'],
       :signature => ENV['PAYPAL_SIGNATURE'],
+      :currency_code => "SGD",
       :appid => ENV['PAYPAL_APPID']
       
       )
@@ -40,6 +41,7 @@ class TransactionsController < ApplicationController
         :return_url => url_for(:action => 'completetransaction', :only_path => false),
         :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
         :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
+        :currency_code => "SGD",
         :receiver_list => recipients
       )
      
