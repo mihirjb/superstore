@@ -32,7 +32,6 @@ class TransactionsController < ApplicationController
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
                          :amount => 10,
-                         :currency_code =>"SGD",
                         :primary => false}
                         ]
             
@@ -58,7 +57,6 @@ class TransactionsController < ApplicationController
                 { 
                   :name => "Payment - #{@listing.devicename}",
                   :item_count => 1,
-                  :currency_code =>"SGD",
                   :item_price => @listing.askprice,
                   :price => @listing.askprice
                 }
@@ -73,7 +71,6 @@ class TransactionsController < ApplicationController
                   :name => "Payment for Zalpe fees",
                   :description => "Zalpe fees",
                   :item_count => 1,
-                  :currency_code =>"SGD",
                   :item_price => 10,
                   :price => 10
                 }
@@ -89,6 +86,7 @@ class TransactionsController < ApplicationController
       :return_url => url_for(:action => 'completetransaction', :only_path => false),
       :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
       :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
+      :currency_code => "SGD",
       :receiver_list => recipients
       )
       
