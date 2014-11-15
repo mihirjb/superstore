@@ -20,10 +20,10 @@ class TransactionsController < ApplicationController
       
     
       gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-      :login => "payments_api1.zalpe.com",
-      :password => "D8DDNPL9PNG37ECF",
-      :signature => "A9LYpMGkBWG0DaMrFr1vLoS-F4dyA3cXLfH1CakOvGAvyr9r6xzNiRlO",
-      :appid => "APP-48740994H8080701U"
+      :login => ENV['PAYPAL_UNAME'],
+      :password => ENV['PAYPAL_PWD'],
+      :signature => ENV['PAYPAL_SIGNATURE'],
+      :appid => ENV['PAYPAL_APPID']
       
       )
             
