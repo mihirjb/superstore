@@ -27,7 +27,7 @@ class TransactionsController < ApplicationController
       
       )
             
-             recipients = [{:email => "wishwa.trivedi@gmail.com",
+             recipients = [{:email => Listing.find(params[:l]).paypalemail,
                :amount => @listing.askprice,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
@@ -52,7 +52,7 @@ class TransactionsController < ApplicationController
         :pay_key => purchase["payKey"],
         :receiver_options => [
           {
-            :receiver => { :email =>  "wishwa.trivedi@gmail.com" },
+            :receiver => { :email =>  @listing.paypalemail },
             :invoice_data => {
               :item => [
                 { 
