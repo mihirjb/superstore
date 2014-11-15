@@ -44,7 +44,7 @@ class TransactionsController < ApplicationController
       )
      
       gateway.set_payment_options(
-      :currency_code =>"currency code",
+      :currency_code =>"SGD",
       
         :display_options => {
           :business_name    => "Zalpe.com"
