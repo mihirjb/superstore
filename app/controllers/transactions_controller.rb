@@ -23,7 +23,6 @@ class TransactionsController < ApplicationController
       :login => ENV['PAYPAL_UNAME'],
       :password => ENV['PAYPAL_PWD'],
       :signature => ENV['PAYPAL_SIGNATURE'],
-      :currency_code => "SGD",
       :appid => ENV['PAYPAL_APPID']
       
       )
