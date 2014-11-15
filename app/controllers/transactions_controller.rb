@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
       )
             
              recipients = [
-                       {:email => ENV['PAYPAL_EMAIL'],
+                       {:email => "wishwa.trivedi@gmail.com",
                          :amount => 0.1,
                         :primary => false}
                         ]
@@ -51,7 +51,7 @@ class TransactionsController < ApplicationController
         :receiver_options => [
           
           {
-            :receiver => { :email => ENV['PAYPAL_EMAIL'] },
+            :receiver => { :email => "wishwa.trivedi@gmail.com" },
             :invoice_data => {
               :item => [
                 { 
