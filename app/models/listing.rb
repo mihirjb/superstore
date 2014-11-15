@@ -118,6 +118,7 @@ private
    else
      @error = @get_verified_status_response.error
      Listing.find(lid).update_column("paypalstatus", "UNVERIFIED")
+     return @error
    end
  end
  
