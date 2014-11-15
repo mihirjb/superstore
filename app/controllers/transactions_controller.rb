@@ -23,8 +23,7 @@ class TransactionsController < ApplicationController
       :login => ENV['PAYPAL_UNAME'],
       :password => ENV['PAYPAL_PWD'],
       :signature => ENV['PAYPAL_SIGNATURE'],
-      :appid => ENV['PAYPAL_APPID'],
-      :currency_code =>"SGD"
+      :appid => ENV['PAYPAL_APPID']
       
       )
             
@@ -33,6 +32,7 @@ class TransactionsController < ApplicationController
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
                          :amount => 10,
+                         :currency_code =>"SGD",
                         :primary => false}
                         ]
             
@@ -58,6 +58,7 @@ class TransactionsController < ApplicationController
                 { 
                   :name => "Payment - #{@listing.devicename}",
                   :item_count => 1,
+                  :currency_code =>"SGD",
                   :item_price => @listing.askprice,
                   :price => @listing.askprice
                 }
@@ -72,6 +73,7 @@ class TransactionsController < ApplicationController
                   :name => "Payment for Zalpe fees",
                   :description => "Zalpe fees",
                   :item_count => 1,
+                  :currency_code =>"SGD",
                   :item_price => 10,
                   :price => 10
                 }
