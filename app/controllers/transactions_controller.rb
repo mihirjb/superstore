@@ -23,7 +23,8 @@ class TransactionsController < ApplicationController
       :login => ENV['PAYPAL_UNAME'],
       :password => ENV['PAYPAL_PWD'],
       :signature => ENV['PAYPAL_SIGNATURE'],
-      :appid => ENV['PAYPAL_APPID'] 
+      :appid => ENV['PAYPAL_APPID'],
+      :currency_code =>"SGD"
       
       )
             
@@ -44,7 +45,6 @@ class TransactionsController < ApplicationController
       )
      
       gateway.set_payment_options(
-      :currency_code =>"SGD",
       
         :display_options => {
           :business_name    => "Zalpe.com"
