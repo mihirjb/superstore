@@ -92,10 +92,10 @@ private
    require 'paypal-sdk-adaptiveaccounts'
    @api = PayPal::SDK::AdaptiveAccounts::API.new(
      :mode      => "live",  # Set "live" for production
-     :username => ENV['PAYPAL_UNAME'],
-     :password => ENV['PAYPAL_PW'],
-     :signature => ENV['PAYPAL_SIGNATURE'],
-     :app_id => ENV['PAYPAL_APPID'],
+     :username => "payments_api1.zalpe.com",
+     :password => "D8DDNPL9PNG37ECF",
+     :signature => "A9LYpMGkBWG0DaMrFr1vLoS-F4dyA3cXLfH1CakOvGAvyr9r6xzNiRlO",
+     :app_id => "APP-48740994H8080701U",
      :device_ipaddress => "127.0.0.1")
    # Build request object
    @get_verified_status = @api.build_get_verified_status({
