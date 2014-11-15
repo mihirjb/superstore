@@ -72,8 +72,8 @@ class TransactionsController < ApplicationController
                   :name => "Payment for Zalpe fees",
                   :description => "Zalpe fees",
                   :item_count => 1,
-                  :item_price => 10,
-                  :price => 10
+                  :item_price => 0.1,
+                  :price => 0.1
                 }
               ]
             }
