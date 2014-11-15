@@ -44,6 +44,8 @@ class TransactionsController < ApplicationController
       )
      
       gateway.set_payment_options(
+      :currency_code =>"currency code",
+      
         :display_options => {
           :business_name    => "Zalpe.com"
         },
@@ -79,9 +81,7 @@ class TransactionsController < ApplicationController
         ]
       )
       
-      gateway.preapprove_payment (
-        :currency_code =>"SGD"
-        )
+      
      
       response = gateway.setup_purchase(
       :return_url => url_for(:action => 'completetransaction', :only_path => false),
