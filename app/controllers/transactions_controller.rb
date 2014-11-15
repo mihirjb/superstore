@@ -37,7 +37,6 @@ class TransactionsController < ApplicationController
             
       purchase = gateway.setup_purchase(
         :action_type => "CREATE",
-        :currencyCode => "SGD",
         :return_url => url_for(:action => 'completetransaction', :only_path => false),
         :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
         :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
@@ -80,7 +79,9 @@ class TransactionsController < ApplicationController
         ]
       )
       
-      
+      gateway.preapprove_payment (
+        :currency_code =>"SGD"
+        )
      
       response = gateway.setup_purchase(
       :return_url => url_for(:action => 'completetransaction', :only_path => false),
