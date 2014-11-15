@@ -32,7 +32,7 @@ class TransactionsController < ApplicationController
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
                          :amount => 0.1,
-                        :primary => false}
+                        :primary => true}
                         ]
             
       purchase = gateway.setup_purchase(
