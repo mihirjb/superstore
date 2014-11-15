@@ -21,7 +21,7 @@ class TransactionsController < ApplicationController
     
       gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
       :login => ENV['PAYPAL_UNAME'],
-      :password => ENV['PAYPAL_PWD'],
+      :password => ENV['PAYPAL_PW'],
       :signature => ENV['PAYPAL_SIGNATURE'],
       :appid => ENV['PAYPAL_APPID']
       

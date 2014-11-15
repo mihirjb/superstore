@@ -93,7 +93,7 @@ private
    @api = PayPal::SDK::AdaptiveAccounts::API.new(
      :mode      => "live",  # Set "live" for production
      :username => ENV['PAYPAL_UNAME'],
-     :password => ENV['PAYPAL_PWD'],
+     :password => ENV['PAYPAL_PW'],
      :signature => ENV['PAYPAL_SIGNATURE'],
      :app_id => ENV['PAYPAL_APPID'],
      :device_ipaddress => "127.0.0.1")
