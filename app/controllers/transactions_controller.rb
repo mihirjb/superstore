@@ -31,7 +31,7 @@ class TransactionsController < ApplicationController
                :amount => @listing.askprice,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
-                         :amount => 10,
+                         :amount => 0.1,
                         :primary => false}
                         ]
             
