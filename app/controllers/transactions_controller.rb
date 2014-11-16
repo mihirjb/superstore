@@ -35,8 +35,8 @@ class TransactionsController < ApplicationController
                             :primary => false}
                             ]
              response = gateway.setup_purchase(
-               :return_url => url_for(:action => 'action', :only_path => false),
-               :cancel_url => url_for(:action => 'action', :only_path => false),
+               :return_url => url_for(:action => 'completetransaction', :only_path => false),
+               :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
                :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
                :receiver_list => recipients
              )
