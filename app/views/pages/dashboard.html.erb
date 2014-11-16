@@ -197,12 +197,12 @@
 				</td>
 					<td>
 						<%
-							if current_vendor.id == o.seller_id 
-							echo "Sold"
-						end
-							if current_vendor.id == o.vendor_id 
-							echo "Bought"
-						end %>
+							if current_vendor.id == o.seller_id %>
+							 "Sold"
+						<% end %>
+						<%	if current_vendor.id == o.vendor_id %>
+							 "Bought"
+						<% end %>
 						</td>
 					
 					<td>
