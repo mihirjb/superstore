@@ -188,6 +188,7 @@
 				<% @orders.each do |o| %>
 				
 				<tr>
+					<td>
 				<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
 				
 				</td>
@@ -233,21 +234,9 @@
 				<% @orders.each do |o| 
 				if current_vendor.id == o.seller_id %>
 				
-				<tr  class='<%=
-				@class = ""
-					if current_vendor.id == o.seller_id 
-					@class = "success"
-				end
-				
-					if current_vendor.id == o.vendor_id 
-					@class = "danger"
-				end
-			
-				
-				 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
-				
-				<td>
-				<%= o.devicename %> sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
+				<tr>
+					<td>
+				<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
 				
 				</td>
 				<td>
@@ -293,21 +282,9 @@
 					<% @orders.each do |o| 
 					if current_vendor.id == o.vendor_id %>
 
-					<tr  class='<%=
-					@class = ""
-						if current_vendor.id == o.seller_id 
-						@class = "success"
-					end
-
-						if current_vendor.id == o.vendor_id 
-						@class = "danger"
-					end
-
-
-					 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
-
-					<td>
-					<%= o.devicename %> sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
+					<tr>
+						<td>
+					<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
 
 					</td>
 					<td>
@@ -356,21 +333,9 @@
 			</tr>
 			<% @orders.each do |o| %>
 			
-			<tr  class='<%=
-			@class = ""
-				if current_vendor.id == o.seller_id 
-				@class = "success"
-			end
-			
-				if current_vendor.id == o.vendor_id 
-				@class = "danger"
-			end
-		
-			
-			 @class %>'><td><%= image_tag dlisting.assets.first.image.url('small') unless dlisting.assets.first.nil? %></td>
-			
+			<tr>
 			<td>
-			<%= o.devicename %> sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
+			<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
 			
 			</td>
 			<td>
