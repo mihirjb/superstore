@@ -198,9 +198,7 @@
 				end
 			
 				
-				 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
-				
-				<td>
+				 @class %>'>
 				<%= o.devicename %> sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
 				
 				</td>
