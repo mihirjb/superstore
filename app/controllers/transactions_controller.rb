@@ -27,23 +27,74 @@ class TransactionsController < ApplicationController
       
       )
             
-           recipients = [{:email => Listing.find(params[:l]).paypalemail,
-                            :amount => @listing.askprice,
-                            :primary => true},
-                           {:email => ENV['PAYPAL_EMAIL'],
-                            :amount => 0.1,
-                            :primary => false}
-                            ]
-             response = gateway.setup_purchase(
-               :return_url => url_for(:action => 'completetransaction', :only_path => false),
-               :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-               :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
-               :receiver_list => recipients
-             )
+             recipients = [{:email => Listing.find(params[:l]).paypalemail,
+               :amount => @listing.askprice,
+                        :primary => false},
+                       {:email => ENV['PAYPAL_EMAIL'],
+                         :amount => 0.1,
+                        :primary => false}
+                        ]
+            
+      purchase = gateway.setup_purchase(
+        :action_type => "CREATE",
+        :return_url => url_for(:action => 'completetransaction', :only_path => false),
+        :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
+        :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
+        :currency_code => "SGD",
+        :receiver_list => recipients
+      )
+     
+      gateway.set_payment_options(
+      
+        :display_options => {
+          :business_name    => "Zalpe.com"
+        },
+        :pay_key => purchase["payKey"],
+        :receiver_options => [
+          {
+            :receiver => { :email =>  @listing.paypalemail },
+            :invoice_data => {
+              :item => [
+                { 
+                  :name => "Payment - #{@listing.devicename}",
+                  :item_count => 1,
+                  :item_price => @listing.askprice,
+                  :price => @listing.askprice
+                }
+              ]
+            }
+          },
+          {
+            :receiver => { :email => ENV['PAYPAL_EMAIL'] },
+            :invoice_data => {
+              :item => [
+                { 
+                  :name => "Payment for Zalpe fees",
+                  :description => "Zalpe fees",
+                  :item_count => 1,
+                  :item_price => 0.1,
+                  :price => 0.1
+                }
+              ]
+            }
+          }
+        ]
+      )
+      
+      
+     
+      response = gateway.setup_purchase(
+      :return_url => url_for(:action => 'completetransaction', :only_path => false),
+      :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
+      :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
+      :currency_code => "SGD",
+      :receiver_list => recipients
+      )
+      
+     
 
-             # For redirecting the customer to the actual paypal site to finish the payment.
-             redirect_to (gateway.redirect_url_for(response["payKey"]))
-           
+      redirect_to(gateway.redirect_url_for(purchase["payKey"]))
+
       
       
       
