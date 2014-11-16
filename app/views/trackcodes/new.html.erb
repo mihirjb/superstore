@@ -1,10 +1,13 @@
-<section>
-	<div class="wrapper">
-		<div class="cushion">
+<div class="outer">
+	<div class="main">
+						<div class="centered-800 phoneindex rounded offshadow">
+							<div class="section-heading">
+								<h2 class="page-heading">Add Shipping or Meetup details</h2>
+								</div>
+
 		<%= form_for @trackcode, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 		
-			<div class="form-group">
-			<div class="input-group-lg">
+		
 				<h3>Tracking info</h3>
 			<%= f.hidden_field :order_id, :value => params[:id] %>
 			<%= f.text_field :shipping_company, :class=> "form-control", :placeholder=>"Courier company's name" %>
@@ -13,15 +16,13 @@
 			<%= f.text_field :code, :class=> "form-control", :placeholder=>"Tracking code" %>
 			<%= f.label :shipping_date, "Shipping Date" %>
 			 <%= f.date_select :shipping_date, { :start_year => Time.now.year , :end_year => Time.now.year,:default => Time.now.to_date, :prompt => true, :order => [:day, :month, :year]} %>
-			</div>
-			</div>
+		
 	
+<hr class="gray">
 
-
-		<div class="form-group">
 		<%= f.submit "Add", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>
 		<% end %>
-	</div>
 		
 	</div>
-</section>
+</div>
+</div>
