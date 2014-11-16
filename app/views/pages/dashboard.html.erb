@@ -187,19 +187,8 @@
 				</tr>
 				<% @orders.each do |o| %>
 				
-				<tr  class='<%=
-				@class = ""
-					if current_vendor.id == o.seller_id 
-					@class = "success"
-				end
-				
-					if current_vendor.id == o.vendor_id 
-					@class = "danger"
-				end
-			
-				
-				 @class %>'>
-				<%= o.devicename %> sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
+				<tr>
+				<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
 				
 				</td>
 				<td>
