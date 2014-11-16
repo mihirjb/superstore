@@ -2,13 +2,15 @@
 	<div class="main">
 						<div class="centered-800 phoneindex rounded offshadow">
 							<div class="section-heading">
-								<h2 class="page-heading">Tracking info for <%= @trackcode.order_id %></h2>
+								<h2 class="page-heading">Tracking info for Order number <%= @trackcode.order_id %></h2>
 								</div>
 	<table class="table table-bordered">
 		<tr><th>Shipping Company</th><th>Shipped from</th><th>Shipped to</th><th>Shipped on</th><th>Tracking Code</th></tr>
 		<tr><td><%=@trackcode.shipping_company%></td><td><%=@trackcode.shipping_city%></td><td><%=@trackcode.shippingto_city %></td><td><%=@trackcode.shipping_date %></td><td><%=@trackcode.code %></td></tr>
 	
 	</table>
+	<br/><br/>
+	<a href="/pages/dashboard"><- Back</a>
 	</div>
 	</div>
 </div>
