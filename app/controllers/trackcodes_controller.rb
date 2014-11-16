@@ -39,13 +39,7 @@ class TrackcodesController < ApplicationController
            end
          end
          
-         
-         def edit
-              @order = Order.find(params[:id])
-              @trackcode = Trackcode.find_by_order_id(@order.id)
-            end
-
-
+        
 
 
        private 

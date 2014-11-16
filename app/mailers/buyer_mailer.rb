@@ -13,7 +13,7 @@ class BuyerMailer < ActionMailer::Base
     @order = order
      @trackcode = trackcode
       @buyerprofile = Profile.find_by_vendor_id(order.vendor_id)
-      @buyer = Vednor.find(order.vendor_id)
+      @buyer = Vendor.find(order.vendor_id)
        mail(:to => "#{@buyer.email}", :subject => "Recipt for your order from Zalpe")
    end
   
