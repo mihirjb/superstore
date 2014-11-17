@@ -3,24 +3,12 @@
 	<section class="listings softshadow">
 <h2 class="content-heading">Most popular phones</h2>
 <ul class="row">
+	<% @mostviewedphones.each |mvp| %>
 	<li class="col-md-2 col-sm-4 col-xs-12">
-		<img src="../iphone6.png" alt="iphone 6" /><h4>iPhone 6</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
+		<%= image_tag mvp.image.url(:small) %>
+		<h4><%= mvp.modelname %></h4><a class="btn btn-custom btn-sm" href="/phones/<%= mvp.id %>">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=<%= mvp.id %>">Sell</a>
 	</li>
-	<li class="col-md-2 col-sm-4 col-xs-12">
-		<img src="../iphone5s.png" alt="iphone 5s" /><h4>iPhone 5S</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
-	</li>
-	<li class="col-md-2 col-sm-4 col-xs-12">
-		<img src="../iphone5.png" alt="iphone 5" /><h4>iPhone 5</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
-	</li>
-	<li class="col-md-2 col-sm-4 col-xs-12">
-		<img src="../iphone4s.png" alt="iphone 4s" /><h4>iPhone 4S</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
-	</li>
-	<li class="col-md-2 col-sm-4 col-xs-12">
-		<img src="../iphone4.png" alt="iphone 4" /><h4>iPhone 4</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
-	</li>
-	<li class="col-md-2 col-sm-4 col-xs-12">
-		<img src="../iphone3gs.png" alt="iphone 3gs" /><h4>iPhone 3GS</h4><a class="btn btn-custom btn-sm" href="/phones/1">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=1">Sell</a>
-	</li>
+	<% end %>
 	</ul>
 	</section>
 	<section class="listings offshadow tablets">

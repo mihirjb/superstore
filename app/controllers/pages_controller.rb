@@ -5,6 +5,8 @@ class PagesController < ApplicationController
  
   
   def home
+         @newlistedphones = Phone.find(:all, :order => "updated_at", :limit => 6)
+         @mostviewedphones = Phone.find(:all, :order => "impressions_count", :limit => 6)
          
   end
   
