@@ -17,7 +17,7 @@ class SessionsController < Devise::SessionsController
       end
      
     
-    session[:previous_url] || root_path
+      redirect_to request.referrer
   end
   
   
