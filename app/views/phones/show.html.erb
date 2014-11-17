@@ -1,8 +1,7 @@
 		<div class="outer">
 
 								<div class="centered-800 section rounded offshadow row">
-									<div id="sidebarWrap">
-									<div class="col-md-4 offshadow" id ="sidebar">
+									<div class="col-md-4 offshadow phoneshow">
 										<h2 class="listing-heading"><%= @phone.modelname%></h2>
 										<%= image_tag @phone.image.url(:medium) %>
 										<br/><br/>
@@ -31,7 +30,6 @@
 </ul>
 </div>
 									</div>
-</div>
 									<div class="col-md-8 listings-section phoneshow">
 										<% if @listings.count > 0 %>
 
