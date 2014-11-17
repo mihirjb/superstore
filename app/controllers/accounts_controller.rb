@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
      
       @account = Account.create(account_params)
        if @account.save 
-         Vendor.find_by_account_id(@account.id)
+         @vendor = Vendor.find_by_account_id(@account.id)
          sign_in @vendor         
           # sign_in(resource)
          
