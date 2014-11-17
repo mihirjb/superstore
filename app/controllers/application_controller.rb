@@ -36,7 +36,21 @@ class ApplicationController < ActionController::Base
 
   def set_return_path
     unless devise_controller? || request.xhr? || !request.get?
-      session["user_return_to"] = request.url
+       if (request.fullpath != "/vendors/sign_in" &&
+           request.fullpath != "/vendors/sign_up" &&
+           request.fullpath != "/vendors/password" &&
+           request.fullpath != "/vendors/sign_out" &&
+           request.fullpath != "/admins/sign_in" &&
+           request.fullpath != "/admins/sign_up" &&
+           request.fullpath != "/admins/password" &&
+           request.fullpath != "/admins/sign_out" &&
+           request.fullpath != "/accounts" &&
+           request.fullpath != "/accounts/new" &&
+           request.fullpath != "/accounts/create" &&
+           request.fullpath != "/accounts/edit")
+           
+           session["user_return_to"] = request.url
+        end
     end
   end
   
