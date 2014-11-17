@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
          @vendor = Vendor.find_by_account_id(@account.id)
          sign_in @vendor         
           # sign_in(resource)
-         
+         redirect_to  session["user_return_to"] || root_url 
           # redirect_to new_vendor_session_path, :notice => "Signed up successfully, now you may login."
        else
          render action: 'new' , :notice => "Sign up failed"
