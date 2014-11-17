@@ -218,6 +218,101 @@
 				
 				</table>			
 		</div>		
+		
+			<div class="table-responsive" id="soldorders">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all phones you sold.</h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Title</th>
+					<th>Shipping Address</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+				<% @orders.each do |o| %>
+			<%	if current_vendor.id == o.seller_id %>
+				<tr>
+					<td>
+				<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
+				
+				</td>
+				<td>
+					<%=o.shipping_address%>
+				</td>
+					<td>
+						<%
+							if current_vendor.id == o.seller_id %>
+							 Sold
+						<% end %>
+						<%	if current_vendor.id == o.vendor_id %>
+							 Bought
+						<% end %>
+						</td>
+					
+					<td>
+						
+							<% if Trackcode.find_by_order_id(o.id) %>
+								<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+								<% else %>
+							<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
+							<% end %>
+						
+					</td></tr>
+				<% end %>
+				<% end %>
+				
+				</table>			
+		</div>
+		
+			<div class="table-responsive" id="boughtorders">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all phones you bought.</h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Title</th>
+					<th>Shipping Address</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+				<% @orders.each do |o| %>
+			<%	if current_vendor.id == o.vendor_id %>
+				<tr>
+					<td>
+				<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
+				
+				</td>
+				<td>
+					<%=o.shipping_address%>
+				</td>
+					<td>
+						<%
+							if current_vendor.id == o.seller_id %>
+							 Sold
+						<% end %>
+						<%	if current_vendor.id == o.vendor_id %>
+							 Bought
+						<% end %>
+						</td>
+					
+					<td>
+						
+							<% if Trackcode.find_by_order_id(o.id) %>
+								<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+								<% else %>
+							<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
+							<% end %>
+						
+					</td></tr>
+				<% end %>
+				<% end %>
+				
+				</table>			
+		</div>
+		
+		
+		
+		
+		
 	
 	</div>
 	
