@@ -112,9 +112,8 @@ private
      Listing.find(lid).update_column("paypalstatus", @get_verified_status_response.accountStatus)
      @get_verified_status_response.accountStatus
      @get_verified_status_response.countryCode
-     @get_verified_status_response.userInfo
-     @get_verified_status_response.accountStatus
-     
+     @userinfo = @get_verified_status_response.userInfo
+     return @userinfo
    else
      @error = @get_verified_status_response.error
      Listing.find(lid).update_column("paypalstatus", "UNVERIFIED")
