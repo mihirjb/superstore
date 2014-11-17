@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   set_current_tenant_by_subdomain(:account, :subdomain)
   after_filter :store_location
+  before_filter :set_return_path 
+  
   
   def store_location
      # store last url - this is needed for post-login redirect to whatever the user last visited.
@@ -27,6 +29,15 @@ class ApplicationController < ActionController::Base
  
   def not_found
     raise ActionController::RoutingError.new('Not Found')
+  end
+  
+
+  
+
+  def set_return_path
+    unless devise_controller? || request.xhr? || !request.get?
+      session["user_return_to"] = request.url
+    end
   end
   
   

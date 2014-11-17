@@ -17,10 +17,10 @@ class SessionsController < Devise::SessionsController
       end
      
     
-      redirect_to request.referrer
+      session["user_return_to"] || root_url 
   end
   
-  
+
  
   def after_sign_out_path_for(vendor)
    root_url()  
