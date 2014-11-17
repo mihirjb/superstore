@@ -5,14 +5,7 @@ class PagesController < ApplicationController
  
   
   def home
-    
-     @account = Account.new
-     @owner = @account.build_owner
-     @profile = @owner.build_profile
-     @vendor  = Vendor.new
-    
-       @phones = Phone.all.limit(51)
-       
+         
   end
   
   
@@ -28,9 +21,7 @@ class PagesController < ApplicationController
   end
   
   def dashboard
-    
-    
-    
+      
     
     @vendor = current_vendor
      @listings = Listing.where('vendor_id = ?',@vendor.id).limit(50)

@@ -9,7 +9,7 @@
 <form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST">
 	<input  class="form-control"name="address" type="text" size="50" value="<%= @address %>">
 	<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
-	<input class="btn redround" type="Submit" value="Buy now!">
+	<input class="btn redround" type="Submit" value="Pay with paypal now!">
 	
 	</form>
 	
@@ -20,7 +20,7 @@
 	<form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST">
 		<input name="address" type="text" size="50" placeholder="Enter your full shipping address here (Address line1, Address line 2 , City, State, Pin code, Country)!">
 		<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
-		<input class="btn redround" type="Submit" value="Buy now!">
+		<input class="btn redround" type="Submit" value="Pay with paypal now!">
 
 		</form>
 		
