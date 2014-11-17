@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117081925) do
+ActiveRecord::Schema.define(version: 20141117084149) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 20141117081925) do
     t.string   "paypalstatus"
     t.string   "paypalfname"
     t.string   "paypallname"
-    t.string   "impressions_count"
   end
 
   add_index "listings", ["id"], name: "index_listings_on_id"
@@ -149,7 +148,6 @@ ActiveRecord::Schema.define(version: 20141117081925) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "market"
-    t.string   "impressions_count"
   end
 
   add_index "phones", ["carrier"], name: "index_phones_on_carrier"
