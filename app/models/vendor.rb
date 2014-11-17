@@ -31,7 +31,7 @@ class Vendor < ActiveRecord::Base
          acts_as_voter    
          
          has_many :listings, :dependent =>:destroy
-         has_one :profile
+         has_one :profile, :dependent =>:destroy
          accepts_nested_attributes_for :profile
          
          

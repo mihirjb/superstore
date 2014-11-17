@@ -11,7 +11,7 @@
 class Account < ActiveRecord::Base
   has_one :owner, :class_name => "Vendor"
 
-   has_many :vendors
+   has_many :vendors, :dependent =>:destroy
 
    RESTRICTED_SUBDOMAINS = %w["www" "api" "help" "info" "admin" "support" "faq" "home" "about" "contact"]
    validates_presence_of :subdomain
