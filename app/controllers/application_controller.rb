@@ -7,24 +7,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_return_path 
   
   
-  def store_location
-     # store last url - this is needed for post-login redirect to whatever the user last visited.
-     if (request.fullpath != "/vendors/sign_in" &&
-         request.fullpath != "/vendors/sign_up" &&
-         request.fullpath != "/vendors/password" &&
-         request.fullpath != "/vendors/sign_out" &&
-         request.fullpath != "/admins/sign_in" &&
-         request.fullpath != "/admins/sign_up" &&
-         request.fullpath != "/admins/password" &&
-         request.fullpath != "/admins/sign_out" &&
-         request.fullpath != "/accounts" &&
-         request.fullpath != "/accounts/new" &&
-         request.fullpath != "/accounts/create" &&
-         request.fullpath != "/accounts/edit" &&
-         !request.xhr?) # don't store ajax calls
-       session[:previous_url] = request.fullpath 
-     end
-   end
   
  
   def not_found

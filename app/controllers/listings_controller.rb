@@ -20,8 +20,8 @@ class ListingsController < ApplicationController
     
     @listing = current_vendor.listings.create(listing_params())
     if @listing.save
-      @ui = Listing.get_paypal_status(@listing.paypalemail,@listing.paypalfname,@listing.paypallname,@listing.id)
-      redirect_to dashboard_url, :notice => "Congratulations, Listing created Successfully. #{@ui.accountType}"
+      Listing.get_paypal_status(@listing.paypalemail,@listing.paypalfname,@listing.paypallname,@listing.id)
+      redirect_to dashboard_url, :notice => "Congratulations, Listing created Successfully."
     else
      redirect_to :back, :notice => "Alas your listing could not be saved as there were errors."
     end
@@ -55,8 +55,8 @@ class ListingsController < ApplicationController
     
     @listing = current_vendor.listings.find(params[:id])
      if @listing.update(listing_params())
-       @ui = Listing.get_paypal_status(@listing.paypalemail,@listing.paypalfname,@listing.paypallname,@listing.id)
-        redirect_to "/listings/#{@listing.id}", :notice => "Congratulations, Listing updated Successfully. #{@ui.accountType}"
+       Listing.get_paypal_status(@listing.paypalemail,@listing.paypalfname,@listing.paypallname,@listing.id)
+        redirect_to "/listings/#{@listing.id}", :notice => "Congratulations, Listing updated Successfully."
       else
         redirect_to :back, :notice => "Alas, Listing could not be updated."
       end

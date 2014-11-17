@@ -10,7 +10,11 @@ class AccountsController < ApplicationController
      
       @account = Account.create(account_params)
        if @account.save 
-         sign_in(:vendor, Vendor.find_by_account_id(@account.id))
+         Vendor.find_by_account_id(@account.id)
+         sign_in @vendor         
+          # sign_in(resource)
+         
+          # redirect_to new_vendor_session_path, :notice => "Signed up successfully, now you may login."
        else
          render action: 'new' , :notice => "Sign up failed"
        end
