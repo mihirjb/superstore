@@ -5,8 +5,8 @@ class PagesController < ApplicationController
  
   
   def home
-         @newlistedphones = Phone.where("updated_at is not null")order.("updated_at DESC").limit(6)
-         @mostviewedphones = Phone.where("impressions_count is not null")order.("impressions_count DESC").limit(6)
+         @newlistedphones = Phone.where("updated_at is not null").order.("updated_at DESC").limit(6)
+         @mostviewedphones = Phone.where("impressions_count is not null").order.("impressions_count DESC").limit(6)
          
   end
   
