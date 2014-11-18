@@ -65,12 +65,9 @@ class ListingsController < ApplicationController
   def destroy
     
     @listing = Listing.find(params[:id]).destroy
-  end
+    redirect_to :back, :notice => "Listing has been removed successfully."
+    end
   
-  
-  def deactivate
-     @listing = Listing.find(params[:id]).update_column("status", "Deactivate")
-   end
 
   
   
