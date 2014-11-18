@@ -1,6 +1,28 @@
 	<div class="outer">
 
 							<div class="centered-800 section rounded row">
+								<div class="col-md-12 col-sm-12 col-xs-12 phoneshow">
+									
+									<% @profil = Profile.find_by_vendor_id(current_vendor.id)  %>
+
+
+									<%=image_tag @profil.avatar.url(:mini), :class => "main-avatar small-img" %>
+
+
+									<div class="useful-links pull-right"><%= link_to "Edit Profile", "/profiles/#{@profil.id}/edit" %> <span class="glyphicon glyphicon-asterisk"></span>
+									<%= link_to "Sell", "/pages/sell" %> <span class="glyphicon glyphicon-asterisk"></span>
+									<%= link_to "Buy", "/pages/buy" %>
+									</div>
+
+									<% if  @profil %>
+									<% else %>
+									<%= link_to "Complete your Profile", new_profile_path %>
+									<%end %>
+									
+									
+									
+								</div>
+								
 	<div class="col-md-8 phoneshow">
 						
 			
@@ -350,25 +372,6 @@
 	
 		<div class="col-md-4 phoneshow yellowtop">
 
-
-<% @profil = Profile.find_by_vendor_id(current_vendor.id)  %>
-
-
-<%=image_tag @profil.avatar.url(:medium), :class => "main-avatar" %>
-
-<hr class="gray">
-
-<div class="useful-links"><%= link_to "Edit Profile", "/profiles/#{@profil.id}/edit" %> <span class="glyphicon glyphicon-asterisk"></span>
-<%= link_to "Sell", "/pages/sell" %> <span class="glyphicon glyphicon-asterisk"></span>
-<%= link_to "Buy", "/pages/buy" %>
-</div>
-
-<% if  @profil %>
-<% else %>
-<%= link_to "Complete your Profile", new_profile_path %>
-<%end %>
-
-<hr class="gray">
 <h4>Listings</h4>
 <ul class="nav" id="myTab">
 <li class="active"><a href="#listings" id="listingbtn">All Listings</a></li>
