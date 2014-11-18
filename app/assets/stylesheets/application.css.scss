@@ -1878,7 +1878,7 @@ ul.nav
 }
 ul.nav li a
 {
-	padding:5px 0px;
+	padding:5px 20px;
 	font-weight:bold;
 }
 
@@ -1972,7 +1972,7 @@ p.comment-body
 div img.main-avatar
 {
 	width:60px;
-	margin:10px auto;
+	margin:10px;
 }
 
 ul.list
@@ -2208,6 +2208,13 @@ li.to-do:before
    list-style: none;
    list-style-position:outside;
 }
+
+div.useful-links
+{
+	padding:10px;
+}
+
+
 /******************media Queries***************/
 
 
