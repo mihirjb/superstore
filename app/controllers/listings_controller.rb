@@ -67,6 +67,10 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id]).destroy
   end
   
+  
+  def deactivate
+     @listing = Listing.find(params[:id]).update_column("status", "Deactivate")
+   end
 
   
   

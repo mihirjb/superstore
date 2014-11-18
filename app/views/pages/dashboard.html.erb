@@ -47,7 +47,8 @@
 						<%= dlisting.status %>
 						</td>
 					
-					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><a href="/listings/<%= dlisting.id%>" action="delete" ><span class="glyphicon glyphicon-remove"></span></a></td></tr>
+					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
 				<% end %>
 				</table>			
 		</div>
@@ -86,7 +87,8 @@
 					<%= dlisting.status %>
 					</td>
 				
-				<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><a href="/listings/<%= dlisting.id%>" action="delete" ><span class="glyphicon glyphicon-remove"></span></a></td></tr>
+				<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
 			<% end %>
 			<%end%>			
 			
@@ -125,7 +127,8 @@
 						<%= dlisting.status %>
 						</td>
 
-					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><a href="/listings/<%= dlisting.id%>" action="delete" ><span class="glyphicon glyphicon-remove"></span></a></td></tr>
+					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
 				<% end %>
 				<%end%>			
 
@@ -166,7 +169,8 @@
 						<%= dlisting.status %>
 						</td>
 
-					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><a href="/listings/<%= dlisting.id%>" action="delete" ><span class="glyphicon glyphicon-remove"></span></a></td></tr>
+					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
 				<% end %>
 				<%end%>			
 
