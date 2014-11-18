@@ -7,11 +7,13 @@
 
 
 									<%=image_tag @profil.avatar.url(:mini), :class => "main-avatar small-img" %>
+									<!--->
 									<ul class="nav cushion">
 											<li><h4><%=  Account.find(current_vendor.id).subdomain  %></h4></li>
 											<li>Member Since <%=current_vendor.created_at.to_date() %></li>
 											<li>From <%= @profile.country unless @profile.nil? %></li>
 </ul>
+-->
 									<div class="useful-links pull-right"><%= link_to "Edit Profile", "/profiles/#{@profil.id}/edit" %> <span class="glyphicon glyphicon-asterisk"></span>
 									<%= link_to "Sell", "/pages/sell" %> <span class="glyphicon glyphicon-asterisk"></span>
 									<%= link_to "Buy", "/pages/buy" %>
