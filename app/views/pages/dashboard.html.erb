@@ -313,6 +313,37 @@
 				</table>			
 		</div>
 		
+			<div class="table-responsive" id="sellerreview">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here is all the feedback you got.
+				
+				<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
+				<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
+
+
+				</span>
+				
+				</h3>
+			<hr class="gray">
+				<table class="table table-condensed">
+					<tr class="active">
+						<th>Display picture</th>
+						<th>Review</th>
+					
+					</tr>					
+				<% @feedbacks.each do |dfeedback| %>
+			<tr>
+				<% cache dfeedback do %>
+				<td><%= image_tag Profile.find_by_vendor_id(dfeedback.author_id).avatar.url('thumb')  %></td>
+				<td><%= dfeedback.reviewbody %></td>
+				<% end %>
+				</tr>
+				<% end %>
+				
+				</table>
+		</div>
+		
+		
+		
 		
 		
 		
