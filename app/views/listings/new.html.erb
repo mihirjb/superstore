@@ -96,7 +96,7 @@
 								<br/>
 								<%=f.label:devicecarrier, "Service Provider" %>
 
-								<%= f.select :devicecarrier , [['Unlocked','Unlocked'] ['SingTel','SingTel'] ['Starhub','Starhub'] ['M1','M1'] ['Others','Others']],  :autofocus => true%>
+								<%= f.select :devicecarrier , [['Unlocked','Unlocked'], ['SingTel','SingTel'], ['Starhub','Starhub'], ['M1','M1'], ['Others','Others']],  :autofocus => true%>
 								<br/>
 								<%= f.hidden_field :phone_id, :value=> params[:pid] %>
 								<%= f.text_field :deviceimei, :class=> " required", :placeholder=>"IMEI/ESN/MEID number*" %>
