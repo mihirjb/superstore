@@ -93,7 +93,11 @@
 
 								<h3>Device Details</h3>
 								<%= f.text_field :devicename,  :value=> Phone.find(params[:pid]).modelname, :readonly => true %>
-								<%= f.text_field :devicecarrier,  :value=>Phone.find(params[:pid]).carrier, :readonly => true  %>
+								<br/>
+								<%=f.label:devicecarrier, "Service Provider" %>
+
+								<%= f.select :devicecarrier , [['Unlocked','Unlocked'] ['SingTel','SingTel'] ['Starhub','Starhub'] ['M1','M1'] ['Others','Others']],  :autofocus => true%>
+								<br/>
 								<%= f.hidden_field :phone_id, :value=> params[:pid] %>
 								<%= f.text_field :deviceimei, :class=> " required", :placeholder=>"IMEI/ESN/MEID number*" %>
 								<span class="helper-block">Will be kept private</span><br/><br/>
