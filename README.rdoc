@@ -12,7 +12,6 @@ Now
 * Seller reviews
 * Sharing capacity after new listing
 * Comments will have image upload
-* Separate Carrier from phones
 * Profile complete meter
 
 
@@ -22,7 +21,7 @@ Later
 * facebook and twitter connect for credibility score
 * Detailed specs table.
 * Multi country and multi currency.
-* Photos should be updated separately
+* Photos should be updated separately and with jquery
 * Possibly accepting COD.
 * Reviews for phone.
 * Phone price estimator 
