@@ -8,18 +8,24 @@ Things yet to be covered:
 General
 
 Now
+* Buyer reviews
+* Seller reviews
+* Sharing capacity after new listing
+* Comments will have image upload
+* Separate Carrier from phones
+* Profile complete meter
 
 
 
 
 Later 
-* facebook and twitter conenect for credibility score
+* facebook and twitter connect for credibility score
 * Detailed specs table.
 * Multi country and multi currency.
-* Photos should be updated seperately
+* Photos should be updated separately
 * Possibly accepting COD.
 * Reviews for phone.
-* buyer reviews
+* Phone price estimator 
 
 
 
