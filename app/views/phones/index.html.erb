@@ -13,7 +13,7 @@
 	<%= image_tag l.image.url(:thumb) %>
 
 		<div class="main-page-img"><%= image_tag @imgurl %></div>
-	<h3><%= link_to l.modelname, "/phones/#{l.id}" %> (<span class="carrier"><%=l.carrier %>)</h3>
+	<h3><%= link_to l.modelname, "/phones/#{l.id}" %></h3>
 	<p></span>
 <% if	@list.first.nil? %>
 <span class="price"><%= @list.count %> Listings.</span></p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117084516) do
+ActiveRecord::Schema.define(version: 20141119054624) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -141,18 +141,15 @@ ActiveRecord::Schema.define(version: 20141117084516) do
 
   create_table "phones", force: true do |t|
     t.string   "modelname"
-    t.string   "carrier"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "market"
     t.integer  "impressions_count"
   end
 
-  add_index "phones", ["carrier"], name: "index_phones_on_carrier"
   add_index "phones", ["modelname"], name: "index_phones_on_modelname"
 
   create_table "profiles", force: true do |t|
