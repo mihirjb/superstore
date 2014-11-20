@@ -13,16 +13,15 @@
 									<div class="useful-links pull-right"><%= link_to "Edit Profile", "/profiles/#{@profil.id}/edit" %> <span class="glyphicon glyphicon-asterisk"></span>
 									<%= link_to "Sell", "/pages/sell" %> <span class="glyphicon glyphicon-asterisk"></span>
 									<%= link_to "Buy", "/pages/buy" %>
-									</div>
 
 									<% if  @profil %>
 									<% else %>
 									<%= link_to "Complete your Profile", new_profile_path %>
 									<%end %>
-									
+									</div>
 									<a href="#divForm" id="btnForm" class="fancybox">Load Form</a>
 
-									<div id="divForm">
+									<div id="divForm" style="width:200px;height:150px">
 									    <a class="twitter-share-button"
 										  href="https://twitter.com/share">
 										Tweet
@@ -38,9 +37,7 @@
 									    });
 									</script>
 									
-									
-							</div>
-									
+																		
 								</div>
 								
 	<div class="col-md-8 phoneshow">
