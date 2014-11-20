@@ -21,6 +21,10 @@
 
 $(document).ready(function() {
 	
+	$(function() {
+    $( "#dialog" ).dialog();
+  });
+	
 	$("#orders").hide("slow");
 	  $("#reviews").hide("slow");
 	  $("#listings").show("slow");
