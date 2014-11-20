@@ -1544,6 +1544,8 @@ section#mission
   background-color: #3e3e3e;
   border: 1px solid #000;
  color:#fff;
+	  -webkit-box-shadow: inset 0 -2px #222;
+	  box-shadow: inset 0 -2px #222;
 }
 .btn-custom:hover {
   background: #000;
@@ -1562,6 +1564,9 @@ section#mission
 	background: radial-gradient(ellipse at 50% 100%, red 0%, #ca0202 70%);
 	border-color:#ca0202;
 	color:#fff;
+	cursor: pointer;
+	  -webkit-box-shadow: inset 0 -2px #ca0202;
+	  box-shadow: inset 0 -2px #ca0202;
 }
 
 
@@ -2779,8 +2784,8 @@ div.useful-links
 body .btn
 {
 	cursor: pointer;
-	  -webkit-box-shadow: inset 0 -2px #b53224;
-	  box-shadow: inset 0 -2px #b53224;
+	  -webkit-box-shadow: inset 0 -2px #222;
+	  box-shadow: inset 0 -2px #222;
 }
 /******************media Queries***************/
 
