@@ -20,8 +20,10 @@
 									<%= link_to "Complete your Profile", new_profile_path %>
 									<%end %>
 									
-									<div id="dialog" title="Basic dialog">
-									  	<a class="twitter-share-button"
+									<a href="#divForm" id="btnForm" class="fancybox">Load Form</a>
+
+									<div id="divForm" style="display:none">
+									    <a class="twitter-share-button"
 										  href="https://twitter.com/share">
 										Tweet
 										</a>
@@ -29,6 +31,15 @@
 										window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
 										</script>
 									</div>
+
+									<script type="text/javascript">
+									    $(document).ready(function() {
+									        $("#btnForm").fancybox().trigger('click');
+									    });
+									</script>
+									
+									
+							
 									
 								</div>
 								
@@ -410,15 +421,3 @@
 </div>			
 	</div>		
 	</div>
-	<script>
-	  $(function() {
-	    $( "#dialog-message" ).dialog({
-	      modal: true,
-	      buttons: {
-	        Ok: function() {
-	          $( this ).dialog( "close" );
-	        }
-	      }
-	    });
-	  });
-	  </script>

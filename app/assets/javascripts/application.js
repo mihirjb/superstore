@@ -20,6 +20,8 @@
 //= require_tree .
 
 $(document).ready(function() {
+	$("#social_share_box").fancybox().trigger('click');
+    
 	
 	$("#orders").hide("slow");
 	  $("#reviews").hide("slow");
