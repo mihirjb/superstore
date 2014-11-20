@@ -410,3 +410,15 @@
 </div>			
 	</div>		
 	</div>
+	<script>
+	  $(function() {
+	    $( "#dialog-message" ).dialog({
+	      modal: true,
+	      buttons: {
+	        Ok: function() {
+	          $( this ).dialog( "close" );
+	        }
+	      }
+	    });
+	  });
+	  </script>
