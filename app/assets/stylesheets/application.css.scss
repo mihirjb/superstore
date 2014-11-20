@@ -1510,7 +1510,7 @@ input[type="radio"]:checked:after {
 section.search
 {
 	min-height:500px;
-	background:url('../clear-dark.png'),url('../hero.jpg') no-repeat;
+	background:url('../clear-dark.png'),url('../hero.jpg') center center fixed no-repeat;
 	-webkit-background-size: cover;
 	    -moz-background-size: cover;
 	    -o-background-size: cover;
