@@ -9,7 +9,7 @@
 					
 					<a href="/listings/<%=l.id%>"><h4><%= l.headline %></h4></a>
 					<p><span class="storage nowrap"><%=l.devicestorage %></span> storage capacity, <span class="storage nowrap"><%=l.devicecolor %></span> color and in <span class="condition nowrap"><%= l.devicecondition%></span> condition.</p>
-				<p><span class="storage nowrap"><%=l.itemlocation %></span></p>
+				<p>Located in <span class="storage nowrap"><%=l.itemlocation %></span></p>
 				<p>Listed by <span class="seller_info nowrap"><%= Profile.find_by_vendor_id(l.vendor_id).displayname%></span></p>
 					<p><% if l.paypalstatus == "Verified" %>
 					<%= image_tag ("/paypal.png"), :class => "icon" %>
@@ -35,9 +35,11 @@
 				
 				</div>
 				<div class="pricing-btn col-md-3 col-sm-3 col-xs-12">
+					
+					<a href="/transactions/initiatetransaction?l=<%=l.id%>" class="btn  green-sea-flat-button">Quick Buy - $<%= l.askprice.to_i + 10 %></a>
+					
 <a href="/listings/<%=l.id%>" class="btn midnight-blue-flat-button">View Listing</a>
-<br/>
-<a href="/transactions/initiatetransaction?l=<%=l.id%>" class="btn btn-lg green-sea-flat-button">$<%= l.askprice.to_i + 10 %></a>
+
 
 </div>
 
