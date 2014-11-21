@@ -6,7 +6,7 @@
 	<% @mostviewedphones.each do  |mvp| %>
 	<li class="col-md-2 col-sm-4 col-xs-12">
 		<%= image_tag mvp.image.url(:thumb) %>
-		<h4><%= mvp.modelname %></h4><a class="btn btn-custom btn-sm" href="/phones/<%= mvp.id %>">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=<%= mvp.id %>">Sell</a>
+		<h4><%= mvp.modelname %></h4><a class="btn btn-custom btn-sm peter-river-flat-button" href="/phones/<%= mvp.id %>">Buy</a> <a class="btn btn-danger btn-sm btn-hero" href="/listings/new?pid=<%= mvp.id %>">Sell</a>
 	</li>
 	<% end %>
 	</ul>
