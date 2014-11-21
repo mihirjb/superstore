@@ -18,7 +18,15 @@ class Comment < ActiveRecord::Base
   
   validates :commentbody, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
   validates :commentbody, :length => {:maximum => 140}
-  
+  has_attached_file :picture, styles: {
+      mini: '50x50>',
+     thumb: '100x100>',
+     square: '200x200#',
+     medium: '300x300>'
+   }
+
+   # Validate the attached image is image/jpg, image/png, etc
+   validates_attachment_content_type :picture, :content_type => %w(image/jpeg image/jpg image/png)
   
   
  private

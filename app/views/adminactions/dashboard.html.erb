@@ -68,7 +68,10 @@
 
 
 					<tr><td><a href="/comments/<%=l.id %>"><%=l.id%></a></td>
-				<td><%=l.commentbody %></td>
+				<td><%=l.commentbody %>
+					<br/>
+					<a class="fancybox" href="<%= l.picture.url('original')%>" rel="group"><%= image_tag l.picture.url('mini') %></a>
+					</td>
 				<td><%= l.listing_id %></td>
 				
 					

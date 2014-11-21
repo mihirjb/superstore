@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119054624) do
+ActiveRecord::Schema.define(version: 20141121085659) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(version: 20141119054624) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "impressions", force: true do |t|
