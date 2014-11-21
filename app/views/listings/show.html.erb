@@ -138,7 +138,7 @@
 													<div class="form-group">
 														<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
 														
-															<%= f.label :picture, "Upload any additional picture" %><%= f.file_field :picture, :class => "btn btn-success" %><br/>
+															<%= f.label :picture, "Upload any additional picture" %><%= f.file_field :picture %><br/>
 													</div>  
 														<%= f.hidden_field :listing_id, :value => @listing.id %>
 														<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
@@ -175,7 +175,7 @@
 														<%= form_for @comment, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 												<div class="form-group">
 													<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
-													<%= f.label :picture, "Upload any additional picture" %><%= f.file_field :picture, :class => "btn btn-success" %><br/>
+													<%= f.label :picture, "Upload any additional picture" %><%= f.file_field :picture %><br/>
 												</div>
 												<%= f.hidden_field :listing_id, :value => @listing.id %>
 												<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
