@@ -165,7 +165,9 @@
 
 													<%= render partial: 'listings/comments' %>
 												<% end %>
-
+<hr class="gray">
+<h4> Add a new Comment</h4>
+<hr class="gray">
 													<% if vendor_signed_in? %>
 													<div class="comment-form">
 														<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
