@@ -70,7 +70,7 @@
 					<tr><td><a href="/comments/<%=l.id %>"><%=l.id%></a></td>
 				<td><%=l.commentbody %>
 					<br/>
-					<a class="fancybox" href="<%= l.picture.url('medium')%>" rel="group"><%= image_tag l.picture.url('mini')  unless l.picture.nil?%></a>
+					<a class="fancybox" href="<%= l.picture.url('original')%>" rel="group"><%= image_tag l.picture.url('mini')  unless l.picture.nil?%></a>
 					
 					</td>
 				<td><%= l.listing_id %></td>
