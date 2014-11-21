@@ -940,29 +940,14 @@ input[type="submit"].btn {
 }
 
 a.btn:hover, input[type="submit"].btn:hover {
-    background-color: #e93232;
-    background-image: none;
-    webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#e93232), to(#bE0202));
-    background-image: -webkit-linear-gradient(top, #e93232, #bE0202);
-    background-image: -moz-linear-gradient(top, #e93232, #bE0202);
-    background-image: -ms-linear-gradient(top, #e93232, #bE0202);
-    background-image: -o-linear-gradient(top, #e93232, #bE0202);
-    background-image: linear-gradient(top, #e93232, #bE0202);
-    border: 1px solid #bE0202 !important;
-    border-bottom: 1px solid #bE0202 !important;
+    
     webkit-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) inset, 1px 1px 3px rgba(0, 0, 0, 0.52);
     -moz-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) inset, 1px 1px 3px rgba(0, 0, 0, 0.52);
     box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6) inset, 1px 1px 3px rgba(0, 0, 0, 0.52)
 }
 
 a.btn:active, input[type="submit"].btn:active {
-    background-color: #BE1212;
-    background-image: none;
-    border: 1px solid #BE1212;
-    border-bottom: 1px solid #BE1212;
+   
     webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none
@@ -2247,11 +2232,11 @@ div.headline div.listing-images img
 
 div.pricing-btn a.btn
 {
-	margin:10px;
+	margin:5px;
 }
 span.storage, span.condition, span.seller_info
 {
-	color:#000;
+	color:#3e3e3e;
 	font-weight:bold;
 }
 
