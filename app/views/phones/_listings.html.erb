@@ -7,7 +7,7 @@
 				<div class="row">
 					<div class="media col-md-2 col-sm-2 col-xs-12">
 						<div class="listing-images">
-						<%  @listings.assets.each do |a| %>											
+						<%  l.assets.each do |a| %>											
 
 						<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
 						<%end%>
