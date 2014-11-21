@@ -134,7 +134,7 @@
 															<% if vendor_signed_in? %>
 															<div class="comment-form">
 
-															<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do, :html => { :multipart => true } |f| %>
+															<%= form_for @comment, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 													<div class="form-group">
 														<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
 														
