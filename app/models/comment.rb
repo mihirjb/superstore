@@ -26,7 +26,7 @@ class Comment < ActiveRecord::Base
    }
 
    # Validate the attached image is image/jpg, image/png, etc
-   validates_attachment_content_type :picture, :content_type => %w(picture/jpeg picture/jpg picture/png)
+   validates_attachment_content_type :picture, :content_type => %w(image/jpeg image/jpg image/png)
   
   
  private

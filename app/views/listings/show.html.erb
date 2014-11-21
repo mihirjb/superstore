@@ -134,9 +134,11 @@
 															<% if vendor_signed_in? %>
 															<div class="comment-form">
 
-															<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+															<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do, :html => { :multipart => true } |f| %>
 													<div class="form-group">
 														<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write Something here" %>
+														
+															<%= f.label :picture, "Upload any additional picture" %><%= f.file_field :picture, :class => "btn btn-success" %><br/>
 													</div>  
 														<%= f.hidden_field :listing_id, :value => @listing.id %>
 														<%= f.hidden_field :vendor_id, :value => current_vendor.id %>
@@ -170,7 +172,7 @@
 <hr class="gray">
 													<% if vendor_signed_in? %>
 													<div class="comment-form">
-														<%= form_for @comment, :class=>"form-horizontal",  :role => "form" do |f| %>
+														<%= form_for @comment, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
 												<div class="form-group">
 													<%= f.text_area :commentbody, :class=> "form-control", :placeholder=>"Write something here" %>
 													<%= f.label :picture, "Upload any additional picture" %><%= f.file_field :picture, :class => "btn btn-success" %><br/>
