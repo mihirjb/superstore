@@ -5,16 +5,15 @@
 			<% @listings.each do |l| %>
 			<li>
 				<div class="row">
-				<div class="headline col-md-9 col-sm-9 col-xs-12">
+					<div class="media col-md-1 col-sm-1 col-xs-12">
+						<%=image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url(:mini), :class => "main-avatar small-img" %>
+						</div>
+				<div class="headline col-md-8 col-sm-8 col-xs-12">
 					
 					<a href="/listings/<%=l.id%>"><h4><%= l.headline %></h4></a>
 					<p><span class="storage nowrap"><%=l.devicestorage %></span> storage capacity, <span class="storage nowrap"><%=l.devicecolor %></span> color and in <span class="condition nowrap"><%= l.devicecondition%></span> condition.</p>
 				<p>Located in <span class="storage nowrap"><%=l.itemlocation %></span></p>
-				<p>Listed by <span class="seller_info nowrap"><%= Profile.find_by_vendor_id(l.vendor_id).displayname%>
-					
-						<%=image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url(:mini), :class => "main-avatar small-img" %>
-					
-					</span></p>
+			
 					<p><% if l.paypalstatus == "Verified" %>
 					<%= image_tag ("/paypal.png"), :class => "icon" %>
 					<% end %>
