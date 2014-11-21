@@ -3,10 +3,10 @@
 		<div class="listing_preview featured">
 			<% @listings.each do |l| %>
 				<div class="row">
-					<div class="media col-md-1 col-sm-1 col-xs-12">
+					<div class="media col-md-2 col-sm-2 col-xs-12">
 						<%=image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url(:mini), :class => "main-avatar small-img" %>
 						</div>
-				<div class="headline col-md-8 col-sm-8 col-xs-12">
+				<div class="headline col-md-7 col-sm-7 col-xs-12">
 					
 					<a href="/listings/<%=l.id%>"><h4><%= l.headline %></h4></a>
 					<p><span class="storage nowrap"><%=l.devicestorage %></span> storage capacity, <span class="storage nowrap"><%=l.devicecolor %></span> color and in <span class="condition nowrap"><%= l.devicecondition%></span> condition.</p>
