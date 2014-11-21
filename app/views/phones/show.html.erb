@@ -16,7 +16,7 @@
 											
 										<% @list = Listing.find_all_by_phone_id(@phone.id, :order =>'askprice')%>
 										<% if !@list.blank? %>
-									<span class="price">Total <%= @list.count %> listings starting from $<%= @list.first.askprice.to_i + 10  %></span>
+									<span class="price">Total <%= @list.count %> listings starting from $<%= @list.first.askprice.to_i + 20  %></span>
 <% end %>
 
 <hr class="gray">

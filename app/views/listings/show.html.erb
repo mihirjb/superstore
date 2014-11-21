@@ -16,7 +16,7 @@
 														</div>
 
 														<h2 class="listing-heading"><%= @listing.devicename %>  [<%= @listing.devicecarrier %>]</h2>
-														<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now - $<%=@listing.askprice.to_i + 10 %></a>
+														<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now - $<%=@listing.askprice.to_i + 20 %></a>
 																</h1>
 																	<% if vendor_signed_in?  %>
 																<% if current_vendor.id == @listing.vendor_id %>

@@ -31,7 +31,7 @@ class TransactionsController < ApplicationController
                :amount => @listing.askprice,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
-                         :amount => 0.1,
+                         :amount => 20,
                         :primary => false}
                         ]
             
@@ -72,8 +72,8 @@ class TransactionsController < ApplicationController
                   :name => "Payment for Zalpe fees",
                   :description => "Zalpe fees",
                   :item_count => 1,
-                  :item_price => 0.1,
-                  :price => 0.1
+                  :item_price => 20,
+                  :price => 20
                 }
               ]
             }
@@ -115,7 +115,7 @@ class TransactionsController < ApplicationController
    @listing.update_column("status", "Sold")
     @lid = session[:listing_id]
     
-    @ordertotal = @listing.askprice.to_i + 10
+    @ordertotal = @listing.askprice.to_i + 20
 
     @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address], :listing_id => session[:listing_id])
     
