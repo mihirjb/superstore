@@ -5,7 +5,7 @@
 			<% @listings.each do |l| %>
 			<li>
 				<div class="row">
-				<div class="headline col-md-10 col-sm-10 col-xs-12">
+				<div class="headline col-md-9 col-sm-9 col-xs-12">
 					
 					<a href="/listings/<%=l.id%>"><h4><%= l.headline %></h4></a>
 					<p><span class="storage nowrap"><%=l.devicestorage %></span> storage capacity, <span class="storage nowrap"><%=l.devicecolor %></span> color and in <span class="condition nowrap"><%= l.devicecondition%></span> condition.</p>
@@ -34,8 +34,8 @@
 				
 				
 				</div>
-				<div class="pricing-btn col-md-2 col-sm-2 col-xs-12">
-<a href="/listings/<%=l.id%>" class="btn clouds-flat-button">View Listing</a>
+				<div class="pricing-btn col-md-3 col-sm-3 col-xs-12">
+<a href="/listings/<%=l.id%>" class="btn midnight-blue-flat-button">View Listing</a>
 <br/>
 <a href="/transactions/initiatetransaction?l=<%=l.id%>" class="btn btn-lg green-sea-flat-button">$<%= l.askprice.to_i + 10 %></a>
 
