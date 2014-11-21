@@ -6,6 +6,14 @@
 			<li>
 				<div class="row">
 					<div class="media col-md-2 col-sm-2 col-xs-12">
+						<div class="listing-images">
+						<%  @listings.assets.each do |a| %>											
+
+						<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
+						<%end%>
+						</div>
+						
+						
 						<a href="/listings/<%=l.id%>" class="pull-left">
 
 							<%= image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url('thumb'), :class => "seller_img" %>
