@@ -1,9 +1,7 @@
 
 		
 		<div class="listing_preview featured">
-			<ul class="phone">
 			<% @listings.each do |l| %>
-			<li>
 				<div class="row">
 					<div class="media col-md-1 col-sm-1 col-xs-12">
 						<%=image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url(:mini), :class => "main-avatar small-img" %>
@@ -47,8 +45,6 @@
 </div>
 
 </div>
-			 </li>
 			<hr class="gray">
 			<% end %>
-			</ul>
 			</div>
