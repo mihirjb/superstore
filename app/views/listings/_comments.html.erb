@@ -13,6 +13,7 @@
 	  %>
 	
 	<% if c.picture.exists?%>
+		<br/>
 
 	<a class="fancybox" href="<%= c.picture.url('original')%>" rel="group"><%= image_tag c.picture.url('medium'), :class => "extra_img" %></a>
 	<% end %>
