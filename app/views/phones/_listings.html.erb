@@ -4,12 +4,17 @@
 			<ul class="phone">
 			<% @listings.each do |l| %>
 			<li>
-				<div class="headline">
+				<div class="row">
+					<div class="media col-md-2 col-sm-2 col-xs-12">
 						<a href="/listings/<%=l.id%>" class="pull-left">
+
 							<%= image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url('thumb'), :class => "seller_img" %>
+
 						</a>
+					</div>
+				<div class="headline col-md-8 col-sm-8 col-xs-12">
+					
 					<a href="/listings/<%=l.id%>"><h4><%= l.headline %></h4></a>
-				</div>
 				<p><span class="condition nowrap"><%= l.devicecondition%></span></p>
 				<p><% if l.paypalstatus == "Verified" %>
 				<%= image_tag ("/paypal.png"), :class => "icon" %>
@@ -28,7 +33,12 @@
 				<p><span class="storage nowrap"><%=l.itemlocation %></span></p>
 				<p><span class="storage nowrap"><%=l.devicecolor %></span></p>
 				<p><span class="seller_info nowrap"><%= Profile.find_by_vendor_id(l.vendor_id).displayname%></span></p>
-				
+				</div>
+				<div class="pricing-btn col-md-2 col-sm-2 col-xs-12">
+<a href="/listings/<%=l.id%>" class="btn btn-sm btn-success">$<%= l.askprice.to_i + 10 %></a>
+</div>
+
+</div>
 			 </li>
 			<hr class="gray">
 			<% end %>
