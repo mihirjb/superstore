@@ -11,13 +11,11 @@
 	<%	@commentbody = c.commentbody.gsub(/[_a-z0-9-]+(.[_a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)(.[a-z]{2,3})/i, 'forbidden')
 %>			<%= @commentbody
 	  %>
-	<% unless c.picture.nil? %>
 	
 	<br/>
 	<br/>
 
-	<a class="fancybox" href="<%= c.picture.url('original')%>" rel="group"><%= image_tag c.picture.url('small') %></a>
-	<% end %>
+	<a class="fancybox" href="<%= c.picture.url('original')%>" rel="group"><%= image_tag c.picture.url('small')  unless c.picture.nil?%></a>
 	
 	
 	</p></div>
