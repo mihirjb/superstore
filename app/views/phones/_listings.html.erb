@@ -35,7 +35,8 @@
 				
 				</div>
 				<div class="pricing-btn col-md-2 col-sm-2 col-xs-12">
-<a href="/listings/<%=l.id%>" class="btn btn-lg green-sea-flat-button">$<%= l.askprice.to_i + 10 %></a>
+<a href="/listings/<%=l.id%>" class="btn btn-lg green-sea-flat-button">View Listing</a>
+<a href="/transactions/initiatetransaction?l=<%=l.id%>" class="btn btn-lg green-sea-flat-button">$<%= l.askprice.to_i + 10 %></a>
 
 </div>
 
