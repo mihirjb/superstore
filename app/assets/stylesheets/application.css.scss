@@ -2242,8 +2242,10 @@ span.storage, span.condition, span.seller_info
 }
 
 
-p.comment-body img.extra_img
+div.comment p.comment-body img.extra_img
 {
+	background:inherit;
+	float:none;
 	margin:20px 2%;
 	width:200px;
 }
