@@ -5,16 +5,8 @@
 			<% @listings.each do |l| %>
 			<li>
 				<div class="row">
-					<div class="media col-md-4 col-sm-4 col-xs-12">
-						<div class="listing-images">
-						<%  l.assets.each do |a| %>											
-						<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
-						<%end%>
-						
-						</div>
-						
-					</div>
-				<div class="headline col-md-6 col-sm-6 col-xs-12">
+					
+				<div class="headline col-md-10 col-sm-10 col-xs-12">
 					
 					<a href="/listings/<%=l.id%>"><h4><%= l.headline %></h4></a>
 					<p><span class="storage nowrap"><%=l.devicestorage %></span> storage capacity, <span class="storage nowrap"><%=l.devicecolor %></span> color and in <span class="condition nowrap"><%= l.devicecondition%></span> condition.</p>
@@ -37,6 +29,13 @@
 				</div>
 				<div class="pricing-btn col-md-2 col-sm-2 col-xs-12">
 <a href="/listings/<%=l.id%>" class="btn btn-lg green-sea-flat-button">$<%= l.askprice.to_i + 10 %></a>
+
+<div class="listing-images">
+<%  l.assets.each do |a| %>											
+<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
+<%end%>
+</div>
+
 </div>
 
 </div>
