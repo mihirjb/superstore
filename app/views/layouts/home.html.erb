@@ -33,7 +33,7 @@
 							<a  href="#iphones" id="iphbtn"><img class="small_img" src="/iphone6.png" /></a>
 							<a href="#ipads" id="ipdbtn"><img class="small_img" src="/ipad2.png" /></a>
 						<div id="iphones">
-							<ul class="row">
+							<ul>
 
 								<% @iphones.each do  |ip| %>
 								<li class="col-md-2 col-sm-4 col-xs-12">
@@ -45,7 +45,7 @@
 						
 									</div>
 						<div id="ipads">
-
+<ul>
 								<% @ipads.each do  |ipd| %>
 								<li class="col-md-2 col-sm-4 col-xs-12">
 									<%= image_tag ipd.image.url(:thumb) %>

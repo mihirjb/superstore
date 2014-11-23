@@ -2264,6 +2264,25 @@ div.mainpage div.pane a:hover
 {
 	text-decoration:none;
 }
+div#iphones ul li, div#ipads ul li 
+{
+	list-style:none;
+}
+
+div#iphones ul li img, div#ipads ul li img 
+{
+	height:40px;
+}
+
+div#iphones ul li h4, div#ipads ul li h4 
+{
+font-size:14px;
+}
+
+div#iphones ul li .btn, div#ipads ul li .btn 
+{
+font-size:12px;
+}
 /* #Buttons
 ==================================================*/
 
