@@ -68,7 +68,7 @@ class PhonesController < ApplicationController
   
   private 
    def phone_params
-    params.require(:phone).permit(:modelname, :carrier, :image, :image_file_name, :image_content_type, :image_file_size)
+    params.require(:phone).permit(:phonetype, :modelname, :carrier, :image, :image_file_name, :image_content_type, :image_file_size)
    end
   
 end
