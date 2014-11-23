@@ -29,12 +29,14 @@
 					<div class="outer mainpage">
 						<div class="pane">
 							<div class="centered-text section centered-400 rounded offshadow">
+								<div id="choice">
 								<h3>What do you want to buy?</h3>
 								<a  href="#iphones" id="iphbtn"><img class="small_img" src="/iphone6.png" /></a>
 								<a href="#ipads" id="ipdbtn"><img class="small_img" src="/ipad2.png" /></a>
 								<hr class="gray">
-								
+								</div>
 									<div id="iphones" class="row">
+										<a href="#choice" id="choicebtn">Back</a>
 											<% @iphones.each do  |ip| %>
 											<div class="col-md-4 col-sm-4 col-xs-6">
 												<%= image_tag ip.image.url(:thumb) %>
@@ -47,6 +49,8 @@
 												
 												
 													<div id="ipads" class="row">
+														<a href="#choice" id="choicebtn">Back</a>
+														
 															<% @ipads.each do  |ipd| %>
 															<div class="col-md-4 col-sm-4 col-xs-6">
 																<%= image_tag ipd.image.url(:thumb) %>

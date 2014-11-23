@@ -26,6 +26,7 @@ $(document).ready(function() {
 
 		$("#iphones").hide("slow");
 		  $("#ipads").hide("slow");
+			$("#choice").show("slow");
 		
 
 
@@ -36,7 +37,8 @@ $(document).ready(function() {
 
 			$("#iphones").show("slow");
 			  $("#ipads").hide("slow");
-			 
+			 	$("#choice").hide("slow");
+			
 
 		});
 			$( "#ipdbtn" ).click(function( event ) {
@@ -45,6 +47,16 @@ $(document).ready(function() {
 
 				$("#iphones").hide("slow");
 				  $("#ipads").show("slow");
+				$("#choice").hide("slow");
+
+
+			});
+			$( "#choicebtn" ).click(function( event ) {
+
+			    event.preventDefault();
+				$("#choice").show("slow");
+				$("#iphones").hide("slow");
+				  $("#ipads").hide("slow");
 
 
 			});
