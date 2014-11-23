@@ -1,246 +1,497 @@
-<section class="dashboard">
-	<div class="wrapper">
-		<% @profil = Profile.find_by_vendor_id(current_vendor.id)  %>
-			<div class="main-box">	
-					<%=image_tag @profil.avatar.url(:medium), :class => "main-avatar" %>
-					<%= link_to "Edit Profile", "/profiles/#{@profil.id}/edit" %> <span class="glyphicon glyphicon-asterisk"></span>
-					<%= link_to "Sell", "/pages/sell" %> <span class="glyphicon glyphicon-asterisk"></span>
-					<%= link_to "Buy", "/pages/buy" %>
-					
-		</div>
-		<div class="content">
-		<% if  @profil %>
-	<% else %>
-	<%= link_to "Complete your Profile", new_profile_path %>
-	<%end %>
-		</div>
-		<div class="row">
-		<div class="small-box col-md-4 col-sm-4 col-xs-12">
-			<h2 class="list-heading">Listings</h2>
-			<ul class="nav nav-tabs">
-			  <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
-			  <li><a href="#sold" data-toggle="tab">Sold</a></li>
-			  <li><a href="#pending" data-toggle="tab">Pending</a></li>
-			</ul>
-			<div class="tab-content">
-			  <div class="tab-pane active" id="active">	<ul class="list">
-				<% @listings.each do |dlisting| %>
-				<% if dlisting.status == 'Approved'%>
-				<a href ="/listings/<%=dlisting.id%>"><li>
-					<% cache dlisting do %>
-				<%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %>
-				<h4><%= dlisting.headline %></h4>
-				<p><%= dlisting.askprice.to_i + 10 %>
-				</p>
-				<a href="/listings/<%= dlisting.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
-				<% end %>
-				</li></a>
-				<% end %>
-				<% end %>
-				
-				</ul>
-			</div>
-			  <div class="tab-pane" id="sold">
-				<ul class="list">
-					<% @listings.each do |dlisting| %>
-					<% if dlisting.status == 'Sold'%>
-				
-					<a href ="/listings/<%=dlisting.id%>"><li>
-							<% cache dlisting do %>
-						<%= image_tag dlsiting.assets.first.image.url('thumb') unless dlsiting.assets.first.nil? %>
-						<h4><%= dlisting.headline %></h4>
-						<p><%= dlisting.askprice.to_i + 10 %>
-						</p>
-						<a href="/listings/<%= dlisting.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
-						<% end %>				
-					</li></a>
-					<% end %>
-					<% end %>
-					
-					</ul>
+<% content_for :title,  "Welcome, here you can edit listings, view orders & write reviews!" %>
+
+	<div class="outer">
+
+							<div class="centered-800 section rounded row">								
+								<div class="col-md-12 col-sm-12 col-xs-12 section-heading">
+									
+									<% @profil = Profile.find_by_vendor_id(current_vendor.id)  %>
+
+
+									<%=image_tag @profil.avatar.url(:mini), :class => "main-avatar small-img" %>
+								
+									<div class="useful-links pull-right"><%= link_to "Edit Profile", "/profiles/#{@profil.id}/edit" %> <span class="glyphicon glyphicon-asterisk"></span>
+									<%= link_to "Sell", "/pages/sell" %> <span class="glyphicon glyphicon-asterisk"></span>
+									<%= link_to "Buy", "/pages/buy" %>
+
+									<% if  @profil %>
+									<% else %>
+									<%= link_to "Complete your Profile", new_profile_path %>
+									<%end %>
+									</div>
+									
+																		
+								</div>
+								
+	<div class="col-md-8 phoneshow">
 						
 			
-			  </div>
-			  <div class="tab-pane" id="pending">
-			  	
-				<ul class="list">
-					<% @listings.each do |dlisting| %>
-					<% if dlisting.status == 'Pending'%>
-					<a href ="/listings/<%=dlisting.id%>"><li>
-					<%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %>
-					<h4><%= dlisting.headline %></h4>
-					<p><%= dlisting.askprice.to_i + 10 %>
-					</p>
-					<a href="/listings/<%= dlisting.id%>/edit" class="btn btn-sm btn-success pull-right">Edit listing</a>
-					</li></a>
-					<% end %>
-					<% end %>
+			<div class="table-responsive" id="listings">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all your listings.</h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Image</th>
+					<th>Title</th>
+					<th>Price</th>
+					<th>Status</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<% @listings.each do |dlisting| %>
 				
-					</ul>
+				<tr  class='<%=
+				@class = ""
+					if dlisting.status == "Approved"
+					@class = "active"
+				end
+				if
+					dlisting.status == "Pending"
+					@class = "danger"
+				end
+				if dlisting.status == "Sold"
+					@class = "success"
+				end
+				
+				 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
+				
+				<td>
+					<a href ="/listings/<%=dlisting.id%>">
+				<%= dlisting.headline %>
+				</a>
+				
+				</td>
+				<td>
 					
-			  </div>
-			</div>
-			
-			
-				</div>
 				
-				<div class="small-box col-md-4 col-sm-4 col-xs-12">
-				<h2 class="list-heading">Orders</h2>
-				<ul class="nav nav-tabs" id="myTab">
-				  <li class="active"><a href="#sales" data-toggle="tab">Sold</a></li>
-				  <li><a href="#bought" data-toggle="tab">Bought</a></li>
-				</ul>
+			<%= dlisting.askprice.to_i + 20 %></td>
+					<td>
+						<%= dlisting.status %>
+						</td>
+					
+					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
+				<% end %>
+				</table>			
+		</div>
+		
+		
+		
+		
+		
+		<div class="table-responsive" id="activelistings">
+		<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all your  active listings.</h3>
+		<hr class="gray">
+		<table class="table table-condensed">
+			<tr class="active">
+				<th>Image</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Status</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<% @listings.each do |dlisting|
+			if dlisting.status == "Approved" %>
+			<tr><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
+			
+			<td>
+				<a href ="/listings/<%=dlisting.id%>">
+			<%= dlisting.headline %>
+			</a>
+			
+			</td>
+			<td>
+				
+			
+		<%= dlisting.askprice.to_i + 20 %></td>
+				<td>
+					<%= dlisting.status %>
+					</td>
+				
+				<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
+			<% end %>
+			<%end%>			
+			
+			</table>
+	</div>
+		
+		
+		
+			<div class="table-responsive" id="pendinglistings">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all your  pending listings.</h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Image</th>
+					<th>Title</th>
+					<th>Price</th>
+					<th>Status</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<% @listings.each do |dlisting|
+				if dlisting.status == "Pending" %>
+				<tr>
+					<td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
 
-				<div class="tab-content">
-				  <div class="tab-pane active" id="sales">	<ul class="list">
-					<% @orders.each do |o| %>
-					<% if current_vendor.id == o.seller_id  %>
+				<td>
+					<a href ="/listings/<%=dlisting.id%>">
+				<%= dlisting.headline %>
+				</a>
+				</td>
+				
+				<td>
+			<%= dlisting.askprice.to_i + 20 %>
+			</td>
+					<td>
+						<%= dlisting.status %>
+						</td>
+
+					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
+				<% end %>
+				<%end%>			
+
+				</table>
+		</div>
+		
+		
+		
+		
+		
+			<div class="table-responsive" id="soldlistings">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all your sold listings.</h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Image</th>
+					<th>Title</th>
+					<th>Price</th>
+					<th>Status</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<% @listings.each do |dlisting|
+				if dlisting.status == "Sold" %>
+				<tr><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
+
+				<td>
+					<a href ="/listings/<%=dlisting.id%>">
+				<%= dlisting.headline %>
+				</a>
+
+				</td>
+				<td>
+
+
+			<%= dlisting.askprice.to_i + 20 %></td>
+					<td>
+						<%= dlisting.status %>
+						</td>
+
+					<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
+				<% end %>
+				<%end%>			
+
+				</table>
+		</div>
+		
+		
+		
+			<div class="table-responsive" id="orders">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all your orders.</h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Title</th>
+					<th>Shipping Address</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+				<% @orders.each do |o| %>
+				
+				<tr>
+					<td>
+				<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
+				
+				</td>
+				<td>
+					<%=o.shipping_address%>
+				</td>
+					<td>
+						<%
+							if current_vendor.id == o.seller_id %>
+							 Sold
+						<% end %>
+						<%	if current_vendor.id == o.vendor_id %>
+							 Bought
+						<% end %>
+						</td>
 					
-					<li>
-				<h4><%= o.devicename %> sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %></h4>
-				<p><%=o.shipping_address%></p>
-				<% if Trackcode.find_by_order_id(o.id) %>
-					<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
-					<% else %>
-				<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
+					<td>
+						
+							<% if Trackcode.find_by_order_id(o.id) %>
+								<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+								<% else %>
+							<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
+							<% end %>
+						
+					</td></tr>
 				<% end %>
 				
+				</table>			
+		</div>		
+		
+			<div class="table-responsive" id="soldorders">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all phones you sold.</h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Title</th>
+					<th>Shipping Address</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+				<% @orders.each do |o| %>
+			<%	if current_vendor.id == o.seller_id %>
+				<tr>
+					<td>
+				<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
 				
-					</li>
-					<% end %>
-					<% end %>
+				</td>
+				<td>
+					<%=o.shipping_address%>
+				</td>
+					<td>
+						<%
+							if current_vendor.id == o.seller_id %>
+							 Sold
+						<% end %>
+						<%	if current_vendor.id == o.vendor_id %>
+							 Bought
+						<% end %>
+						</td>
 					
-				</ul>
-				
-				</div>
-				  <div class="tab-pane" id="bought">
-				  	
-					<ul class="list">
-						<% @orders.each do |o| %>
-						<% if current_vendor.id == o.vendor_id  %>
-
-						<li>
-				<h4><%= o.devicename %> bought from <%= Profile.find_by_vendor_id(o.seller_id).displayname %> at $<%= o.ordertotal %></h4>
-					<p><%=o.shipping_address%></p>
-						<a href="/listings/<%o.listing_id%>" class="btn btn-warning btn-sm">View Listing</a>
-					<%
-			@profile = Profile.find_by_vendor_id(o.seller_id)		
-					 if Trackcode.find_by_order_id(o.id) %>
-						<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+					<td>
+						
+							<% if Trackcode.find_by_order_id(o.id) %>
+								<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+								<% else %>
+							<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
+							<% end %>
+						
+					</td></tr>
+				<% end %>
 				<% end %>
 				
-				<% @reviewfound = Review.find_by_profile_id(@profile.id, :conditions => ["author_id = ? AND order_id = ?", o.vendor_id, o.id]) %>
+				</table>			
+		</div>
+		
+			<div class="table-responsive" id="boughtorders">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here are all phones you bought.</h3>
+			<hr class="gray">
+			<table class="table table-condensed">
+				<tr class="active">
+					<th>Title</th>
+					<th>Shipping Address</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+				<% @orders.each do |o| %>
+			<%	if current_vendor.id == o.vendor_id %>
+				<tr>
+					<td>
+				<%= o.devicename %> Sold to <%= Profile.find_by_vendor_id(o.vendor_id).displayname %> at $<%= o.ordertotal %>
 				
+				</td>
+				<td>
+					<%=o.shipping_address%>
+				</td>
+					<td>
+						<%
+							if current_vendor.id == o.seller_id %>
+							 Sold
+						<% end %>
+						<%	if current_vendor.id == o.vendor_id %>
+							 Bought
+						<% end %>
+						</td>
+					
+					<td>
+						
+							<% if Trackcode.find_by_order_id(o.id) %>
+								<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+								<% else %>
+							<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
+							<% end %>
+						
+					</td></tr>
+				<% end %>
+				<% end %>
 				
-					<% if @reviewfound.nil? %>
-					<button class="btn btn-hero" data-toggle="modal" data-target="#something">
-					Write a review</button>
+				</table>			
+		</div>
+		
+			<div class="table-responsive" id="sellerreview">
+			<h3 class="listing-heading">Hey <span class="propernoun"><%=  Account.find(current_vendor.id).subdomain  %></span>, here is all the feedback you got.
+				<span class="pull-right">
+				<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
+				<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down gray"></span>
+				</span>
+				</h3>
+			<hr class="gray">
+				<table class="table table-condensed">
+					<tr class="active">
+						<th>Display picture</th>
+						<th>Review</th>
+					
+					</tr>					
+				<% @feedbacks.each do |dfeedback| %>
+			<tr>
+				<% cache dfeedback do %>
+				<td><%= image_tag Profile.find_by_vendor_id(dfeedback.author_id).avatar.url('thumb')  %></td>
+				<td><%= dfeedback.reviewbody %></td>
+				<% end %>
+				</tr>
+				<% end %>
+				
+				</table>
+		</div>
+		
+		
+		<div class="table-responsive" id="buyerreview">
+		  	<h2>Here are all the reviews you wrote</h2>
+			<ul class="list">
+				<% @orders.each do |o| %>
+				<% if current_vendor.id == o.vendor_id  %>
+
+				<li>
+		<h4><%= o.devicename %> bought from <%= Profile.find_by_vendor_id(o.seller_id).displayname %> at $<%= o.ordertotal %></h4>
+			<p><%=o.shipping_address%></p>
+				<a href="/listings/<%o.listing_id%>" class="btn btn-warning btn-sm">View Listing</a>
+			<%
+	@profile = Profile.find_by_vendor_id(o.seller_id)		
+			 if Trackcode.find_by_order_id(o.id) %>
+				<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+		<% end %>
+		
+		<% @reviewfound = Review.find_by_profile_id(@profile.id, :conditions => ["author_id = ? AND order_id = ?", o.vendor_id, o.id]) %>
+		
+		
+			<% if @reviewfound.nil? %>
+			<button class="btn btn-hero" data-toggle="modal" data-target="#something">
+			Write a review</button>
 
 
-						<div class="modal fade" id="something" tabindex="-1" role="dialog" aria-labelledby="somethingLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						        <h1 class="modal-title hero" id="somethingLabel">Your Review -- 
-							
-							
-										<%    @found = current_vendor.votes.find_by_voteable_id(@profile.id) %>
+				<div class="modal fade" id="something" tabindex="-1" role="dialog" aria-labelledby="somethingLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h1 class="modal-title hero" id="somethingLabel">Your Review -- 
+					
+					
+								<%    @found = current_vendor.votes.find_by_voteable_id(@profile.id) %>
 
-										<% if @found.nil? %>
-										<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true %>
+								<% if @found.nil? %>
+								<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true %>
+								<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true %></span>
+								<% else%>
+
+									<% if  @found.vote == false %>
+									<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true %>
+									<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true, :disabled => "disabled" %> 	
+									</span>
+
+									<% else %>
+										<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true, :disabled => "disabled" %>
 										<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true %></span>
-										<% else%>
+									<%end%>
 
-											<% if  @found.vote == false %>
-											<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true %>
-											<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true, :disabled => "disabled" %> 	
-											</span>
-
-											<% else %>
-												<span class="vote-img">	<%=link_to raw('<span class="glyphicon glyphicon-thumbs-up"></span>'), vote_for_profile_profile_path(@profile), :class=>"vote",:id=>"up", :remote => true, :disabled => "disabled" %>
-												<%=link_to raw('<span class="glyphicon glyphicon-thumbs-down"></span>'), vote_against_profile_profile_path(@profile), :class=>"vote",:id=>"down", :remote => true %></span>
-											<%end%>
-
-											<% end %>
-							
-							
-							
-							
-							
-							</h1>
-						      </div>
-						      <div class="modal-body">
-									<%= form_for @review, :class=>"form-horizontal",  :role => "form" do |f| %>
-							<div class="form-group">
-								<%= f.text_area :reviewbody, :class=> "form-control", :placeholder=>"Write a review" %>
-							</div> 
-							<%= f.hidden_field :order_id, :value => o.id %>
-								<%= f.hidden_field :profile_id, :value => Profile.find_by_vendor_id(o.seller_id).id %>
-								<%= f.hidden_field :author_id, :value => o.vendor_id %>
-								<input type="text" name="foo" style="display: none;">
-
-
-
-
-
-						      </div>
-						      <div class="modal-footer">
-						        <div class="form-group">
-									<%= f.submit 'Add', :disable_with => 'Adding...', :class =>"btn btn-primary btn-sm" %>
-									</div>
-								<% end %>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-
-					<% end %>
-				
-				
-				
-				
-						</li>
-						<% end %>
-						<% end %>
+									<% end %>
 					
-					</ul>
 					
+					
+					
+					
+					</h1>
+				      </div>
+				      <div class="modal-body">
+							<%= form_for @review, :class=>"form-horizontal",  :role => "form" do |f| %>
+					<div class="form-group">
+						<%= f.text_area :reviewbody, :class=> "form-control", :placeholder=>"Write a review" %>
+					</div> 
+					<%= f.hidden_field :order_id, :value => o.id %>
+						<%= f.hidden_field :profile_id, :value => Profile.find_by_vendor_id(o.seller_id).id %>
+						<%= f.hidden_field :author_id, :value => o.vendor_id %>
+						<input type="text" name="foo" style="display: none;">
+
+
+
+
+
+				      </div>
+				      <div class="modal-footer">
+				        <div class="form-group">
+							<%= f.submit 'Add', :disable_with => 'Adding...', :class =>"btn btn-primary btn-sm" %>
+							</div>
+						<% end %>
+				      </div>
+				    </div>
 				  </div>
 				</div>
-				</div>
-				
-				
-				<div class="small-box col-md-4 col-sm-4 col-xs-12">
-						<h2 class="list-heading">Reviews <span class="pull-right">
-							<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
-							<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
 
-
-							</span></h2>
-							<ul class="list">
-								
-							<% @feedbacks.each do |dfeedback| %>
-						<li>
-							<% cache dfeedback do %>
-							<%= image_tag Profile.find_by_vendor_id(dfeedback.author_id).avatar.url('thumb')  %>
-							<h4><%= dfeedback.reviewbody %></h4>
-							<% end %>
-							</li>
-							<% end %>
-							
-							</ul>
-						
-					</div>
-					
-					
-
-
-
-					
-					
-					
-</div>		
+			<% end %>
 		
-</section>
+		
+		
+		
+				</li>
+				<% end %>
+				<% end %>
+			
+			</ul>
+			
+		  </div>
+		
+		
+		
+		
+	
+	</div>
+	
+		<div class="col-md-4 phoneshow yellowtop">
 
+<h4>Listings</h4>
+<ul class="nav" id="myTab">
+<li class="active"><a href="#listings" id="listingbtn">All Listings</a></li>
+<li><a href="#activelistings"  id="activelistingbtn">Currently active</a></li>
+<li><a href="#pendinglistings" id="pendinglistingbtn">Pending review from admin</a></li>
+<li><a href="#soldlistings" id="soldlistingbtn">Sold and archived listings</a></li>
+</ul>	
+<hr class="gray">
+
+<h4>Orders</h4>
+<ul class="nav" id="myTab">
+<li class="active"><a href="#orders" id="orderbtn">All Orders</a></li>
+<li><a href="#boughtorders"  id="boughtorderbtn">Phones you bought</a></li>
+<li><a href="#soldorders" id="soldorderbtn">Phones that you've sold</a></li>
+</ul>
+
+<hr class="gray">
+<h4>Reviews</h4>
+<ul class="nav" id="myTab">
+<li class="active"><a href="#listings" id="reviewbtn">All Reviews</a></li>
+<li><a href="#buyerreview"  id="buyerreviewbtn">Reviews you wrote</a></li>
+<li><a href="#sellerreview" id="sellerreviewbtn">Feedback as a seller</a></li>
+</ul>
+
+
+
+</div>			
+	</div>		
+	</div>
+	
