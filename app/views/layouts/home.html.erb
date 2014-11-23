@@ -36,7 +36,7 @@
 							<ul>
 
 								<% @iphones.each do  |ip| %>
-								<li class="col-md-2 col-sm-4 col-xs-12">
+								<li class="col-md-4 col-sm-4 col-xs-6">
 									<%= image_tag ip.image.url(:thumb) %>
 									<h4><%= ip.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= ip.id %>">Buy</a> <a class="btn btn-danger btn-sm pumpkin-flat-button" href="/listings/new?pid=<%= ip.id %>">Sell</a>
 								</li>
@@ -47,14 +47,13 @@
 						<div id="ipads">
 <ul>
 								<% @ipads.each do  |ipd| %>
-								<li class="col-md-2 col-sm-4 col-xs-12">
+								<li class="col-md-4 col-sm-4 col-xs-6">
 									<%= image_tag ipd.image.url(:thumb) %>
 									<h4><%= ipd.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= ipd.id %>">Buy</a> <a class="btn btn-danger btn-sm pumpkin-flat-button" href="/listings/new?pid=<%= ipd.id %>">Sell</a>
 								</li>
 								<% end %>
 						</ul>
 
-						</div>
 						</div>
 						
 						</div>
