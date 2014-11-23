@@ -60,6 +60,16 @@ $(document).ready(function() {
 
 
 			});
+			$( "#choicebtns" ).click(function( event ) {
+
+			    event.preventDefault();
+				$("#choice").show("slow");
+				$("#iphones").hide("slow");
+				  $("#ipads").hide("slow");
+
+
+			});
+			
 	
 	$("#orders").hide("slow");
 	  $("#reviews").hide("slow");
