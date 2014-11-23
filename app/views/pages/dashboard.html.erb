@@ -369,7 +369,7 @@
 				<% if current_vendor.id == o.vendor_id  %>
 
 				<li>
-		<h4><%= o.devicename %> bought from <%= Profile.find_by_vendor_id(o.seller_id).displayname %> at $<%= o.ordertotal %></h4>
+		<h4><%= o.devicename %> bought from <%= Account.find(current_vendor.id).subdomain %> at $<%= o.ordertotal %></h4>
 			<p><%=o.shipping_address%></p>
 				<a href="/listings/<%o.listing_id%>" class="btn btn-warning btn-sm">View Listing</a>
 			<%
