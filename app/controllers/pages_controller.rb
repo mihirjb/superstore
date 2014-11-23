@@ -27,11 +27,11 @@ class PagesController < ApplicationController
   def dashboard
       
     
-    @vendor = @current_vendor
+    @vendor = current_vendor
      @listings = Listing.where('vendor_id = ?',@vendor.id).limit(50)
      @profile = Profile.find_by_vendor_id(@vendor.id)
      @feedbacks = Review.where('profile_id = ?',@profile.id).limit(50)
-     @orders = Order.where('seller_id = ? OR vendor_id = ?', @vendor.id,@vendor.id) .limit(50)
+     @orders = Order.where('seller_id = ? OR vendor_id = ?', current_vendor.id, current_vendor.id) .limit(50)
      @review = @profile.reviews.build
      
    
