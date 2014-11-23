@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123060230) do
+ActiveRecord::Schema.define(version: 20141123062938) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 20141123060230) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "impressions_count"
-    t.string   "type"
+    t.string   "phonetype"
   end
 
   add_index "phones", ["modelname"], name: "index_phones_on_modelname"
