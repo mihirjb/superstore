@@ -31,7 +31,7 @@ class PagesController < ApplicationController
      @listings = Listing.where('vendor_id = ?',@vendor.id).limit(50)
      @profile = Profile.find_by_vendor_id(@vendor.id)
      @feedbacks = Review.where('profile_id = ?',@profile.id).limit(50)
-     @orders =  current_vendor.orders.all
+     @orders = Order.all
      @review = @profile.reviews.build
      
    
