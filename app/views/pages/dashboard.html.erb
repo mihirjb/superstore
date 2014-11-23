@@ -362,7 +362,7 @@
 		</div>
 		
 		
-		 <div class="table-responsive" id="buyerreview">
+		<div class="table-responsive" id="bought">
 		  	
 			<ul class="list">
 				<% @orders.each do |o| %>
@@ -456,33 +456,6 @@
 			</ul>
 			
 		  </div>
-		</div>
-		</div>
-		
-		
-		<div class="small-box col-md-4 col-sm-4 col-xs-12">
-				<h2 class="list-heading">Reviews <span class="pull-right">
-					<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
-					<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
-
-
-					</span></h2>
-					<ul class="list">
-						
-					<% @feedbacks.each do |dfeedback| %>
-				<li>
-					<% cache dfeedback do %>
-					<%= image_tag Profile.find_by_vendor_id(dfeedback.author_id).avatar.url('thumb')  %>
-					<h4><%= dfeedback.reviewbody %></h4>
-					<% end %>
-					</li>
-					<% end %>
-					
-					</ul>
-				
-			</div>
-		
-		
 		
 		
 		
