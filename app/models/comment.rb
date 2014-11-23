@@ -2,14 +2,18 @@
 #
 # Table name: comments
 #
-#  id          :integer          not null, primary key
-#  subject     :string(255)
-#  commentbody :text
-#  vendor_id   :integer
-#  listing_id  :integer
-#  created_at  :datetime
-#  updated_at  :datetime
-#  status      :string(255)
+#  id                   :integer          not null, primary key
+#  subject              :string(255)
+#  commentbody          :text
+#  vendor_id            :integer
+#  listing_id           :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#  status               :string(255)
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
 #
 
 class Comment < ActiveRecord::Base

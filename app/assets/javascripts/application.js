@@ -22,6 +22,32 @@
 $(document).ready(function() {
 	$("#social_share_box").fancybox().trigger('click');
     
+
+
+		$("#iphones").hide("slow");
+		  $("#ipads").hide("slow");
+		
+
+
+
+		$( "#iphbtn" ).click(function( event ) {
+
+		    event.preventDefault();
+
+			$("#iphones").show("slow");
+			  $("#ipads").hide("slow");
+			 
+
+		});
+			$( "#ipdbtn" ).click(function( event ) {
+
+			    event.preventDefault();
+
+				$("#iphones").hide("slow");
+				  $("#ipads").show("slow");
+
+
+			});
 	
 	$("#orders").hide("slow");
 	  $("#reviews").hide("slow");

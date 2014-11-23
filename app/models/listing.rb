@@ -30,6 +30,10 @@
 #  phone_id            :integer
 #  terms               :string(255)
 #  moddetails          :string(255)
+#  paypalstatus        :string(255)
+#  paypalfname         :string(255)
+#  paypallname         :string(255)
+#  impressions_count   :integer
 #
 
 class Listing < ActiveRecord::Base

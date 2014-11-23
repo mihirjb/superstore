@@ -9,6 +9,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  profile_id :integer
+#  order_id   :integer
 #
 
 class Review < ActiveRecord::Base
