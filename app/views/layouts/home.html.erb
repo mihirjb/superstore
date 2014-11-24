@@ -25,62 +25,62 @@
 			<div class="col-md-12">
 					<a href="<%= root_url %>"><h1 class="logo">zalpe</h1></a>
 			</div>
-			<div class="col-md-4">
-					<div class="outer mainpage">
-						<div class="pane">
-							<div class="centered-text section centered-400 rounded offshadow">
-								<div id="choice">
-								<h3>What do you want to buy?</h3>
-								<a  href="#iphones" id="iphbtn"><img class="small_img" src="/iphone6.png" /></a>
-								<a href="#ipads" id="ipdbtn"><img class="small_img" src="/ipad2.png" /></a>
-								</div>
-									<div id="iphones" class="row">
-										<a href="#choice" id="choicebtn">Back</a>
-										<hr class="gray">
-										
-											<% @iphones.each do  |ip| %>
-											<div class="col-md-4 col-sm-4 col-xs-6">
-												<%= image_tag ip.image.url(:thumb) %>
-												<h4><%= ip.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= ip.id %>">Buy</a> 
-											</div>
-											<% end %>
-
-												</div>
-												
-												
-												
-													<div id="ipads" class="row">
-														<a href="#choice" id="choicebtns">Back</a>
-														<hr class="gray">
-														
-															<% @ipads.each do  |ipd| %>
-															<div class="col-md-4 col-sm-4 col-xs-6">
-																<%= image_tag ipd.image.url(:thumb) %>
-																<h4><%= ipd.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= ipd.id %>">Buy</a>
-															</div>
-															<% end %>
-
-													</div>				
-								
-								
-								
-				</div>
-				</div>
-				</div>
-				
-	
-	
-	
-				</div>
-				<div class="col-md-8">
+		
+				<div class="col-md-12">
 				
 	
 	<h2 class="hero-slogan">Buy and Sell New / lightly used iPhones and iPads.</h2>
-		<p class="hero-slogan-medium">We make sure that you buy great phones off the internet.</p>
-		<p class="hero-slogan-smallest">No credit card required • No commitment • Free to sell
-			<br/>
-			<br/>
-		  <%= link_to "Post an ad free", new_account_path, :class => "btn btn-hero pomegranate-flat-button" %>
+		<p class="hero-slogan-medium">For $20, we make sure that you buy great phones without getting cheated.</p>
+				<div class="outer mainpage">
+					<div class="pane">
+						<div class="centered-text section centered-400 rounded offshadow">
+							<div id="choice">
+							<h3>Select a device to buy</h3>
+							<a  href="#iphones" id="iphbtn"><img class="small_img" src="/iphone6.png" /></a>
+							<a href="#ipads" id="ipdbtn"><img class="small_img" src="/ipad2.png" /></a>
+							</div>
+								<div id="iphones" class="row">
+									<a href="#choice" id="choicebtn">Back</a>
+									<hr class="gray">
+									
+										<% @iphones.each do  |ip| %>
+										<div class="col-md-4 col-sm-4 col-xs-6">
+											<%= image_tag ip.image.url(:thumb) %>
+											<h4><%= ip.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= ip.id %>">Buy</a> 
+										</div>
+										<% end %>
+
+											</div>
+											
+											
+											
+												<div id="ipads" class="row">
+													<a href="#choice" id="choicebtns">Back</a>
+													<hr class="gray">
+													
+														<% @ipads.each do  |ipd| %>
+														<div class="col-md-4 col-sm-4 col-xs-6">
+															<%= image_tag ipd.image.url(:thumb) %>
+															<h4><%= ipd.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= ipd.id %>">Buy</a>
+														</div>
+														<% end %>
+
+												</div>				
+							
+							
+							
+			</div>
+			</div>
+			</div>
+			
+
+
+			
+			
+			<p class="hero-slogan-smallest">No credit card required • No commitment • Free to sell <br/><br/>
+			
+			
+		 <%= link_to "Sellers! Create a free account", new_account_path, :class => "btn btn-hero pomegranate-flat-button" %>
 	    
 			</p>
 			</div>
