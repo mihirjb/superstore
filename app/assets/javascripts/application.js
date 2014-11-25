@@ -34,7 +34,8 @@ $(document).ready(function() {
 	setInterval(function(){
 	    nextBG = "url('../clear-dark.png'), url(" + imgArray[Math.floor(Math.random() * imgArray.length)] + ") center center fixed no-repeat";
 	    $('section.search').fadeOut('slow', function() { 
-	        $(this).css("background", nextBG).fadeIn('slow'); })                   
+		$(this).css("background", nextBG).show();
+	         })                   
 	}, 8000); // 3 second interval
 
 
