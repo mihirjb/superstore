@@ -15,6 +15,24 @@
 </head>
 <body>
 	<div id="wrap">
+		<header class="ofshadow">
+			<div class="nav-links">
+			<a href="<%= root_url %>">Home</a>
+				<% if vendor_signed_in? %>
+			<%= link_to "My Dashboard", dashboard_url %>
+			<%= link_to "Sign out", destroy_vendor_session_path, :method => 'delete' %>
+			<% else %>
+		      <%= link_to "Sign in", new_vendor_session_path %>
+		      <%= link_to "Sign up", new_account_path %>
+
+			<% end %>
+			<a href="/pages/iphones-for-sale">iPhones</a>
+			<a href="/pages/ipads-for-sale">iPads</a>
+			<a href="/pages/buy">Buy</a>
+			<a href="/pages/sell">Sell</a>
+			</div>
+			</header>
+		
 	<div class="top">
 		<div class="centered-text">
 			<a href="<%= root_url %>"><h1 class="normal-logo">zalpe</h1></a>

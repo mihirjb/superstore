@@ -2282,6 +2282,25 @@ div#iphones  .btn, div#ipads .btn
 {
 font-size:11px;
 }
+
+header
+{
+	background-color:#8bc7d7;
+	height:50px;
+}
+
+header a
+{
+	display:inline-block;
+	padding:10px;
+	font-size:14px;
+	color:#fff !important;
+}
+header div.nav-links
+{
+	float:right;
+	margin:5px 30px;
+}
 /* #Buttons
 ==================================================*/
 
