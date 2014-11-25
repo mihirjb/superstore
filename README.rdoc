@@ -8,8 +8,6 @@ Things yet to be covered:
 General
 
 Now
-* Buyer reviews
-* Seller reviews
 * Sharing capacity after new listing
 * Profile complete meter
 

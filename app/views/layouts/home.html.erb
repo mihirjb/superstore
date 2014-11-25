@@ -95,7 +95,14 @@
 	<a href="/pages/about">About</a> 
 	<a href="/pages/faq">FAQ</a> 
 	<a href="/pages/terms">Terms & Conditions</a> 
-  
+  		<% if vendor_signed_in? %>
+	<%= link_to "My Dashboard", dashboard_url %>
+	<%= link_to "Sign out", destroy_vendor_session_path, :method => 'delete' %>
+	<% else %>
+      <%= link_to "Sign in", new_vendor_session_path %>
+      <%= link_to "Sign up", new_account_path %>
+
+	<% end %>
 	</div>
 </div>
 </body>
