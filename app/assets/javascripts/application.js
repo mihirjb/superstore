@@ -24,9 +24,9 @@ $(document).ready(function() {
     
 
 
-	var imgArray = ['../bgnew.jpg,
-					../bgnew1/jpg,
-					../hero.jpg'
+	var imgArray = ['../bgnew.jpg',
+					'../bgnew1/jpg',
+					'../hero.jpg'
 	               ]
 	var nextBG = "url('../clear-dark.png'),url(" + imgArray[Math.floor(Math.random() * imgArray.length)] + ") center center fixed no-repeat";
 	$('#slideshow').css("background", nextBG);              
@@ -35,7 +35,7 @@ $(document).ready(function() {
 	    nextBG = "url(" + imgArray[Math.floor(Math.random() * imgArray.length)] + ") center center fixed no-repeat";
 	    $('section.search').fadeOut('slow', function() { 
 	        $(this).css("background", nextBG).fadeIn('slow'); })                   
-	}, 3000); // 3 second interval
+	}, 8000); // 3 second interval
 
 
 		$("#iphones").hide("slow");
