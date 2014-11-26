@@ -2291,8 +2291,8 @@ font-size:11px;
 
 /* navbar */
 .navbar-default {
-    background-color: #454545;
-    border-color: #454545;
+    background-color: #e7e7e8;
+    border-color: #ccc;
 	font-family: 'Titillium Web', sans-serif;
 
 }
@@ -2318,7 +2318,7 @@ line-height: 1em;
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus {
     color: #00a4d1;
-    background-color: #454545;
+    background-color: #e7e7e8;
 }
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
@@ -2371,6 +2371,7 @@ line-height: 1em;
 .navbar-default form input, .navbar-default form input.btn
 {
 	height:33px;
+	box-shadow:none;
 }
 
 body div.container div.outer #sellerreview table td img
