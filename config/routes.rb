@@ -28,6 +28,8 @@ Storeapp::Application.routes.draw do
   get "pages/buy"
   get "pages/sell"
   get "pages/searchresults"
+  get 'pages/iphones-for-sale' => 'pages#alliphones'
+  get 'pages/ipads-for-sale' => 'pages#allipads'
   
   
   

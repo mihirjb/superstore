@@ -1,0 +1,40 @@
+<% content_for :title,  "iPhones for sale in Singapore" %>
+
+<div class="outer">
+	<div class="main">
+						<div class="centered-800 phoneindex rounded offshadow">
+							<div class="section-heading">
+								<h2 class="page-heading">All phones</h2>
+								</div>
+								
+							
+<ul class="phones row">
+<% @phones.each do |l|%>
+<li class="col-md-4 col-sm-12 col-xs-12">
+	<% @list = Listing.find_all_by_phone_id(l.id, :order =>'askprice')%>
+	<%= image_tag l.image.url(:thumb) %>
+
+		<div class="main-page-img"><%= image_tag @imgurl %></div>
+	<h3><%= link_to l.modelname, "/phones/#{l.id}" %></h3>
+	<p></span>
+<% if	@list.first.nil? %>
+<span class="price"><%= @list.count %> Listings.</span></p>
+<%else%>
+	<span class="price">$<%= @list.first.askprice.to_i + 20  %> - $<%= @list.last.askprice.to_i + 20 %> [<%= @list.count %>]</span>  </p>
+	<% end %>
+	
+	<a class="btn graphite-flat-button btn-sm" href="/phones/<%= l.id %>">Buy</a> <a class="btn pumpkin-flat-button btn-sm" href="/listings/new?pid=<%= l.id %>">Sell</a>
+	
+	
+	
+		</li>
+		
+	<%end%>	
+	</ul>
+	
+		<div class="cushion">
+		<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
+		</div>
+	</div>
+	</div>
+	</div>

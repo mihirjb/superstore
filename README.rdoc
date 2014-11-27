@@ -10,6 +10,13 @@ General
 Now
 * Sharing capacity after new listing
 * Profile complete meter
+* notifications on new comments
+* opt out of notifications
+* speed optimization
+* Verification photos pages
+* Phone page
+* Tablet page
+
 
 
 

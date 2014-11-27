@@ -69,4 +69,13 @@ class PagesController < ApplicationController
     @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%") 
     render json: @phones.map(&:modelname)  
   end
+  
+  def alliphones
+      @phones = Phone.where("phonetype iLike ?", "iPhone") .paginate :page => params[:page],:per_page=>30
+  end
+  
+  def allipads
+      @phones = Phone.where("phonetype iLike ?", "iPad") .paginate :page => params[:page],:per_page=>30
+  end
+  
 end
