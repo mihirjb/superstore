@@ -25,9 +25,9 @@ $(document).ready(function() {
 
 
 
-		$("#iphones").hide("slow");
-		  $("#ipads").hide("slow");
-			$("#choice").show("slow");
+		$("#iphones").hide();
+		  $("#ipads").hide();
+			$("#choice").show();
 		
 
 
@@ -72,16 +72,16 @@ $(document).ready(function() {
 			});
 			
 	
-	$("#orders").hide("slow");
-	  $("#reviews").hide("slow");
-	  $("#listings").show("slow");
-	  $("#activelistings").hide("slow");
-	  $("#pendinglistings").hide("slow");
-	  $("#soldlistings").hide("slow");
-	  $("#soldorders").hide("slow");
-	  $("#boughtorders").hide("slow");
-	  $("#buyerreview").hide("slow");
-	  $("#sellerreview").hide("slow");
+	$("#orders").hide();
+	  $("#reviews").hide();
+	  $("#listings").show();
+	  $("#activelistings").hide();
+	  $("#pendinglistings").hide();
+	  $("#soldlistings").hide();
+	  $("#soldorders").hide();
+	  $("#boughtorders").hide();
+	  $("#buyerreview").hide();
+	  $("#sellerreview").hide();
 
 
 
