@@ -215,6 +215,13 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
+  
+  
+  # You can skip storage for :http_auth and :token_auth by adding those symbols to the array below.
+  config.skip_session_storage = [:token_auth]
+
+  # Defines name of the authentication token params key
+  config.token_authentication_key = :auth_token
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
