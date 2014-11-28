@@ -45,9 +45,10 @@ class PhonesController < ApplicationController
       
     end
     
-    respond_to do |format|
-        format.json { render json: @phone}
-      end
+      
+      respond_to do |format|
+          format.json { render json: @listings}
+        end
   end
   
   
