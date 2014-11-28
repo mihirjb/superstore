@@ -7,7 +7,8 @@ class PhonesController < ApplicationController
   def index
     @phones = Phone.all.paginate :page => params[:page],:per_page=>30
     respond_to do |format|
-        format.json { render json: @phones}
+      format.html
+      format.json { render json: @phones}
       end
   end
 
@@ -47,7 +48,8 @@ class PhonesController < ApplicationController
     
       
       respond_to do |format|
-          format.json { render json: @listings}
+         format.html
+         format.json { render json: @listings}
         end
   end
   
