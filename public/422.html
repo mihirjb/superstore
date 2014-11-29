@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The change you wanted was rejected (422)</title>
-  <style>
+<title>The change you wanted was rejected (422)</title> 
+ <style>
   body {
-    background-color: #EFEFEF;
+    background-color: #e7e7e8;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
   }
 
   div.dialog {
-    width: 25em;
+    width: 40%;
     margin: 4em auto 0 auto;
     border: 1px solid #CCC;
+    border-top-color: #999;
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
     background-color: white;
-    padding: 7px 4em 0 4em;
   }
-
+div.dialog img
+{
+	width:60%;
+	margin:30px 10%;
+}
   h1 {
-    font-size: 100%;
+    font-size: 1.5em;
     color: #730E15;
     line-height: 1.5em;
   }
 
   body > p {
-    width: 33em;
+    width: 40%;
     margin: 0 auto 1em;
     padding: 1em 0;
     background-color: #F7F7F7;
@@ -44,15 +45,33 @@
     color: #666;
     box-shadow:0 3px 8px rgba(50, 50, 50, 0.17);
   }
+body > p a
+{
+	color:#81BB47;
+	text-decoration:none;
+	padding:5px 20px;
+}
   </style>
 </head>
 
 <body>
-  <!-- This file lives in public/422.html -->
+  <!-- This file lives in public/404.html -->
   <div class="dialog">
     <h1>The change you wanted was rejected.</h1>
-    <p>Maybe you tried to change something you didn't have access to.</p>
+    <p>Maybe you tried to change something you didn't have access to.
+	<img src="/bull.png" alt="404 not found" />
+	
+	</p>
   </div>
-  <p>If you are the application owner check the logs for more information.</p>
+  <p>
+		 <a href="/">Home</a></li>
+			<a href="/pages/iphones-for-sale">iPhones</a>
+				<a href="/pages/ipads-for-sale">iPads</a>
+				<a href="/pages/buy">Buy</a>
+				<a href="/pages/sell">Sell</a>
+		
+	
+	
+	</p>
 </body>
 </html>
