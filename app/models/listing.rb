@@ -114,6 +114,7 @@ private
    # Access Response
    if @get_verified_status_response.success?
      Listing.find(lid).update_column("paypalstatus", @get_verified_status_response.accountStatus)
+     Listing.find(lid).update_column("accounttype", @get_verified_status_response.userInfo.accountType)
      @get_verified_status_response.accountStatus
      @get_verified_status_response.countryCode
      @get_verified_status_response.userInfo
