@@ -1,0 +1,20 @@
+<% content_for :title,  "About a marketplace to buy and sell iOS devices" 
+%>
+
+<div class="outer">
+	<div class="main">
+		<div class="centered-800 share-btn rounded row">
+			<h2 class="content-heading">Sharing will help you sell 5 times faster</h2>
+			<hr class="gray">
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<a target="_blank" href='https://twitter.com/intent/tweet?url=<%=  @url %>&amp;text=Just created a listing on zalpe.com for my Phone do check it out.'><img src="../tweetbtn.png" /></a>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+<a target="_blank" href="https://plus.google.com/share?url=<%= @url %>"><img src="../gplusbtn.png"></a>		</div>
+		
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=<%= @url %>&amp;p[title]=Just created a listing on zalpe.com for my Phone do check it out.&amp;p[summary]=My Phone is on sale, do check and buy it from zalpe.com"><img src="../fbbtn.png"></a>
+		</div>
+		</div>
+	</div>
+</div>

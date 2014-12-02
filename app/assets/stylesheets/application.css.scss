@@ -2285,7 +2285,17 @@ div#iphones  .btn, div#ipads .btn
 font-size:11px;
 }
 
-
+div.share-btn img
+{
+	width:64px;
+	margin:20px;
+}
+div.share-btn
+{
+	background-color:#fff;
+	text-align:center;
+	padding-bottom:60px;
+}
 
 /************Navbar*************************/
 

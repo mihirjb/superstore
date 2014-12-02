@@ -78,4 +78,10 @@ class PagesController < ApplicationController
       @phones = Phone.where("phonetype iLike ?", "iPad") .paginate :page => params[:page],:per_page=>30
   end
   
+  def thanksandshare
+   
+    @url = "http://www.zalpe.com" + session[:previous_url]
+
+  end
+  
 end

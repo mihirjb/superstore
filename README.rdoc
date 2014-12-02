@@ -14,8 +14,6 @@ Now
 * opt out of notifications
 * speed optimization
 * Verification photos pages
-* not allowing people to sell if paypal not verified.
-* Keeping buy button off if listing pending or sold
 
 
 
