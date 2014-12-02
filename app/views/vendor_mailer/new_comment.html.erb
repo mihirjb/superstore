@@ -9,12 +9,16 @@
 
   </head>
   <body style="background-color:#ccc;">
-	<div id="content" style="width:80%;background-color:#fff;margin:0 auto;">
+	<div id="container" style="background-color:#e7e7e8;margin:0 auto;">
+		<h1 class="logo" style="font-weight:bold;text-align:center;font-size:72px;font-variant:small-caps;letter-spacing:0.08em;color: #000;font-family: 'Open Sans', sans-serif; margin-bottom:30px;">zalpe</h1>
+			<div id="content" style="width:80%;background-color:#fff;margin:0 auto;">
     <h4>Dear <%= @vendor.email %></h4>
 <div class="mailbody" style="padding:30px;background-color:#e1e1e1;">
     <h4>Your listing for <%=@listing.devicename %> with the id <%=@listing.id %> has a new comment.</h4> <p>Please go to <%= link_to "http://www.zalpe.com/listings/#{@listing.id}","http://www.zalpe.com/listings/#{@listing.id}" %> to see your the new comment and act accordingly.</p>
 </div>
 		<p>Thanks and Regards,<br/>
 	<%=link_to "Zalpe Team", "http://www.zalpe.com" %></p>
+	</div>
+	</div>
   </body>
 </html></strong>
