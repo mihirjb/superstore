@@ -1,5 +1,36 @@
-<h4>Dear <%= @vendor.email %></h4>
 
-<h4>Your listing for <%=@listing.devicename %> with the id <%=@listing.id %> has a new comment.</h4> <p>Please go to <%= link_to "http://www.zalpe.com/listings/#{@listing.id}","http://www.zalpe.com/listings/#{@listing.id}" %> to see your the new comment and act accordingly.</p>
-	<p>Thanks and Regards,<br/>
-<%=link_to "Zalpe Team", "http://www.zalpe.com" %></p>
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+<style type="text/css">
+body
+{
+	background-color:#ccc;
+}
+div#content
+{
+	width:80%;
+	background-color:#fff;
+	margin:0 auto;
+}
+div.mailbody
+{
+	padding:30px;
+	background-color:#e1e1e1;
+}
+</style>
+  </head>
+  <body>
+	<div id="content">
+    <h4>Dear <%= @vendor.email %></h4>
+<div class="mailbody">
+    <h4>Your listing for <%=@listing.devicename %> with the id <%=@listing.id %> has a new comment.</h4> <p>Please go to <%= link_to "http://www.zalpe.com/listings/#{@listing.id}","http://www.zalpe.com/listings/#{@listing.id}" %> to see your the new comment and act accordingly.</p>
+</div>
+		<p>Thanks and Regards,<br/>
+	<%=link_to "Zalpe Team", "http://www.zalpe.com" %></p>
+  </body>
+</html>
