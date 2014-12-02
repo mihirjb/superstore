@@ -22,7 +22,7 @@ class VendorMailer < ActionMailer::Base
      def new_comment(listing,vendor)
         @listing = listing
         @vendor = vendor
-        mail(:to => "#{vendor.email}", :subject => "New comment on your listing on zalpe.com",:content_type => "text/html")
+        mail(:to => "#{vendor.email}", :subject => "New comment on your listing on zalpe.com")
 
       end
     
