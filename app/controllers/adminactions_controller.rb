@@ -15,9 +15,10 @@ class AdminactionsController < ApplicationController
   
   def approvecomment
      @comment  = Comment.find(params[:id])
+     @listing = Listing.find(@comment.listing_id)
+      @vendor = Vendor.find(@listing.vendor_id)
      @comment.update_column("status","Approved")
-     @listing = Listing.find(@coment.listing_id)
-     @vendor = Vendor.find(@listing.vendor_id)
+     
      if @comment.save
        VendorMailer.new_comment(@listing,@vendor).deliver
        
