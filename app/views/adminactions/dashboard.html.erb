@@ -53,7 +53,8 @@
 					
 						<td><%=dlisting.assets.count %></td>
 						<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=dlisting.id%>">Approve</a></td>
-						<td><a class="btn btn-success" href="/adminactions/deletelisting?id=<%=dlisting.id%>">Delete</a></td>
+						<td><a class="btn btn-danger" href="/adminactions/deletelisting?id=<%=dlisting.id%>">Delete</a></td>
+						<td><a class="btn btn-info" href="/adminactions/modifylisting?id=<%=l.id%>">Modify request</a></td>
 					
 					</tr>
 				<% end %>
@@ -84,7 +85,7 @@
 				
 					
 					<td><a class="btn btn-success" href="/adminactions/approvecomment?id=<%=l.id%>">Approve</a></td>
-					<td><a class="btn btn-success" href="/adminactions/deletecomment?id=<%=l.id%>">Delete</a></td>
+					<td><a class="btn btn-danger" href="/adminactions/deletecomment?id=<%=l.id%>">Delete</a></td>
 					
 					</tr>
 				<%end%>

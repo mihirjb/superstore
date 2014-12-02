@@ -43,6 +43,7 @@ class AdminactionsController < ApplicationController
   def modifylisting
     @listing = Listing.find(params[:id])
       VendorMailer.listing_modification(@listing).deliver
+      redirect_to :back, :notice => "Vendor notified successfully."
   end
   
  

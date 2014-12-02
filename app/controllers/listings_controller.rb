@@ -21,7 +21,7 @@ class ListingsController < ApplicationController
     @listing = current_vendor.listings.create(listing_params())
     if @listing.save
       Listing.get_paypal_status(@listing.paypalemail,@listing.paypalfname,@listing.paypallname,@listing.id)
-      redirect_to "/pages/thanksandshare", :notice => "Congratulations, Listing created Successfully."
+      redirect_to "/pages/thanksandshare?lid=#{@listing.id}", :notice => "Congratulations, Listing created Successfully."
     else
      redirect_to :back, :notice => "Alas your listing could not be saved as there were errors."
     end

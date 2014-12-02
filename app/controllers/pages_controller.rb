@@ -80,7 +80,7 @@ class PagesController < ApplicationController
   
   def thanksandshare
    
-    @url = "http://www.zalpe.com" + session[:previous_url]
+    @url = "http://www.zalpe.com" + session[:previous_url] + "/" + params[:lid]
 
   end
   
