@@ -13,4 +13,12 @@ class VendorMailer < ActionMailer::Base
      mail(:to => "#{listing.paypalemail}", :subject => "Your listing has been approved")
    
    end
+   
+   def listing_modification(listing)
+      @listing = listing
+      mail(:to => "#{listing.paypalemail}", :subject => "Modify your listing at zalpe.com")
+
+    end
+    
+   
 end

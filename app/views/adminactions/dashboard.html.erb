@@ -11,7 +11,9 @@
 					<th>Price</th>
 					<th>Status</th>
 					<th>Number of Images</th>
-					<th>Actions</th>
+					<th>Approve</th>
+					<th>Delete</th>
+					
 				</tr>
 				<% @listings.each do |dlisting| 
 					
@@ -51,6 +53,7 @@
 					
 						<td><%=dlisting.assets.count %></td>
 						<td><a class="btn btn-success" href="/adminactions/approvelisting?id=<%=dlisting.id%>">Approve</a></td>
+						<td><a class="btn btn-success" href="/adminactions/deletelisting?id=<%=dlisting.id%>">Delete</a></td>
 					
 					</tr>
 				<% end %>
@@ -80,7 +83,10 @@
 				<td><%= l.listing_id %></td>
 				
 					
-					<td><a class="btn btn-success" href="/adminactions/approvecomment?id=<%=l.id%>">Approve</a></td></tr>
+					<td><a class="btn btn-success" href="/adminactions/approvecomment?id=<%=l.id%>">Approve</a></td>
+					<td><a class="btn btn-success" href="/adminactions/deletecomment?id=<%=l.id%>">Delete</a></td>
+					
+					</tr>
 				<%end%>
 				</table>
 				</div>

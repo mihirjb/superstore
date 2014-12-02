@@ -1,7 +1,9 @@
 Storeapp::Application.routes.draw do
 
 
- 
+  get "adminactions/deletelisting"
+  get "adminactions/deletecomment"
+  get "adminactions/modifylisting"
   get "adminactions/approvecomment"
   get "adminactions/approvelisting"
   get "adminactions/dashboard"

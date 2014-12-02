@@ -29,4 +29,21 @@ class AdminactionsController < ApplicationController
     
   end
   
+  def deletelisting
+       @listing = Listing.find(params[:id]).destroy
+       redirect_to :back, :notice => "Listing has been removed successfully."
+  end
+       
+  def deletecomment
+       @comment = Comment.find(params[:id]).destroy
+       redirect_to :back, :notice => "Comment has been removed successfully."
+  end
+  
+  
+  def modifylisting
+    @listing = Listing.find(params[:id])
+      VendorMailer.listing_modification(@listing).deliver
+  end
+  
+ 
 end

@@ -1,0 +1,12 @@
+<h4>Dear Seller,</h4>
+
+<h4>Your listing for <%=@listing.devicename %> with the id <%=@listing.id %> needs modification.</h4> <p>Please go to <%= link_to "http://www.zalpe.com/listings/#{@listing.id}","http://www.zalpe.com/listings/#{@listing.id}" %> to see your listing.</p>
+
+<p> You need to do one of the following:</p>
+<ul>
+	<li>Add Verification photos</li>
+	<li>Remove objectionable photos with contact info</li>
+	<li>Remove contact info from the description, or any other objectionable language if present.</li>
+</ul>
+	<p>Thanks and Regards,<br/>
+<%=link_to "Zalpe Team", "http://www.zalpe.com" %></p>
