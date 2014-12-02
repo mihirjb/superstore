@@ -1,0 +1,5 @@
+<h4>Dear <%= @vendor.email %></h4>
+
+<h4>Your listing for <%=@listing.devicename %> with the id <%=@listing.id %> has a new comment.</h4> <p>Please go to <%= link_to "http://www.zalpe.com/listings/#{@listing.id}","http://www.zalpe.com/listings/#{@listing.id}" %> to see your the new comment and act accordingly.</p>
+	<p>Thanks and Regards,<br/>
+<%=link_to "Zalpe Team", "http://www.zalpe.com" %></p>

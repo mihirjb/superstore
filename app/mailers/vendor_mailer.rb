@@ -19,6 +19,12 @@ class VendorMailer < ActionMailer::Base
       mail(:to => "#{listing.paypalemail}", :subject => "Modify your listing at zalpe.com")
 
     end
+     def new_comment(listing,vendor)
+        @listing = listing
+        @vendor = vendor
+        mail(:to => "#{vendor.email}", :subject => "New comment on your listing on zalpe.com")
+
+      end
     
    
 end

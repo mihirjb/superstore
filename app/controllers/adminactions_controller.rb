@@ -16,7 +16,11 @@ class AdminactionsController < ApplicationController
   def approvecomment
      @comment  = Comment.find(params[:id])
      @comment.update_column("status","Approved")
+     @listing = Listing.find(@coment.listing_id)
+     @vendor = Vendor.find(@listing.vendor_id)
      if @comment.save
+       VendorMailer.new_comment(@listing,@vendor).deliver
+       
        redirect_to '/adminactions/dashboard', :notice => "Success, Approved!"
      else
        redirect_to '/adminactions/dashboard', :notice => "Failure, NOT Approved!"
