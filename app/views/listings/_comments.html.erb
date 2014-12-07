@@ -5,7 +5,7 @@
 		<div class="comment">
 			<%= image_tag Profile.find_by_vendor_id(c.vendor_id).avatar.url(:mini), :class => "img-circle" unless @profile.nil? %>
 		<p class="comment-body">
-		<strong><%= Comment.get_comment_author(c.vendor_id) unless @profile.nil?  %>: </strong> <%= time_ago_in_words(c.created_at) %> <br/>
+		<strong><%= Comment.get_comment_author(c.vendor_id) unless @profile.nil?  %> </strong> commented <%= time_ago_in_words(c.created_at) %> ago <br/>
 		<%
 		%>
 	<%	@commentbody = c.commentbody.gsub(/[_a-z0-9-]+(.[_a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)(.[a-z]{2,3})/i, 'forbidden')
