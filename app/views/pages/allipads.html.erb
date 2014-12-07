@@ -11,7 +11,7 @@
 <ul class="phones row">
 <% @phones.each do |l|%>
 <li class="col-md-4 col-sm-12 col-xs-12">
-	<% @list = Listing.find_all_by_phone_id(l.id, :order =>'askprice')%>
+	<% @list = Listing.where('phone_id = ? AND status iLIKE ?',l.id, "Approved").order('askprice')%>
 	<%= image_tag l.image.url(:thumb) %>
 
 		<div class="main-page-img"><%= image_tag @imgurl %></div>
