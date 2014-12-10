@@ -280,18 +280,8 @@ $(document).ready(function() {
 		var numbers = new Bloodhound({
 		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('num'),
 		  queryTokenizer: Bloodhound.tokenizers.whitespace,
-		  local: [
-		    { num: 'one' },
-		    { num: 'two' },
-		    { num: 'three' },
-		    { num: 'four' },
-		    { num: 'five' },
-		    { num: 'six' },
-		    { num: 'seven' },
-		    { num: 'eight' },
-		    { num: 'nine' },
-		    { num: 'ten' }
-		  ]
+		  remote: 'http://www.zalpe.com/pages/phones.json?search=%QUERY',
+		  limit:10
 		});
 
 		// initialize the bloodhound suggestion engine
