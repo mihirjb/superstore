@@ -278,12 +278,9 @@ $(document).ready(function() {
 
 		// instantiate the bloodhound suggestion engine
 		var phones = new Bloodhound({
-		  	name: 'modelnames',
-			  remote: 'http://www.zalpe.com/pages/phone?search=%QUERY',
-			  datumTokenizer: function(d) {
-			    return Bloodhound.tokenizers.whitespace(d.val);
-			  },
-			  queryTokenizer: Bloodhound.tokenizers.whitespace
+		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('modelname'),
+		  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	     prefetch: '../pages/phones?search=%QUERY',
 		});
 
 		// initialize the bloodhound suggestion engine
@@ -291,7 +288,7 @@ $(document).ready(function() {
 
 		// instantiate the typeahead UI
 		$('.typeahead').typeahead(null, {
-		  displayKey: 'modelnames',
+		  displayKey: 'modelname',
 		  source: phones.ttAdapter()
 		});
 		
