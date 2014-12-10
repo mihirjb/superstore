@@ -276,10 +276,23 @@ $(document).ready(function() {
 		  e.relatedTarget // previous tab
 		});
 
+		var phones = new Bloodhound({
+		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('phone'),
+		  queryTokenizer: Bloodhound.tokenizers.whitespace,
+		  remote: '/pages/phones.json?search=%QUERY', limit: 10
+		});
 
-	  $('.typeahead').typeahead( {name: 'planets', remote: '/pages/phones.json?search=%QUERY', limit: 10
+		// initialize the bloodhound suggestion engine
+		phones.initialize();
+
+		// instantiate the typeahead UI
+		$('.typeahead').typeahead(null, {
+		  displayKey: 'phone',
+		  source: phones.ttAdapter()
+		});
+	//  $('.typeahead').typeahead( {name: 'planets', remote: '/pages/phones.json?search=%QUERY', limit: 10
 	// [ "Fuck", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ] 
-	});
+//	});
 
 
 
