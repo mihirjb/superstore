@@ -281,6 +281,7 @@ $(document).ready(function() {
 		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('modelname'),
 		  queryTokenizer: Bloodhound.tokenizers.whitespace,
 		  remote: 'http://www.zalpe.com/pages/phones.json?search=%QUERY',
+		  local: [ "Fuck", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ],
 		  limit:10
 		});
 
