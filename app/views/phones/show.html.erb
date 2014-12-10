@@ -8,7 +8,7 @@
 										<h2 class="listing-heading"><%= @phone.modelname%></h2>
 										<%= image_tag @phone.image.url(:medium) %>
 										<br/><br/>
-										<a href="#">Specs</a> | 
+									
 										<a class="" href="/listings/new?pid=<%= @phone.id %>">Sell one like this</a>
 
 										<hr class="gray">
@@ -21,16 +21,7 @@
 
 <hr class="gray">
 <h4>Things to keep in mind.</h4>
-<ul class="to-do">
-<li class="to-do">A <span class="glyphicon glyphicon-ok"></span> mark shows the listing is approved.</li>
-<li class="to-do">A <span class="glyphicon glyphicon-camera"></span> shows the listing has pictures</li>
-<li class="to-do"><%= image_tag ("/paypal.png"), :class => "icon" %> image shows that the seller has a verified paypal account.</li>
-<li class="to-do">Always communicate with the seller before buying.</li>
-<li class="to-do">Ask for more pictures when in doubt.</li>
-<li class="to-do">Negotiate by commenting on the listing.</li>
-<li class="to-do">Insist on using paypal to ensure your safety.</li>
 
-</ul>
 </div>
 									</div>
 									<div class="col-md-8 listings-section phoneshow">
