@@ -3,6 +3,16 @@
 						<div class="centered-text section centered-400 rounded offshadow">
 	<h3 class="content-heading">sign up</h3>
 	<hr class="gray">
+	
+	<% if @account.errors.full_messages.any? %>
+	<div id="error_explanation">
+	<h2>Please rectify the following errors</h2>
+	<ul>
+	<% @account.errors.full_messages.each do |error_message| %>
+	<li><%= error_message %></li>
+	<% end %>
+	</div>
+	<% end %>
 <%= form_for @account, :id => "new_account",  :role => "form" do |f| %>
 <p>
 	<%= f.text_field :subdomain, :class=> "required", :placeholder=>"Username" %>

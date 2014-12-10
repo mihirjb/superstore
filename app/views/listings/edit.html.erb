@@ -3,7 +3,15 @@
 <div class="outer">
 					<div class="main">
 						<div class="centered-800 section rounded offshadow">
-		
+							<% if @listing.errors.full_messages.any? %>
+							<div id="error_explanation">
+							<h2>Please rectify the following errors</h2>
+							<ul>
+							<% @listing.errors.full_messages.each do |error_message| %>
+							<li><%= error_message %></li>
+							<% end %>
+							</div>
+							<% end %>
 		<%= form_for @listing, :class=>"form-horizontal", :role => "form", :html => { :multipart => true } do |f| %>
 		<h4 class="form-title">All the inputs with the <span class="green">asterisk (*)</span> sign are compulsory to fill.</h4>
 		

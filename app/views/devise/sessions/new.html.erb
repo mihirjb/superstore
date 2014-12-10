@@ -4,6 +4,8 @@
 	<h3 class="content-heading">sign in</h3>
 	<hr class="gray">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<%= devise_error_messages! %>
+
  	<p>
  <%= f.email_field :email, :class=> "required", :placeholder=>"Email", :required => true %>
 </p>
