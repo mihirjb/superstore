@@ -4,7 +4,7 @@
  *= require_tree .
  */
 
-
+@import "bootstrap-sprockets";
 @import 'bootstrap';
 @import 'social-share-button';
 
@@ -2126,8 +2126,15 @@ ul.phones li p span.price
 	font-size:12px;
 }
 
+body div.container form input.errror
+{
+	border: 1px solid red;
+}
 
-
+body div.container form label.error 
+{
+	color:red;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -2297,6 +2304,24 @@ div.share-btn
 	padding-bottom:60px;
 }
 
+div#error_explanation
+{
+	color: #D63301;
+	background-color: #FFCCBA;
+ 	padding:20px;
+	margin:20px;
+	text-align:left;
+	border:1px solid red;
+}
+div#error_explanation ul li
+{
+	color: #D63301;
+}
+div#error_explanation h2
+{
+	color: #D63301;
+	font-size:18px;
+}
 /************Navbar*************************/
 
 /* navbar */
