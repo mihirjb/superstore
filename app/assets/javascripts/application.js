@@ -276,11 +276,12 @@ $(document).ready(function() {
 		  e.relatedTarget // previous tab
 		});
 
+		
 		// instantiate the bloodhound suggestion engine
 		var phones = new Bloodhound({
 		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('modelname'),
 		  queryTokenizer: Bloodhound.tokenizers.whitespace,
-	     prefetch: '../pages/phones?search=%QUERY',
+		  remote: '../pages/phones.json?search=%QUERY',
 		});
 
 		// initialize the bloodhound suggestion engine
