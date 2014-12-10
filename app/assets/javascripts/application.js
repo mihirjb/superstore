@@ -289,6 +289,7 @@ $(document).ready(function() {
 
 		// instantiate the typeahead UI
 		$('.typeahead').typeahead(null, {
+		  name: 'search',
 		  displayKey: 'num',
 		  source: numbers.ttAdapter()
 		});
