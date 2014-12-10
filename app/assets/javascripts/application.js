@@ -276,33 +276,31 @@ $(document).ready(function() {
 		  e.relatedTarget // previous tab
 		});
 
-		// Instantiate the Bloodhound suggestion engine
-		var phones = new Bloodhound({
-		    datumTokenizer: function (datum) {
-		        return Bloodhound.tokenizers.whitespace(datum.value);
-		    },
-		    queryTokenizer: Bloodhound.tokenizers.whitespace,
-		    remote: {
-		        url: '/pages/phonesjson?search=%QUERY',
-				limit: 10,
-		        filter: function (phones) {
-		            // Map the remote source JSON array to a JavaScript object array
-		            return $.map(phones.results, function (phones) {
-		                return {
-		                    value: phone.modelname
-		                };
-		            });
-		        }
-		    }
+		// instantiate the bloodhound suggestion engine
+		var numbers = new Bloodhound({
+		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('num'),
+		  queryTokenizer: Bloodhound.tokenizers.whitespace,
+		  local: [
+		    { num: 'one' },
+		    { num: 'two' },
+		    { num: 'three' },
+		    { num: 'four' },
+		    { num: 'five' },
+		    { num: 'six' },
+		    { num: 'seven' },
+		    { num: 'eight' },
+		    { num: 'nine' },
+		    { num: 'ten' }
+		  ]
 		});
 
-		// Initialize the Bloodhound suggestion engine
-		phones.initialize();
+		// initialize the bloodhound suggestion engine
+		numbers.initialize();
 
-		// Instantiate the Typeahead UI
-		$('.typeahead').typeahead(null, {
-		    displayKey: 'value',
-		    source: phones.ttAdapter()
+		// instantiate the typeahead UI
+		$('.example-numbers .typeahead').typeahead(null, {
+		  displayKey: 'num',
+		  source: numbers.ttAdapter()
 		});
 	//  $('.typeahead').typeahead( {name: 'planets', remote: '/pages/phones.json?search=%QUERY', limit: 10
 	// [ "Fuck", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ] 
