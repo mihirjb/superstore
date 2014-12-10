@@ -276,19 +276,33 @@ $(document).ready(function() {
 		  e.relatedTarget // previous tab
 		});
 
+		// Instantiate the Bloodhound suggestion engine
 		var phones = new Bloodhound({
-		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('phone'),
-		  queryTokenizer: Bloodhound.tokenizers.whitespace,
-		  remote: '/pages/phones.json?search=%QUERY', limit: 10
+		    datumTokenizer: function (datum) {
+		        return Bloodhound.tokenizers.whitespace(datum.value);
+		    },
+		    queryTokenizer: Bloodhound.tokenizers.whitespace,
+		    remote: {
+		        url: '/pages/phonesjson?search=%QUERY',
+				limit: 10,
+		        filter: function (phones) {
+		            // Map the remote source JSON array to a JavaScript object array
+		            return $.map(phones.results, function (phones) {
+		                return {
+		                    value: phone.modelname
+		                };
+		            });
+		        }
+		    }
 		});
 
-		// initialize the bloodhound suggestion engine
+		// Initialize the Bloodhound suggestion engine
 		phones.initialize();
 
-		// instantiate the typeahead UI
+		// Instantiate the Typeahead UI
 		$('.typeahead').typeahead(null, {
-		  displayKey: 'phone',
-		  source: phones.ttAdapter()
+		    displayKey: 'value',
+		    source: phones.ttAdapter()
 		});
 	//  $('.typeahead').typeahead( {name: 'planets', remote: '/pages/phones.json?search=%QUERY', limit: 10
 	// [ "Fuck", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" ] 
