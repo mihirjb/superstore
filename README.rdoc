@@ -8,13 +8,16 @@ Things yet to be covered:
 General
 
 Now
-* Sharing capacity after new listing
 * Profile complete meter
-* notifications on new comments
-* opt out of notifications
 * speed optimization
 * Verification photos pages
-
+- How to buy page
+- How To sell page 
+- Less questions on listings.
+- Better dashboard or profile page.
+- Better confirm order page.
+- Better thank you page.
+- Add pickup only and tracking info
 
 
 

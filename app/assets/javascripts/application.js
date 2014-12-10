@@ -280,8 +280,10 @@ $(document).ready(function() {
 		var phones = new Bloodhound({
 		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('modelname'),
 		  queryTokenizer: Bloodhound.tokenizers.whitespace,
-		  remote: 'http://www.zalpe.com/pages/phones.json?search=%QUERY',
-		  limit:10,
+	      remote:   {
+		            url: 'http://www.zalpe.com/pages/phones?search=%QUERY',
+		
+					}
 		});
 
 		// initialize the bloodhound suggestion engine
