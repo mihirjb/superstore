@@ -4,15 +4,15 @@
 <div class="main">
 						<div class="centered-800 section rounded phoneshow">
 							
-							<h4 class="center-block">Your Order</h4> 
+							<h3 class="center-block">Your Order</h3> 
 							
 							<table class="table table-condensed">
 								<tr class="active">
 									<th>Image</th>
 									<th>Title</th>
-									<th>Price</th>
+									<th>Unit Price</th>
 									<th>Quantity</th>
-									<th>Final Price</th>
+									<th>Total Price</th>
 								</tr>
 					<tr>
 						<td><%= image_tag @listing.assets.first.image.url('small') unless @listing.assets.first.nil? %></td>
@@ -20,6 +20,15 @@
 						<td><%=@listing.askprice.to_i + 20 %></td>
 						<td>1</td>
 						<td><%=@listing.askprice.to_i + 20 %></td>
+						
+					</tr>
+					<hr class="gray">
+					<tr>
+						<td>Total Price</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><%=@listing.askprice.to_i + 20 %> SGD</td>
 						
 					</tr>
 
@@ -39,7 +48,7 @@
 	
 	<% else %>
 	
-		<h3 class="center-block"> We didn't find any shipping address on your profile, please enter it below</h3>
+		<h4 class="center-block"> We didn't find any shipping address on your profile, please enter it below</h4>
 	<form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST">
 		<input name="address" type="text" size="50" placeholder="Enter your full shipping address here (Address line1, Address line 2 , City, State, Pin code, Country)!">
 		<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
