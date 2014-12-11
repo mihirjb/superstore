@@ -5,7 +5,7 @@
 						
 			
 			<div class="table-responsive" id="listings">
-			<h3 class="listing-heading">Hey, here are all of the listings from <span class="propernoun"><%=  Account.find(@profile.vendor_id).subdomain  %></span></h3>
+			<h3 class="listing-heading">Hey, here are all of the active listings from <span class="propernoun"><%=  Account.find(@profile.vendor_id).subdomain  %></span></h3>
 			<hr class="gray">
 			<table class="table table-condensed">
 				<tr class="active">
@@ -16,20 +16,14 @@
 				
 				</tr>
 				<% @listings.each do |dlisting| 
-				if dlisting.status != "Pending" %>
+				if dlisting.status == "Approved" %>
 				
 				<tr  class='<%=
 				@class = ""
 					if dlisting.status == "Approved"
 					@class = "active"
 				end
-				if
-					dlisting.status == "Pending"
-					@class = "danger"
-				end
-				if dlisting.status == "Sold"
-					@class = "success"
-				end
+			
 				
 				 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
 				
