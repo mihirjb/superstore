@@ -363,8 +363,38 @@ $("#up").click(function() {
 	        }
 	    });
 	  });
-	
-	
+
+
+
+	  $("#purchase_form").validate({
+
+	        // Specify the validation rules
+	        rules: {
+
+	            "address": {
+	                required: true,
+	                minlength: 10
+	            },
+
+
+	        },
+	        // Specify the validation error messages
+	        messages: {
+
+	            "address": {
+	                required: "Please enter an address",
+	minlength: "Please enter a valid address"
+	            },
+
+
+	        },
+
+	      
+	  });
+
+
+
+
 	
 	
 	$(function() {
@@ -400,9 +430,7 @@ $("#up").click(function() {
 	    });
 	  });
 	
-	
-	
-	
+
 	$(function() {
 
 	    // Setup form validation on the #registerform element
