@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_vendor!
   skip_before_filter :verify_authenticity_token  
+  protect_from_forgery :except => [:notify_action]
   
    include ActiveMerchant::Billing::Integrations   
    
