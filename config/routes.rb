@@ -13,7 +13,7 @@ Storeapp::Application.routes.draw do
   post "transactions/processtransaction"
   get "transactions/completetransaction"
   get "transactions/failedtransaction"
-  get 'transactions/notify_action'  => 'transactions#notify_action'
+  post 'transactions/notify_action'  => 'transactions#notify_action'
   
   get "phones/index"
   get "phones/new"
