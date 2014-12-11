@@ -119,7 +119,9 @@ class TransactionsController < ApplicationController
     @ordertotal = @listing.askprice.to_i + 20
 
     @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address], :listing_id => session[:listing_id])
-    
+     if session[:ntftid]
+       @order.update_column("pptransactionid", session[:ntftid] )
+     end
     AdminMailer.order_confirmation(current_vendor, @listing).deliver
     VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
     BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver
@@ -143,6 +145,7 @@ class TransactionsController < ApplicationController
     notify = ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification.new(request.raw_post)
           logger.info "Notification object is #{notify}"
           if notify.acknowledge
+            session[:ntftid] = notify.transaction_id
               logger.info "Transaction ID is #{notify.transaction_id}"
               logger.info "Notification object is #{notify}"
               logger.info "Notification status is #{notify.status}"
