@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201062624) do
+ActiveRecord::Schema.define(version: 20141211073755) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20141201062624) do
     t.integer  "seller_id"
     t.text     "shipping_address"
     t.integer  "listing_id"
+    t.string   "pptransactionid"
   end
 
   add_index "orders", ["listing_id"], name: "index_orders_on_listing_id"
