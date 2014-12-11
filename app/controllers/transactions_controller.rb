@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
    include ActiveMerchant::Billing::Integrations   
    
    def initiatetransaction
+     @listing = Listing.find(params[:l])
    end 
    
    
