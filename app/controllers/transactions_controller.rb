@@ -32,7 +32,7 @@ class TransactionsController < ApplicationController
                :amount => @listing.askprice,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
-                         :amount => 1,
+                         :amount => 20,
                         :primary => false}
                         ]
             
@@ -73,8 +73,8 @@ class TransactionsController < ApplicationController
                   :name => "Payment for Zalpe fees",
                   :description => "Zalpe fees",
                   :item_count => 1,
-                  :item_price => 1,
-                  :price => 1
+                  :item_price => 20,
+                  :price => 20
                 }
               ]
             }
@@ -112,6 +112,17 @@ class TransactionsController < ApplicationController
 
   def completetransaction    
     if session[:listing_id]
+      @listing  =  Listing.find(session[:listing_id])
+   @listing.update_column("status", "Sold")
+    @lid = session[:listing_id]
+    
+    @ordertotal = @listing.askprice.to_i + 20
+
+    @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address], :listing_id => session[:listing_id])
+    
+    AdminMailer.order_confirmation(current_vendor, @listing).deliver
+    VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
+    BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver
     
     session[:listing_id] = nil
   else
@@ -129,33 +140,14 @@ class TransactionsController < ApplicationController
   end
   
   def notify_action
-    
-    
-     if session[:listing_id]
-        @listing  =  Listing.find(session[:listing_id])
-     @listing.update_column("status", "Sold")
-      @lid = session[:listing_id]
-
-      @ordertotal = @listing.askprice.to_i + 20
-
-
-    #  AdminMailer.order_confirmation(current_vendor, @listing).deliver
-     # VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
-    #  BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver
-        notify = ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification.new(request.raw_post)
-              logger.debug "Notification object is #{notify}"
-              if notify.acknowledge
-                @order = Order.create(pptransationid => notify.transaction_id,:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address], :listing_id => session[:listing_id])
-                
-                  logger.debug "Transaction ID is #{notify.transaction_id}"
-                  logger.debug "Notification object is #{notify}"
-                  logger.debug "Notification status is #{notify.status}"
-              end     
-                 
-              render :nothing => true
-  
-    end
-  
+    notify = ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification.new(request.raw_post)
+          logger.info "Notification object is #{notify}"
+          if notify.acknowledge
+              logger.info "Transaction ID is #{notify.transaction_id}"
+              logger.info "Notification object is #{notify}"
+              logger.info "Notification status is #{notify.status}"
+          end        
+          render :nothing => true
   end
   
 end
