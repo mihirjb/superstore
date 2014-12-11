@@ -139,9 +139,9 @@ class TransactionsController < ApplicationController
       @ordertotal = @listing.askprice.to_i + 20
 
 
-      AdminMailer.order_confirmation(current_vendor, @listing).deliver
-      VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
-      BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver
+    #  AdminMailer.order_confirmation(current_vendor, @listing).deliver
+     # VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
+    #  BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver
         notify = ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification.new(request.raw_post)
               logger.debug "Notification object is #{notify}"
               if notify.acknowledge
