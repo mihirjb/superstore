@@ -2,7 +2,7 @@
 
 <div class="outer">
 	<div class="centered-800 section rounded row">
-		<div class="col-md-4 row-eq-height yellowtop">
+		<div class="col-md-4 row-eq-height">
 													
 <div class="center-image">
 <%= image_tag @listing.assets.first.image.url('original') unless @listing.assets.first.nil? %>
@@ -54,7 +54,7 @@
 												
 												
 												
-<div class="col-md-8 listings-section row-eq-height greentop">
+<div class="col-md-8 listings-section row-eq-height">
 
 <h2 class="listing-heading"><%=@listing.headline %></h2>
 <p><%=@listing.description %></p>

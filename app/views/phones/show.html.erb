@@ -9,7 +9,7 @@
 										<%= image_tag @phone.image.url(:medium) %>
 										<br/><br/>
 									
-										<a class="" href="/listings/new?pid=<%= @phone.id %>">Sell one like this</a>
+										<a class="transparent-flat-btn-green" href="/listings/new?pid=<%= @phone.id %>">Sell one like this</a>
 
 										<hr class="gray">
 										<div class="responsive-table cushion">
@@ -49,7 +49,7 @@
 									<%else%>
 									<div class="no-posts cushion">
 									<h2>Sorry there are no listings for this phone yet.</h2>
-									<a class="" href="/listings/new?pid=<%= @phone.id %>">Be the first one to sell <%=@phone.modelname%></a>
+									<a class="transparent-flat-btn-green" href="/listings/new?pid=<%= @phone.id %>">Be the first one to sell <%=@phone.modelname%></a>
 									</div>
 									<%end%>
 
