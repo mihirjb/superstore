@@ -22,21 +22,10 @@
 						<td class="col-md-2"><%=@listing.askprice.to_i + 20 %></td>
 						
 					</tr>
-					<tr><td class="col-md-2"></td>
-						<td class="col-md-2"></td>
-						<td class="col-md-2"></td>
-						<td class="col-md-2"></td>
-						<td class="col-md-2"></td>
-					</tr>
-					<tr><td class="col-md-2"></td>
-						<td class="col-md-2"></td>
-						<td class="col-md-2"></td>
-						<td class="col-md-2"></td>
-						<td class="col-md-2"></td>
-					</tr>
+				
 					
 					<hr class="gray">
-					<tr>
+					<tr class="total-show">
 							<td class="col-md-2 bold-text">Total</td>
 							<td class="col-md-2"></td>
 							<td class="col-md-5"></td>
@@ -54,7 +43,7 @@
 <form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST" id="purchase_form">
 	<input class="required"   class="form-control"name="address" type="text" size="50" value="<%= @address %>">
 	<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
-	<input class="btn redround" type="Submit" value="Make Payment">
+	<input class="btn redround" type="Submit" value="Make Paymen">
 	
 	</form>
 	
