@@ -32,7 +32,7 @@ class TransactionsController < ApplicationController
                :amount => @listing.askprice,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
-                         :amount => 20,
+                         :amount => 1,
                         :primary => false}
                         ]
             
@@ -151,7 +151,6 @@ class TransactionsController < ApplicationController
                   logger.debug "Notification object is #{notify}"
                   logger.debug "Notification status is #{notify.status}"
               end     
-              session[:listing_id] = nil
                  
               render :nothing => true
   
