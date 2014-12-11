@@ -10,25 +10,25 @@
 								<tr class="active">
 									<th class="col-md-2">Image</th>
 									<th class="col-md-2">Phone</th>
-									<th class="col-md-4">Title</th>
+									<th class="col-md-5">Title</th>
 									<th class="col-md-1">Quantity</th>
-									<th class="col-md-3">Total Price</th>
+									<th class="col-md-2">Total Price</th>
 								</tr>
 					<tr>
 						<td class="col-md-2"><%= image_tag @listing.assets.first.image.url('small') unless @listing.assets.first.nil? %></td>
 						<td class="col-md-2"><%= Phone.find(@listing.phone_id).modelname %></td>
-						<td class="col-md-4"><%=@listing.headline %></td>
+						<td class="col-md-5"><%=@listing.headline %></td>
 						<td class="col-md-1">1</td>
-						<td class="col-md-3"><%=@listing.askprice.to_i + 20 %></td>
+						<td class="col-md-2"><%=@listing.askprice.to_i + 20 %></td>
 						
 					</tr>
 					<hr class="gray">
 					<tr>
-							<td class="col-md-2">Total</td>
+							<td class="col-md-2 bold-text">Total</td>
 							<td class="col-md-2"></td>
-							<td class="col-md-4"></td>
+							<td class="col-md-5"></td>
 							<td class="col-md-1"></td>
-							<td class="col-md-3"><%=@listing.askprice.to_i + 20 %></td>
+							<td class="col-md-2 bold-text"><%=@listing.askprice.to_i + 20 %> SGD</td>
 						
 					</tr>
 
