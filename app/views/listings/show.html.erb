@@ -1,61 +1,58 @@
 <% content_for :title, "#{@listing.headline}  in Singapore" %>
 
-					<div class="outer">
-
-											<div class="centered-800 section rounded row">
-												<div class="col-md-4 phoneshow yellowtop">
+<div class="outer">
+	<div class="centered-800 section rounded row">
+		<div class="col-md-4 phoneshow yellowtop">
 													
-															<div class="center-image">
-																		<%= image_tag @listing.assets.first.image.url('original') unless @listing.assets.first.nil? %>
-																		<div class="listing-images">
-																		<%  @listing.assets.each do |a| %>											
+<div class="center-image">
+<%= image_tag @listing.assets.first.image.url('original') unless @listing.assets.first.nil? %>
+<div class="listing-images">
+	<%  @listing.assets.each do |a| %>											
+    	<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
+	<%end%>
+</div>
+</div>
 
-																		<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
-																		<%end%>
-																		</div>
-														</div>
-
-														<h2 class="listing-heading"><%= @listing.devicename %>  [<%= @listing.devicecarrier %>]</h2>
+<h2 class="listing-heading"><%= @listing.devicename %>  [<%= @listing.devicecarrier %>]</h2>
 														
 														
-													
-													<% if @listing.status == "Approved"%>	<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now - $<%=@listing.askprice.to_i + 20 %></a>
-																</h1>
-																<% end %>
+	<% if @listing.status == "Approved"%>	
+		<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now - $<%=@listing.askprice.to_i + 20 %></a></h1>
+	<% end %>
 																
 																
 															
-																	<% if vendor_signed_in?  %>
-																<% if current_vendor.id == @listing.vendor_id %>
-																<h1><a href="/listings/<%=@listing.id%>/edit" class="btn btn-lg btn-success">Edit Listing</a>
-																	</h1>
+	<% if vendor_signed_in?  %>
+		<% if current_vendor.id == @listing.vendor_id %>
+		<h1><a href="/listings/<%=@listing.id%>/edit" class="btn btn-lg btn-success">Edit Listing</a></h1>
+	    <% end %>
+	<% end %>
 																
-																<% end %>
-																<% end %>
-																<p><strong>Viewed <%=@listing.impressionist_count %> times.</strong></p>
+																
+<p><strong>Viewed <%=@listing.impressionist_count %> times.</strong></p>
 																
 
 
-															<ul>
-																	<li>Paypal Account: <strong><%= @listing.paypalstatus %></strong></li>
-														<li>Listed by <%= @author.email.split("@")[0] %></li>
-														<li>Member Since <%=@author.created_at.to_date() %></li>
-														<li>From <%= @profile.country unless @profile.nil? %></li>
-														<li>last updated on <%=@listing.updated_at.to_date %></li>
-														<li> <%=  link_to "View Seller's Profile",  "/profiles/#{@profile.id}" unless @profile.nil? %> </li>
+<ul>
+<li>Paypal Account: <strong><%= @listing.paypalstatus %></strong></li>
+<li>Listed by <%= @author.email.split("@")[0] %></li>
+<li>Member Since <%=@author.created_at.to_date() %></li>
+<li>From <%= @profile.country unless @profile.nil? %></li>
+<li>last updated on <%=@listing.updated_at.to_date %></li>
+<li> <%=  link_to "View Seller's Profile",  "/profiles/#{@profile.id}" unless @profile.nil? %> </li>
 
-														</ul>
-															<%= social_share_button_tag(@listing.headline) %><br/>
-															
-															
-															
-															
+								</ul>
+<%= social_share_button_tag(@listing.headline) %><br/>
 
-												</div>
-												<div class="col-md-8 listings-section phoneshow greentop">
+</div>
+												
+												
+												
+												
+<div class="col-md-8 listings-section phoneshow greentop">
 
-														<h2 class="listing-heading"><%=@listing.headline %></h2>
-														<p><%=@listing.description %></p>
+<h2 class="listing-heading"><%=@listing.headline %></h2>
+<p><%=@listing.description %></p>
 
 														<hr class="gray">
 
