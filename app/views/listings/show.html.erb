@@ -2,7 +2,7 @@
 
 <div class="outer">
 	<div class="centered-800 section rounded row">
-		<div class="col-md-4 row-eq-height">
+		<div class="col-md-4 row-eq-height offshadow">
 													
 <div class="center-image">
 <%= image_tag @listing.assets.first.image.url('original') unless @listing.assets.first.nil? %>
@@ -17,7 +17,7 @@
 														
 														
 	<% if @listing.status == "Approved"%>	
-		<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn btn-lg btn-success">Buy now - $<%=@listing.askprice.to_i + 20 %></a></h1>
+		<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button">Buy now - $<%=@listing.askprice.to_i + 20 %></a></h1>
 	<% end %>
 																
 		<% if @listing.status == "Pending"%>	
@@ -29,7 +29,7 @@
 															
 	<% if vendor_signed_in?  %>
 		<% if current_vendor.id == @listing.vendor_id %>
-		<h1><a href="/listings/<%=@listing.id%>/edit" class="btn btn-lg btn-success">Edit Listing</a></h1>
+		<h1><a href="/listings/<%=@listing.id%>/edit" class="btn green-sea-flat-button">Edit Listing</a></h1>
 	    <% end %>
 	<% end %>
 																
@@ -54,7 +54,7 @@
 												
 												
 												
-<div class="col-md-8 listings-section row-eq-height">
+<div class="col-md-8 listings-section row-eq-height offshadow">
 
 <h2 class="listing-heading"><%=@listing.headline %></h2>
 <p><%=@listing.description %></p>
