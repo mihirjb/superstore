@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_vendor!
-  skip_before_filter :verify_authenticity_token  
+  protect_from_forgery :except => :notify_action 
   
    include ActiveMerchant::Billing::Integrations   
    
@@ -114,6 +114,9 @@ class TransactionsController < ApplicationController
     if session[:listing_id]
       @listing  =  Listing.find(session[:listing_id])
    @listing.update_column("status", "Sold")
+    @lid = session[:listing_id]
+
+     @ordertotal = @listing.askprice.to_i + 20
    
     session[:listing_id] = nil
   else
@@ -133,7 +136,6 @@ class TransactionsController < ApplicationController
   def notify_action
     
        @listing  =  Listing.find(session[:listing_id])
-     @listing.update_column("status", "Sold")
       @lid = session[:listing_id]
 
       @ordertotal = @listing.askprice.to_i + 20

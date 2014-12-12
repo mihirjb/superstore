@@ -6,10 +6,7 @@
 <p>Thanks <%= Profile.find_by_vendor_id(session[:buyer_id]).displayname %> for your payment.</p>
 <hr class="gray">
 
-<table class="table table-bordered">
-	<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Estimated Shipping date</th></tr>
-	<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td><%= Time.now.to_date + 2 %></td></tr>
-</table>
+
 <hr class="gray">
 <p>This device will ship from: <%= Listing.find(@lid).country %>.<br/>
 
