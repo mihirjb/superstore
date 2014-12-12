@@ -149,11 +149,10 @@ class TransactionsController < ApplicationController
        when "VERIFIED"
          
          logger.info "It is verified"
-         sendertxn = params[:transaction][:0].id_for_sender_txn
+         sendertxn = params[:transaction].first.id_for_sender_txn
          
            logger.info "Transaction id for sender is #{sendertxn}"
            
-        end
          # check that paymentStatus=Completed
          # check that txnId has not been previously processed
          # check that receiverEmail is your Primary PayPal email
