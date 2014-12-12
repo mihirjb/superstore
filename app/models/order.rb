@@ -16,13 +16,14 @@
 #  seller_id        :integer
 #  shipping_address :text
 #  listing_id       :integer
+#  pptransactionid  :string(255)
+#  params           :string(255)
 #
 
 class Order < ActiveRecord::Base
   
   has_one :trackcode
   has_many :reviews
-  serialize :params
-
+  has_one :pptransaction
   
 end

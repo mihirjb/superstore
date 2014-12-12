@@ -34,6 +34,7 @@
 #  paypalfname         :string(255)
 #  paypallname         :string(255)
 #  impressions_count   :integer
+#  accounttype         :string(255)
 #
 
 class Listing < ActiveRecord::Base

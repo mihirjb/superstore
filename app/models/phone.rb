@@ -11,7 +11,7 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  impressions_count  :integer
-#  type               :string(255)
+#  phonetype          :string(255)
 #
 
 class Phone < ActiveRecord::Base
