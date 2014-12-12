@@ -149,9 +149,8 @@ class TransactionsController < ApplicationController
        when "VERIFIED"
          
          logger.info "It is verified"
-         sendertxn = params['transaction[0].id_for_sender_txn']
          
-           logger.info "Transaction id for sender is #{sendertxn}"
+           logger.info "Transaction id for sender is #{ params['transaction[0].id_for_sender_txn']}"
            
          # check that paymentStatus=Completed
          # check that txnId has not been previously processed
