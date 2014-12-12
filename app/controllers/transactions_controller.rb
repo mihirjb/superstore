@@ -149,9 +149,8 @@ class TransactionsController < ApplicationController
        when "VERIFIED"
          
          logger.info "It is verified"
-         if params[:paymentStatus] = "Completed"
-           logger.info "Transaction id is #{params[:txnId]}"
-           
+         if params[:payment_status] == "Completed"
+           logger.info "Transaction id is #{params[:txn_id]}"
         end
          # check that paymentStatus=Completed
          # check that txnId has not been previously processed
