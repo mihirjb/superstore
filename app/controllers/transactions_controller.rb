@@ -145,12 +145,13 @@ class TransactionsController < ApplicationController
   def notify_action
     
     response = validate_IPN_notification(request.raw_post)
+    @tid = response.transaction_id
+    
        case response
        when "VERIFIED"
          
          logger.info "It is verified"
-         
-           logger.info "Transaction id for sender is #{ params['transaction[0].id_for_sender_txn']}"
+           logger.info "Transaction id for sender is #{@tid}"
            
          # check that paymentStatus=Completed
          # check that txnId has not been previously processed
