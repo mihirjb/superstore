@@ -15,8 +15,6 @@ Now
 - How To sell page 
 - Less questions on listings.
 - Better dashboard or profile page.
-- Better confirm order page.
-- Better thank you page.
 - Add pickup only and tracking info
 
 

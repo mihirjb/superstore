@@ -12,5 +12,6 @@
 #
 
 class Pptransaction < ActiveRecord::Base
+  serialize :params
   belongs_to :order
 end
