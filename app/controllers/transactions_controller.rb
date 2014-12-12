@@ -32,7 +32,7 @@ class TransactionsController < ApplicationController
                :amount => @listing.askprice,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
-                         :amount => 20,
+                         :amount => 0.10,
                         :primary => false}
                         ]
             
@@ -73,8 +73,8 @@ class TransactionsController < ApplicationController
                   :name => "Payment for Zalpe fees",
                   :description => "Zalpe fees",
                   :item_count => 1,
-                  :item_price => 20,
-                  :price => 20
+                  :item_price => 0.10,
+                  :price => 0.10
                 }
               ]
             }
