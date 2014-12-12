@@ -143,7 +143,6 @@ class TransactionsController < ApplicationController
     notify = ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification.new(request.raw_post)
           logger.debug "Notification object is #{notify}"
           if notify.acknowledge
-            Pptransaction.create!(:params => params)
               logger.debug "Transaction ID is #{notify.transaction_id}"
               logger.debug "Notification object is #{notify}"
               logger.debug "Notification status is #{notify.status}"

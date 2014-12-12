@@ -24,6 +24,5 @@ class Order < ActiveRecord::Base
   
   has_one :trackcode
   has_many :reviews
-  has_one :pptransaction
   
 end
