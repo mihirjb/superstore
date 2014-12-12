@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_filter :authenticate_vendor!, :only => :processtransaction
+  skip_before_filter :verify_authenticity_token
   
    include ActiveMerchant::Billing::Integrations   
    
