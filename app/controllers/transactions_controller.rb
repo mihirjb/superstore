@@ -149,7 +149,7 @@ class TransactionsController < ApplicationController
        when "VERIFIED"
          
          logger.info "It is verified"
-         sendertxn= params[:transaction[0].id_for_sender_txn]
+         sendertxn= params[:'transaction[0].id_for_sender_txn']
          
            logger.info "Transaction id for sender is #{sendertxn}"
            
