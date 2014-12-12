@@ -152,8 +152,9 @@ class TransactionsController < ApplicationController
       
               
            logger.info "Payment status #{params[:transaction_id]}"
-         end
-       end
+           
+           
+           
          # check that paymentStatus=Completed
          # check that txnId has not been previously processed
          # check that receiverEmail is your Primary PayPal email
