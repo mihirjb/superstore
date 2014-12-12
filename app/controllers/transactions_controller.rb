@@ -150,8 +150,9 @@ class TransactionsController < ApplicationController
        when "VERIFIED"
          
          logger.info "It is verified"
-           logger.info "Transaction id for sender is #{params[:transaction][:0][:id]}"
-           
+          params[:transaction].each do |t|
+           logger.info "Transaction id for sender is #{t.id}"
+         end
          # check that paymentStatus=Completed
          # check that txnId has not been previously processed
          # check that receiverEmail is your Primary PayPal email
