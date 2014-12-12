@@ -111,14 +111,10 @@ class TransactionsController < ApplicationController
   end
 
   def completetransaction    
-    if session[:listing_id]
-      @listing  =  Listing.find(session[:listing_id])
-   @listing.update_column("status", "Sold")
+
    
-    session[:listing_id] = nil
-  else
-    redirect_to :root, :notice => "Invalid request"
-  end 
+   
+   
     
   end
 
@@ -131,9 +127,9 @@ class TransactionsController < ApplicationController
   end
   
   def notify_action
-    
+     if session[:listing_id]
        @listing  =  Listing.find(session[:listing_id])
-     @listing.update_column("status", "Sold")
+    @listing.update_column("status", "Sold")
       @lid = session[:listing_id]
 
       @ordertotal = @listing.askprice.to_i + 20
@@ -148,6 +144,10 @@ class TransactionsController < ApplicationController
               logger.debug "Notification status is #{notify.status}"
           end        
           render :nothing => true
+           session[:listing_id] = nil
+          else
+            redirect_to :root, :notice => "Invalid request"
+    end
   end
   
 end
