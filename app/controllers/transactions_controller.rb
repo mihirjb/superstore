@@ -149,12 +149,9 @@ class TransactionsController < ApplicationController
        case response
        when "VERIFIED"
          
-         logger.info "It is verified"
-          params[:transaction].each do |t|
-            
-            t.each do |p|
-          
-           logger.info "Transaction id for sender is #{p.id}"
+      
+              
+           logger.info "Payment status #{params[:transaction_id]}"
          end
        end
          # check that paymentStatus=Completed
