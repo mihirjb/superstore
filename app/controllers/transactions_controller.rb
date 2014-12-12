@@ -138,16 +138,55 @@ class TransactionsController < ApplicationController
        redirect_to :root, :notice => "Invalid request"
      end
   end
+ 
+ 
+ 
   
   def notify_action
-    notify = ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification.new(request.raw_post)
-          logger.debug "Notification object is #{notify}"
-          if notify.acknowledge
-              logger.debug "Transaction ID is #{notify.transaction_id}"
-              logger.debug "Notification object is #{notify}"
-              logger.debug "Notification status is #{notify.status}"
-          end        
-          render :nothing => true
-  end
+    
+    response = validate_IPN_notification(request.raw_post)
+       case response
+       when "VERIFIED"
+         
+         logger.info "It is verified"
+         
+         # check that paymentStatus=Completed
+         # check that txnId has not been previously processed
+         # check that receiverEmail is your Primary PayPal email
+         # check that paymentAmount/paymentCurrency are correct
+         # process payment
+       when "INVALID"
+         # log for investigation
+         
+         logger.info "It is  not verified"
+         
+       else
+         # error
+         
+         logger.info "Some errror"
+         
+       end
+       render :nothing => true
+     end 
+     
+     
+     
+     
+     protected 
+     
+     
+     def validate_IPN_notification(raw)
+       uri = URI.parse('https://www.paypal.com/cgi-bin/webscr?cmd=_notify-validate')
+       http = Net::HTTP.new(uri.host, uri.port)
+       http.open_timeout = 60
+       http.read_timeout = 60
+       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+       http.use_ssl = true
+       response = http.post(uri.request_uri, raw,
+                            'Content-Length' => "#{raw.size}",
+                            'User-Agent' => "My custom user agent"
+                          ).body
+     end
+    
   
 end
