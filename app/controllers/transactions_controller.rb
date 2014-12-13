@@ -113,12 +113,11 @@ class TransactionsController < ApplicationController
   def completetransaction    
     if session[:listing_id]
       @listing  =  Listing.find(session[:listing_id])
-   @listing.update_column("status", "Sold")
     @lid = session[:listing_id]
     
     @ordertotal = 0.01.to_i + 0.01
 
-    @order = Order.create(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address], :listing_id => session[:listing_id])
+    @order = Order.find_by_listing_id(session[:listing_id]).update_columns(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address])
     
     AdminMailer.order_confirmation(current_vendor, @listing).deliver
     VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
@@ -148,9 +147,13 @@ class TransactionsController < ApplicationController
     
        case response
        when "VERIFIED"
-         
+        if params[:status] == "COMPLETED"
+          @listing_id = params[:format]
+           @listing  =  Listing.find(@listing_id)
+         @listing.update_column("status", "Sold")
       
-              
+      @order = Order.create!(:listing_id => @lisitng_id, :params => params)
+         end     
            logger.info "Payment status #{params}"
            
            
