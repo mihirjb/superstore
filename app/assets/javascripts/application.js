@@ -464,7 +464,6 @@ required: true,
 },
 "listing[devicestorage]": {
 required: true,
-rangelength: [1,10]
 },
 "listing[modified]": {
 required: true,
@@ -524,7 +523,6 @@ required: true,
 		},
 		"listing[devicestorage]": {
 		required: "Enter the storage capacity of the phone",
-		rangelength: "Type a realistic value",
 		
 		},
 		"listing[modified]": {
