@@ -6,11 +6,20 @@
 <h2>Thanks <%= Profile.find_by_vendor_id(current_vendor.id).displayname %> for your payment.</h2>
 <hr class="gray">
 <table class="table table-bordered">
-	<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Estimated Shipping date</th><th>Paypal Txn Id</th></tr>
-	<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td><%= Time.now.to_date + 2 %></td><td><%= @order.params["transaction"]["0"][".id_for_sender_txn"]%></td></tr>
+	<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Quantity</th><th>Paypal Txn Id</th></tr>
+	<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td>1</td><td><%= @order.params["transaction"]["0"][".id_for_sender_txn"]%></td></tr>
 </table>
 <hr class="gray">
-
+<% if @listing.deliverby == "pickuponly" %>
+<h3>Pickup Address</h3>
+<p><%= @listing.pickupaddress %></p>
+<% elsif @listing.deliverby == "courier"  %>
+<h3>Shipping Address:</h3>
+<p>
+<%= @order.shipping_address %>
+</p>
+<p>Your phone will be shipped to you by <%= Time.now.to_date + 2 %></p>
+<% end %>
 <p>We have sent you a confirmation mail, please save it for future reference.</p>
 <p>Meanwhile free free to <%= link_to "Browse More", root_path %>. You can checkout <a href="/pages/iphones-for-sale">all iPhones that are on sale in Singapore</a></p>
 </div>

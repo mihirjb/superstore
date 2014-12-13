@@ -16,15 +16,24 @@
 	Please find below the summary of your order at zalpe.com:</p>
 	<h4>Order details table</h4>
 	<table class="table table-bordered">
-		<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Estimated Shipping date</th></tr>
-		<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td><%= Time.now.to_date + 2 %></td></tr>
+		<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Quantity</th><th>Paypal Txn Id</th></tr>
+		<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td>1</td><td><%= @order.params["transaction"]["0"][".id_for_sender_txn"]%></td></tr>
 	</table><br/><br/>
-	<h4>Shipping Address:</h4>
+	<% if @listing.deliverby == "pickuponly" %>
+	<h3>Pickup Address</h3>
+	<p><%= @listing.pickupaddress %></p>
+	<% elsif @listing.deliverby == "courier"  %>
+	<p>Your phone will be shipped to you by <%= Time.now.to_date + 2 %></p>
+	<h3>Shipping Address:</h3>
 	<p>
 	<%= @order.shipping_address %>
 	</p>
 	<br/><br/>
 	<p>
+	<% end %>
+	
+	
+	
 	Please contact us should you have any questions or need further assistance.
 	Thank you for shopping with us!</p>
 </div>
