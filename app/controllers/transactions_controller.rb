@@ -117,7 +117,8 @@ class TransactionsController < ApplicationController
     
     @ordertotal = 0.01.to_i + 0.01
 
-    @order = Order.find_by_listing_id(session[:listing_id]).update_columns(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address])
+    @order = Order.find_by_listing_id(session[:listing_id])
+    @order.update_columns(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address])
     
     AdminMailer.order_confirmation(current_vendor, @listing).deliver
     VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
@@ -152,7 +153,7 @@ class TransactionsController < ApplicationController
            @listing  =  Listing.find(@listing_id)
          @listing.update_column("status", "Sold")
       
-      @order = Order.create!(:listing_id => @lisitng_id, :params => params)
+      @order = Order.create!(:listing_id => @listing_id, :params => params)
          end     
            logger.info "Payment status #{params}"
            
