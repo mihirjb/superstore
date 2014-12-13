@@ -2,10 +2,14 @@
 <div class="main">
 						<div class="centered-800 section rounded phoneshow">
 							
-		<h1>Transaction complete</h1>
-<p>Thanks <%= Profile.find_by_vendor_id(session[:buyer_id]).displayname %> for your payment.</p>
+		<h1>Yay! your payment is done.</h1>
+<h2>Thanks <%= Profile.find_by_vendor_id(session[:buyer_id]).displayname %> for your payment.</h2>
 <hr class="gray">
-
+<table class="table table-bordered">
+	<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Estimated Shipping date</th><th>Transaction Id</th></tr>
+	<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td><%= Time.now.to_date + 2 %></td><%= @order.params["transaction"]["0"][".id_for_sender_txn"]%></tr>
+</table>
+<hr class="gray">
 
 <p>We have sent you a confirmation mail, please save it for future reference.</p>
 <p>Meanwhile free free to <%= link_to "Browse More", root_path %>. You can checkout <a href="/pages/iphones-for-sale">all iPhones that are on sale in Singapore</a></p>
