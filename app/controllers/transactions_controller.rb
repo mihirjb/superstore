@@ -40,7 +40,7 @@ class TransactionsController < ApplicationController
         :action_type => "CREATE",
         :return_url => url_for(:action => 'completetransaction', :only_path => false),
         :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-        :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
+        :ipn_notification_url => transactions_notify_action_url(@listing.id),
         :currency_code => "SGD",
         :receiver_list => recipients
       )
@@ -87,7 +87,7 @@ class TransactionsController < ApplicationController
       response = gateway.setup_purchase(
       :return_url => url_for(:action => 'completetransaction', :only_path => false),
       :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-      :ipn_notification_url => url_for(:action => 'notify_action', :only_path => false),
+      :ipn_notification_url => transactions_notify_action_url(@listing.id),
       :currency_code => "SGD",
       :receiver_list => recipients
       )
@@ -151,7 +151,7 @@ class TransactionsController < ApplicationController
          
       
               
-           logger.info "Payment status #{params[:transaction_id]}"
+           logger.info "Payment status #{params}"
            
            
            
