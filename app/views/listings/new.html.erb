@@ -145,10 +145,17 @@
 									<div class="radgrp"><%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?*" %>
 									<div class="radbtns"><%= f.radio_button :paypalconfirmed, :true %> <%= f.label:paypalconfirmed, " Yes" %></div>
 									<div class="radbtns"><%= f.radio_button :paypalconfirmed, :false %> <%= f.label:paypalconfirmed, " No" %></div></div>
+										<div class="radgrp"><%= f.label:deliveryby, "Please select your delivery mode" %>
+										<div class="radbtns"><%= f.radio_button :deliveryby, :pickuponly %>  <%= f.label:deliveryby, " Pickup Only" %></div>
+										<div class="radbtns"><%= f.radio_button :deliveryby, :courier %> <%= f.label:deliveryby, " Courier" %></div>
+										</div>
+									
+									
 								<div class="radgrp"><%= f.label:shipinternationally, "Will you ship internationally? (required)" %>
 								<div class="radbtns"><%= f.radio_button :shipinternationally, :true %>  <%= f.label:shipinternationally, " Yes" %></div>
 								<div class="radbtns"><%= f.radio_button :shipinternationally, :false %> <%= f.label:shipinternationally, " No" %></div>
 								</div>
+								<%= f.text_area :pickupaddress,  :placeholder=>"Pickup Address, if you want customer to pickup the device." %>
 
 								<%= f.text_area :shippingdetails,  :placeholder=>"Details on how you will ship internationally, if you do." %>
 								
