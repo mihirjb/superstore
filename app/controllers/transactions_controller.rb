@@ -112,10 +112,13 @@ class TransactionsController < ApplicationController
 
   def completetransaction    
     if session[:listing_id]
+      logger.info "Listing id is {session[:listing_id]}"
+      
       @listing  =  Listing.find(session[:listing_id])
     @order = Order.find_by_listing_id(session[:listing_id])
-    
- 
+      AdminMailer.order_confirmation(current_vendor, @listing).deliver
+       VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
+       BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver
     
     session[:listing_id] = nil
   else
@@ -149,15 +152,10 @@ class TransactionsController < ApplicationController
       
       @order = Order.create!(:listing_id => @listing_id, :params => params)
       @ordertotal = 0.01.to_i + 0.01
-
-
        @order.update_columns(:vendor_id => @vendor_id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => params[:shipping_address])
 
-       AdminMailer.order_confirmation(current_vendor, @listing).deliver
-       VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
-       BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver      
+        
       end     
-           logger.info "Payment status #{params}"
            
            
            
