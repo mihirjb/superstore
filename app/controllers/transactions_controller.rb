@@ -29,10 +29,10 @@ class TransactionsController < ApplicationController
       )
             
              recipients = [{:email => Listing.find(params[:l]).paypalemail,
-               :amount => 0.01,
+               :amount => @listing.askingprice,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
-                         :amount => 0.01,
+                         :amount => 20,
                         :primary => false}
                         ]
             
@@ -59,8 +59,8 @@ class TransactionsController < ApplicationController
                 { 
                   :name => "Payment - #{@listing.devicename}",
                   :item_count => 1,
-                  :item_price => 0.01,
-                  :price => 0.01
+                  :item_price => @listing.askingprice,
+                  :price => @listing.askingprice
                 }
               ]
             }
@@ -73,8 +73,8 @@ class TransactionsController < ApplicationController
                   :name => "Payment for Zalpe fees",
                   :description => "Zalpe fees",
                   :item_count => 1,
-                  :item_price => 0.01,
-                  :price => 0.01
+                  :item_price => 20,
+                  :price => 20
                 }
               ]
             }
@@ -87,7 +87,7 @@ class TransactionsController < ApplicationController
       response = gateway.setup_purchase(
       :return_url => url_for(:action => 'completetransaction', :only_path => false),
       :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-      :ipn_notification_url => transactions_notify_action_url(@listing.id),
+      :ipn_notification_url => transactions_notify_action_url(@listing.id,current_vendor.id),
       :currency_code => "SGD",
       :receiver_list => recipients
       )
@@ -115,7 +115,7 @@ class TransactionsController < ApplicationController
       @listing  =  Listing.find(session[:listing_id])
     @lid = session[:listing_id]
     
-    @ordertotal = 0.01.to_i + 0.01
+    @ordertotal = @listing.askingprice.to_i + 0.01
 
     @order = Order.find_by_listing_id(session[:listing_id])
     @order.update_columns(:vendor_id => current_vendor.id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => session[:shipping_address])
