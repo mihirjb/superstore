@@ -8,8 +8,8 @@ class PagesController < ApplicationController
   def home
          @newlistedphones = Phone.find(:all, :order => "updated_at DESC", :limit => 6)
          @mostviewedphones = Phone.find(:all, :order => "impressions_count DESC", :limit => 6)
-         @iphones = Phone.where('phonetype LIKE ?', "iPhone").select("modelname","image_file_name","image_content_type","image_file_size")
-         @ipads = Phone.where('phonetype LIKE ?', "iPad").select("modelname","image_file_name","image_content_type","image_file_size")
+         @iphones = Phone.where('phonetype LIKE ?', "iPhone")
+         @ipads = Phone.where('phonetype LIKE ?', "iPad")
          
   end
   
