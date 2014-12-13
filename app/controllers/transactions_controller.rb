@@ -112,7 +112,7 @@ class TransactionsController < ApplicationController
 
   def completetransaction    
     if session[:listing_id]
-      logger.info "Listing id is {session[:listing_id]}"
+      logger.info "Listing id is #{session[:listing_id]}"
       
       @listing  =  Listing.find(session[:listing_id])
     @order = Order.find_by_listing_id(session[:listing_id])
