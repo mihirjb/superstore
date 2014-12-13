@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212082212) do
+ActiveRecord::Schema.define(version: 20141213033715) do
 
   create_table "accounts", force: true do |t|
     t.string   "subdomain"
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20141212082212) do
     t.text     "shipping_address"
     t.integer  "listing_id"
     t.string   "pptransactionid"
-    t.string   "params"
+    t.text     "params",           limit: 255
   end
 
   add_index "orders", ["listing_id"], name: "index_orders_on_listing_id"
@@ -159,15 +159,6 @@ ActiveRecord::Schema.define(version: 20141212082212) do
   end
 
   add_index "phones", ["modelname"], name: "index_phones_on_modelname"
-
-  create_table "pptransactions", force: true do |t|
-    t.string   "params"
-    t.integer  "order_id"
-    t.integer  "transaction_id"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "profiles", force: true do |t|
     t.string   "fullname"
