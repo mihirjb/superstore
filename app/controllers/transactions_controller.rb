@@ -40,7 +40,7 @@ class TransactionsController < ApplicationController
         :action_type => "CREATE",
         :return_url => url_for(:action => 'completetransaction', :only_path => false),
         :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-        :ipn_notification_url => transactions_notify_action_url(@listing.id),
+        :ipn_notification_url => transactions_notify_action_url(@listing.id,current_vendor.id),
         :currency_code => "SGD",
         :receiver_list => recipients
       )
