@@ -6,16 +6,7 @@
 	<div class="main">
 						<div class="centered-800 section rounded offshadow ">
 							
-							<% if @listing.errors.full_messages.any? %>
-							<div id="error_explanation">
-							<h2>Please rectify the following errors</h2>
-							<ul>
-							<% @listing.errors.full_messages.each do |error_message| %>
-							<li><%= error_message %></li>
-							<% end %>
-							</div>
-							<% end %>
-							
+						
 							<div class="instructions">
 								<h2 class="content heading">Instructions for a valid listing</h2>
 								<hr class="gray">
@@ -49,6 +40,15 @@
 			
 		<%= form_for @listing, :class=>"form-horizontal", :id => "listing-form",  :role => "form", :html => { :multipart => true } do |f| %>
 		
+			<% if @listing.errors.full_messages.any? %>
+			<div id="error_explanation">
+			<h2>Please rectify the following errors</h2>
+			<ul>
+			<% @listing.errors.full_messages.each do |error_message| %>
+			<li><%= error_message %></li>
+			<% end %>
+			</div>
+			<% end %>
 	
 		
 			<h3 class="form-heading">Basic Information</h3>
