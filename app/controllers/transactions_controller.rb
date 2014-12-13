@@ -40,7 +40,7 @@ class TransactionsController < ApplicationController
         :action_type => "CREATE",
         :return_url => url_for(:action => 'completetransaction', :only_path => false),
         :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-        :ipn_notification_url => transactions_notify_action_url(@listing.id,current_vendor.id),
+        :ipn_notification_url => transactions_notify_action_url(:listing_id => @listing.id,:vendor_id => current_vendor.id),
         :currency_code => "SGD",
         :receiver_list => recipients
       )
@@ -87,7 +87,7 @@ class TransactionsController < ApplicationController
       response = gateway.setup_purchase(
       :return_url => url_for(:action => 'completetransaction', :only_path => false),
       :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-      :ipn_notification_url => transactions_notify_action_url(@listing.id,current_vendor.id),
+      :ipn_notification_url => transactions_notify_action_url(:listing_id => @listing.id,:vendor_id => current_vendor.id),
       :currency_code => "SGD",
       :receiver_list => recipients
       )
@@ -149,7 +149,7 @@ class TransactionsController < ApplicationController
        case response
        when "VERIFIED"
         if params[:status] == "COMPLETED"
-          @listing_id = params[:format]
+          @listing_id = params[:listing_id]
            @listing  =  Listing.find(@listing_id)
          @listing.update_column("status", "Sold")
       
