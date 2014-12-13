@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   
   before_filter :authenticate_vendor!, :only => [:dashboard]
   layout "home", only: [:home]
+  caches_page :alliphones, :allipads, :help, :about, :thanksandshare, :faq, :sellerfaq, :buyerfaq, :terms
  
   
   def home
@@ -82,6 +83,19 @@ class PagesController < ApplicationController
    
     @url = "http://www.zalpe.com" + session[:previous_url] + "/" + params[:lid]
 
+  end
+  
+  
+  def terms
+  end
+  
+  def faq
+  end
+  
+  def sellerfaq
+  end
+  
+  def buyerfaq
   end
   
 end
