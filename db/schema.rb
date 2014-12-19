@@ -162,6 +162,15 @@ ActiveRecord::Schema.define(version: 20141213054205) do
 
   add_index "phones", ["modelname"], name: "index_phones_on_modelname"
 
+  create_table "pptransactions", force: true do |t|
+    t.string   "params"
+    t.integer  "order_id"
+    t.integer  "transaction_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", force: true do |t|
     t.string   "fullname"
     t.string   "paypalemail"
