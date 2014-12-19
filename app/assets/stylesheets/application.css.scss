@@ -2352,14 +2352,14 @@ h1.outlined-heading
 
 /* navbar */
 .navbar-default {
-    background-color: #e1e1e1;
-    border-color: #ccc;
+    background-color: #000;
+    border-color: #222;
 	font-family: 'Titillium Web', sans-serif;
 	margin-bottom:0px;
 }
 /* title */
 .navbar-default .navbar-brand {
-    color: #777;
+    color: #fcfcfc;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -2367,7 +2367,7 @@ h1.outlined-heading
 }
 /* link */
 .navbar-default .navbar-nav > li > a {
-    color: #454545;
+    color: #fff;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -2379,13 +2379,13 @@ line-height: 1em;
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus {
     color: #d35400;
-    background-color: #e1e1e1;
+    background-color: #000;
 }
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus {
     color: #d35400;
-    background-color: #e1e1e1;
+    background-color: #000;
 }
 /* caret */
 .navbar-default .navbar-nav > .dropdown > a .caret {
