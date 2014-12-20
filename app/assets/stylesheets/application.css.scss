@@ -12,7 +12,7 @@ body {
 background-color:#E7E7E9;
 background-image: url("../dots.png");
 
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-family: 'Roboto',"Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 20px;
 color: #333333;
@@ -24,6 +24,101 @@ section
 	padding:60px 0px;
 	overflow:auto;
 	border-bottom:1px solid #e7e7e9;
+}
+/************Navbar*************************/
+.navbar-form
+{
+	padding:7px 0px 6px;
+}
+/* navbar */
+.navbar-default {
+    background-color: #000;
+    border-color: #222;
+	font-family: 'Roboto', sans-serif;
+	margin-bottom:0px;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #fcfcfc;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+	text-align: center;
+	height: 62px;
+	line-height: 62px;
+	padding: 0 18px;
+	font-weight:bold;
+	font-size:12px;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #d35400;
+text-decoration:none;
+border-bottom:2px solid #d35400;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #d35400;
+    background-color: #000;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #d35400;
+    background-color: #000;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+
+
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: #222;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #222;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #3e3e3e;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #454545;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #d35400;
+		text-decoration:none;
+
+    }
+}
+
+
+.navbar-default form input, .navbar-default form input.btn
+{
+	height:33px;
+	box-shadow:none;
 }
 
 /************sign in ***********/
@@ -910,7 +1005,7 @@ input[type="submit"].btn {
     position: relative;
     color: #FFFFFF;
     text-shadow: none;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 18px;
     background-color: #e93232;
@@ -986,7 +1081,7 @@ a.btn.btn-inputs, input[type="submit"].btn.btn-inputs {
 
 a.btn-large, input[type="submit"].btn-large, a.btn-large:hover,
 input[type="submit"].btn-large:hover {
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     font-weight: 300;
     font-size: 18px;
@@ -1053,7 +1148,7 @@ a.btn.redround, input[type="submit"].btn.redround {
     text-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
     letter-spacing: 1px;
     font-size: 14px;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     background-color: #BE1212;
@@ -1116,7 +1211,7 @@ a.btn.blueround, input[type="submit"].btn.blueround {
     text-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
     letter-spacing: 1px;
     font-size: 14px;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     background-color: #133783;
@@ -1179,7 +1274,7 @@ a.btn.clearround, input[type="submit"].btn.clearround {
     text-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
     letter-spacing: 1px;
     font-size: 14px;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     background-color: transparent;
@@ -1227,7 +1322,7 @@ a.btn.invertround, input[type="submit"].btn.invertround {
     text-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
     letter-spacing: 1px;
     font-size: 14px;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     background-color: transparent;
@@ -1276,7 +1371,7 @@ button.stripe-button-el {
     color: #FFFFFF;
     text-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
     letter-spacing: 1px;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     background-color: #BE1212;
@@ -1304,7 +1399,7 @@ button.stripe-button-el {
 
 button.stripe-button-el span {
     background-image: none !important;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-shadow: none;
     font-weight: 900;
     letter-spacing: 1px;
@@ -1596,7 +1691,7 @@ ol.steps li
 
 h1,h2,h3,h4,h5,h6
 {
-font-family: 'Titillium Web', sans-serif;
+font-family: 'Roboto', sans-serif;
 	line-height:1.5em;
 }
 
@@ -1650,7 +1745,7 @@ h2.content-heading
 	font-weight:light;
 	margin-bottom:40px;
 	font-size:36px;
-font-family: 'Titillium Web', sans-serif;
+font-family: 'Roboto', sans-serif;
 }
 h3.content-heading
 {
@@ -1872,16 +1967,6 @@ p.mission-slogan
 	font-family: 'Playfair Display','Old Standard TT', serif;
 }
 
-
-ul.nav
-{
-	padding:20px 0px 0px;
-}
-ul.nav li a
-{
-	padding:5px 20px;
-	font-weight:bold;
-}
 
 
 
@@ -2163,7 +2248,7 @@ body {
 /* Set the fixed height of the footer here */
 #footer {
   height: 40px;
-	font-family: 'Titillium Web', sans-serif;
+	font-family: 'Roboto', sans-serif;
 
 }
 
@@ -2347,92 +2432,6 @@ h1.outlined-heading
 	border-radius:15px;
 	padding:10px 20px;
 	
-}
-/************Navbar*************************/
-
-/* navbar */
-.navbar-default {
-    background-color: #000;
-    border-color: #222;
-	font-family: 'Titillium Web', sans-serif;
-	margin-bottom:0px;
-}
-/* title */
-.navbar-default .navbar-brand {
-    color: #fcfcfc;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #5E5E5E;
-}
-/* link */
-.navbar-default .navbar-nav > li > a {
-    color: #fff;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #d35400;
-text-decoration:none;
-line-height: 1em;
-}
-.navbar-default .navbar-nav > .active > a, 
-.navbar-default .navbar-nav > .active > a:hover, 
-.navbar-default .navbar-nav > .active > a:focus {
-    color: #d35400;
-    background-color: #000;
-}
-.navbar-default .navbar-nav > .open > a, 
-.navbar-default .navbar-nav > .open > a:hover, 
-.navbar-default .navbar-nav > .open > a:focus {
-    color: #d35400;
-    background-color: #000;
-}
-/* caret */
-.navbar-default .navbar-nav > .dropdown > a .caret {
-    border-top-color: #777;
-    border-bottom-color: #777;
-}
-.navbar-default .navbar-nav > .dropdown > a:hover .caret,
-.navbar-default .navbar-nav > .dropdown > a:focus .caret {
-    border-top-color: #333;
-    border-bottom-color: #333;
-}
-
-
-.navbar-default .navbar-nav > .open > a .caret, 
-.navbar-default .navbar-nav > .open > a:hover .caret, 
-.navbar-default .navbar-nav > .open > a:focus .caret {
-    border-top-color: #555;
-    border-bottom-color: #555;
-}
-/* mobile version */
-.navbar-default .navbar-toggle {
-    border-color: #222;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: #222;
-}
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #3e3e3e;
-}
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: #454545;
-    }
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: #d35400;
-		text-decoration:none;
-
-    }
-}
-
-
-.navbar-default form input, .navbar-default form input.btn
-{
-	height:33px;
-	box-shadow:none;
 }
 
 body div.container div.outer #sellerreview table td img
@@ -3014,7 +3013,7 @@ div.main, div.pane
 	/* Set the fixed height of the footer here */
 	#footer {
 	  height: 80px;
-		font-family: 'Titillium Web', sans-serif;
+		font-family: 'Roboto', sans-serif;
 
 	}
 
