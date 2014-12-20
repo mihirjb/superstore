@@ -31,8 +31,9 @@
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			   
+			   <!--->
 			      <a href="<%= root_url%>"><img class="navbar-left small-logo" src="/pslogo.png" /></a>
+			-->
 			      <ul class="nav navbar-nav navbar-left">
 			        <li><a href="<%= root_url %>">Home</a></li>
 					
@@ -70,7 +71,12 @@
 
 		
 			</header>
-
+		
+	<div class="top">
+		<div class="centered-text">
+			<a href="<%= root_url %>"><h1 class="normal-logo">zalpe</h1></a>
+		</div>
+	</div>
 <div class="container">
 	<% if flash[:notice] %>
 	<div class='alert top-alert <% if flash[:notice] =~ /Success/i %> alert-success <% else %> alert-danger<% end %>' data-dismiss="alert">
