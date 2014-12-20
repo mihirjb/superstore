@@ -26,6 +26,11 @@ section
 	border-bottom:1px solid #e7e7e9;
 }
 /************Navbar*************************/
+.small-logo
+{
+	height:40px;
+	margin:10px;
+}
 .navbar-form
 {
 	padding:7px 0px 6px;
@@ -53,9 +58,8 @@ section
 	text-align: center;
 	height: 62px;
 	line-height: 62px;
-	padding: 0 18px;
-	font-weight:bold;
-	font-size:12px;
+	padding: 0 20px;
+	font-size:13px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
