@@ -6,6 +6,7 @@ class BuyerMailer < ActionMailer::Base
     @order = order
      @buyer = Profile.find_by_vendor_id(buyer.id)
      @seller = Profile.find_by_vendor_id(seller.vendor_id)
+     @listing = seller
       mail(:to => "#{buyer.email}", :subject => "Recipt for your order from Zalpe")
   end
   
