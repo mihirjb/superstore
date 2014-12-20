@@ -19,10 +19,10 @@
 		<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Quantity</th><th>Paypal Txn Id</th></tr>
 		<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td>1</td><td><%= @order.params["transaction"]["0"][".id_for_sender_txn"]%></td></tr>
 	</table><br/><br/>
-	<% if @listing.deliverby == "pickuponly" %>
+	<% if @listing.deliveryby == "pickuponly" %>
 	<h3>Pickup Address</h3>
 	<p><%= @listing.pickupaddress %></p>
-	<% elsif @listing.deliverby == "courier"  %>
+	<% elsif @listing.deliveryby == "courier"  %>
 	<p>Your phone will be shipped to you by <%= Time.now.to_date + 2 %></p>
 	<h3>Shipping Address:</h3>
 	<p>

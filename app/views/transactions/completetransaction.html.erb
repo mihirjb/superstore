@@ -10,10 +10,10 @@
 	<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td>1</td><td><%= @order.params["transaction"]["0"][".id_for_sender_txn"]%></td></tr>
 </table>
 <hr class="gray">
-<% if @listing.deliverby == "pickuponly" %>
+<% if @listing.deliveryby == "pickuponly" %>
 <h3>Pickup Address</h3>
 <p><%= @listing.pickupaddress %></p>
-<% elsif @listing.deliverby == "courier"  %>
+<% elsif @listing.deliveryby == "courier"  %>
 <h3>Shipping Address:</h3>
 <p>
 <%= @order.shipping_address %>
