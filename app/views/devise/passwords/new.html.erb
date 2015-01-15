@@ -4,14 +4,12 @@
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {class:"auth-form", :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true %>
+  <p><%= f.label :email %>
+  <%= f.email_field :email, :autofocus => true %></p>
 
 <br/>
-<hr class="gray">
 
-<%= f.submit "Send me reset password instructions", :class=> "btn btn-sm btn-success " %>
-<hr class="gray">
+<p><%= f.submit "Send me reset password instructions", :class=> "btn btn-sm btn-success " %></p>
 <div class="form-links">
 	<%= render "devise/shared/links" %>
 </div>
