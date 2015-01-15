@@ -10,12 +10,12 @@
 <div class="container white-color softshadow">
 	<% if @listings.blank? %>
 	<div class="cushion">
-	<h2 class="">Sorry no results found for <%= @phone.modelname %></h2>
+	<h2 class="">Sorry no results found for <%= @phone.modelname %></h3>
 	<hr class="gray">
 	<a class="btn orange-flat-button" href="/listings/new?pid=<%= @phone.id %>">Sell <%= @phone.modelname %></a>
 	</div>
 	<div class="cushion">
-		<h2>Maybe you'll like these popular listings</h2>
+		<h3>Meanwhile check these popular listings</h3>
 		<hr class="gray">
 		<div class="row">
 		<% @popularlistings = Listing.where('status iLIKE ?',"Approved").order("impressions_count DESC").limit(6) %>
