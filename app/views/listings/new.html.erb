@@ -1,213 +1,132 @@
 <% content_for :title,  "Create a new listing to sell in Singapore" %>
 
+<section class="long-form-section">
+	<div class="header silver-color offshadow">
+		<h1 class="page-title auth-form-heading">List your phone</h1>
+		<p class="sub">Free to sell, so you keep all the money</p>
+</div>
+<div class="container">	
 
-
-<div class="outer">
-	<div class="main">
-						<div class="centered-800 section rounded offshadow ">
-							
-						
-							<div class="instructions">
-								<h2 class="content heading">Instructions for a valid listing</h2>
-								<hr class="gray">
-								<h4>REQUIRED:</h4>
-				<ul>
-							<li>Device is fully functional, including all buttons and ports.</li><li>
-								Device is and ready for activation and not reported lost or stolen.</li><li>
-								Device is free of cracks and water damage and other non-cosmetic damage.</li><li>
-								Device has functional battery (not damaged) included with sale.</li><li>
-								The device and seller must otherwise qualify for sale in accordance with our Terms of Use.</li></ul>
-
-								<h4>NOT ALLOWED:</h4>
-								<ul>
-											<li>
-								Device that cannot be activated.</li><li>
-								Device with cracks on screen or glass.</li><li>
-								Device with water damage (or missing moisture indicator stickers).</li></ul>
-								
-								<h4 class="form-title">All the inputs with the <span class="green">asterisk (*)</span> sign are compulsory to fill.</h4>
-								
-								</div>
-							
-							
-					
-
-
-
-						
-
-<hr class="gray">
-			
-		<%= form_for @listing, :class=>"form-horizontal", :id => "listing-form",  :role => "form", :html => { :multipart => true } do |f| %>
-		
-			<% if @listing.errors.full_messages.any? %>
-			<div id="error_explanation">
-			<h2>Please rectify the following errors</h2>
-			<ul>
-			<% @listing.errors.full_messages.each do |error_message| %>
-			<li><%= error_message %></li>
-			<% end %>
-			</div>
-			<% end %>
-	
-		
-			<h3 class="form-heading">Basic Information</h3>
-				<br/><%=f.label:country, "Your Market" %>
 				
-				<%= f.select :country , [['Singapore','Singapore']],  :autofocus => true%>
-				<br/>
-				<span class="helper-block">You can only sell in one market at one time. Currently we are live only in Singapore. Stay tuned for more markets.</span><br/><br/>
-			<%= f.text_field :headline, :class=> " required", :placeholder=>"Give a heading to your listing*"%>
-
-			<%= f.text_area :description, :class=> "required", :placeholder=>"Describe your phone a little*" %>
-		
-			<hr class="gray">
-		
-				<h3 class = "required">Condition of the device (required)</h3>
-
-			<%= f.radio_button :devicecondition, :Mint  %>	<%= f.label :devicecondition, " Mint" %>
-			<ul>
-				<li>Functions flawlessly</li>
-				<li>Perfect screen condition</li>
-				<li>No signs of use</li>
-				</ul>
-			
-			<%= f.radio_button :devicecondition, :Good %> <%= f.label :devicecondition, " Good" %>
-			<ul>
-				<li>Functions flawlessly</li>
-				<li>Good screen condition</li>
-				<li>Few Cosmetic imperfections</li>
-				</ul>
-			
-			<%= f.radio_button :devicecondition, :Fair %> <%= f.label :devicecondition, " Fair" %>
-				<ul>
-					<li>Functions flawlessly</li>
-					<li>Good screen condition</li>
-					<li>Some scratches or worn paint</li>
-					</ul>
+					<%= form_for @listing, :id => "listing-form",  :role => "form", :html => {:class=>"long-form", :multipart => true } do |f| %>
 					
-					<%= f.radio_button :devicecondition, :New %> <%= f.label :devicecondition, " New" %>
-							<ul>
-								<li>Never activated, rooted, or refurbished</li>
-								<li>Includes original box and all accessories</li>
-								<li>No signs of use</li>
-								</ul>
-			
-								<hr class="gray">
-								<h3>Listing pricing and payment details</h3>
+						<% if @listing.errors.full_messages.any? %>
+						<div id="error_explanation">
+						<h2>Please rectify the following errors</h2>
+						<ul>
+						<% @listing.errors.full_messages.each do |error_message| %>
+						<li><%= error_message %></li>
+						<% end %>
+						</div>
+						<% end %>
+					
+					<div class="form-group">
+					<p><%= f.label :headline, " Title of your listing" %>
+					<%= f.text_field :headline %></p>
+					<p><%= f.label :description, " Describe your phone a little" %>
+					<%= f.text_field :description %></p>
+					</div>
+					<div class="form-group">
+					<p><%= f.label :devicename, " Name of your phone" %>
+					<%= f.text_field :devicename, :value=> Phone.find(params[:pid]).modelname, :readonly => true %></p>
+					<div class="radgrp"><%= f.label :devicestorage, " How much internal memory does your device have?" %>
+						<div class="btn-group">
+						<div class="radbtns"><%= f.radio_button :devicestorage, "8 GB" %> <%= f.label:devicestorage, "8 GB" %></div>
+						<div class="radbtns"><%= f.radio_button :devicestorage, "16 GB" %> <%= f.label:devicestorage, "16 GB" %></div>
+						<div class="radbtns"><%= f.radio_button :devicestorage, "32 GB" %> <%= f.label:devicestorage, "32 GB" %></div>
+						<div class="radbtns"><%= f.radio_button :devicestorage, "64 GB" %> <%= f.label:devicestorage, "64 GB" %></div>
+						<div class="radbtns"><%= f.radio_button :devicestorage, "128 GB" %> <%= f.label:devicestorage, "128 GB" %></div>
+						</div>
+						</div>
+				
+				
+				
+				
+					<p><%= f.label :devicecolor, " Device Color" %>
+					<%= f.text_field :devicecolor %></p>
+					<p><%= f.label :devicecondition, " Device Condition" %>
+					<%= f.text_field :devicecondition %></p>
+					<div class="radgrp"><%= f.label :modified, " Has the phone been modified in any way?" %>
+						<div class="btn-group"><div class="radbtns"><%= f.radio_button :modified, :true %> <%= f.label:modified, " Yes" %></div>
+						<div class="radbtns"><%= f.radio_button :modified, :false %> <%= f.label:modified, " No" %></div></div></div>
+					<p><%= f.label :deviceimei, " Imei Number" %>
+					<%= f.text_field :deviceimei %></p>
+						<p><%=f.label:devicecarrier, "Service Provider" %>
 
-								<%= f.text_field :askprice, :class=> " required", :placeholder=>"Your selling price*" %>			
-								<%= f.text_field :paypalemail, :class=> " required", :placeholder=>"Your Paypal email address*" %>
-								<span class="helper-block">Will be kept private</span>
-								<br/><br/>
-								<%= f.text_field :paypalfname, :class=> " required", :placeholder=>"Your First name in Paypal, required for verification*" %>
-								<%= f.text_field :paypallname, :class=> " required", :placeholder=>"Your Last name in Paypal, required for verification*" %>
-								
-								<hr class="gray">
+						<%= f.select :devicecarrier , [['Unlocked','Unlocked'], ['SingTel','SingTel'], ['Starhub','Starhub'], ['M1','M1'], ['Others','Others']],  :autofocus => true%>
+						</p>
+						
+					<p><%= f.label :askprice, " Your asking price" %>
+					<%= f.text_field :askprice %></p>
+					
+					<p><%= f.label :moddetails, " Describe any modifications that you have done." %><%= f.text_area :moddetails,  :placeholder=>"Describe your modification if you have modified the device in any way." %></p>
 
-								<h3>Device Details</h3>
-								<%= f.text_field :devicename,  :value=> Phone.find(params[:pid]).modelname, :readonly => true %>
-								<br/>
-								<%=f.label:devicecarrier, "Service Provider" %>
+					<p><%= f.label :accessories, " Accessories" %><%= f.text_field :accessories, :class=> " required", :placeholder=>"List of accessories with the phone*" %></p>
+					
+					</div>
 
-								<%= f.select :devicecarrier , [['Unlocked','Unlocked'], ['SingTel','SingTel'], ['Starhub','Starhub'], ['M1','M1'], ['Others','Others']],  :autofocus => true%>
-								<br/>
-								<%= f.hidden_field :phone_id, :value=> params[:pid] %>
-								<%= f.text_field :deviceimei, :class=> " required", :placeholder=>"IMEI/ESN/MEID number*" %>
-								<span class="helper-block">Will be kept private</span><br/><br/>
-								
-									<div class="radgrp"><%= f.label:devicecolor, "Color of the device*" %>
-									<div class="radbtns"><%= f.radio_button :devicecolor, "Black" %> <%= f.label:devicecolor, "Black" %></div>
-									<div class="radbtns"><%= f.radio_button :devicecolor, "White" %> <%= f.label:devicecolor, "White" %></div>
-									<div class="radbtns"><%= f.radio_button :devicecolor, "Silver" %> <%= f.label:devicecolor, "Silver" %></div>
-									<div class="radbtns"><%= f.radio_button :devicecolor, "Gray" %> <%= f.label:devicecolor, "Gray"%></div></div>													
+					<div class="form-group">
+					<p><%= f.label :itemlocation, " Where is the item located?" %>
+					<%= f.text_field :itemlocation %></p>
+						<div class="radgrp"><%= f.label :deliveryby, " How will you deliver?" %>
+							<div class="btn-group"><div class="radbtns half-width"><%= f.radio_button :deliveryby, "courier" %> <%= f.label:deliveryby, " Courier/Mail" %></div>
+							<div class="radbtns half-width"><%= f.radio_button :deliveryby, "pickup" %> <%= f.label:deliveryby, " Meetup" %></div></div></div>
+								<p><%= f.label :pickupaddress, " Place where you would like to meet the buyer" %>
+								<%= f.text_field :pickupaddress %></p>
+					
+						<div class="radgrp"><%= f.label :shipinternationally, " Will you ship internationally?" %>
+							<div class="btn-group"><div class="radbtns"><%= f.radio_button :shipinternationally, :true %> <%= f.label:shipinternationally, " Yes" %></div>
+							<div class="radbtns"><%= f.radio_button :shipinternationally, :false %> <%= f.label:shipinternationally, " No" %></div></div></div>
+					<p><%= f.label :shippingdetails, " Details of shipping method and costs etc." %>
+					<%= f.text_field :shippingdetails %></p>
+					<div class="radgrp"><%= f.label :returnsallowed, " Will you allow returns?" %>
+						<div class="btn-group"><div class="radbtns"><%= f.radio_button :returnsallowed, :true %> <%= f.label:returnsallowed, " Yes" %></div>
+						<div class="radbtns"><%= f.radio_button :returnsallowed, :false %> <%= f.label:returnsallowed, " No" %></div></div></div>
+					<p><%= f.label :returnpolicy, " Your returns policy" %>
+					<%= f.text_field :returnpolicy %></p>
+					</div>
+
+					<div class="form-group">
+					<p><%= f.label :paypalfname, " First name in paypal account" %>
+					<%= f.text_field :paypalfname %></p>
+					<p><%= f.label :paypallname, " Last name in paypal account" %>
+					<%= f.text_field :paypallname %></p>
+					<p><%= f.label :paypalemail, " Paypal email address" %>
+					<%= f.text_field :paypalemail %></p>
+					</div>
+					<hr class="gray">
+
+						<div class="newPaperclipFiles">
+
+						        <%= f.fields_for :assets do |asset| %>
+
+						           <% if asset.object.new_record? %>
+						                 <p><%= asset.file_field :image, :class=> "custom-file-input" %></p>
+						           <% end %>
+
+						       <% end %>
+
+				</div>
+				
+				
+						<h4>I accept all the terms and conditions and hereby when I click the Go button.</h4>
+						<%= f.hidden_field :country, :value=> "Singapore" %>
+						<%= f.hidden_field :phone_id, :value=>params[:pid] %>
+												<%= f.hidden_field :status, :value=>"Pending" %>
+												<input type="text" name="foo" style="display: none;">
+												<hr class="gray">
+					<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success redround offshadow" %>
+					<%= link_to "Cancel", :back, {:class=>"btn pomegranate-flat-button"} %>
+					
+					<% end %>
+	
+				
 									
-									<div class="radgrp"><%= f.label:devicestorage, "Storage capacity of the device*" %>
-													<div class="radbtns"><%= f.radio_button :devicestorage, "8gb" %> <%= f.label:devicestorage, "8 GB" %></div>
-													<div class="radbtns"><%= f.radio_button :devicestorage, "16gb" %> <%= f.label:devicestorage, "16 GB" %></div>
-													<div class="radbtns"><%= f.radio_button :devicestorage, "32gb" %> <%= f.label:devicestorage, "32 GB" %></div>
-													<div class="radbtns"><%= f.radio_button :devicestorage, "64gb" %> <%= f.label:devicestorage, "64 GB" %></div>
-													<div class="radbtns"><%= f.radio_button :devicestorage, "128gb" %> <%= f.label:devicestorage, "128 GB" %></div></div>
-
-								<div class="radgrp"><%= f.label:modified, "Has the device been modified in any way. rooted or something? (required)" %>
-								<div class="radbtns"><%= f.radio_button :modified, :true %> <%= f.label:modified, " Yes" %></div>
-								<div class="radbtns"><%= f.radio_button :modified, :false %> <%= f.label:modified, " No" %></div></div>
-								<%= f.text_area :moddetails,  :placeholder=>"Describe your modification if you have modified the device in any way." %>
-
-								<%= f.text_field :accessories, :class=> " required", :placeholder=>"List of accessories with the phone*" %>
-								
-								
-								<hr class="gray">
-								
-								<h3>Shipping Details</h3>
-
-								<%= f.text_field :itemlocation, :class=> " required", :placeholder=>"Name of the city where the item is*" %><br/>
-									<div class="radgrp"><%= f.label :paypalconfirmed, "Do you want the buyer to have paypal comfirmed shipping address?*" %>
-									<div class="radbtns"><%= f.radio_button :paypalconfirmed, :true %> <%= f.label:paypalconfirmed, " Yes" %></div>
-									<div class="radbtns"><%= f.radio_button :paypalconfirmed, :false %> <%= f.label:paypalconfirmed, " No" %></div></div>
-										<div class="radgrp"><%= f.label:deliveryby, "Please select your delivery mode" %>
-										<div class="radbtns"><%= f.radio_button :deliveryby, "pickuponly" %>  <%= f.label:deliveryby, " Pickup Only" %></div>
-										<div class="radbtns"><%= f.radio_button :deliveryby, "courier" %> <%= f.label:deliveryby, " Courier" %></div>
-										</div>
-									
-									
-								<div class="radgrp"><%= f.label:shipinternationally, "Will you ship internationally? (required)" %>
-								<div class="radbtns"><%= f.radio_button :shipinternationally, :true %>  <%= f.label:shipinternationally, " Yes" %></div>
-								<div class="radbtns"><%= f.radio_button :shipinternationally, :false %> <%= f.label:shipinternationally, " No" %></div>
-								</div>
-								<%= f.text_area :pickupaddress,  :placeholder=>"Pickup Address, if you want customer to pickup the device." %>
-
-								<%= f.text_area :shippingdetails,  :placeholder=>"Details on how you will ship internationally, if you do." %>
-								
-								
-								<hr class="gray">
-								<h3>Return policy</h3>
-									<div class="radgrp"><%= f.label:returnsallowed, "Will you accept returns? (required)" %>
-									<div class="radbtns"><%= f.radio_button :returnsallowed, :true %> <%= f.label:returnsallowed, " Yes" %></div>
-									<div class="radbtns"><%= f.radio_button :returnsallowed, :false %> <%= f.label:returnsallowed, " No" %></div>
-									</div>
-									<%= f.text_area :returnpolicy,  :placeholder=>"Your return policy, if you accept reutrns." %>
-
-								<hr class="gray">
-									<%= f.hidden_field :status, :value=>"Pending" %>
-
-									<h3>Upload pictures.</h3>
-
-				<p class="helper-block alert alert-danger">If you upload pictures now, then you'll not be allowed to add more pictures later. But if you don't then you can add pictures by editing the listing. So we say upload them later by editing the same listing.</p>
-										<div class="newPaperclipFiles">
-
-										        <%= f.fields_for :assets do |asset| %>
-
-										           <% if asset.object.new_record? %>
-										                 <%= asset.file_field :image, :class=> "" %>
-										           <% end %>
-
-										       <% end %>
-								
-								<hr class="gray">
-									<h4>TERMS & CONDITIONS</h4>
-									<ul>
-									<li>Once your device sells you will be expected to ship it to the buyer within two (2) business days of receiving payment.</li><li>
-									Once your device sells you will need to ensure it is un-registered from your carrier's account (if applicable).</li><li>
-									If you have your device is listed on other services (e.g. eBay, Craigslist), it is your responsibility to remove the listing from our site immediately if your device sells elsewhere.</li><li>
-									You will be asked to provide a "verification photo" showing your listing code (assigned after listing is created) written on a piece of paper next to the device you're selling.</li><li>
-									You must be capable of receiving payments via PayPal and be willing to accept their fees.</li><li>
-									The same device cannot be listed in multiple international markets at the same time.</li></ul>
-
-					 <h4>I accept all the terms and conditions and hereby when I click the Go button.</h4>
-		</div>
-					<input type="text" name="foo" style="display: none;">
-								
-								
-								<hr class="gray">
-									<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success redround offshadow" %>
-								<% end %>
-
-
-		
+	</div>
+</section>
 
 	
-</div>				
-</div>
-</div>
+
+
+
 

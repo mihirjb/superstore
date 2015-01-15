@@ -1,31 +1,66 @@
-</div>
-<div id="content">
-	<section class="listings softshadow">
-<h2 class="content-heading">Most popular phones</h2>
-<ul class="row">
-	<% @mostviewedphones.each do  |mvp| %>
-	<li class="col-md-2 col-sm-4 col-xs-12">
-		<%= image_tag mvp.image.url(:thumb) %>
-		<h4><%= mvp.modelname %></h4><a class="btn graphite-flat-button btn-sm" href="/phones/<%= mvp.id %>">Buy</a> <a class="btn btn-danger btn-sm pumpkin-flat-button" href="/listings/new?pid=<%= mvp.id %>">Sell</a>
-	</li>
-	<% end %>
-	</ul>
-	</section>
-	<section class="listings offshadow tablets">
-	<h2 class="content-heading">Phones with most recent listings</h3>
-	<ul class="row">
-	
-		<% @newlistedphones.each do  |nlp| %>
-		<li class="col-md-2 col-sm-4 col-xs-12">
-			<%= image_tag nlp.image.url(:thumb) %>
-			<h4><%= nlp.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= nlp.id %>">Buy</a> <a class="btn btn-danger btn-sm pumpkin-flat-button" href="/listings/new?pid=<%= nlp.id %>">Sell</a>
-		</li>
-		<% end %>
-</ul>
-</section>
+<div id="hero">
+<header><h1 class="logo">phonesalad</h1></header>
 
-<section class="listings softshadow" id="howitworks">
+<div class="outer">
+					<div class="pane">							
+						<div class="centered-text section ">
+								
+
+	<form class="form-inline main-search" role="search" action ="/pages/searchresults">
+		<input type="text" name="search" placeholder ="Search for the phone you want to buy or sell" class="typeahead searchbar">		
+	  <button type="submit" class="btn black-flat-btn">Go</button>
+	</form>
+
+	<h3 class="main-header">Buy and Sell lightly used iPhones and iPads</h3>
+	<p>We are low cost, fast and secure.</p>
+<a href="../pages/buy" class="btn white-transparent-btn">See how it works</a>
+<a href="../users/sign_up" class="btn pumpkin-flat-button">Sign up</a>
+<a href="<%= new_user_session_path %>" class="btn black-flat-btn">Sign in</a>
+
+
+
+</div>
+</div>
+</div>
+</div>
+<section id="hw" class="how-it-works-section light-blue">
+            <div class="container">
+                <div class="section-header">
+                   <h2 class="text-center">It's as Easy as 1-2-3</h2>
+                   <div class="divider"></div>
+                </div>
+                <div class="row">
+                   <div class="col-sm-4 text-center">
+                       <div alt="book-cleaner" class="img-responsive img-circle">
+                           <strong>1</strong>
+                       </div>
+                       <h4 class="text-center">Sign up</h4>
+                       <p>Create a free account.</p>
+                   </div>
+                   <div class="col-sm-4 text-center">
+                       <div alt="book-cleaner" class="img-responsive img-circle">
+                           <strong>2</strong>
+                       </div>
+                       <h4 class="text-center">Buy</h4>
+                       <p>Go through all the verified listings and buy one.</p>
+                   </div>
+                   <div class="col-sm-4 text-center">
+                       <div alt="book-cleaner" class="img-responsive img-circle">
+                           <strong>3</strong>
+                       </div>
+                       <h4 class="text-center">Phone is delivered</h4>
+                       <p>Sit back and relax. Enjoy your sparkling new iPhone when it's delivered!</p>
+                   </div>
+                </div>
+            </div>
+        </section>
+
+
+
+<section class="softshadow" id="howitworks">
 <h2 class="content-heading">No junk devices allowed. Great phones for less!</h2>
+<div class="container">
+
 <div class="row">
 	<div class="col-md-4 col-sm-4 col-xs-12">
 		<div class="glyph"><span class="glyphicon glyphicon-tint"></span></div>
@@ -44,13 +79,5 @@
 		
 	</div>
 </div>
-</section>
-<section class="listings offshadow" id="mission">
-<h1 class="large-logo">zalpe</h1>
-	<p class="mission-slogan">Make money selling your old iOS devices online. <br/>Get the best deal for your old phone <br/>&<br/> <strong>keep all your money</strong>.</p>
-		  <%= link_to "Get started now!", new_account_path, :class => "btn btn-hero pomegranate-flat-button" %>
-		
-</section>
 </div>
-
-<div class="container">
+</section>

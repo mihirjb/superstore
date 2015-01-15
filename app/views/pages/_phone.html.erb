@@ -1,0 +1,16 @@
+<% @phones.each do |l|%>
+	<% @list = Listing.where('phone_id = ? AND status Like ?', l.id, "Approved").order("askprice ASC") %>
+
+<div class="col-md-4 col-sm-4 col-xs-12 grid-list-item">
+	<% cache l do %>
+	<%= image_tag l.image.url(:thumb) %>
+	<h3><%= link_to l.modelname, "/phones/#{l.id}" %></h3>
+	<p><% if	@list.first.nil? %>
+	<span class="price"><%= @list.count %> Listings.</span></p>
+	<%else%>
+		<span class="price">$<%= @list.first.askprice.to_i + 20  %> - $<%= @list.last.askprice.to_i + 20 %> [<%= @list.count %>]</span>  </p>
+		<% end %></p>
+	<a class="btn graphite-flat-button btn-sm" href="/phones/<%= l.id %>">Buy</a> <a class="btn pumpkin-flat-button btn-sm btn-hero" href="/listings/new?pid=<%= l.id %>">Sell</a>
+<%end%>
+</div>
+<% end%>

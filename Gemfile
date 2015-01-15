@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.9'
+gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -27,7 +27,7 @@ gem "active_paypal_adaptive_payment"
 gem 'country_select'
 gem 'twitter-typeahead-rails'
 gem 'impressionist'
-gem 'thumbs_up'
+gem 'thumbs_up', git: 'https://github.com/bouchard/thumbs_up.git', ref: 'f499a7c803c0a9fdcefe4275f2f0a10ca7964508'
 gem 'social-share-button'
 gem 'newrelic_rpm'
 gem 'nokogiri'
@@ -40,7 +40,7 @@ gem 'fancybox-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'paypal-sdk-adaptiveaccounts'
-
+gem 'rails_12factor'
 
 
 gem 'jbuilder', '~> 1.2'

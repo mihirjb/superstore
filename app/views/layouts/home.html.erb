@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Buy and sell iPhones & iPads in Singapore | Zalpe</title>
+  <title>Buy and sell iPhones & iPads in Singapore | Phonesalad</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
@@ -14,8 +13,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if vendor_signed_in? %>
-	<header class="offshadow">
+	<% if user_signed_in? %>
 		<nav class="navbar navbar-default offshadow" role="navigation">
 		  <div class="container-fluid">
 		    <!-- Brand and toggle get grouped for better mobile display -->
@@ -32,24 +30,19 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		   
-		      	<form class="navbar-form navbar-left form-inline" role="search" action ="/pages/searchresults">
-				  <div class="form-group">
-					<input type="text" name="search" placeholder ="Search for iPhone, iPad etc" class="typeahead">		      			</div>
-				  <button type="submit" class="btn green-sea-flat-button">Go</button>
-				</form>
+		     
 		      <ul class="nav navbar-nav navbar-right">
 		        <li><a href="<%= root_url %>">Home</a></li>
 				
 				<li><a href="/pages/iphones-for-sale">iPhones</a></li>
 					<li><a href="/pages/ipads-for-sale">iPads</a></li>
-					<li><a href="/pages/buy">Buy</a></li>
-					<li><a href="/pages/sell">Sell</a></li>
+					
 				<li class="divider"></li>
 				
 				<li>
 					<%= link_to "My Dashboard", dashboard_url %></li>
 					
-					<li><%= link_to "Sign out", destroy_vendor_session_path, :method => 'delete' %>
+					<li><%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>
 				
 				</li>
 		          </ul>
@@ -58,103 +51,13 @@
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
-
-	
-		</header>
 	<%end%>
-	<section class="search rounded offshadow">
-		<% if flash[:notice] %>
-		<div class='alert top-alert <% if flash[:notice] =~ /Success/i %> alert-success <% else %> alert-danger<% end %>' data-dismiss="alert">
-		<p><%= flash[:notice] %></p>
-		</div>
-		<% end %>
-		<div class="row">
-			<div class="col-md-12">
-					<a href="<%= root_url %>"><h1 class="logo">zalpe</h1></a>
-			</div>
-		
-				<div class="col-md-12">
-				
-	
-	<h2 class="hero-slogan">Buy and Sell New / lightly used iPhones and iPads.</h2>
-		<p class="hero-slogan-medium">For $20, we make sure that you buy great phones without getting cheated.</p>
-				<div class="outer mainpage">
-					<div class="pane">
-						<div class="centered-text section centered-400 rounded">
-							<div id="choice">
-							<h3>Select a device to buy</h3>
-							<a  href="#iphones" id="iphbtn"><img class="small_img" src="/iphone6.png" /></a>
-							<a href="#ipads" id="ipdbtn"><img class="small_img" src="/ipad2.png" /></a>
-							</div>
-								<div id="iphones" class="row">
-									<a href="#choice" id="choicebtn">Back</a>
-									<hr class="gray">
-									
-										<% @iphones.each do  |ip| %>
-										<div class="col-md-4 col-sm-4 col-xs-6">
-											<%= image_tag ip.image.url(:thumb) %>
-											<h4><%= ip.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= ip.id %>">Buy</a> 
-										</div>
-										<% end %>
 
-											</div>
-											
-											
-											
-												<div id="ipads" class="row">
-													<a href="#choice" id="choicebtns">Back</a>
-													<hr class="gray">
-													
-														<% @ipads.each do  |ipd| %>
-														<div class="col-md-4 col-sm-4 col-xs-6">
-															<%= image_tag ipd.image.url(:thumb) %>
-															<h4><%= ipd.modelname %></h4><a class="btn graphite-flat-button  btn-sm" href="/phones/<%= ipd.id %>">Buy</a>
-														</div>
-														<% end %>
-
-												</div>				
-							
-							
-							
-			</div>
-			</div>
-			</div>
-			
-
-
-			
-			
-			<p class="hero-slogan-smallest">No credit card required • No commitment • Free to sell <br/><br/>
-			
-		<% if vendor_signed_in? %>
-		 <%= link_to "Get Started, see all the steps", "/pages/buy", :class => "btn pomegranate-flat-button" %>
-		
-		<% else %>
-		 <%= link_to "Start selling!", new_account_path, :class => "btn pomegranate-flat-button" %>
-		 <%= link_to "Sign in", new_vendor_session_path, :class => "btn orange-flat-button" %>
-	    <%end%>
-			</p>
-			</div>
-			</div>
-	
-</section>
-<div class="container">
 <%= yield %>
-</div>
-<div id="footer" class="softshadow">
-	<div class="footer-links">
-	<a href="/pages/about">About</a> 
-	<a href="/pages/faq">FAQ</a> 
-	<a href="/pages/terms">Terms & Conditions</a> 
-  		<% if vendor_signed_in? %>
-	<%= link_to "My Dashboard", dashboard_url %>
-	<%= link_to "Sign out", destroy_vendor_session_path, :method => 'delete' %>
-	<% else %>
-      <%= link_to "Sign in", new_vendor_session_path %>
-      <%= link_to "Sign up", new_account_path %>
 
-	<% end %>
-	</div>
+<div id="footer" class="offshadow">
+
+	<div id="credits" class="centered-text softshadow"><p>All rights reserved.</p></div>
 </div>
 </body>
 </html>

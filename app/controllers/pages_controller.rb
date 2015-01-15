@@ -1,21 +1,16 @@
 class PagesController < ApplicationController
   
-  before_filter :authenticate_vendor!, :only => [:dashboard]
+  before_filter :authenticate_user!, :only => [:dashboard]
   layout "home", only: [:home]
-  caches_page :alliphones, :allipads, :help, :about, :thanksandshare, :faq, :sellerfaq, :buyerfaq, :terms
  
   
   def home
-         @newlistedphones = Phone.find(:all, :order => "updated_at DESC", :limit => 6)
-         @mostviewedphones = Phone.find(:all, :order => "impressions_count DESC", :limit => 6)
-         @iphones = Phone.where('phonetype LIKE ?', "iPhone")
-         @ipads = Phone.where('phonetype LIKE ?', "iPad")
-         
+       
   end
   
   
   def searchresults
-     @phones = Phone.order(:modelname).where("modelname iLike ?", "%#{params[:search]}%").paginate :page => params[:page],:per_page=>30  
+     @phones = Phone.order(:modelname).where("modelname iLIKE ?", "%#{params[:search].downcase}%").paginate :page => params[:page],:per_page=>30  
   end 
   
  
@@ -28,11 +23,11 @@ class PagesController < ApplicationController
   def dashboard
       
     
-    @vendor = current_vendor
-     @listings = Listing.where('vendor_id = ?',@vendor.id).limit(50)
-     @profile = Profile.find_by_vendor_id(@vendor.id)
-     @feedbacks = Review.where('profile_id = ?',@profile.id).limit(50)
-     @orders = Order.where('seller_id = ? OR vendor_id = ?', @vendor.id,@vendor.id).limit(50)
+    @user = current_user
+     @listings = Listing.where('user_id = ?',@user.id).limit(50)
+     @profile = Profile.where('user_id = ?',current_user.id).first     
+    @feedbacks = Review.where('profile_id = ?',@profile.id).limit(50)
+     @orders = Order.where('seller_id = ? OR user_id = ?', @user.id,@user.id).limit(50)
      @review = @profile.reviews.build
      
    
@@ -40,25 +35,19 @@ class PagesController < ApplicationController
   
   
   def sell
-     @account = Account.new
-     @owner = @account.build_owner
-     @profile = @owner.build_profile
-     @vendor  = Vendor.new
+    
   end
   
   def buy
-     @account = Account.new
-     @owner = @account.build_owner
-     @profile = @owner.build_profile
-     @vendor  = Vendor.new
+  
   end
   
   
   def listing
     @listing = Listing.find(params[:id])
     @phone = Phone.find(@listing.phone_id)
-    @author = Listing.get_listing_author(@listing.vendor_id)
-    @profile = Listing.get_listing_author_profile(@listing.vendor_id)
+    @author = Listing.get_listing_author(@listing.user_id)
+    @profile = Listing.get_listing_author_profile(@listing.user_id)
     if !params[:foo]
     @comment = @listing.comments.build
   end
@@ -81,7 +70,7 @@ class PagesController < ApplicationController
   
   def thanksandshare
    
-    @url = "http://www.zalpe.com" + session[:previous_url] + "/" + params[:lid]
+    @url = "http://www.phonesalad.com" + session[:previous_url] + "/" + params[:lid]
 
   end
   

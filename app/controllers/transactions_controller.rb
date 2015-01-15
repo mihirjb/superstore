@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_filter :authenticate_vendor!, :except => :notify_action
+  before_filter :authenticate_user!, :except => :notify_action
   skip_before_filter :verify_authenticity_token  
   
    include ActiveMerchant::Billing::Integrations   
@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
    
   def processtransaction
     session[:listing_id] = params[:l]
-    session[:buyer_id] = current_vendor.id
+    session[:buyer_id] = current_user.id
     session[:shipping_address] = params[:address]
     
   
@@ -40,7 +40,7 @@ class TransactionsController < ApplicationController
         :action_type => "CREATE",
         :return_url => url_for(:action => 'completetransaction', :only_path => false),
         :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-        :ipn_notification_url => transactions_notify_action_url(:listing_id => @listing.id,:vendor_id => current_vendor.id, :shipping_address => params[:address] ),
+        :ipn_notification_url => transactions_notify_action_url(:listing_id => @listing.id,:user_id => current_user.id, :shipping_address => params[:address] ),
         :currency_code => "SGD",
         :receiver_list => recipients
       )
@@ -48,7 +48,7 @@ class TransactionsController < ApplicationController
       gateway.set_payment_options(
       
         :display_options => {
-          :business_name    => "Zalpe.com"
+          :business_name    => "Phonesalad.com"
         },
         :pay_key => purchase["payKey"],
         :receiver_options => [
@@ -70,8 +70,8 @@ class TransactionsController < ApplicationController
             :invoice_data => {
               :item => [
                 { 
-                  :name => "Payment for Zalpe fees",
-                  :description => "Zalpe fees",
+                  :name => "Payment for Phonesalad fees",
+                  :description => "Phonesalad fees",
                   :item_count => 1,
                   :item_price => 0.01,
                   :price => 0.01
@@ -87,7 +87,7 @@ class TransactionsController < ApplicationController
       response = gateway.setup_purchase(
       :return_url => url_for(:action => 'completetransaction', :only_path => false),
       :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-      :ipn_notification_url => transactions_notify_action_url(:listing_id => @listing.id,:vendor_id => current_vendor.id, :shipping_address => params[:address] ),
+      :ipn_notification_url => transactions_notify_action_url(:listing_id => @listing.id,:user_id => current_user.id, :shipping_address => params[:address] ),
       :currency_code => "SGD",
       :receiver_list => recipients
       )
@@ -116,9 +116,9 @@ class TransactionsController < ApplicationController
       
       @listing  =  Listing.find(session[:listing_id])
     @order = Order.find_by_listing_id(session[:listing_id])
-      AdminMailer.order_confirmation(current_vendor, @listing).deliver
-       VendorMailer.order_confirmation(@listing, current_vendor, @order).deliver
-       BuyerMailer.order_confirmation(current_vendor, @listing, @order).deliver
+      AdminMailer.order_confirmation(current_user, @listing).deliver
+       UserMailer.order_confirmation(@listing, current_user, @order).deliver
+       BuyerMailer.order_confirmation(current_user, @listing, @order).deliver
     
     session[:listing_id] = nil
   else
@@ -146,13 +146,13 @@ class TransactionsController < ApplicationController
        when "VERIFIED"
         if params[:status] == "COMPLETED"
           @listing_id = params[:listing_id]
-          @vendor_id = params[:vendor_id]
+          @user_id = params[:user_id]
            @listing  =  Listing.find(@listing_id)
          @listing.update_column("status", "Sold")
       
       @order = Order.create!(:listing_id => @listing_id, :params => params)
       @ordertotal = 0.01.to_i + 0.01
-       @order.update_columns(:vendor_id => @vendor_id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.vendor_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => params[:shipping_address])
+       @order.update_columns(:user_id => @user_id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:deviceimei => @listing.deviceimei, :seller_id => @listing.user_id, :ordertotal => @ordertotal, :selleraddress =>@listing.paypalemail, :orderdate => Time.now.to_date, :ordertime => Time.now, :shipping_address => params[:shipping_address])
 
         
       end     

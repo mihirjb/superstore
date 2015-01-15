@@ -1,9 +1,7 @@
-<div class="outer">
-					<div class="pane">							
-						<div class="centered-text section centered-400 rounded offshadow">
-	<h3 class="content-heading">sign in</h3>
-	<hr class="gray">
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<section class="red-color auth-form-section full-height">
+		<div class="hero-content container">
+		<h1 class="page-heading auth-form-heading">sign in</h1>
+<%= form_for(resource, :as => resource_name,:html => {class:"new_user auth-form"}, :url => session_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
 
  	<p>
@@ -16,12 +14,12 @@
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
   <% end -%>
 <p>
-<%= f.submit "Sign in", :class=>"btn btn-hero rounded"  %>
+<%= f.submit "Sign in", :class=>"btn submit input-btn"  %>
 </p>
+<div class="form-links">
+	<a href="/users/sign_up">» Haven't signed up yet?</a>
+	<a href="users/password/new">» Forgot password?</a></div>
 <% end %>
-<a href="/accounts/new">» Haven't signed up yet?</a><br>
 
-<%= render "devise/shared/links" %>
 </div>
-</div>
-</div>
+</section>

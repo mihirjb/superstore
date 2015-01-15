@@ -1,10 +1,38 @@
-<div class="outer">
-<div class="main">
-						<div class="centered-800 section rounded phoneshow">
-		<h1>Transaction Failed.</h1>
-<p>Something went wrong with the payment. You have <strong>not been charged</strong>.</p>
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">Sorry! your payment didn't go through and you were not charged</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">
+	<div class="row">
+	<div class="col-md-6">
+		<div class="center-image">
+			<%= image_tag Phone.find(@listing.phone_id).image.url(:medium)%>
+		</div>
+		<h3><%= @listing.devicename %> | <%= @listing.devicecolor %> | <%= @listing.devicestorage %> | <%= @listing.devicecondition %></h3>
+		<p><%= @listing.description %>
+		</p>
+		<hr class="gray">
+		
+		<p>Expected to be delivered on: <strong><%= (Time.now + 2 * 86400).to_date %></strong>
+		<br/>
+		Quantity: <strong>1</strong>
+		<br/>
+Seller: <a href="/profile/<%= Profile.where('user_id = ?',@listing.user_id).first.id %>"><%= User.find(@listing.user_id).firstname%></a>		</p>
+		<hr class="gray">
+		<p class="buy-btn">Total: $<%= @listing.askprice.to_i + 20 %></p>
+	</div>
+		<div class="col-md-6 custom-message">	
+				<h3 class="intro">Oh no! something went wrong.</h3>
+<hr class="gray">
+	<p class="intro">Your transaction didn't go through and you were not charged. </p>
+		<p class="intro">You can start over again <a href="#">here</a>
+		</p>
+				
+			</div>						
+		</div>						
 
-<p>Please try agin from the top.<br/><br/> <%= link_to "Try again", root_path, :class => "btn btn-success" %></p>
+
 </div>
-</div>
-</div>
+</section>

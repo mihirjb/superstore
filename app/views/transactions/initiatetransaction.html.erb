@@ -1,68 +1,67 @@
 <% if params[:l] %>
 
-<div class="outer">
-<div class="main">
-						<div class="centered-800 section rounded phoneshow">
-							
-							<h3 class="center-block">Your order details</h3> 
-							
-							<table class="table table-condensed">
-								<tr class="active">
-									<th class="col-md-2">Image</th>
-									<th class="col-md-2">Phone</th>
-									<th class="col-md-5">Title</th>
-									<th class="col-md-1">Quantity</th>
-									<th class="col-md-2">Total Price</th>
-								</tr>
-					<tr>
-						<td class="col-md-2"><%= image_tag @listing.assets.first.image.url('small') unless @listing.assets.first.nil? %></td>
-						<td class="col-md-2"><%= Phone.find(@listing.phone_id).modelname %></td>
-						<td class="col-md-5"><%=@listing.headline %></td>
-						<td class="col-md-1">1</td>
-						<td class="col-md-2"><%=@listing.askprice.to_i + 20 %></td>
-						
-					</tr>
-				
-					
-					<hr class="gray">
-					<tr class="total-show">
-							<td class="col-md-2 bold-text">Total</td>
-							<td class="col-md-2"></td>
-							<td class="col-md-5"></td>
-							<td class="col-md-1"></td>
-							<td class="col-md-2 bold-text"><%=@listing.askprice.to_i + 20 %> SGD</td>
-						
-					</tr>
-
-								</table>		
-								<hr class="gray">					
-							
-			<%@address = Profile.find_by_vendor_id(current_vendor.id).address%>
-		<% if !@address.blank? %>
-<h4 class="center-block">Confirm your Shipping address, change if necessary</h4> 
-<form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST" id="purchase_form">
-	<input class="required"   class="form-control"name="address" type="text" size="50" value="<%= @address %>">
-	<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
-	<input class="btn redround" type="Submit" value="Make Paymen">
-	
-	</form>
-	
-	
-	<% else %>
-	
-		<h4 class="center-block"> We didn't find any shipping address on your profile, please enter it below</h4>
-	<form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST" id="purchase_form">
-		<input class="required" name="address" type="text" size="50" placeholder="Enter your full shipping address here (Address line1, Address line 2 , City, State, Pin code, Country)!">
-		<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
-		<input class="btn redround" type="Submit" value="Make Payment">
-
-		</form>
-		
-		<% end %>
-		
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">Hi <%= current_user.firstname %>. You are almost done!</h1>
 		</div>
 	</div>
+<div class="container white-color softshadow">
+	<div class="row">
+	<div class="col-md-6">
+		<div class="center-image">
+			<%= image_tag Phone.find(@listing.phone_id).image.url(:medium)%>
+		</div>
+		<h3><%= @listing.devicename %> | <%= @listing.devicecolor %> | <%= @listing.devicestorage %> | <%= @listing.devicecondition %></h3>
+		<p><%= @listing.description %>
+		</p>
+		<hr class="gray">
+		
+		<p>Expected to be delivered on: <strong><%= (Time.now + 2 * 86400).to_date %></strong>
+		<br/>
+		Quantity: <strong>1</strong>
+		<br/>
+		Seller: <a href="/profile/<%= Profile.where('user_id = ?',@listing.user_id).first.id %>"><%= User.find(@listing.user_id).firstname%></a>
+		</p>
+		<hr class="gray">
+		<p class="buy-btn">Total: $<%= @listing.askprice.to_i + 20 %></p>
+	</div>
+		<div class="col-md-6 custom-message">	
+					<h3 class="intro">Please review your order and proceed to payment</h3>
+					<hr class="gray">
+							<%@address = Profile.find_by_user_id(current_user.id).address%>
+						<% if !@address.blank? %>
+				<h4 class="center-block">Confirm your Shipping address, change if necessary</h4> 
+				<form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST" id="purchase_form" class="auth-form">
+					<input class="required"   class="form-control"name="address" type="text" size="50" value="<%= @address %>">
+					<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
+					<input class="btn green-sea-flat-button" type="Submit" value="Make Payment">
+
+					</form>
+
+
+					<% else %>
+
+						<h4 class="center-block"> We didn't find any shipping address on your profile, please enter it below</h4>
+					<form name="purchase-form" role="form" action="/transactions/processtransaction" method="POST" id="purchase_form" class="auth-form">
+						<input class="required" name="address" type="text" size="50" placeholder="Enter your full shipping address here (Address line1, Address line 2 , City, State, Pin code, Country)!">
+						<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
+						<input class="btn green-sea-flat-button" type="Submit" value="Make Payment">
+
+						</form>
+
+						<% end %>
+					
+					
+		
+			</div>						
+		</div>						
+
+
 </div>
+</section>
+
+
 
 <% else %>
 <% redirect_to root_url() %>

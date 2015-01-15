@@ -6,10 +6,10 @@
 #  author_id  :integer
 #  reviewbody :text
 #  thumbsup   :boolean
-#  created_at :datetime
-#  updated_at :datetime
 #  profile_id :integer
 #  order_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Review < ActiveRecord::Base
@@ -19,7 +19,6 @@ class Review < ActiveRecord::Base
   
   validates :reviewbody, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
   validates :reviewbody, :length => {:maximum => 140}
-  
   
   
 end

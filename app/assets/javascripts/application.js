@@ -1,8 +1,8 @@
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, user/assets/javascripts,
+// or user/assets/javascripts of plugins, if any, can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // compiled file.
@@ -400,16 +400,16 @@ $("#up").click(function() {
 	$(function() {
 
 	    // Setup form validation on the #registerform element
-	    $("#new_vendor").validate({
+	    $("#new_user").validate({
 
 	        // Specify the validation rules
 	        rules: {
 	            
-	            "vendor[email]": {
+	            "user[email]": {
 	                required: true,
 	                email: true
 	            },
-	           "vendor[password]": {
+	           "user[password]": {
 	                required: true,
 	            },
 	            
@@ -417,11 +417,11 @@ $("#up").click(function() {
 	        // Specify the validation error messages
 	        messages: {
 	           
-	            "vendor[password]": {
+	            "user[password]": {
 	                required: "Please provide a password",
 	            },
 	          
-	            "vendor[email]": "Please enter a valid email address",
+	            "user[email]": "Please enter a valid email address",
 	        },
 
 	        submitHandler: function(form) {
@@ -580,6 +580,7 @@ required: true,
 
 	            "comment[commentbody]": {
 	                required: true,
+					rangelength: [1,600],
 	            },
 	           
 
@@ -589,6 +590,9 @@ required: true,
 
 	            "comment[commentbody]": {
 	                required: "Please write something first. Empty comments not allowed",
+					rangelength: "Description should be between 1 and 600",
+					
+	
 	            },
 
 	           

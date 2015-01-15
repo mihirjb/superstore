@@ -6,7 +6,7 @@ class AdminactionsController < ApplicationController
     @listing  = Listing.find(params[:id])
     @listing.update_column("status","Approved")
     if @listing.save
-      VendorMailer.listing_confirmation(@listing).deliver
+      UserMailer.listing_confirmation(@listing).deliver
       redirect_to '/adminactions/dashboard', :notice => "Success, Approved!"
     else
       redirect_to '/adminactions/dashboard', :notice => "Failure, NOT Approved!"
@@ -16,11 +16,11 @@ class AdminactionsController < ApplicationController
   def approvecomment
      @comment  = Comment.find(params[:id])
      @listing = Listing.find(@comment.listing_id)
-      @vendor = Vendor.find(@listing.vendor_id)
+      @user = User.find(@listing.user_id)
      @comment.update_column("status","Approved")
      
      if @comment.save
-       VendorMailer.new_comment(@listing,@vendor).deliver
+       UserMailer.new_comment(@listing,@user).deliver
        
        redirect_to '/adminactions/dashboard', :notice => "Success, Approved!"
      else
@@ -29,8 +29,8 @@ class AdminactionsController < ApplicationController
    end
   
   def dashboard
-    @listings = Listing.find_all_by_status("Pending")
-    @comments = Comment.find_all_by_status("Pending")
+    @listings = Listing.where('status iLIKE ?',"Pending")
+    @comments = Comment.where('status iLIKE ?',"Pending")
     
   end
   
@@ -47,8 +47,8 @@ class AdminactionsController < ApplicationController
   
   def modifylisting
     @listing = Listing.find(params[:id])
-      VendorMailer.listing_modification(@listing).deliver
-      redirect_to :back, :notice => "Vendor notified successfully."
+      UserMailer.listing_modification(@listing).deliver
+      redirect_to :back, :notice => "User notified successfully."
   end
   
  

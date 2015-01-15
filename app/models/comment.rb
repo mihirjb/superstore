@@ -5,15 +5,15 @@
 #  id                   :integer          not null, primary key
 #  subject              :string(255)
 #  commentbody          :text
-#  vendor_id            :integer
+#  user_id              :integer
 #  listing_id           :integer
-#  created_at           :datetime
-#  updated_at           :datetime
 #  status               :string(255)
 #  picture_file_name    :string(255)
 #  picture_content_type :string(255)
 #  picture_file_size    :integer
 #  picture_updated_at   :datetime
+#  created_at           :datetime
+#  updated_at           :datetime
 #
 
 class Comment < ActiveRecord::Base
@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   belongs_to :listing, touch: true
   
   validates :commentbody, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
-  validates :commentbody, :length => {:maximum => 140}
+  validates :commentbody, :length => {:maximum => 600}
   has_attached_file :picture, styles: {
       mini: '50x50>',
      thumb: '100x100>',
@@ -38,10 +38,10 @@ class Comment < ActiveRecord::Base
  @count = Comment.where("status like ? AND listing_id = ?", "Approved", listing_id).count
  end
  
- def self.get_comment_author(comments_vendorid)
-   @author = Profile.find_by_vendor_id(comments_vendorid).displayname
-   @vendor =  Vendor.find(comments_vendorid)
-   @newauthor  = Account.find(@vendor.account_id).subdomain
+ def self.get_comment_author(comments_userid)
+   @user =  User.find(comments_userid)
+   @author = @newauthor  = @user.firstname
+   @newauthor  = @user.firstname
    
    if @author
 		@author
@@ -57,6 +57,5 @@ class Comment < ActiveRecord::Base
     redirect_to root_path unless user_signed_in? or admin_signed_in?
   end
   
-
   
 end

@@ -2,17 +2,16 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  set_current_tenant_by_subdomain(:account, :subdomain)
   after_filter :store_location
   before_filter :set_return_path 
   
   
   def store_location
      # store last url - this is needed for post-login redirect to whatever the user last visited.
-     if (request.fullpath != "/vendors/sign_in" &&
-         request.fullpath != "/vendors/sign_up" &&
-         request.fullpath != "/vendors/password" &&
-         request.fullpath != "/vendors/sign_out" &&
+     if (request.fullpath != "/users/sign_in" &&
+         request.fullpath != "/users/sign_up" &&
+         request.fullpath != "/users/password" &&
+         request.fullpath != "/users/sign_out" &&
          request.fullpath != "/admins/sign_in" &&
          request.fullpath != "/admins/sign_up" &&
          request.fullpath != "/admins/password" &&
@@ -36,10 +35,10 @@ class ApplicationController < ActionController::Base
 
   def set_return_path
     unless devise_controller? || request.xhr? || !request.get?
-       if (request.fullpath != "/vendors/sign_in" &&
-           request.fullpath != "/vendors/sign_up" &&
-           request.fullpath != "/vendors/password" &&
-           request.fullpath != "/vendors/sign_out" &&
+       if (request.fullpath != "/users/sign_in" &&
+           request.fullpath != "/users/sign_up" &&
+           request.fullpath != "/users/password" &&
+           request.fullpath != "/users/sign_out" &&
            request.fullpath != "/admins/sign_in" &&
            request.fullpath != "/admins/sign_up" &&
            request.fullpath != "/admins/password" &&

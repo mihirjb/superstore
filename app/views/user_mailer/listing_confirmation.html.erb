@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="background-color:#ccc;">
+	<div id="container" style="background-color:#e7e7e8;padding-bottom:60px;">
+		<h1 class="logo" style="font-weight:bold;text-align:center;font-size:72px;font-variant:small-caps;letter-spacing:0.08em;color: #000;font-family: 'Open Sans', sans-serif; margin-bottom:30px;">phonesalad</h1>
+			<div id="content" style="width:80%;padding:60px;background-color:#fff;margin:0px auto 60px;">
+			
+			
+				<h4>Dear Seller,</h4>
+<div class="mailbody" style="padding:30px;background-color:#e1e1e1;">
+   	<h4>Your listing for <%=@listing.devicename %> with the id <%=@listing.id %> has been approved.</h4> <p>Please go to <%= link_to "http://www.phonesalad.com/listings/#{@listing.id}","http://www.phonesalad.com/listings/#{@listing.id}" %> to see your listing.</p>
+</div>
+		<p>Thanks and Regards,<br/>
+	<%=link_to "Phonesalad Team", "http://www.phonesalad.com" %></p>
+	
+	
+	</div>
+	</div>
+  </body>
+</html>
+
+
+
+

@@ -1,46 +1,52 @@
-<section>
-	<div class="wrapper">
-		
-		<%= form_for @profile, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
-		
-			<div class="form-group">
-			<div class="input-group-lg">
+<section class="long-form-section">
+	<div class="header silver-color offshadow">
+		<h1 class="page-title auth-form-heading">Create your profile</h1>
+		<p class="sub">Fill in most details so people can learn more about you</p>
+</div>
+<div class="container">	
+
+		<%= form_for @profile, :role => "form", :html => {:class=>"long-form", :multipart => true } do |f| %>
+
+			<div class="">
 				<h3>Data about you</h3>
-				<%= f.label :avatar, "Upload your Profile picture" %><%= f.file_field :avatar %><br/>
-			  
-			<%= f.text_field :fullname, :class=> "form-control", :placeholder=>"Your full name" %>
+				<hr class="gray">
+				
+				<div class="newPaperclipFiles">
+				<p>		<%= image_tag @profile.avatar.url(:medium) %><br/>
+						<%= f.label :avatar, "Upload your Profile picture" %><%= f.file_field :avatar, :class=> "small-input-file" %><br/></p>
+			</div>
+			<p><%= f.label :fullname, "Full Name" %><%= f.text_field :fullname, :class=> "", :placeholder=>"Your full name" %></p>
+			<p><%= f.label :paypalemail, "Paypal Email" %><%= f.text_field :paypalemail, :class=> "", :placeholder=>"Your Paypal email address" %></p>
+			</div>
+<hr class="gray">
 
-			<%= f.text_field :paypalemail, :class=> "form-control", :placeholder=>"Your Paypal email address" %>
-			</div>
-			</div>
-	
+			<div class="">
+			<h3>More info about you, visible to public</h3>
+			<hr class="gray">
 			
-			<div class="form-group">
-			<div class="input-group-lg">
-			<h3>More info about you, visible to puplic</h3>
-			<%= f.text_field :displayname, :class=> "form-control", :placeholder=>"Display Name" %>			
-			<%= f.text_area :aboutme, :class=> "form-control", :placeholder=>"About yourself" %>
+			<p><%= f.label :displayname, "Your display name" %><%= f.text_field :displayname, :class=> "", :placeholder=>"Display Name" %></p>			
+			<p><%= f.label :aboutme, "Describe yourself a little" %><%= f.text_area :aboutme, :class=> "", :placeholder=>"About yourself" %></p>
 			<span class="helper-block">Will be kept private</span>
-			<%= f.text_field :twitterhandle, :class=> "form-control", :placeholder=>"Twitter username" %>
-			<%= f.text_field :websiteurl, :class=> "form-control", :placeholder=>"Your website address" %>
+			<p><%= f.label :twitterhandle, "Twitter ID" %><%= f.text_field :twitterhandle, :class=> "", :placeholder=>"Twitter username" %></p>
+			<p><%= f.label :websiteurl, "Website" %><%= f.text_field :websiteurl, :class=> "", :placeholder=>"Your website address" %></p>
 			</div>
-			</div>
-			
-			<div class="form-group">
-			<div class="input-group-lg">
-			<h3>Shipping Details</h3>
-			<%= f.text_field :country, :class=> "form-control", :placeholder=>"Country you live in" %>
-			<%= f.text_field :timezone, :class=> "form-control", :placeholder=>"Your timezone" %>
-			<%= f.text_field :location, :class=> "form-control", :placeholder=>"Shipping city or location" %>
-			<%= f.text_field :address, :class=> "form-control", :placeholder=>"Shipping address in full." %>
-			<%= f.text_field :phone, :class=> "form-control", :placeholder=>"Your phone number" %>
-			
-		</div>  
-		</div>
+			<hr class="gray">
 
-		<div class="form-group">
-		<%= f.submit "Add", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>
+			<div class="">
+			<h3>Shipping Details</h3>
+			<hr class="gray">
+			
+			<p><%= f.label :country, "Your Country" %><%= f.text_field :country, :class=> "", :placeholder=>"Country you live in" %></p>
+			<p><%= f.label :timezone, "your timezone" %><%= f.text_field :timezone, :class=> "", :placeholder=>"Your timezone" %></p>
+			<p><%= f.label :location, "Your current city/location" %><%= f.text_field :location, :class=> "", :placeholder=>"Shipping city or location" %></p>
+			<p><%= f.label :address, "Your full address" %><%= f.text_field :address, :class=> "", :placeholder=>"Shipping address in full. Required for orders" %></p>
+			<p><%= f.label :phone, "Your phone number" %><%= f.text_field :phone, :class=> "", :placeholder=>"Your phone number" %></p>
+
+		</div>
+		<hr class="gray">
+
+		<p><%= f.submit "Add", :disable_with => 'Going...', :class =>"btn btn-success" %></p>
+		<p><%= link_to "Cancel", :back, {:class=>"btn pomegranate-flat-button"} %></p>
 		<% end %>
-		
-	</div>
+</div>		
 </section>

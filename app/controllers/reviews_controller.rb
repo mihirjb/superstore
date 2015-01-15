@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_filter :authenticate_vendor!
+  before_filter :authenticate_user!
  
    def new
       @profile = Profile.find(params[:id])

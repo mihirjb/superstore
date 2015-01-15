@@ -1,46 +1,52 @@
-
-
-<div class="outer">
-<div class="main">
-						<div class="centered-800 section rounded">
-		<%= form_for @profile, :class=>"form-horizontal",  :role => "form" do |f| %>
-		
-			
-				<h3>Helpful details about you.</h3>
-				<%= image_tag @profile.avatar.url(:medium) %><br/>
-				<%= f.label :avatar, "Upload your Profile picture" %><%= f.file_field :avatar, :class=> "btn btn-file btn-sm" %><br/>
-				
-				
-			<%= f.text_field :fullname,  :placeholder=>"Your full name" %>
-
-			<%= f.text_field :paypalemail,  :placeholder=>"Your Paypal email address" %>
-			<span class="helper-block">Will be kept private</span>
-			
-			<hr class="gray">
-			
-	
-			
-			
-			<h3>More info about you, visible to public</h3>
-			<%= f.text_field :displayname,  :placeholder=>"Display Name" %>			
-			<%= f.text_area :aboutme,  :placeholder=>"About yourself" %>
-			<%= f.text_field :twitterhandle,  :placeholder=>"Twitter username" %>
-			<%= f.text_field :websiteurl,  :placeholder=>"Your website address" %>
-			<hr class="gray">
-			
-			
-		
-			<h3>Shipping Details</h3>
-			<%= f.text_field :country,  :placeholder=>"Country you live in" %>
-			<%= f.text_field :timezone,  :placeholder=>"Your timezone" %>
-			<%= f.text_field :location,  :placeholder=>"Your city or location" %>
-			<%= f.text_area :address,  :placeholder=>"Shipping address in full. e.g. Street Address, City, Country - Pincode." %>
-			<%= f.text_field :phone,  :placeholder=>"Your phone number" %>
-			
-			<hr class="gray">
-	
-		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn redround" %>
-		<% end %>
-	</div>	
-	</div>
+<section class="long-form-section">
+	<div class="header silver-color offshadow">
+		<h1 class="page-title auth-form-heading">Edit your Profile</h1>
+		<p class="sub">Fill in most details so people can learn more about you</p>
 </div>
+<div class="container">	
+
+			<%= form_for @profile, :role => "form", :html => {:class=>"long-form", :multipart => true } do |f| %>
+
+				<div class="">
+					<h3>Data about you</h3>
+					<hr class="gray">
+					
+					<div class="newPaperclipFiles">
+					<p>		<%= image_tag @profile.avatar.url(:medium) %><br/>
+							<%= f.label :avatar, "Upload your Profile picture" %><%= f.file_field :avatar, :class=> "small-input-file" %><br/></p>
+				</div>
+				<p><%= f.label :fullname, "Full Name" %><%= f.text_field :fullname, :class=> "", :placeholder=>"Your full name" %></p>
+				<p><%= f.label :paypalemail, "Paypal Email" %><%= f.text_field :paypalemail, :class=> "", :placeholder=>"Your Paypal email address" %></p>
+				</div>
+<hr class="gray">
+
+				<div class="">
+				<h3>More info about you, visible to public</h3>
+				<hr class="gray">
+				
+				<p><%= f.label :displayname, "Your display name" %><%= f.text_field :displayname, :class=> "", :placeholder=>"Display Name" %></p>			
+				<p><%= f.label :aboutme, "Describe yourself a little" %><%= f.text_area :aboutme, :class=> "", :placeholder=>"About yourself" %></p>
+				<span class="helper-block">Will be kept private</span>
+				<p><%= f.label :twitterhandle, "Twitter ID" %><%= f.text_field :twitterhandle, :class=> "", :placeholder=>"Twitter username" %></p>
+				<p><%= f.label :websiteurl, "Website" %><%= f.text_field :websiteurl, :class=> "", :placeholder=>"Your website address" %></p>
+				</div>
+				<hr class="gray">
+
+				<div class="">
+				<h3>Shipping Details</h3>
+				<hr class="gray">
+				
+				<p><%= f.label :country, "Your Country" %><%= f.text_field :country, :class=> "", :placeholder=>"Country you live in" %></p>
+				<p><%= f.label :timezone, "your timezone" %><%= f.text_field :timezone, :class=> "", :placeholder=>"Your timezone" %></p>
+				<p><%= f.label :location, "Your current city/location" %><%= f.text_field :location, :class=> "", :placeholder=>"Shipping city or location" %></p>
+				<p><%= f.label :address, "Your full address" %><%= f.text_field :address, :class=> "", :placeholder=>"Shipping address in full. Required for orders" %></p>
+				<p><%= f.label :phone, "Your phone number" %><%= f.text_field :phone, :class=> "", :placeholder=>"Your phone number" %></p>
+
+			</div>
+			<hr class="gray">
+
+			<p><%= f.submit "Update", :disable_with => 'Going...', :class =>"btn btn-success" %></p>
+			<p><%= link_to "Cancel", :back, {:class=>"btn pomegranate-flat-button"} %></p>
+			<% end %>
+	</div>
+</section>

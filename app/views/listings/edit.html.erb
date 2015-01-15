@@ -1,65 +1,80 @@
 <% content_for :title,  "Edit your listing to sell in Singapore" %>
 
-<div class="outer">
-					<div class="main">
-						<div class="centered-800 section rounded offshadow">
-							<% if @listing.errors.full_messages.any? %>
-							<div id="error_explanation">
-							<h2>Please rectify the following errors</h2>
-							<ul>
-							<% @listing.errors.full_messages.each do |error_message| %>
-							<li><%= error_message %></li>
-							<% end %>
-							</div>
-							<% end %>
-		<%= form_for @listing, :class=>"form-horizontal", :role => "form", :html => { :multipart => true } do |f| %>
-		<h4 class="form-title">All the inputs with the <span class="green">asterisk (*)</span> sign are compulsory to fill.</h4>
-		
-		
-			<%= f.text_field :headline, :class=> "form-control required", :placeholder=>"Give a heading to your listing*" %>
+<section class="long-form-section">
+	<div class="header silver-color offshadow">
+		<h1 class="page-title auth-form-heading">Edit your listing</h1>
+		<p class="sub">Make sure you don't leak your contact info</p>
+</div>
+<div class="container">	
 
-		
-			<h3>Listing pricing and other details</h3>
-			<%= f.text_field :askprice, :class=> "form-control required", :placeholder=>"Your selling price*" %>
-			<span class="helper-block">Price in USD</span>
-			<%= f.text_field :paypalemail, :class=> "form-control required", :placeholder=>"Your Paypal email address*" %>
-			<span class="helper-block">Paypal email will be kept private</span><br/> <br/>
-				<%= f.text_field :paypalfname, :class=> " required", :placeholder=>"Your First name in Paypal, required for verification*" %>
-				<%= f.text_field :paypallname, :class=> " required", :placeholder=>"Your Last name in Paypal, required for verification*" %>
-			
-		
-		
-			
-
-				<div class="existingPaperclipFiles">
-
-					<% if @listing.assets.exists? %>
-					<h3>Existing images.</h3>
-
-						<%  @listing.assets.take(5).each do |a| %>
-						<%= image_tag a.image.url('thumb') %>
+				
+					<%= form_for @listing, :id => "listing-form",  :role => "form", :html => {:class=>"long-form", :multipart => true } do |f| %>
+					
+						<% if @listing.errors.full_messages.any? %>
+						<div id="error_explanation">
+						<h2>Please rectify the following errors</h2>
+						<ul>
+						<% @listing.errors.full_messages.each do |error_message| %>
+						<li><%= error_message %></li>
 						<% end %>
-
-						<% else %>
-						<h3>Upload you verification images.</h3>
-						<%= f.fields_for :assets do |asset| %>
-						 <%= asset.file_field :image, :class=> "form-control" %>
-			            <% end %>
-
+						</div>
 						<% end %>
+						
+					<div class="form-group">
+					<p><%= f.label :headline, " Title of your listing" %>
+					<%= f.text_field :headline %></p>
+				
+					</div>
+					<div class="form-group">
+				
+		
+					<p><%= f.label :askprice, " Your asking price" %>
+					<%= f.text_field :askprice %></p>
+					</div>
+
+			
+
+					<div class="form-group">
+					<p><%= f.label :paypalfname, " First name in paypal account" %>
+					<%= f.text_field :paypalfname %></p>
+					<p><%= f.label :paypallname, " Last name in paypal account" %>
+					<%= f.text_field :paypallname %></p>
+					<p><%= f.label :paypalemail, " Paypal email address" %>
+					<%= f.text_field :paypalemail %></p>
+					</div>
+					<hr class="gray">
+
+						<div class="newPaperclipFiles">
+
+						     	<% if @listing.assets.exists? %>
+								<h3>Existing images.</h3>
+
+									<%  @listing.assets.take(5).each do |a| %>
+									<%= image_tag a.image.url('thumb') %>
+									<% end %>
+
+									<% else %>
+									<h3>Upload you verification images.</h3>
+									<%= f.fields_for :assets do |asset| %>
+									 <%= asset.file_field :image, :class=> "custom-file-input" %>
+						            <% end %>
+
+									<% end %>
 
 
-
-
-
+							
 
 				</div>
-<br/>
-<br/>
+				
+						
+												<input type="text" name="foo" style="display: none;">
+												<hr class="gray">
+					<%= f.submit "Update", :disable_with => 'Update...', :class =>"btn btn-success offshadow" %>
+					<%= link_to "Cancel", :back, {:class=>"btn pomegranate-flat-button"} %>
+					<% end %>
 	
-			
-		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn redround" %>
-		<% end %>
-	</div>	
+				
+									
 	</div>
-</div>
+</section>
+

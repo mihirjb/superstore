@@ -1,15 +1,15 @@
 class ProfilesController < ApplicationController
-  before_filter :authenticate_vendor!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show]
    def index
-     @profile = current_vendor.profiles.all
+     @profile = current_user.profiles.all
    end
 
    def new
-     @profile = current_vendor.build_profile
+     @profile = current_user.build_profile
    end
 
    def create
-     @profile = current_vendor.build_profile(profile_params())
+     @profile = current_user.build_profile(profile_params())
      if @profile.save
        redirect_to dashboard_url, :notice => "Congratulations, profile created Successfully."
      else
@@ -20,18 +20,19 @@ class ProfilesController < ApplicationController
 
    def show
      @profile = Profile.find(params[:id])
-     @listings = Listing.find_all_by_vendor_id(@profile.vendor_id, :limit => 50)
-     @feedbacks = Review.find_all_by_profile_id(@profile.id, :limit => 50)
+     @user = User.find(@profile.id)
+     @listings = Listing.where('user_id = ?',@profile.user_id).limit(50)
+     @feedbacks = Review.where('profile_id = ?',@profile.user_id).limit(50)
      @review = @profile.reviews.build
    end
 
    def edit
-     @profile = Profile.find_by_vendor_id(current_vendor.id)
+     @profile = Profile.where('user_id = ?',current_user.id).first
    end
 
    def update
     
-     @profile = Profile.find_by_vendor_id(current_vendor.id)
+     @profile = Profile.where('user_id = ?',current_user.id).first
       if @profile.update(profile_params())
          redirect_to dashboard_url, :notice => "Congratulations, profile updated Successfully."
        else
@@ -49,14 +50,14 @@ class ProfilesController < ApplicationController
    
     def vote_for_profile
         @profile = Profile.find(params[:id])
-        current_vendor.vote_exclusively_for(@profile)
+        current_user.vote_exclusively_for(@profile)
         respond_to do |format|
           format.js
         end
     end
     def vote_against_profile
          @profile = Profile.find(params[:id])
-         current_vendor.vote_exclusively_against(@profile)
+         current_user.vote_exclusively_against(@profile)
          respond_to do |format|
            format.js
          end

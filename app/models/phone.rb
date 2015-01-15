@@ -4,23 +4,24 @@
 #
 #  id                 :integer          not null, primary key
 #  modelname          :string(255)
+#  impressions_count  :integer
 #  created_at         :datetime
 #  updated_at         :datetime
 #  image_file_name    :string(255)
 #  image_content_type :string(255)
 #  image_file_size    :integer
 #  image_updated_at   :datetime
-#  impressions_count  :integer
 #  phonetype          :string(255)
 #
 
 class Phone < ActiveRecord::Base
-  is_impressionable :counter_cache => true, :column_name => :impressions_count
   
-  
-  has_many :listings
-   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>", :mini => "30x30>" }, :default_url => "/images/phones/:style/missing.png"
-   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  has_attached_file :image, styles: {
+      thumb: '100x100>',
+      square: '200x200#',
+      medium: '300x300>'
+    }
 
-
+    # Validate the attached image is image/jpg, image/png, etc
+    validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 end

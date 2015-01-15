@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_vendor!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show]
   
  
   def new
@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
   
     private 
     def comment_params
-     params.require(:comment).permit(:commentbody,:vendor_id,:listing_id, :status, :picture)
+     params.require(:comment).permit(:commentbody,:user_id,:listing_id, :status, :picture)
     end
 end

@@ -1,4 +1,4 @@
-Storeapp::Application.routes.draw do
+Phoneclone::Application.routes.draw do
 
 
   get "adminactions/deletelisting"
@@ -8,7 +8,6 @@ Storeapp::Application.routes.draw do
   get "adminactions/approvelisting"
   get "adminactions/dashboard"
   
-  devise_for :admins 
   get "transactions/initiatetransaction"
   post "transactions/processtransaction"
   get "transactions/completetransaction"
@@ -59,7 +58,8 @@ Storeapp::Application.routes.draw do
   
  
   
-  devise_for :vendors, :controllers => { :sessions => "sessions" } 
+  devise_for :admins
+  devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations" } 
 
 
 

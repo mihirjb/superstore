@@ -1,37 +1,15 @@
 <% content_for :title,  "Sell your iPhone or iPad for high price in Singapore" %>
 
-<div class="outer">
-	<div class="main">
-						<div class="centered-800 phoneindex rounded offshadow">
-							<div class="section-heading">
-								<h2 class="page-heading">All tablets</h2>
-								</div>
-								
-							
-<ul class="phones row">
-<% @phones.each do |l|%>
-<li class="col-md-4 col-sm-12 col-xs-12">
-	<% @list = Listing.where('phone_id = ? AND status iLIKE ?',l.id, "Approved").order('askprice')%>
-	<%= image_tag l.image.url(:thumb) %>
 
-		<div class="main-page-img"><%= image_tag @imgurl %></div>
-	<h3><%= link_to l.modelname, "/phones/#{l.id}" %></h3>
-	<p></span>
-<% if	@list.first.nil? %>
-<span class="price"><%= @list.count %> Listings.</span></p>
-<%else%>
-	<span class="price">$<%= @list.first.askprice.to_i + 20  %> - $<%= @list.last.askprice.to_i + 20 %> [<%= @list.count %>]</span>  </p>
-	<% end %>
-	
-	<a class="btn graphite-flat-button btn-sm" href="/phones/<%= l.id %>">Buy</a> <a class="btn pumpkin-flat-button btn-sm" href="/listings/new?pid=<%= l.id %>">Sell</a>
-	
-	
-	
-		</li>
-		
-	<%end%>	
-	</ul>
-	
+<section class="long-form-section">
+	<div class="header silver-color offshadow">
+		<h1 class="page-title">All iPads</h1>
+</div>
+<div class="container">
+	<div class="row">
+		<%= render partial: 'pages/phone' %>
+			<div class="cushion">
+			<%= will_paginate @phones, renderer: BootstrapPagination::Rails  %>
+		</div>
 	</div>
-	</div>
-	</div>
+</section>

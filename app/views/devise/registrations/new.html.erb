@@ -1,29 +1,38 @@
-<section class="hero">
-	<div class="wrap row">
-			<div class="col-md-4">
-				</div>
-		<div class="panel panel-default col-md-4 col-md-offset-4">
-  			<div class="panel-body ">
+<section class="red-color auth-form-section">
+		<div class="container">
+		<h1 class="page-heading auth-form-heading">sign up</h1>
+	<%= form_for(resource, :as => resource_name,:html => {class:"new_user auth-form"}, :url => registration_path(resource_name)) do |f| %>
+	<%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-	<div class="form-group">
-	<div class="input-group input-group-lg">
-  <%= f.email_field :email, :class=> "form-control", :placeholder=>"Email" %>
+	<p>
+		<%= f.text_field :firstname, :class=> " required", :placeholder=>"Your Name" %>
+	</p>
+<p>
+	<%= f.text_field :email, :class=> " required", :placeholder=>"Email" %>
+</p>
+<p>
+	<%= f.password_field :password, :class=> "required", :placeholder=>"Password" %>
+</p>
+<p>
+	<%= f.password_field :password_confirmation, :class=> "required", :placeholder=>"Password Confirmation" %>
+</p>
 
-  <%= f.password_field :password, :class=> "form-control", :placeholder=>"Password" %>
+<%= f.fields_for :profile do |p| %>
+<p>
+<%=p.label:country, "Country" %> <br/><%= p.country_select :country, ["Singapore"] %>
+</p>
 
-  <%= f.password_field :password_confirmation, :class=> "form-control", :placeholder=>"Password Confrimation" %>
-</div>
-</div>
-<div class="form-group">
-<%= f.submit "Sign up", :class=>"btn btn-danger btn-lg btn-block " %>
-</div>
 <% end %>
 
 
-<%= render "devise/shared/links" %>
-</div>
-</div>
+<p>
+<%= f.submit "Signup", :disable_with => 'Adding...', :class =>"btn input-btn" %>
+</p>
+
+	<div class="form-links">
+	<a href="users/sign_in">» Already have an account? Sign in</a>
+	</div>
+<% end %>
+
 </div>
 </section>

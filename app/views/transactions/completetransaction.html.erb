@@ -1,27 +1,40 @@
-<div class="outer">
-<div class="main">
-						<div class="centered-800 section rounded phoneshow">
-							
-		<h1>Yay! your payment is done.</h1>
-<h2>Thanks <%= Profile.find_by_vendor_id(current_vendor.id).displayname %> for your payment.</h2>
-<hr class="gray">
-<table class="table table-bordered">
-	<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Quantity</th><th>Paypal Txn Id</th></tr>
-	<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td>1</td><td><%= @order.params["transaction"]["0"][".id_for_sender_txn"]%></td></tr>
-</table>
-<hr class="gray">
-<% if @listing.deliveryby == "pickuponly" %>
-<h3>Pickup Address</h3>
-<p><%= @listing.pickupaddress %></p>
-<% elsif @listing.deliveryby == "courier"  %>
-<h3>Shipping Address:</h3>
-<p>
-<%= @order.shipping_address %>
-</p>
-<p>Your phone will be shipped to you by <%= Time.now.to_date + 2 %></p>
-<% end %>
-<p>We have sent you a confirmation mail, please save it for future reference.</p>
-<p>Meanwhile free free to <%= link_to "Browse More", root_path %>. You can checkout <a href="/pages/iphones-for-sale">all iPhones that are on sale in Singapore</a></p>
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">Thank you <%= Profile.find_by_user_id(current_user.id).displayname %> ! Your payment was successful</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">
+	<div class="row">
+	<div class="col-md-6">
+		<div class="center-image">
+			<%= image_tag Phone.find(@listing.phone_id).image.url(:medium)%>
+		</div>
+		<h3><%= @listing.devicename %> | <%= @listing.devicecolor %> | <%= @listing.devicestorage %> | <%= @listing.devicecondition %></h3>
+		<p><%= @listing.description %>
+		</p>
+		<hr class="gray">
+		
+		<p>Expected to be delivered on: <strong><%= (Time.now + 2 * 86400).to_date %></strong>
+		<br/>
+		Quantity: <strong>1</strong>
+		<br/>
+Seller: <a href="/profile/<%= Profile.where('user_id = ?',@listing.user_id).first.id %>"><%= User.find(@listing.user_id).firstname%></a>		</p>
+		<hr class="gray">
+		<p class="buy-btn ">Total: $<%= @listing.askprice.to_i + 20 %></p>
+	</div>
+		<div class="col-md-6 custom-message">	
+					<h3 class="intro">Hurray! you just paid for your phone.</h3>
+		<p class="intro">Although we have sent an email about this transaction to <%= User.find(@order.user_id).email %>, we recommend you take a screenshot of this page.</p>
+		
+		<p class="intro">Make sure you leave a comment on the listings page to see the promptness of the seller. <br/>
+			You can view the listing <a href="/listings/<%= @listing.id %>">here</a>
+			or you view your dashboard <a href="/pages/dashboard">here</a></p>
+			<p class="intro bold-text">Your Paypal transaction id: <%= @order.pptransactionid %></p>
+					
+			</div>						
+		</div>						
+
+
 </div>
-</div>
-</div>
+</section>

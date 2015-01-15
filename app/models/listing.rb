@@ -4,8 +4,7 @@
 #
 #  id                  :integer          not null, primary key
 #  headline            :string(255)
-#  description         :text
-#  devicecondition     :string(255)
+#  description         :string(255)
 #  askprice            :integer
 #  expirydate          :date
 #  modified            :boolean
@@ -15,16 +14,14 @@
 #  shipinternationally :boolean
 #  paypalconfirmed     :boolean
 #  returnsallowed      :boolean
-#  returnpolicy        :text
-#  created_at          :datetime
-#  updated_at          :datetime
-#  vendor_id           :integer
+#  returnspolicy       :text
+#  user_id             :integer
 #  paypalemail         :string(255)
 #  devicename          :string(255)
+#  devicestorage       :string(255)
 #  devicecarrier       :string(255)
 #  deviceimei          :string(255)
 #  devicecolor         :string(255)
-#  devicestorage       :string(255)
 #  shippingdetails     :string(255)
 #  status              :string(255)
 #  phone_id            :integer
@@ -35,6 +32,12 @@
 #  paypallname         :string(255)
 #  impressions_count   :integer
 #  accounttype         :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  devicecondition     :string(255)
+#  deliveryby          :string(255)
+#  pickupaddress       :string(255)
+#  returnpolicy        :string(255)
 #
 
 class Listing < ActiveRecord::Base
@@ -64,24 +67,24 @@ class Listing < ActiveRecord::Base
   
   
   belongs_to :phone, touch: true
-  has_one :vendor
+  belongs_to :user
   has_many :comments, :dependent => :destroy
   has_many :assets, :dependent => :destroy
   
   accepts_nested_attributes_for :assets
   
 private 
- def self.get_listing_author(listing_vendor_id)
-   @author = Vendor.find(listing_vendor_id)
+ def self.get_listing_author(listing_user_id)
+   @author = User.find(listing_user_id)
  end  
  
- def self.get_listing_author_profile(listing_vendor_id)
-   @profile = Profile.find_by_vendor_id(listing_vendor_id)
+ def self.get_listing_author_profile(listing_user_id)
+   @profile = Profile.find_by_user_id(listing_user_id)
  end 
   
-  def self.get_recent_count(vendorid)
+  def self.get_recent_count(userid)
     @count = 0
-    listing = Listing.find_all_by_vendor_id(vendorid)
+    listing = Listing.find_all_by_user_id(userid)
     listing.each do |l|
      if Time.now.day - l.updated_at.to_date.day <= 0 
        @count = @count + 1
@@ -124,6 +127,5 @@ private
      Listing.find(lid).update_column("paypalstatus", "UNVERIFIED")
    end
  end
- 
- 
+  
 end

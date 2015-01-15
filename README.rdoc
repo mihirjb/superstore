@@ -1,32 +1,28 @@
 == README
 
 This README would normally document whatever steps are necessary to get the
-application up and running but I am going to write the things yet to be implemented.
+application up and running.
 
-Things yet to be covered:
+Things you may want to cover:
 
-General
+* Ruby version
 
-Now
-* Profile complete meter
-* speed optimization
-* Verification photos pages
-- How to buy page
-- How To sell page 
-- Less questions on listings.
-- Better dashboard or profile page.
-- Add pickup only and tracking info
+* System dependencies
 
+* Configuration
 
+* Database creation
 
-Later 
-* facebook and twitter connect for credibility score
-* Detailed specs table.
-* Multi country and multi currency.
-* Photos should be updated separately and with jquery
-* Possibly accepting COD.
-* Reviews for phone.
-* Phone price estimator 
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
 
 
-
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

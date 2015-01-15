@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buy and sell iPhones & iPads in Singapore | Phonesalad</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+<meta name="viewport" content="initial-scale=1">
+
+  <%= csrf_meta_tags %>
+</head>
+<body id="forms">
+	<% if user_signed_in? %>
+		<nav class="navbar navbar-default offshadow" role="navigation">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		    
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		   
+		     
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="<%= root_url %>">Home</a></li>
+				
+				<li><a href="/pages/iphones-for-sale">iPhones</a></li>
+					<li><a href="/pages/ipads-for-sale">iPads</a></li>
+				
+				<li class="divider"></li>
+				
+				<li>
+					<%= link_to "My Dashboard", dashboard_url %></li>
+					
+					<li><%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>
+				
+				</li>
+		          </ul>
+		        </li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+	<%end%>
+	
+<%= yield %>
+
+<div id="footer">
+	<div id="credits" class="centered-text softshadow"><p>All rights reserved.</p></div>
+</div>
+
+
+</body>
+</html>

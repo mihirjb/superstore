@@ -1,70 +1,41 @@
 <% content_for :title, "Buy and sell #{@phone.modelname} Singapore" %>
 
 
-		<div class="outer">
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading"><%= @phone.modelname %> for sale in Singapore</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">
+	<% if @listings.blank? %>
+	<div class="cushion">
+	<h2 class="">Sorry no results found for <%= @phone.modelname %></h2>
+	<hr class="gray">
+	<a class="btn orange-flat-button" href="/listings/new?pid=<%= @phone.id %>">Sell <%= @phone.modelname %></a>
+	</div>
+	<div class="cushion">
+		<h2>Maybe you'll like these popular listings</h2>
+		<hr class="gray">
+		<div class="row">
+		<% @popularlistings = Listing.all.order("impressions_count DESC").limit(6) %>
+		<% @popularlistings.each do |l| %>
+		<div class="col-md-4 col-sm-4 col-xs-12 grid-list-item">
+			<%= image_tag Phone.find(l.phone_id).image.url(:thumb) %>
+		<h4><%= l.devicename %> | <%= l.devicecolor %> <%= l.devicestorage %> | <%= l.devicestorage %></h4>
+		<a class="btn graphite-flat-button" href="/listings/<%= l.id %>">Buy</a>
+		</div>
+		<% end %>
+		</div>
+	</div>
+	<% else %>
+		<% cache @listings do%>
+		<%= render partial: 'phones/listings' %>
+		<% end %>
+		<div class="cushion">
+		<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
+		</div>
+		<% end %>
 
-								<div class="centered-800 section rounded offshadow row row-eq-height ">
-									<div class="col-md-4 offshadow">
-										<h2 class="listing-heading"><%= @phone.modelname%></h2>
-										<%= image_tag @phone.image.url(:medium) %>
-										<br/><br/>
-									
-										<a class="transparent-flat-btn-green" href="/listings/new?pid=<%= @phone.id %>">Sell one like this</a>
-
-										<hr class="gray">
-										<div class="responsive-table cushion">
-											
-											<% @list = Listing.where('status iLIKE ?', "Approved").order('askprice')%>
-										<% if !@list.blank? %>
-									<span class="price">Total <%= @list.count %> listings starting from $<%= @list.first.askprice.to_i + 20  %></span>
-<% end %>
-
-<hr class="gray">
-<h4>Things to keep in mind.</h4>
-<ul class="to-do">
-<li class="to-do">A <span class="glyphicon glyphicon-ok"></span> mark shows the listing is approved.</li>
-<li class="to-do">A <span class="glyphicon glyphicon-camera"></span> shows the listing has pictures</li>
-<li class="to-do"><%= image_tag ("/paypal.png"), :class => "icon" %> image shows that the seller has a verified paypal account.</li>
-<li class="to-do">Always communicate with the seller before buying.</li>
-<li class="to-do">Ask for more pictures when in doubt.</li>
-<li class="to-do">Negotiate by commenting on the listing.</li>
-<li class="to-do">Insist on using paypal to ensure your safety.</li>
-
-</ul>
 </div>
-									</div>
-									<div class="col-md-8 listings-section">
-										<% if @listings.count > 0 %>
-
-										<div class="alert alert-warning">
-											<h4>All the listings below are verified, which means</h4>
-											<ul>
-												<li>All the listings have pictures.</li>
-												<li>None of the phones listed have screen cracks or water damage</li>
-												</ul>
-											</div>
-
-														
-												<hr class="gray">
-									<%else%>
-									<div class="no-posts cushion">
-									<h2>Sorry there are no listings for this phone yet.</h2>
-									<a class="transparent-flat-btn-green" href="/listings/new?pid=<%= @phone.id %>">Be the first one to sell <%=@phone.modelname%></a>
-									</div>
-									<%end%>
-
-
-											<% cache @listings do%>
-											<%= render partial: 'phones/listings' %>
-											<% end %>
-											<div class="cushion">
-											<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
-											</div>
-
-									</div>
-										<hr class="gray">
-
-									</div>
-
-								</div>	
-		</div>	
+</section>

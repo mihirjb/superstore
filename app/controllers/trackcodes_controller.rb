@@ -1,5 +1,5 @@
 class TrackcodesController < ApplicationController
-  before_filter :authenticate_vendor!
+  before_filter :authenticate_user!
 
     def new
        @order = Order.find(params[:id])

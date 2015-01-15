@@ -1,17 +1,14 @@
 <% content_for :title,  "Search Results for #{params[:search]} " %>
 
-<div class="outer">
-	<div class="main">
-		<div class="centered-800 phoneindex rounded offshadow">
-		
-							<div class="section-heading">
-								<h2 class="page-heading">Search Results for <%= params[:search] %></h2>
-								</div>	
-			<%= render partial: 'pages/phones' %>
-				<div class="cushion">
-				<%= will_paginate @phones, renderer: BootstrapPagination::Rails  %>
-				</div>
-	
-				</div>
+		<section class="long-form-section">
+			<div class="header silver-color offshadow">
+				<h1 class="page-title">Here are all the listings for <%= params[:search] %></h1>
 		</div>
-		</div>
+		<div class="container">
+			<div class="row">
+				<%= render partial: 'pages/phone' %>
+					<div class="cushion">
+					<%= will_paginate @phones, renderer: BootstrapPagination::Rails  %>
+				</div>
+			</div>
+		</section>

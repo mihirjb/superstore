@@ -1,50 +1,20 @@
-
-		
-		<div class="listing_preview featured">
-			<% @listings.each do |l| %>
-				<div class="row">
-					<div class="media col-md-2 col-sm-2 col-xs-12">
-						<%=image_tag Profile.find_by_vendor_id(l.vendor_id).avatar.url(:mini), :class => "main-avatar small-img" %>
-						</div>
-				<div class="headline col-md-7 col-sm-7 col-xs-12">
-					
-					<a href="/listings/<%=l.id%>"><h4><%= l.headline %></h4></a>
-					<p><span class="storage nowrap"><%=l.devicestorage %></span> storage capacity, <span class="storage nowrap"><%=l.devicecolor %></span> color and in <span class="condition nowrap"><%= l.devicecondition%></span> condition.</p>
-				<p>Located in <span class="storage nowrap"><%=l.itemlocation %></span></p>
-			
-					<p><% if l.paypalstatus == "Verified" %>
-					<%= image_tag ("/paypal.png"), :class => "icon" %>
-					<% end %>
-				<% if l.status == "Approved" %>
-				<span class="glyphicon glyphicon-ok"></span>
-				<% end %>
-			<% if	!l.assets.first.nil? %>
-			<span class="glyphicon glyphicon-camera"></span>
-			<% end %>
-				<% if l.paypalstatus == "VERIFIED" %>
-				<%= image_tag ("/paypal.png"), :class => "icon" %>
-				<% end %>
-					</p>
-				
-				
-					<div class="listing-images">
-					<%  l.assets.each do |a| %>											
-					<a class="fancybox" href="<%= a.image.url('original')%>" rel="group"><%= image_tag a.image.url('small') %></a>
-					<%end%>
-					</div>
-				
-				
-				</div>
-				<div class="pricing-btn col-md-3 col-sm-3 col-xs-12">
-					
-					<a href="/transactions/initiatetransaction?l=<%=l.id%>" class="btn  green-sea-flat-button">Quick Buy - $<%= l.askprice.to_i + 20 %></a>
-					
-<a href="/listings/<%=l.id%>" class="btn sun-flower-button">View Listing</a>
-
-
+<% @listings.each do |l| %>
+<a href="/listings/<%=l.id %>">	
+<div class="single-listing">
+<div class="row">
+	<div class="col-md-1">
+		<%=image_tag Profile.where('user_id = ?',l.user_id).first.avatar.url(:mini), :class => "main-avatar small-img owner-image" %>
+	</div>
+	<div class="col-md-7 col-sm-7 col-xs-12"><h2><%= l.headline %></h2>
+		<p><%= l.description %></p>
+	</div>
+	<div class="col-md-4">
+			<a href="../listings/<%=l.id%>" class="btn btn-sm red-color pull-right">$<%= l.askprice.to_i + 20 %></a>
+	</div>
 </div>
-
+<div class="row summary">
+	<div class="col-md-12 col-sm-12 col-xs-12 "><%= @phone.modelname %> | <%= l.devicecolor %> | <%= l.devicestorage %> | <%= l.devicecondition %> | <%= l.itemlocation %> | Accessories: <%= l.accessories %></div>
 </div>
-			<hr class="gray">
-			<% end %>
-			</div>
+</div>
+</a>
+<% end %>

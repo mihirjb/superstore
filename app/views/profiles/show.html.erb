@@ -1,136 +1,102 @@
-	<div class="outer">
+<% content_for :title, "Buy and sell mobile phones in Singapore" %>
+<section class="show silver-color">
+<div class=" container">
 
-							<div class="centered-800 section rounded row">
-	<div class="col-md-8 phoneshow">
-						
-			
-			<div class="table-responsive" id="listings">
-			<h3 class="listing-heading">Hey, here are all of the active listings from <span class="propernoun"><%=  Account.find(@profile.vendor_id).subdomain  %></span></h3>
-			<hr class="gray">
-			<table class="table table-condensed">
-				<tr class="active">
-					<th>Image</th>
-					<th>Title</th>
-					<th>Price</th>
-					<th>Status</th>
-				
-				</tr>
-				<% @listings.each do |dlisting| 
-				if dlisting.status == "Approved" %>
-				
-				<tr  class='<%=
-				@class = ""
-					if dlisting.status == "Approved"
-					@class = "active"
-				end
-			
-				
-				 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
-				
-				<td>
-					<a href ="/listings/<%=dlisting.id%>">
-				<%= dlisting.headline %>
-				</a>
-				
-				</td>
-				<td>
-					
-				
-			<%= dlisting.askprice.to_i + 20 %></td>
-					<td>
-						<%= dlisting.status %>
-						</td>
-					
-					</tr>
-				<% end %>
-				<% end %>
-				
-				</table>			
+
+<div class="row">
+<div class="col-md-5">
+	<div class="summary white-color offshadow">
+		<div class="center-image row">
+			<div class="col-md-4 col-sm-6 col-xs-12">
+			<%= image_tag @profile.avatar.url(:thumb)%>
 		</div>
-		
-		
-		
-		
-		
-	
-		
-			<div class="table-responsive" id="sellerreview">
-				<h2 class="list-heading">Reviews <span class="pull-right">
-					<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
-					<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
-					
-					
-					</span></h2>
-						<ul class="list">
-						<% @feedbacks.each do |feedback| %>
-					<li>
-						<% cache feedback do %>
-						<%= image_tag Profile.find_by_vendor_id(feedback.author_id).avatar.url('thumb')  %>
-						<h4><%= feedback.reviewbody %><h4>
-						<% end %>
-							
-						</li>
-						<% end %>
-						</ul>
-		</div>
-		
-		
-		
-			
-		
-		
-		
-		
-	
-	</div>
-	
-		<div class="col-md-4 phoneshow yellowtop">
+		<div class="col-md-8 col-sm-6 col-xs-12">
+			<div class="row cushion">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+					<h4><a href="/profiles/<%=@profile.id%>"><%= @user.firstname%></a></h4>
+					</div>
 
-
-				<% if !@profile %>
-		<div class="no-profile alert alert-danger">
-			<h3>The profile doesn't exist yet</h3>
-			</div>
-				<% else %>
-
-					<div class="main-box">	
-							<%=image_tag @profile.avatar.url(:medium), :class => "main-avatar" %>
-							<p><%  
-							if @profile.displayname %>
-							<%=  @profile.displayname %>
-							<% else
-								@vendor =  Vendor.find(@profile.vendor_id) %>
-							<%=	 Account.find(@vendor.account_id).subdomain %>
-						<%	end %> |
-							<%= @profile.country%></p>
-							<p><%= @profile.aboutme %></p>
-							</div>
-							<%	end %> 
-
-				<div class="content">
-				<% if  @profile %>
-			<% else %>
-			<%= link_to "Complete your Profile", new_profile_path %>
-			<%end %>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					Member Since:<br/><%= @profile.created_at.to_date %>
 				</div>
-<hr class="gray">
-<h4>Listings</h4>
-<ul class="nav" id="myTab">
-<li class="active"><a href="#listings" id="listingbtn">All Listings</a></li>
 
-</ul>	
-
-
-<hr class="gray">
-<h4>Reviews</h4>
-<ul class="nav" id="myTab">
-
-<li><a href="#sellerreview" id="sellerreviewbtn">Feedback as a seller</a></li>
-</ul>
-
-<hr class="gray">
-
-
-</div>			
-	</div>		
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					Last seen on:<br/><%= time_ago_in_words(@user.last_sign_in_at) %> ago
+				</div>
+		
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					Reviews:<br/> 
+					<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
+					<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down gray"></span>
+				</div>
+			
+				
+			</div>
+		
+		</div>
+		</div>
+	
+		
 	</div>
+	
+</div>
+<div class="col-md-7">
+<div class="white-color offshadow cushion listing-detail">
+	<h2 class="listing-heading">All the active listings from <span class="propernoun"><%= @user.firstname  %></span></h2>
+	<hr class="gray">
+		<ul class="review-list">
+		<% @listings.each do |l| %>
+		<li>
+		<a href="/listings/<%=l.id%>"><h4>
+		<%= l.devicename %> | <%= l.devicecolor %> | <%= l.devicestorage %> | <%= l.devicecondition %> for <%= l.askprice.to_i + 10 %> SGD</h4></a>
+		</li>
+		<% end %>
+		</ul>
+</div>
+</div>
+
+
+<div class="col-md-12">
+<div class="white-color offshadow cushion">
+
+<h2>All the feedback <span class="propernoun"><%= @user.firstname  %></span> has got!!
+	<span class="pull-right">
+		<span class="upvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, true).count %></span> <span class="glyphicon glyphicon-thumbs-up"></span>
+		<span class="downvote"><%= Vote.where('voteable_id =? AND vote =?', @profile.id, false).count %> </span><span class="glyphicon glyphicon-thumbs-down"></span>
+		
+		
+		</span>	
+</h2>
+<hr class="gray">
+
+	<ul class="review-list">
+	<% @feedbacks.each do |feedback| %>
+<li
+<% if feedback.thumbsup == true 
+	@class = "green"
+else
+	@class = "red"
+end
+	%>
+	class="<%=@class%>"
+>
+	<% cache feedback do %>
+	<h4><%= image_tag Profile.where('user_id = ?',feedback.author_id).first.avatar.url('thumb'), :class=>"owner-image img-circle"  %>
+	<%= feedback.reviewbody %></h4>
+	<% end %>
+		
+	</li>
+	<% end %>
+	</ul>
+
+</div>
+</div>
+
+
+</div>
+
+
+
+</div>
+</section>
+
