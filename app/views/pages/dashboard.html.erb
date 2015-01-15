@@ -387,7 +387,7 @@
 						<li>
 				<h4><%= o.devicename %> bought from <%= current_user.firstname %> at $<%= o.ordertotal %></h4>
 					<p><%=o.shipping_address%></p>
-						<a href="/listings/<%o.listing_id%>" class="btn btn-sm graphite-flat-button">View Listing</a>
+						<a href="/listings/<%=o.listing_id%>" class="btn btn-sm graphite-flat-button">View Listing</a>
 						<br/>
 					<%
 			@profile = Profile.where('user_id = ?',o.seller_id).first	
