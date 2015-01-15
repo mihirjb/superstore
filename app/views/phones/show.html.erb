@@ -18,7 +18,7 @@
 		<h2>Maybe you'll like these popular listings</h2>
 		<hr class="gray">
 		<div class="row">
-		<% @popularlistings = Listing.all.order("impressions_count DESC").limit(6) %>
+		<% @popularlistings = Listing.where('status iLIKE ?',"Approved").order("impressions_count DESC").limit(6) %>
 		<% @popularlistings.each do |l| %>
 		<div class="col-md-4 col-sm-4 col-xs-12 grid-list-item">
 			<%= image_tag Phone.find(l.phone_id).image.url(:thumb) %>
