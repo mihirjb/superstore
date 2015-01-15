@@ -17,6 +17,7 @@
 #  params           :text
 #  created_at       :datetime
 #  updated_at       :datetime
+#  listing_id       :integer
 #
 
 class Order < ActiveRecord::Base
