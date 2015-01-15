@@ -388,7 +388,7 @@
 					<p><%=o.shipping_address%></p>
 						<a href="/listings/<%o.listing_id%>" class="btn btn-warning btn-sm">View Listing</a>
 					<%
-			@profile = Profile.where('user_id = ?',o.seller_id)		
+			@profile = Profile.where('user_id = ?',o.seller_id).first	
 					 if Trackcode.find_by_order_id(o.id) %>
 						<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
 				<% else %>
