@@ -4,7 +4,7 @@
 <div class="col-md-4 col-sm-4 col-xs-12 grid-list-item">
 	<% cache l do %>
 	<%= image_tag l.image.url(:thumb) %>
-	<h3><%= link_to l.modelname, "/phones/#{l.id}" %></h3>
+	<h4><%= link_to l.modelname, "/phones/#{l.id}" %></h4>
 	<p><% if	@list.first.nil? %>
 	<span class="price"><%= @list.count %> Listings.</span></p>
 	<%else%>
