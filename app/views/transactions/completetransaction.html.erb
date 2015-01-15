@@ -30,7 +30,7 @@ Seller: <a href="/profile/<%= Profile.where('user_id = ?',@listing.user_id).firs
 		<p class="intro">Make sure you leave a comment on the listings page to see the promptness of the seller. <br/>
 			You can view the listing <a href="/listings/<%= @listing.id %>">here</a>
 			or you view your dashboard <a href="/pages/dashboard">here</a></p>
-			<p class="intro bold-text">Your Paypal transaction id: <%= @order.pptransactionid %></p>
+			<p class="intro bold-text">Your Paypal transaction id: <%= @order.params["transaction"]["0"][".id_for_sender_txn"] %></p>
 					
 			</div>						
 		</div>						

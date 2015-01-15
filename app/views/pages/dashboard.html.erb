@@ -395,7 +395,7 @@
 				<p>The seller hasn't uploaded the tracking code yet. Ask him to update it.</p>		
 				<% end %>
 
-				<% @reviewfound = Review.find_by_profile_id(@profile.id, :conditions => ["author_id = ? AND order_id = ?", o.user_id, o.id]) %>
+				<% @reviewfound = Review.where('profile_id =? AND author_id = ? AND order_id = ?', @profile.id, o.user_id, o.id]).first %>
 
 
 					<% if @reviewfound.nil? %>
