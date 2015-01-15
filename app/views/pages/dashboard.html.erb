@@ -144,7 +144,7 @@
 						<% @listings.each do |dlisting|
 						if dlisting.status == "Pending" %>
 						<tr>
-							<td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
+							<td><%= image_tag dlisting.assets.first.image.url('thumb'), :class =>"owner-image" unless dlisting.assets.first.nil? %></td>
 
 						<td>
 							<a href ="/listings/<%=dlisting.id%>">
@@ -185,7 +185,7 @@
 						</tr>
 						<% @listings.each do |dlisting|
 						if dlisting.status == "Sold" %>
-						<tr><td><%= image_tag dlisting.assets.first.image.url('thumb') unless dlisting.assets.first.nil? %></td>
+						<tr><td><%= image_tag dlisting.assets.first.image.url('thumb'), :class =>"owner-image" unless dlisting.assets.first.nil? %></td>
 
 						<td>
 							<a href ="/listings/<%=dlisting.id%>">
