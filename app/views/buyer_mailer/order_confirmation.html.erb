@@ -5,24 +5,24 @@
   </head>
   <body style="background-color:#ccc;">
 	<div id="container" style="background-color:#e7e7e8;padding-bottom:60px;">
-		<h1 class="logo" style="font-weight:bold;text-align:center;font-size:72px;font-variant:small-caps;letter-spacing:0.08em;color: #000;font-family: 'Open Sans', sans-serif; margin-bottom:30px;">phonesalad</h1>
+		<h1 class="logo" style="font-weight:bold;text-align:center;font-size:72px;font-variant:small-caps;letter-spacing:0.08em;color: #000;font-family: 'Open Sans', sans-serif; margin-bottom:30px;">zalpe</h1>
 			<div id="content" style="width:80%;padding:60px;background-color:#fff;margin:0px auto 60px;">
 			
 			
 				<h4>Dear <%= @buyer.displayname %>,</h4>
 <div class="mailbody" style="padding:30px;background-color:#e1e1e1;">
-	<p>Greetings from Phonesalad!</p>
+	<p>Greetings from Zalpe!</p>
 	<p>We thank you for your order. This email contains your order summary. When the item in your order are shipped, you will receive an email with the Courier Tracking ID and the link where you can track your order. 
-	Please find below the summary of your order at phonesalad.com:</p>
+	Please find below the summary of your order at zalpe.com:</p>
 	<h4>Order details table</h4>
 	<table class="table table-bordered">
 		<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Quantity</th><th>Paypal Txn Id</th></tr>
 		<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td>1</td><td><%= @order.params["transaction"]["0"][".id_for_sender_txn"]%></td></tr>
 	</table><br/><br/>
-	<% if @listing.deliverby == "pickuponly" %>
+	<% if @listing.deliveryby == "pickuponly" %>
 	<h3>Pickup Address</h3>
 	<p><%= @listing.pickupaddress %></p>
-	<% elsif @listing.deliverby == "courier"  %>
+	<% elsif @listing.deliveryby == "courier"  %>
 	<p>Your phone will be shipped to you by <%= Time.now.to_date + 2 %></p>
 	<h3>Shipping Address:</h3>
 	<p>
@@ -39,7 +39,7 @@
 </div>
 
 	<p>Thanks and Regards,</p>
-	<p><a href="www.phonesalad.com">Phonesalad Team</a></p>   
+	<p><a href="www.zalpe.com">Zalpe Team</a></p>   
 
 
 
