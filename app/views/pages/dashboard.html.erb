@@ -442,7 +442,7 @@
 								<%= f.text_area :reviewbody, :class=> "form-control", :placeholder=>"Write a review" %>
 							</div> 
 							<%= f.hidden_field :order_id, :value => o.id %>
-								<%= f.hidden_field :profile_id, :value => Profile.where('user_id = ?',o.seller_id).id %>
+								<%= f.hidden_field :profile_id, :value => Profile.where('user_id = ?',o.seller_id).first.id %>
 								<%= f.hidden_field :author_id, :value => o.user_id %>
 								<input type="text" name="foo" style="display: none;">
 
