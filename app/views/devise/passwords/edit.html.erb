@@ -14,12 +14,15 @@
 
 	<hr class="gray">
 
-<%= f.submit "Change my password", :class=> "btn btn-success" %>
+<%= f.submit "Change my password", :class=> "btn btn-sm btn-success" %>
+<div class="form-links">
+	<%= render "devise/shared/links" %>
+</div>
+
 <% end %>
 
 <br/>
 <br/>
-<%= render "devise/shared/links" %>
 
 
 
