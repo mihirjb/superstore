@@ -1,11 +1,8 @@
-<div class="outer">
-					<div class="pane">							
-						<div class="centered-text section centered-400 rounded offshadow">
-		<h2>Change your password</h2>
-			<hr class="gray">
-		
+<section class="red-color auth-form-section full-height">
+		<div class="hero-content container">
+		<h1 class="page-heading auth-form-heading">change your password</h1>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {class:"auth-form", :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
