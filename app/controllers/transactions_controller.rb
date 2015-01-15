@@ -115,7 +115,7 @@ class TransactionsController < ApplicationController
       logger.info "Listing id is #{session[:listing_id]}"
       
       @listing  =  Listing.find(session[:listing_id])
-    @order = Order.find_by_listing_id(session[:listing_id])
+    @order = Order.where('listing_id = ?',session[:listing_id]).first
       AdminMailer.order_confirmation(current_user, @listing).deliver
        UserMailer.order_confirmation(@listing, current_user, @order).deliver
        BuyerMailer.order_confirmation(current_user, @listing, @order).deliver
