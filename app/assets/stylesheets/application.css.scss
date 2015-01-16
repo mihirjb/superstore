@@ -350,20 +350,14 @@ section.hero div.hero-intro
 
 
 
-section.how-it-works-section{
-    padding:120px 0;
-    background-color:#81BB47;
-    margin:0 auto;
-    color:#fff;
-}
 
-section.how-it-works-section .section-header h2{
+div.how-it-works-section .section-header h2{
     color:#B4EE7A;
     margin: 0 0 35px 0;
     font-weight:700;
 }
 
-section.how-it-works-section .img-circle{
+div.how-it-works-section .img-circle{
     border: 2px solid #fff;
     width: 70px;
     height: 70px;
@@ -372,19 +366,20 @@ section.how-it-works-section .img-circle{
     background-color:#68A22E;
 }
 
-section.how-it-works-section .img-circle strong{
+div.how-it-works-section .img-circle strong{
     font-size:35px;
     line-height: 61px;
 }
 
-section.how-it-works-section h4{
+div.how-it-works-section h4{
     font-weight:700;
     font-size:22px;
     letter-spacing: 2px;
+	text-align:center;
 }
 
-section.how-it-works-section p{
-    margin:0 auto;
+div.how-it-works-section p{
+    margin:0;
 	line-height:1.6em;
 	padding:5px 30px;
 	font-size:16px;
