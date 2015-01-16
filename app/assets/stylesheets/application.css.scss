@@ -12,7 +12,6 @@
 body
 {
 		font-family:'Roboto','Oxygen',"Helvetica Neue",Helvetica,Arial,sans-serif;
-		
 		font-size:12px;
 		line-height:1.5em;
 		margin:0;
@@ -125,18 +124,17 @@ h1,h2,h3,h4,h5,h6
 	margin:0;
 	padding:0;
 	font-family: 'Roboto Slab',"Helvetica Neue", Helvetica, Arial, sans-serif;
-	
 }
 section { 
 	padding:60px 0px;
 	min-height:95vh;
+	position:relative;
 }
 body h4.small-logo
 {
 	margin:10px;
 	vertical-align:middle;
 	font-family: 'Roboto',"Helvetica Neue", Helvetica, Arial, sans-serif;
-	
 }
 body h4.small-logo a
 {
@@ -288,7 +286,7 @@ section.full-height
 section div.hero-content
 {
 	position: relative;
-	  top: 40%;
+	  top: 50%;
 	  -webkit-transform: translateY(-50%);
 	  -ms-transform: translateY(-50%);
 	  transform: translateY(-50%);
@@ -311,28 +309,38 @@ body div.container table tr.total-show
 {
 	margin-top:60px;
 }
-
+.bottom-sticky-div
+{
+	position:absolute;
+	bottom:0;
+	width:100%;
+	margin:0 auto;
+}
 /*********************homepage styles****************************/
 
 section.hero
 {
 	background:url('../clear-dark.png'),url('../bgnew1.jpg') center center fixed no-repeat;
 	color:#fff;
-	
+	text-align:center;
 }
 
 div.clear-dark-bg
 {
 	background:url('../clear-dark.png');
 }
-section.hero div.hero-content h3
+section.hero div.home-intro 
+{
+	margin-top:60px;
+}
+section.hero div.home-intro h3
 {
 	margin-bottom:10px;
 	font-size:60px;
 	font-weight:bolder;
 	font-variant:small-caps;
 }
-section.hero div.hero-content div.hero-intro
+section.hero div.hero-intro
 {
 	width:60%;
 	margin:0 auto 20px;
@@ -376,21 +384,24 @@ section.how-it-works-section h4{
 }
 
 section.how-it-works-section p{
-    width:54%;
     margin:0 auto;
+	line-height:1.6em;
+	padding:5px 30px;
+	font-size:16px;
+	text-align:center;
 	line-height:1.6em;
 }
 
 
 /***********Why you should buy***************/
 
-section#howitworks .glyphicon
+div.jumbotron.top-space .glyphicon
 {
 	font-size:60px;
 	color:#cecece;
 	margin: 50px 0px 0px;
 }
-section#howitworks p.feature-explanation
+div.jumbotron.top-space  p.feature-explanation
 {
 	padding:5px 30px;
 	font-size:16px;
@@ -450,10 +461,7 @@ div.content-div
 {
 	background-color:#ececec;
 }
-
-
-
-/********************************************************/
+/********************************************/
 section.main-hero
 {
 	background: #e54c47;
@@ -1898,7 +1906,10 @@ div.main
 {
 	width:75%;
 }
-
+section.hero div.hero-content h3
+{
+	font-size:24px;
+}
 form
 {
 	width:100%;
@@ -1929,7 +1940,11 @@ div.features
 	}
 	section.full-height
 	{
-		height:300px;
+		height:450px;
+	}
+	section.hero div.hero-content h3
+	{
+		font-size:18px;
 	}
 	form
 	{

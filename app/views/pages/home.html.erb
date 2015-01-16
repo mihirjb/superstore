@@ -1,83 +1,101 @@
-<section class=" hero full-height silver-color">
-	<%if !user_signed_in? %>
-	<div class="container">
-	    <h4 class="small-logo pull-left"><a href="<%=root_url%>">phonesalad</a></h4>
-	<a class="btn btn-sm pumpkin-flat-button pull-right" href="/users/sign_up">Join!</a>
-	<a class="btn btn-sm white-transparent-btn pull-right" href="/users/sign_in">Sign in</a>
-	
-	</div>
-	<% end %>
-	<div class="cushionhome-intro hero-content">
+
+	<header id="head">
 		<div class="container">
-		<h3>WE ARE A MARKETPLACE</h3>
-		<div class="hero-intro">
-		<p class="sub orange">to buy and sell new and lightly used mobile phones and tablets</p>
+			<div class="row">
+			
+				<h1 class="lead">BUY & SELL MOBILE PHONES</h1>
+				<p class="tagline sub"> We review and verify each listing. Avoid phones with water damage, cracks and activation locks</p>
+
+				<p><a class="btn btn-default btn-lg" href="/pages/buy">MORE INFO</a> <a class="btn btn-action btn-lg"  href="/users/sign_up">JOIN NOW</a></p>
+				
+			</div>
+				<div class="cushion-1 clear-dark-bg">
+						<form class="form-inline main-search" role="search" action="/pages/searchresults">
+							<input type="text" name="search" placeholder="Search for the phone you want to buy or sell" class="typeahead">
+						  <input type="submit" class="btn btn-lg black-flat-btn" value="Go">
+						</form>
+						</div>
+		</div>
+	</header>
+	<!-- /Header -->
+
+	<!-- Intro -->
+	<div class="container text-center">
+		<br> <br>
+		<h2 class="thin">Selling is free. No commitment. No credit-card required.</h2>
+		<br/>
+		<p class="text-muted bigger-font">
+			You get to keep all your money. This makes it the best place to sell your phone
+		</p>
+		<a class="btn btn-sm pumpkin-flat-button" href="/users/sign_up">Create a free account</a>
+	</div>
+	<!-- /Intro-->
+		
+	<!-- Highlights - jumbotron -->
+	<div class="jumbotron top-space">
+		<div class="container">
+			
+			<h3 class="text-center thin">Great phones for less!</h3>
+			
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="glyph"><span class="glyphicon glyphicon-tint"></span></div>
+						<h3 class="content-heading">no water damaged phones</h3>
+						<div class="centered-text"><p class="feature-explanation">We don't allow users to list phones with water damage.</p></div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="glyph"><span class="glyphicon glyphicon-phone"></span></div>
+						<h3 class="content-heading">no phones with cracked screens</h3>
+						<div class="centered-text"><p class="feature-explanation">Every listing is verified to see if the screen of the phone is cracked, if it is so then the listing is rejected.</p></div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="glyph"><span class="glyphicon glyphicon-check"></span></div>
+						<h3 class="content-heading">we use paypal so you are safe</h3>
+						<div class="centered-text"><p class="feature-explanation">Paypal has a buyer as well as seller protection policy which protects you.</p></div>
+
+					</div>
+			</div> <!-- /row  -->
 		
 		</div>
-		<div class="cushion-1 clear-dark-bg">
-		<form class="form-inline main-search" role="search" action ="/pages/searchresults">
-			<input type="text" name="search" placeholder ="Search for the phone you want to buy or sell" class="typeahead searchbar">	
-		  <input type="submit" class="btn black-flat-btn" value="Go">
-		</form>
-		</div>
-		
 	</div>
-</section>
-<section id="hw" class="how-it-works-section light-blue">
-            <div class="container">
-                <div class="section-header">
-                   <h2 class="text-center">It's as Easy as 1-2-3</h2>
-                   <div class="divider"></div>
-                </div>
-                <div class="row">
-                   <div class="col-sm-4 text-center">
-                       <div alt="book-cleaner" class="img-responsive img-circle">
-                           <strong>1</strong>
-                       </div>
-                       <h4 class="text-center">Sign up</h4>
-                       <p>Create a free account.</p>
-                   </div>
-                   <div class="col-sm-4 text-center">
-                       <div alt="book-cleaner" class="img-responsive img-circle">
-                           <strong>2</strong>
-                       </div>
-                       <h4 class="text-center">Buy</h4>
-                       <p>Go through all the verified listings and buy one.</p>
-                   </div>
-                   <div class="col-sm-4 text-center">
-                       <div alt="book-cleaner" class="img-responsive img-circle">
-                           <strong>3</strong>
-                       </div>
-                       <h4 class="text-center">Phone is delivered</h4>
-                       <p>Sit back and relax. Enjoy your sparkling new iPhone when it's delivered!</p>
-                   </div>
-                </div>
-            </div>
-        </section>
-
-
-
-<section class="softshadow" id="howitworks">
-<h2 class="content-heading">No junk devices allowed. Great phones for less!</h2>
-<div class="container">
-
-<div class="row">
-	<div class="col-md-4 col-sm-4 col-xs-12">
-		<div class="glyph"><span class="glyphicon glyphicon-tint"></span></div>
-		<h3 class="content-heading">no water damaged phones</h3>
-		<p class="feature-explanation">We don't allow users to list phones with water damage.</p>
-	</div>
-	<div class="col-md-4 col-sm-4 col-xs-12">
-		<div class="glyph"><span class="glyphicon glyphicon-phone"></span></div>
-		<h3 class="content-heading">no phones with cracked screens</h3>
-		<p class="feature-explanation">Every listing is verified to see if the screen of the phone is cracked, if it is so then the listing is rejected.</p>
-	</div>
-	<div class="col-md-4 col-sm-4 col-xs-12">
-		<div class="glyph"><span class="glyphicon glyphicon-check"></span></div>
-		<h3 class="content-heading">we use paypal so you are safe</h3>
-		<p class="feature-explanation">Paypal has a buyer as well as seller protection policy which protects you.</p>
-		
-	</div>
-</div>
-</div>
+	<!-- /Highlights -->
+<section class="green-color how-it-works-section">
+	<!-- container -->
+		<div class="container">
+		                <div class="section-header">
+		                   <h2 class="text-center">It's as Easy as 1-2-3</h2>
+		                   <div class="divider"></div>
+		                </div>
+		                <div class="row">
+		                  		<div class="row">
+									<div class="col-md-4 col-sm-4 col-xs-12 highlight">
+		                       <div alt="book-cleaner" class="img-responsive img-circle">
+		                           <strong>1</strong>
+		                       </div>
+		                       <div class="h-caption"><h4 class="text-center">Sign up</h4></div>
+		                       <div class="h-body text-center">
+								<p>Create a free account.</p>
+								</div>
+		                   </div>
+		                   <div class="col-md-4 col-sm-4 col-xs-12 highlight">
+		                       <div alt="book-cleaner" class="img-responsive img-circle">
+		                           <strong>2</strong>
+		                       </div>
+		                       <div class="h-caption"><h4 class="text-center">Buy</h4></div>
+		                       <div class="h-body text-center">
+								<p>Go through all the verified listings and buy one.</p>
+								</div>
+		                   </div>
+		                   <div class="col-md-4 col-sm-4 col-xs-12 highlight">
+		                       <div alt="book-cleaner" class="img-responsive img-circle">
+		                           <strong>3</strong>
+		                       </div>
+		                       <div class="h-caption"><h4 class="text-center">Phone is delivered</h4></div>
+		                       <div class="h-body text-center">
+								<p>Sit back and relax. Enjoy your sparkling new iPhone when it's delivered!</p>
+								</div>
+		                   </div>
+		                </div>
+	
+</div>	<!-- /container -->
 </section>
