@@ -288,9 +288,9 @@
 								</td>
 
 							<td>
-
-									<% if Trackcode.find_by_order_id(o.id) %>
-										<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
+									<% @trackcode  = Trackcode.where('order_id = ?',o.id).first %>
+									<% if !@trackcode.nil? %>
+										<a href="/trackcodes/<%= @trackcode.id%>" class="btn btn-success btn-sm">See tracking info</a>
 										<% else %>
 									<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
 									<% end %>
