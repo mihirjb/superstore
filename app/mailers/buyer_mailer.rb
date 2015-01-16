@@ -13,8 +13,8 @@ class BuyerMailer < ActionMailer::Base
   def shipping_confirmation(order,trackcode)
     @order = order
      @trackcode = trackcode
-      @buyerprofile = Profile.find_by_vendor_id(order.vendor_id)
-      @buyer = Vendor.find(order.vendor_id)
+      @buyerprofile = Profile.where('user_id = ?',order.user_id).first
+      @buyer = User.find(order.user_id)
        mail(:to => "#{@buyer.email}", :subject => "Recipt for your order from Zalpe")
    end
   
