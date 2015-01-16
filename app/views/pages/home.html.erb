@@ -1,28 +1,23 @@
-<div id="hero">
-<header><h1 class="logo">phonesalad</h1></header>
-
-<div class="outer">
-					<div class="pane">							
-						<div class="centered-text section ">
-								
-
-	<form class="form-inline main-search" role="search" action ="/pages/searchresults">
-		<input type="text" name="search" placeholder ="Search for the phone you want to buy or sell" class="typeahead searchbar">		
-	  <button type="submit" class="btn black-flat-btn">Go</button>
-	</form>
-
-	<h3 class="main-header">Buy and Sell lightly used iPhones and iPads</h3>
-	<p>We are low cost, fast and secure.</p>
-<a href="../pages/buy" class="btn white-transparent-btn">See how it works</a>
-<a href="../users/sign_up" class="btn pumpkin-flat-button">Sign up</a>
-<a href="<%= new_user_session_path %>" class="btn black-flat-btn">Sign in</a>
-
-
-
-</div>
-</div>
-</div>
-</div>
+<section class=" hero full-height silver-color">
+	<%if !user_signed_in? %>
+	<div class="container">
+	    <h4 class="small-logo pull-left"><a href="<%=root_url%>">phonesalad</a></h4>
+	<a class="btn btn-sm pumpkin-flat-button pull-right" href="/users/sign_up">Join!</a>
+	<a class="btn btn-sm white-transparent-btn pull-right" href="/users/sign_in">Sign in</a>
+	
+	</div>
+	<% end %>
+	<div class="cushion home-intro hero-content">
+		<div class="container">
+		<h3>Buy and sell lightly used mobile phones and tablets</h3>
+		<div class="cushion-1 clear-dark-bg">
+		<form class="form-inline main-search" role="search" action ="/pages/searchresults">
+			<input type="text" name="search" placeholder ="Search for the phone you want to buy or sell" class="typeahead searchbar">	
+		  <input type="submit" class="btn black-flat-btn" value="Go">
+		</form>
+		</div>
+	</div>
+</section>
 <section id="hw" class="how-it-works-section light-blue">
             <div class="container">
                 <div class="section-header">
