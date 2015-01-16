@@ -1,11 +1,11 @@
-<div class="outer">
-	<div class="main">
-						<div class="centered-800 phoneindex rounded offshadow">
-							<div class="section-heading">
-								<h2 class="page-heading">Add Shipping or Meetup details</h2>
-								</div>
 
-		<%= form_for @trackcode, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
+<section class="long-form-section">
+	<div class="header silver-color offshadow">
+		<h1 class="page-title auth-form-heading">Add shipping or meetup details</h1>
+</div>
+<div class="container">	
+
+		<%= form_for @trackcode,  :role => "form", :html => {:class => "long-form" :multipart => true } do |f| %>
 		
 		
 				<h3>Tracking info</h3>
@@ -23,6 +23,5 @@
 		<%= f.submit "Add", :disable_with => 'Going...', :class =>"btn btn-success btn-lg btn-block" %>
 		<% end %>
 		
-	</div>
 </div>
-</div>
+</section>
