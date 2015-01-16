@@ -988,7 +988,8 @@ form.search input.form-control
 }
 form.main-search
 {
-	margin:30px;
+	margin:30px 0px;
+	padding:0px 30px;
 }
 form.main-search input[type="text"], form.main-search input[type="email"], form.main-search input[type="password"]{
     width: 100%;
@@ -1953,6 +1954,10 @@ div.features
 	form input,form.long-form input, form.long-form textarea,form.long-form select, form.auth-form input[type="text"], form.auth-form input[type="email"], form.auth-form input[type="password"], form.auth-form select
 	{
 		width:85%;
+	}
+	form.main-search input[type="text"]
+	{
+		width:100%;
 	}
 	div.features
 	{
