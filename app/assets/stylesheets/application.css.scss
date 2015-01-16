@@ -214,6 +214,10 @@ body section.hero h4.small-logo a
 	background-color:#e85543;
 	color:#333;
 }
+.orange
+{
+	color:#e67e22;
+}
 .dark-orange-color
 {
 	background-color:#FF1919;
@@ -284,7 +288,7 @@ section.full-height
 section div.hero-content
 {
 	position: relative;
-	  top: 45%;
+	  top: 40%;
 	  -webkit-transform: translateY(-50%);
 	  -ms-transform: translateY(-50%);
 	  transform: translateY(-50%);
@@ -312,7 +316,7 @@ body div.container table tr.total-show
 
 section.hero
 {
-	background:url('../bgnew1.jpg') center center fixed no-repeat;
+	background:url('../clear-dark.png'),url('../bgnew1.jpg') center center fixed no-repeat;
 	color:#fff;
 	
 }
@@ -323,7 +327,16 @@ div.clear-dark-bg
 }
 section.hero div.hero-content h3
 {
-	margin-bottom:20px;
+	margin-bottom:10px;
+	font-size:60px;
+	font-weight:bolder;
+	font-variant:small-caps;
+}
+section.hero div.hero-content div.hero-intro
+{
+	width:60%;
+	margin:0 auto 20px;
+	
 }
 /******************How it works****************/
 
@@ -1866,10 +1879,7 @@ input[type="text"], input[type="email"]
 { width: 60%;
 	margin: 0px auto;
 }
-section.full-height
-{
-	height:600px;
-}
+
 div.btn-group
 {
 	width:60%;
@@ -1917,7 +1927,10 @@ div.features
 	{
 		width: 60%;
 	}
-	
+	section.full-height
+	{
+		height:300px;
+	}
 	form
 	{
 		width:100%;
