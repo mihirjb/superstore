@@ -36,6 +36,7 @@ class AdminactionsController < ApplicationController
   
   def noimagesphones
     @phones  = Phone.all
+    @count = Phone.where('image_file_name = ?' nil).count
   end
   
   def deletelisting
