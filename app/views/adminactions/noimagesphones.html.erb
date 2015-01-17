@@ -1,11 +1,15 @@
-<section>
-	<div class="container">
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">All the phones without images</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">
 				<div class="table-responsive cushion" id="listings">
 				<table class="table table-condensed">
 					<tr class="active">
 						<th>Phone Name</th>
 						<th>Edit button</th>
-					
 					</tr>
 					<% @phones.each do |p| 
 						
@@ -16,12 +20,11 @@
 					<tr><td><%=p.modelname%></td>
 
 					<td>
-						<a class="btn btn-success" href ="/phones/<%=p.id%>/edit">
+						<a class="btn btn-sm btn-success" href ="/phones/<%=p.id%>/edit">
 					Edit
 					</a>
 
 					</td>
-
 						</tr>
 					<% end %>
 					<% end %>
