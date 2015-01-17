@@ -28,7 +28,8 @@ $(document).ready(function() {
 		$("#iphones").hide();
 		  $("#ipads").hide();
 			$("#choice").show();
-		
+			$("#pendcomments").hide();
+			 $("#pendlistings").show();
 
 
 
@@ -685,6 +686,27 @@ required: true,
 		    });
 		  });
 
+
+
+		$( "#pendlistingbtn" ).click(function( event ) {
+
+		    event.preventDefault();
+
+			$("#comments").hide("slow");
+			 $("#listings").show("slow");
+			 
+
+		});
+
+			$( "#pendcommentbtn" ).click(function( event ) {
+
+			    event.preventDefault();
+
+				$("#comments").show("slow");
+				 $("#listings").hide("slow");
+
+
+			});
 	
 
 

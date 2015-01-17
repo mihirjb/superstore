@@ -6,7 +6,15 @@
 		</div>
 	</div>
 <div class="container white-color softshadow">
-			<div class="table-responsive cushion" id="listings">
+	<div class="row">
+	<div class="col-md-6">
+			<ul class="nav" id="myTab">
+			<li class="active"><a href="#pendlistings" id="pendlistingbtn">Pending Listings</a></li>
+			<li><a href="#pendcomments"  id="pendcommentbtn">Pending Comments</a></li>
+			</ul>
+	</div>
+	<div class="col-md-6">
+			<div class="table-responsive cushion" id="pendlistings">
 				<h2> Unapproved Listings</h2>
 			
 			<table class="table table-condensed">
@@ -70,9 +78,9 @@
 		</div>
 		
 			
-			<div class="cushion">
+			<div class="cushion" id="pendcomments">
 				<h2> Unapproved Comments</h2>
-			<table class= "table">
+			<table class= "table" >
 				<tr><th>Comment id</th><th>Comment</th><th>Listing Id</th></tr>
 				<% @comments.each do |l|%>
 
@@ -97,6 +105,8 @@
 				<%end%>
 				</table>
 				</div>
+			</div>
+		</div>
 
 			</div>
 			</section>
