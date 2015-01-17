@@ -5,7 +5,7 @@ task :add_phone_data => :environment do
   require "open-uri"
 
 
-  url = "http://swappa.com/tablet/all/us"
+  url = "http://swappa.com/devices/tablet/us"
   doc = Nokogiri::HTML(open(url))
   ul = doc.css('.dev_cell_wide')
    ul.each do |t|
