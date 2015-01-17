@@ -1,10 +1,14 @@
 <% content_for :title,  "Add a new phone to the database" %>
 	
-	<div class="outer">
-<div class="main">
-							<div class="centered-800 section rounded offshadow">
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">Ad a new phone</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">
 		
-		<%= form_for @phone, :class=>"form-horizontal",  :role => "form", :html => { :multipart => true } do |f| %>
+		<%= form_for @phone, :class=>"form-horizontal auth-form",  :role => "form", :html => { :multipart => true } do |f| %>
 		
 		
 				<h3>Phone data</h3><br/><br/>
@@ -17,9 +21,8 @@
 			
 			<hr class="gray">
 
-		<%= f.submit "Add", :disable_with => 'Going...', :class =>"btn redround" %>
+		<%= f.submit "Add", :disable_with => 'Going...', :class =>"btn btn-default" %>
 		<% end %>
 		
-	</div>
 </div>
-</div>
+</section>

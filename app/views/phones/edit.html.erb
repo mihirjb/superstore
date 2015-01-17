@@ -1,7 +1,11 @@
-	<div class="outer">
-<div class="main">
-							<div class="centered-800 section rounded offshadow">		
-		<%= form_for @phone, :class=>"form-horizontal",  :role => "form" do |f| %>
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">Edit your phone</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">	
+		<%= form_for @phone, :class=>"form-horizontal auth-form",  :role => "form" do |f| %>
 		
 			
 				<h3>Data about your phone</h3>
@@ -18,9 +22,8 @@
 			
 			<hr class="gray">
 			
-		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn redround" %>
+		<%= f.submit "Update", :disable_with => 'Updating...', :class =>"btn btn-default" %>
 		<% end %>
 		
-	</div>
 </div>
-</div>
+</section>
