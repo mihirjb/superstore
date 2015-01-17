@@ -89,8 +89,8 @@ $(document).ready(function() {
 		$( "#pendlistingbtn" ).click(function( event ) {
 
 		    event.preventDefault();
-			$("#comments").hide("slow");
-			 $("#listings").show("slow");
+			$("#pendcomments").hide("slow");
+			 $("#pendlistings").show("slow");
 
 
 		});
@@ -98,8 +98,8 @@ $(document).ready(function() {
 			$( "#pendcommentbtn" ).click(function( event ) {
 
 			    event.preventDefault();
-				$("#comments").show("slow");
-				 $("#listings").hide("slow");
+				$("#pendcomments").show("slow");
+				 $("#pendlistings").hide("slow");
 
 
 			});
