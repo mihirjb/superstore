@@ -86,6 +86,29 @@ $(document).ready(function() {
 
 
 
+		$( "#pendlistingbtn" ).click(function( event ) {
+
+		    event.preventDefault();
+			$("#comments").hide("slow");
+			 $("#listings").show("slow");
+
+
+		});
+
+			$( "#pendcommentbtn" ).click(function( event ) {
+
+			    event.preventDefault();
+				$("#comments").show("slow");
+				 $("#listings").hide("slow");
+
+
+			});
+
+
+
+
+
+
 	$( "#listingbtn" ).click(function( event ) {
 
 	    event.preventDefault();
@@ -686,28 +709,6 @@ required: true,
 		    });
 		  });
 
-
-
-		$( "#pendlistingbtn" ).click(function( event ) {
-
-		    event.preventDefault();
-
-			$("#comments").hide("slow");
-			 $("#listings").show("slow");
-			 
-
-		});
-
-			$( "#pendcommentbtn" ).click(function( event ) {
-
-			    event.preventDefault();
-
-				$("#comments").show("slow");
-				 $("#listings").hide("slow");
-
-
-			});
-	
 
 
 	});
