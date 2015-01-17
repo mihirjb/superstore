@@ -1,0 +1,32 @@
+<section>
+	<div class="container">
+				<div class="table-responsive cushion" id="listings">
+				<table class="table table-condensed">
+					<tr class="active">
+						<th>Phone Name</th>
+						<th>Edit button</th>
+					
+					</tr>
+					<% @phones.each do |p| 
+						
+						if !p.image.exists?
+						
+						%>
+
+					<tr><td><%=p.modelname%></td>
+
+					<td>
+						<a class="btn btn-success" href ="/phones/<%=p.id%>/edit">
+					Edit
+					</a>
+
+					</td>
+
+						</tr>
+					<% end %>
+					<% end %>
+					
+					</table>			
+			</div>
+	</div>
+</section>

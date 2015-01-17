@@ -7,6 +7,7 @@ Phoneclone::Application.routes.draw do
   get "adminactions/approvecomment"
   get "adminactions/approvelisting"
   get "adminactions/dashboard"
+  get "adminactions/noimagesphones"
   
   get "transactions/initiatetransaction"
   post "transactions/processtransaction"

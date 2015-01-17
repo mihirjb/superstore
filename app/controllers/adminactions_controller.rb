@@ -34,6 +34,10 @@ class AdminactionsController < ApplicationController
     
   end
   
+  def noimagesphones
+    @phones  = Phone.all
+  end
+  
   def deletelisting
        @listing = Listing.find(params[:id]).destroy
        redirect_to :back, :notice => "Listing has been removed successfully."

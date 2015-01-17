@@ -62,7 +62,7 @@ class PhonesController < ApplicationController
      
      @phone = Phone.find(params[:id])
       if @phone.update(phone_params())
-         redirect_to root_url, :notice => "Congratulations, phone updated Successfully."
+         redirect_to "/adminactions/noimagesphones", :notice => "Congratulations, phone updated Successfully."
        else
          redirect_to :back, :notice => "Alas, phone could not be updated."
        end
