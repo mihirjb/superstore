@@ -22,7 +22,10 @@
 									<a class="btn graphite-flat-button btn-sm" href="/phones/<%= l.id %>">Buy</a> <a class="btn pumpkin-flat-button btn-sm btn-hero" href="/listings/new?pid=<%= l.id %>">Sell</a>
 								<%end%>
 								</div>
-								<% end%>				
+								<% end%>
+								
+								<%= will_paginate @phones, renderer: BootstrapPagination::Rails  %>
+												
 
 	</div>
 	</section>

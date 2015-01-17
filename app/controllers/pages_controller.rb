@@ -61,11 +61,11 @@ class PagesController < ApplicationController
   end
   
   def alliphones
-      @phones = Phone.where("phonetype iLike ?", "iPhone") .paginate :page => params[:page],:per_page=>30
+      @phones = Phone.where("phonetype iLIKE ? AND company iLIKE ?", "phone", "Apple") .paginate :page => params[:page],:per_page=>30
   end
   
   def allipads
-      @phones = Phone.where("phonetype iLike ?", "iPad") .paginate :page => params[:page],:per_page=>30
+      @phones = Phone.where("phonetype iLIKE ? AND company iLIKE ?", "tablet", "Apple") .paginate :page => params[:page],:per_page=>30
   end
   
   def thanksandshare
