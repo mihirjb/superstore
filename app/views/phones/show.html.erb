@@ -10,9 +10,9 @@
 <div class="container white-color softshadow">
 	<% if @listings.blank? %>
 	<div class="cushion">
-	<h2 class="">Sorry no results found for <%= @phone.modelname %></h3>
+	<h3 class="">Sorry no results found for <%= @phone.modelname %></h3>
 	<hr class="gray">
-	<a class="btn orange-flat-button" href="/listings/new?pid=<%= @phone.id %>">Sell <%= @phone.modelname %></a>
+	<a class="btn btn-sm orange-flat-button" href="/listings/new?pid=<%= @phone.id %>">Sell <%= @phone.modelname %></a>
 	</div>
 	<div class="cushion">
 		<h3>Meanwhile check these popular listings</h3>

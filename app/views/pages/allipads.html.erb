@@ -8,8 +8,9 @@
 <div class="container">
 	<div class="row">
 		<%= render partial: 'pages/phone' %>
-			<div class="cushion">
-			<%= will_paginate @phones, renderer: BootstrapPagination::Rails  %>
-		</div>
+		
+	</div>
+		<div class="cushion">
+		<%= will_paginate @phones, renderer: BootstrapPagination::Rails  %>
 	</div>
 </section>
