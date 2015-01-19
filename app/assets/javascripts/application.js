@@ -514,6 +514,9 @@ required: true,
 required: true,
 rangelength: [1,60]
 },
+"listing[pickupaddress]": {
+required: true,
+},
 "listing[shipinternationally]": {
 required: true,
 },
@@ -574,6 +577,9 @@ required: true,
 		required: "Enter a valid location where your phone is located",
 		rangelength: "Just write name of the city.",
 		
+		},
+		"listing[pickupaddress]": {
+		required: "Please input a valid location to meetup.",
 		},
 		"listing[shipinternationally]": {
 		required: "Please select if you will ship internationally",

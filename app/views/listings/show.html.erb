@@ -51,8 +51,12 @@
 		</div>
 		
 		
-		<% if @listing.status == "Approved"%>	
+		<% if @listing.status == "Approved" &&  @listing.deliveryby == "courier" %>
 			<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button">Buy now - $<%=@listing.askprice.to_i + 20 %></a></h1>
+		<% end %>
+		
+		<% if @listing.status == "Approved" &&  @listing.deliveryby == "pickup" %>
+			<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button">Offer to meetup</a></h1>
 		<% end %>
 
 			<% if @listing.status == "Pending"%>	
@@ -148,19 +152,30 @@
 		</div>
 	</div>
 	
-
+<% if @listing.deliveryby == "courier" %>
 	<div class="row mini-info shipping">
 		<div class="col-md-6">
 		<h3>Shipping Information</h3>
 		</div>
 		<div class="col-md-6">
 		<p>Item Location: <%= @listing.itemlocation %></p>
-		<p>Delivery Method: </p>
+		<p>Delivery Method: <%=  @listing.deliveryby %></p>
 		<p>Ship Internationally: <%= @listing.shipinternationally %></p>
-		<p>Delivery method details: Pickup address to be shown after payment</p>
+		<p>Delivery method details: The seller has to ship in 2 days once the order has been placed. <%=  @listing.shippinfdetails %></p>
 		</div>
 	</div>
-
+<% else %>
+<div class="row mini-info pickupdetails">
+	<div class="col-md-6">
+	<h3>Meetup details</h3>
+	</div>
+	<div class="col-md-6">
+	<p>Item Location: <%= @listing.itemlocation %></p>
+	<p>Delivery Method: <%=  @listing.deliveryby %></p>
+	<p>Delivery method details: <%=  @listing.pickupaddress %></p>
+	</div>
+</div>
+<% end %>
 
 	<div class="row mini-info">
 		<div class="col-md-6">
