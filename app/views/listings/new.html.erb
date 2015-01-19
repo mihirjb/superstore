@@ -70,23 +70,27 @@
 					<%= f.text_field :itemlocation %></p>
 						<div class="radgrp"><%= f.label :deliveryby, " How will you deliver?" %>
 							<div class="btn-group"><div class="radbtns half-width"><%= f.radio_button :deliveryby, "courier" %> <%= f.label:deliveryby, " Courier/Mail" %></div>
-							<div class="radbtns half-width"><%= f.radio_button :deliveryby, "pickup" %> <%= f.label:deliveryby, " Meetup" %></div></div></div>
-								<p><%= f.label :pickupaddress, " Place where you would like to meet the buyer" %>
-								<%= f.text_field :pickupaddress %></p>
+							<div class="radbtns half-width"><%= f.radio_button :deliveryby, "pickup", :id => "pickupbtn" %> <%= f.label:deliveryby, " Meetup" %></div></div></div>
+							
+						
 					
+					</div>
+					
+					<div class="form-group" id="pickupdetails">
+					
+						<p><%= f.label :pickupaddress, " Place where you would like to meet the buyer" %>
+						<%= f.text_field :pickupaddress %></p>
+					</div>
+
+					<div class="form-group" id="shippingdetails">
+						
 						<div class="radgrp"><%= f.label :shipinternationally, " Will you ship internationally?" %>
 							<div class="btn-group"><div class="radbtns"><%= f.radio_button :shipinternationally, :true %> <%= f.label:shipinternationally, " Yes" %></div>
 							<div class="radbtns"><%= f.radio_button :shipinternationally, :false %> <%= f.label:shipinternationally, " No" %></div></div></div>
 					<p><%= f.label :shippingdetails, " Details of shipping method and costs etc." %>
 					<%= f.text_field :shippingdetails %></p>
-					<div class="radgrp"><%= f.label :returnsallowed, " Will you allow returns?" %>
-						<div class="btn-group"><div class="radbtns"><%= f.radio_button :returnsallowed, :true %> <%= f.label:returnsallowed, " Yes" %></div>
-						<div class="radbtns"><%= f.radio_button :returnsallowed, :false %> <%= f.label:returnsallowed, " No" %></div></div></div>
-					<p><%= f.label :returnpolicy, " Your returns policy" %>
-					<%= f.text_field :returnpolicy %></p>
-					</div>
-
-					<div class="form-group">
+					
+					
 					<p><%= f.label :paypalfname, " First name in paypal account" %>
 					<%= f.text_field :paypalfname %></p>
 					<p><%= f.label :paypallname, " Last name in paypal account" %>
@@ -94,6 +98,15 @@
 					<p><%= f.label :paypalemail, " Paypal email address" %>
 					<%= f.text_field :paypalemail %></p>
 					</div>
+					
+					<div class="form-group" id="returns">
+						<div class="radgrp"><%= f.label :returnsallowed, " Will you allow returns?" %>
+							<div class="btn-group"><div class="radbtns"><%= f.radio_button :returnsallowed, :true %> <%= f.label:returnsallowed, " Yes" %></div>
+							<div class="radbtns"><%= f.radio_button :returnsallowed, :false %> <%= f.label:returnsallowed, " No" %></div></div></div>
+						<p><%= f.label :returnpolicy, " Your returns policy" %>
+						<%= f.text_field :returnpolicy %></p>
+					</div>
+					
 					<hr class="gray">
 
 						<div class="newPaperclipFiles">
@@ -116,7 +129,7 @@
 												<input type="text" name="foo" style="display: none;">
 												<hr class="gray">
 					<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success redround offshadow" %>
-					<%= link_to "Cancel", :back, {:class=>"btn pomegranate-flat-button"} %>
+					<%= link_to "Cancel", :back, {:class=>"btn btn-lg btn-default red-color"} %>
 					
 					<% end %>
 	

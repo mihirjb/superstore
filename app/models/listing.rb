@@ -59,9 +59,6 @@ class Listing < ActiveRecord::Base
   validates :itemlocation, :presence => {:message => 'Atleast write a few words about your phone.'}
   
   
-
-  
-  validates :paypalemail, :presence => {:message => 'Paypal email cannot be blank, Listing not saved'}
   
   
   

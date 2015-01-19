@@ -83,6 +83,24 @@ $(document).ready(function() {
 	  $("#boughtorders").hide();
 	  $("#buyerreview").hide();
 	  $("#sellerreview").hide();
+		$("#pickupdetails").hide();
+		$("#shippingdetails").hide();
+
+	$('input:radio[name="listing[deliveryby]"]').change(
+	    function(){
+	        if ($(this).is(':checked') && $(this).val() == 'pickup') {
+				$("#pickupdetails").show("slow");
+				$("#shippingdetails").hide();
+				
+	        }
+			 if ($(this).is(':checked') && $(this).val() == 'courier') {
+					$("#pickupdetails").hide();
+					$("#shippingdetails").show("slow");
+					
+		        }
+	    });
+
+
 
 
 
