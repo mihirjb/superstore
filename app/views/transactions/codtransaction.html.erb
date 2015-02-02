@@ -32,6 +32,7 @@
 				<form name="purchase-form" role="form" action="/transactions/codtransactioncomplete" method="POST" id="purchase_form" class="auth-form">
 					
 					<h4>I hereby declare that I will collect the item and pay the cash when I meet the seller</h4>
+					<input type="hidden" name="l" value="<%= params[:l]%>"><br/>
 					<input class="btn green-sea-flat-button" type="Submit" value="Confirm Order">
 
 					</form>
