@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
      @seller = Profile.find_by_user_id(seller.user_id)
      @useremail = User.find(@order.seller_id).email
      
-     mail(:to => "#{seller.paypalemail}", :subject => "Order placed on Phonesalad")
+     mail(:to => "#{@useremail}", :subject => "Order placed on Phonesalad")
    end
    
    def listing_confirmation(listing)
