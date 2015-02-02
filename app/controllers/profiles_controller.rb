@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
    def show
      @profile = Profile.find(params[:id])
      @user = User.find(@profile.id)
-     @listings = Listing.where('user_id = ?',@profile.user_id).limit(50)
+     @listings = Listing.where('user_id = ? and status iLIKE ?',@profile.user_id, "Approved").limit(50)
      @feedbacks = Review.where('profile_id = ?',@profile.user_id).limit(50)
      @review = @profile.reviews.build
    end
