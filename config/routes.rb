@@ -12,6 +12,7 @@ Phoneclone::Application.routes.draw do
   get "transactions/initiatetransaction"
   get "transactions/codtransaction"
   post "transactions/codtransactioncomplete"
+  get "transactions/codtransactionthanks"
   post "transactions/processtransaction"
   get "transactions/completetransaction"
   get "transactions/failedtransaction"

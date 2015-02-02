@@ -14,6 +14,7 @@ class TransactionsController < ApplicationController
     
    def codtransactioncomplete
       @listing_id = params[:listing_id]
+      session[:listing_id] = params[:listing_id]
       @user_id = current_user.id
       @listing  =  Listing.find(@listing_id)
       @listing.update_column("status", "Sold")
@@ -21,8 +22,28 @@ class TransactionsController < ApplicationController
    @order = Order.create!(:listing_id => @listing_id)
    @ordertotal = 0.01.to_i + 0.01
    @order.update_columns(:user_id => @user_id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:seller_id => @listing.user_id, :ordertotal => @ordertotal,:orderdate => Time.now.to_date, :ordertime => Time.now)
-     
+  
+  
+   redirect_to "/transactions/codtransactionthanks", :notice => "Order confirmed successfully"
+   
    end
+   
+   def codtransactionthanks    
+     if session[:listing_id]
+
+       @listing  =  Listing.find(session[:listing_id])
+     @order = Order.where('listing_id = ?',session[:listing_id]).first
+       AdminMailer.order_confirmation(current_user, @listing).deliver
+        UserMailer.order_confirmation(@listing, current_user, @order).deliver
+        BuyerMailer.order_confirmation(current_user, @listing, @order).deliver
+
+     session[:listing_id] = nil
+   else
+     redirect_to :root, :notice => "Invalid request"
+   end 
+
+   end
+   
    
   def processtransaction
     session[:listing_id] = params[:l]
@@ -127,7 +148,6 @@ class TransactionsController < ApplicationController
 
   def completetransaction    
     if session[:listing_id]
-      logger.info "Listing id is #{session[:listing_id]}"
       
       @listing  =  Listing.find(session[:listing_id])
     @order = Order.where('listing_id = ?',session[:listing_id]).first
