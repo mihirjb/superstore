@@ -1,20 +1,53 @@
-<p>Dear <%= @seller.displayname %>,</p>
-<p>Greetings from Phonesalad!</p>
-<p>Your <%= @order.devicename %> has been sold. We request to start preparing to ship the item within 2 days. Hereby we are sending you the order details. Please update the tracking information as soon as you ship the product so we can notify the customer. You can do it <%= link_to "here", "http://localhost:3000/pages/dashboard" %>.
-Please find below the summary of your order at phonesalad.com:</p>
-<h4>Order details table</h4>
-<table>
-	<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Estimated Shipping date</th></tr>
-	<tr><td><%= @order.id%></td><td><%= @order.devicename%></td><td><%= @order.ordertotal%></td><td><%= Time.now.to_date + 2 %></td></tr>
-</table><br/><br/>
-<h4>Shipping Address:</h4>
-<p>
-<%= @order.shipping_address %>
-</p>
-<br/><br/>
-<p>
-Please contact us should you have any questions or need further assistance.
-Thank you for shopping with us!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="background-color:#ccc;">
+	<div id="container" style="background-color:#e7e7e8;padding-bottom:60px;">
+		<h1 class="logo" style="font-weight:bold;text-align:center;font-size:72px;font-variant:small-caps;letter-spacing:0.08em;color: #000;font-family: 'Open Sans', sans-serif; margin-bottom:30px;">zalpe</h1>
+			<div id="content" style="width:80%;padding:60px;background-color:#fff;margin:0px auto 60px;">
+			
+			
+				<h4>Dear <%= @sellername %>,</h4>
+<div class="mailbody" style="padding:30px;background-color:#e1e1e1;">
+	<p>Greetings from Phonesalad!</p>
+	<p>We thank you for listing your phone with Phonesalad. Your phone has been sold. This email contains your order summary. Please meetup/ship or take necessary action to complete your part of the order.
+	Please find below the summary of your order at phonesalad.com:</p>
+	<h4>Order details table</h4>
+	<table class="table table-bordered">
+		<tr><th>Orderno</th><th>Item</th><th>Price</th><th>Quantity</th>
+		</tr>
+		<tr><td><%= @order.id%></td><td><%= @order.devicename %></td><td><%= @order.ordertotal%></td><td>1</td>
+			
+		
+			</tr>
+	</table><br/><br/>
+	<% if @listing.deliveryby == "pickuponly" %>
+	<h3>Pickup Address</h3>
+	<p><%= @listing.pickupaddress %></p>
+	<% elsif @listing.deliveryby == "courier"  %>
+	<p>Your phone will be shipped to you by <%= Time.now.to_date + 2 %></p>
+	<h3>Shipping Address:</h3>
+	<p>
+	<%= @order.shipping_address %>
+	</p>
+	<br/><br/>
+	<p>
+	<% end %>
+	
+	
+	Go to your <a href="www.zalpe.com/pages/dashboard">dashboard</a> to see more info about the order.
+	Please contact us should you have any questions or need further assistance.
+	Thank you for shopping with us!</p>
+</div>
 
-<p>Thanks and Regards,</p>
-<p><a href="http://www.phonesalad.com">Phonesalad Team</a></p>
+	<p>Thanks and Regards,</p>
+	<p><a href="http://www.phonesalad.com">Phonesalad Team</a></p>   
+
+	</div>
+	</div>
+  </body>
+</html>
+
+

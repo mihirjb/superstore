@@ -244,12 +244,18 @@
 								</td>
 
 							<td>
+								<%	if Listing.find(o.listing_id).deliveryby == "courier" %>								
 
 									<% if Trackcode.find_by_order_id(o.id) %>
 										<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
 										<% else %>
 									<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
 									<% end %>
+									<% else %>
+									<a href="/listings/<%= o.listing_id %>" class="btn btn-success btn-sm">Chat to meetup</a>									
+									<% end %>
+									
+									
 
 							</td></tr>
 						<% end %>
@@ -288,12 +294,19 @@
 								</td>
 
 							<td>
+								
+								<%	if Listing.find(o.listing_id).deliveryby == "courier" %>								
 									<% @trackcode  = Trackcode.where('order_id = ?',o.id).first %>
 									<% if !@trackcode.nil? %>
 										<a href="/trackcodes/<%= @trackcode.id%>" class="btn btn-success btn-sm">See tracking info</a>
 										<% else %>
 									<a href="/trackcodes/new?id=<%= o.id%>" class="btn btn-success btn-sm">Add tracking info</a>
 									<% end %>
+									
+										<% else %>
+										<a href="/listings/<%= o.listing_id %>" class="btn btn-success btn-sm">Chat to meetup</a>									
+										<% end %>
+									
 
 							</td></tr>
 						<% end %>
@@ -333,12 +346,15 @@
 								</td>
 
 							<td>
-
+								<%	if Listing.find(o.listing_id).deliveryby == "courier" %>								
 									<% if Trackcode.find_by_order_id(o.id) %>
 										<a href="/trackcodes/<%= o.id%>" class="btn btn-success btn-sm">See tracking info</a>
 										<% else %>
-									<p>Ask seller to add tracking info</p>
+										<a href="/listings/<%= o.listing_id %>" class="btn btn-success btn-sm">Chat for tracking info</a>									
 									<% end %>
+										<% else %>
+										<a href="/listings/<%= o.listing_id %>" class="btn btn-success btn-sm">Chat to meetup</a>									
+										<% end %>
 
 							</td></tr>
 						<% end %>
