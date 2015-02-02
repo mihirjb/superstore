@@ -1,0 +1,52 @@
+<% if params[:l] %>
+
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">Hi <%= current_user.firstname %>. You are almost done!</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">
+	<div class="row">
+	<div class="col-md-6">
+		<div class="center-image">
+			<%= image_tag Phone.find(@listing.phone_id).image.url(:medium)%>
+		</div>
+		<h3><%= @listing.devicename %> | <%= @listing.devicecolor %> | <%= @listing.devicestorage %> | <%= @listing.devicecondition %></h3>
+		<p><%= @listing.description %>
+		</p>
+		<hr class="gray">
+		
+		<p>Expected to be picked up by: <strong><%= (Time.now + 2 * 86400).to_date %></strong>
+		<br/>
+		Quantity: <strong>1</strong>
+		<br/>
+		Seller: <a href="/profile/<%= Profile.where('user_id = ?',@listing.user_id).first.id %>"><%= User.find(@listing.user_id).firstname%></a>
+		</p>
+		<hr class="gray">
+		<p class="buy-btn">Total: $<%= @listing.askprice.to_i + 20 %></p>
+	</div>
+		<div class="col-md-6 custom-message">	
+					<h3 class="intro">Please review and confirm order</h3>
+					<hr class="gray">
+				<form name="purchase-form" role="form" action="/transactions/codtransactioncomplete" method="POST" id="purchase_form" class="auth-form">
+					
+					<h4>I hereby declare that I will collect the item and pay the cash when I meet the seller</h4>
+					<input class="btn green-sea-flat-button" type="Submit" value="Confirm Order">
+
+					</form>
+
+
+		
+			</div>						
+		</div>						
+
+
+</div>
+</section>
+
+
+
+<% else %>
+<% redirect_to root_url() %>
+<%end %>

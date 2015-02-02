@@ -56,7 +56,7 @@
 		<% end %>
 		
 		<% if @listing.status == "Approved" &&  @listing.deliveryby == "pickup" %>
-			<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button">Offer to meetup</a></h1>
+			<h1><a href="/transactions/codtransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button">Offer to meetup</a></h1>
 		<% end %>
 
 			<% if @listing.status == "Pending"%>	

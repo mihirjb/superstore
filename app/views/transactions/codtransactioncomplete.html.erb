@@ -1,0 +1,39 @@
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">Thank you <%= Profile.find_by_user_id(current_user.id).displayname %> ! You have successfully booked the phone</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">
+	<div class="row">
+	<div class="col-md-6">
+		<div class="center-image">
+			<%= image_tag Phone.find(@listing.phone_id).image.url(:medium)%>
+		</div>
+		<h3><%= @listing.devicename %> | <%= @listing.devicecolor %> | <%= @listing.devicestorage %> | <%= @listing.devicecondition %></h3>
+		<p><%= @listing.description %>
+		</p>
+		<hr class="gray">
+		
+		<p>Expected to be picked up by: <strong><%= (Time.now + 2 * 86400).to_date %></strong>
+		<br/>
+		Quantity: <strong>1</strong>
+		<br/>
+Seller: <a href="/profile/<%= Profile.where('user_id = ?',@listing.user_id).first.id %>"><%= User.find(@listing.user_id).firstname%></a>		</p>
+		<hr class="gray">
+		<p class="buy-btn ">Total: $<%= @listing.askprice.to_i + 20 %></p>
+	</div>
+		<div class="col-md-6 custom-message">	
+					<h3 class="intro">Hurray! you can now collect your phone.</h3>
+		<p class="intro">Although we have sent an email about this transaction to <%= User.find(@order.user_id).email %>, we recommend you take a screenshot of this page.</p>
+		
+		<p class="intro">Make sure you leave a comment on the listings page to finalise the meetup place with the seller. <br/>
+			You can view the listing <a href="/listings/<%= @listing.id %>">here</a>
+			or you view your dashboard <a href="/pages/dashboard">here</a></p>
+					
+			</div>						
+		</div>						
+
+
+</div>
+</section>

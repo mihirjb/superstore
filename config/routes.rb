@@ -10,6 +10,8 @@ Phoneclone::Application.routes.draw do
   get "adminactions/noimagesphones"
   
   get "transactions/initiatetransaction"
+  get "transactions/codtransaction"
+  post "transactions/codtransactioncomplete"
   post "transactions/processtransaction"
   get "transactions/completetransaction"
   get "transactions/failedtransaction"

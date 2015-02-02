@@ -8,6 +8,21 @@ class TransactionsController < ApplicationController
      @listing = Listing.find(params[:l])
    end 
    
+   def codtransaction
+      @listing = Listing.find(params[:l])
+    end
+    
+   def codtransactioncomplete
+      @listing_id = params[:listing_id]
+      @user_id = current_user.id
+      @listing  =  Listing.find(@listing_id)
+      @listing.update_column("status", "Sold")
+   
+   @order = Order.create!(:listing_id => @listing_id)
+   @ordertotal = 0.01.to_i + 0.01
+   @order.update_columns(:user_id => @user_id, :devicename => @listing.devicename, :devicecarrier => @listing.devicecarrier,:seller_id => @listing.user_id, :ordertotal => @ordertotal,:orderdate => Time.now.to_date, :ordertime => Time.now)
+     
+   end
    
   def processtransaction
     session[:listing_id] = params[:l]
