@@ -4,17 +4,14 @@ class TransactionsController < ApplicationController
   
    include ActiveMerchant::Billing::Integrations   
    
-   def initiatetransaction
-     @listing = Listing.find(params[:l])
-   end 
-   
+
    def codtransaction
       @listing = Listing.find(params[:l])
     end
     
    def codtransactioncomplete
-      @listing_id = params[:listing_id]
-      session[:listing_id] = params[:listing_id]
+      @listing_id = params[:l]
+      session[:listing_id] = params[:l]
       @user_id = current_user.id
       @listing  =  Listing.find(@listing_id)
       @listing.update_column("status", "Sold")
@@ -43,6 +40,12 @@ class TransactionsController < ApplicationController
    end 
 
    end
+   
+   
+   
+  def initiatetransaction
+      @listing = Listing.find(params[:l])
+  end 
    
    
   def processtransaction
