@@ -52,11 +52,11 @@
 		
 		
 		<% if @listing.status == "Approved" &&  @listing.deliveryby == "courier" %>
-			<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button">Buy now - $<%=@listing.askprice.to_i + 20 %></a></h1>
+			<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button buy-btn">Buy now - $<%=@listing.askprice.to_i + 20 %></a></h1>
 		<% end %>
 		
 		<% if @listing.status == "Approved" &&  @listing.deliveryby == "pickup" %>
-			<h1><a href="/transactions/codtransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button">Offer to meetup</a></h1>
+			<h1><a href="/transactions/codtransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button buy-btn">Offer to meetup</a></h1>
 		<% end %>
 
 			<% if @listing.status == "Pending"%>	
