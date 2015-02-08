@@ -6,7 +6,13 @@
 				<h1 class="lead">BUY & SELL MOBILE PHONES</h1>
 				<p class="tagline sub"> We review and verify each listing. Avoid phones with water damage, cracks and activation locks</p>
 
-				<p><a class="btn btn-default btn-lg" href="/pages/buy">MORE INFO</a> <a class="btn btn-action btn-lg"  href="/users/sign_up">JOIN NOW</a></p>
+				<p><a class="btn btn-default btn-lg" href="/pages/buy">MORE INFO</a> 
+					
+					<% if user_signed_in? %>
+					<a class="btn btn-action btn-lg"  href="/phones">Browse phones</a></p>
+					<% else %>
+					<a class="btn btn-action btn-lg"  href="/users/sign_up">JOIN NOW</a></p>
+					<% end %>
 				
 				<div class="cushion-1 clear-dark-bg">
 										<form class="form-inline main-search" role="search" action="/pages/searchresults">
@@ -30,7 +36,11 @@
 		<p class="text-muted bigger-font">
 			You get to keep all your money. This makes it the best place to sell your phone
 		</p>
+			<% if user_signed_in? %>
+		<a class="btn btn-sm pumpkin-flat-button" href="/phones">Start selling</a>
+		<% else %>
 		<a class="btn btn-sm pumpkin-flat-button" href="/users/sign_up">Create a free account</a>
+		<% end %>
 	</div>
 	<!-- /Intro-->
 		
