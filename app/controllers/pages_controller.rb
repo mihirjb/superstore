@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   
   before_filter :authenticate_user!, :only => [:dashboard]
   layout "home", only: [:home]
-  caches_action :phones
  
   
   def home
