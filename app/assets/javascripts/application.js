@@ -324,6 +324,7 @@ $(document).ready(function() {
 		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('modelname'),
 		  queryTokenizer: Bloodhound.tokenizers.whitespace,
 		  remote: '../pages/phones.json?search=%QUERY',
+		  limit: 10,
 		});
 
 		// initialize the bloodhound suggestion engine
