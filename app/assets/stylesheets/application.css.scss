@@ -2,7 +2,7 @@
  *= require_self
  *= require fancybox
  *= require_tree .
- */
+*/
 
 @import "bootstrap-sprockets";
 @import 'bootstrap';
@@ -30,7 +30,7 @@ body
     background-color: #fff;
     border-color: #fff;
 	margin-bottom:0px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family:'Roboto','Oxygen',"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 /* title */
 .navbar-default .navbar-brand {
@@ -123,7 +123,7 @@ h1,h2,h3,h4,h5,h6
 {
 	margin:0;
 	padding:0;
-	font-family: 'Roboto Slab',"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family:'Raleway','Roboto Slab',"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 section { 
 	padding:60px 0px;
@@ -316,6 +316,27 @@ body div.container table tr.total-show
 	width:100%;
 	margin:0 auto;
 }
+
+h2.content-heading
+{
+	text-align:center;
+	color:#2e2e2e;
+	font-weight:light;
+	margin-bottom:40px;
+	font-size:36px;
+}
+h3.content-heading
+{
+	color:#3e3e3e;
+	font-weight:light;
+	font-variant:small-caps;
+	padding:20px 0px 0px;
+	line-height:1.5em;
+	font-size:24px;
+	text-align:center;
+	word-spacing:-0.01em;
+}
+
 /*********************homepage styles****************************/
 
 section.hero
@@ -348,11 +369,15 @@ section.hero div.hero-intro
 }
 /******************How it works****************/
 
+section.new-how
+{
+	background-color:#36363d;
+	color:#ececec;
+}
 
 
-
-div.how-it-works-section .section-header h2{
-    color:#B4EE7A;
+div.how-it-works-section h2.content-heading{
+    color:#fff;
     margin: 0 0 35px 0;
     font-weight:700;
 }
@@ -363,7 +388,7 @@ div.how-it-works-section .img-circle{
     height: 70px;
     margin: 15px auto;
     text-align:center;
-    background-color:#68A22E;
+	background-color:#5c6983;
 }
 
 div.how-it-works-section .img-circle strong{
@@ -376,6 +401,8 @@ div.how-it-works-section h4{
     font-size:22px;
     letter-spacing: 2px;
 	text-align:center;
+	color:#fff;
+	padding:0px 0px 20px;
 }
 
 div.how-it-works-section p{
@@ -411,27 +438,6 @@ div.glyph
 	
 }
 
-
-h2.content-heading
-{
-	text-align:center;
-	color:#2e2e2e;
-	font-weight:light;
-	margin-bottom:40px;
-	font-size:36px;
-font-family: 'Titillium Web', sans-serif;
-}
-h3.content-heading
-{
-	color:#3e3e3e;
-	font-weight:light;
-	font-variant:small-caps;
-	padding:20px 0px 0px;
-	line-height:1.5em;
-	font-size:24px;
-	text-align:center;
-	word-spacing:-0.01em;
-}
 
 
 div#page-header
