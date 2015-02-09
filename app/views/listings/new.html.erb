@@ -9,6 +9,8 @@
 
 				
 					<%= form_for @listing, :id => "listing-form",  :role => "form", :html => {:class=>"long-form", :multipart => true } do |f| %>
+					<% @vercode = "PS" + (Time.now.to_i).to_s %>
+					<p>Please use <%= @vercode %> in your verification picture.</p>
 					
 						<% if @listing.errors.full_messages.any? %>
 						<div id="error_explanation">
@@ -126,6 +128,8 @@
 						<%= f.hidden_field :country, :value=> "Singapore" %>
 						<%= f.hidden_field :phone_id, :value=>params[:pid] %>
 												<%= f.hidden_field :status, :value=>"Pending" %>
+												<%= f.hidden_field :verification_code, :value=> @vercode%>
+						
 												<input type="text" name="foo" style="display: none;">
 												<hr class="gray">
 					<%= f.submit "Go", :disable_with => 'Going...', :class =>"btn btn-success redround offshadow" %>

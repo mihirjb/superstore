@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119041438) do
+ActiveRecord::Schema.define(version: 20150209112323) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20150119041438) do
     t.string   "deliveryby"
     t.string   "pickupaddress"
     t.string   "returnpolicy"
+    t.string   "verification_code"
   end
 
   create_table "opro_auth_grants", force: true do |t|

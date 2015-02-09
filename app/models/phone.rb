@@ -12,6 +12,7 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  phonetype          :string(255)
+#  company            :string(255)
 #
 
 class Phone < ActiveRecord::Base

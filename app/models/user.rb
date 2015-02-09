@@ -16,6 +16,8 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  firstname              :string(255)
+#  credits                :integer
+#  ref_id                 :integer
 #
 
 class User < ActiveRecord::Base

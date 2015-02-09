@@ -38,6 +38,7 @@
 #  deliveryby          :string(255)
 #  pickupaddress       :string(255)
 #  returnpolicy        :string(255)
+#  verification_code   :string(255)
 #
 
 class Listing < ActiveRecord::Base
