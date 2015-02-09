@@ -815,6 +815,21 @@ section div.container ul.dashboard-nav li a
 	color:#ececec;
 }
 /*******************form styles***********************/
+#social {
+    margin: 0px;
+}    
+ .plusone, .twitter, .fb-share-button {
+    font-size: 1px;
+    display: inline-block;
+	vertical-align:top;
+	margin:0px 3px;
+
+}
+div .fb_reset {
+    display: inline;
+	vertical-align:top;
+
+}
 form
 {
 	text-align:left;
