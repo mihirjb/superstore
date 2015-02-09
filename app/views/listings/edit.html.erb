@@ -9,7 +9,6 @@
 
 				
 					<%= form_for @listing, :id => "listing-form",  :role => "form", :html => {:class=>"long-form", :multipart => true } do |f| %>
-					<p>Your code for your verification picture is  <%= @listing.verfication_code unless @listing.verfication_code.blank? %> </p>
 					
 						<% if @listing.errors.full_messages.any? %>
 						<div id="error_explanation">
@@ -33,7 +32,10 @@
 					<%= f.text_field :askprice %></p>
 					</div>
 
-			
+						<div class="form-group">
+						<p><%= f.label :verification_code, " Your verification code is" %>
+						<%= f.text_field :verification_code, :readonly => true %></p>
+						</div>
 
 					<div class="form-group">
 					<p><%= f.label :paypalfname, " First name in paypal account" %>
