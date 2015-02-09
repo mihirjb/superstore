@@ -8,8 +8,8 @@ class SessionsController < Devise::SessionsController
   def after_sign_in_path_for(user)
      
 
-      if current_user.sign_in_count < 2
-        
+      if current_user.sign_in_count <= 2
+        Profile.find(current_user.id).update_columns(:fullname => current_user.firstname, :paypalemail => current_user.email)
       end
      
     
