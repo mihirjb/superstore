@@ -13,7 +13,7 @@ class SessionsController < Devise::SessionsController
       end
      
     
-      session["user_return_to"] || root_url 
+      session["user_return_to"] || root_url
   end
   
 
