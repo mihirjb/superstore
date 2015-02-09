@@ -803,8 +803,17 @@ div.listing-images img
 {
 	width:100%;
 }
-
-
+.dashboard-display
+{
+	min-height:460px;
+	border: 5px solid #5c6983;
+}
+section div.container ul.dashboard-nav li a
+{
+	padding:2px auto;
+	font-size:1.2em;
+	color:#ececec;
+}
 /*******************form styles***********************/
 form
 {

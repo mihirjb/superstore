@@ -1,47 +1,38 @@
 <% content_for :title,  "Welcome, here you can edit listings, view orders & write reviews!" %>
+	<div class="header white-color offshadow">
+		<h1><%=image_tag @profile.avatar.url(:mini), :class => "img-circle owner-image" %> Welcome, <%=@user.firstname %>!</h1>
+				<ul class="useful-links centered-text"> <%= link_to "+ List your phone", root_url, :class => "btn btn-sm btn-default" %> 
+				
 
-<section class="silver-color">
-	<div class="container softshadow">
-		<div class="white-color">
-			<h1 class="listing-heading pull-left"><%=image_tag @profile.avatar.url(:mini), :class => "img-circle owner-image" %> Welcome, <%=@user.firstname %>!</h1>
-					<div class="useful-links pull-right cushion"> <%= link_to "+ List your phone", root_url, :class =>"btn btn-sm black-flat-btn " %> 
-					
-
-					<% if  @profile %>
-					<%= link_to "Edit Profile", "/profiles/#{@profile.id}/edit", :class =>"btn btn-sm black-flat-btn " %>
-					<% else %>
-					<%= link_to "Complete your Profile", new_profile_path, :class =>"btn btn-sm black-flat-btn" %>
-					<%end %>
-					</div>
-		</div>
+				<% if  @profile %>
+				<%= link_to "Edit Profile", "/profiles/#{@profile.id}/edit", :class =>"btn btn-sm btn-default" %>
+				<% else %>
+				<%= link_to "Complete your Profile", new_profile_path, :class =>"btn btn-sm btn-default" %>
+				<%end %>
+				</div>
 	</div>
-<div class="container silver-color softshadow">									
+<section class="dark-blue-color">
+<div class="container">									
 	<div class="row">
 		<div class="col-md-3 col-sm-3 col-xs-12 dark-blue-color">
-			<h4>Listings</h4>
-			<ul class="nav" id="myTab">
-			<li class="active"><a href="#listings" id="listingbtn">All Listings</a></li>
+			<ul class="nav dashboard-nav" id="myTab">
+			<li><a href="#listings" id="listingbtn">All Listings</a></li>
 			<li><a href="#activelistings"  id="activelistingbtn">Currently active</a></li>
 			<li><a href="#pendinglistings" id="pendinglistingbtn">Pending review from admin</a></li>
 			<li><a href="#soldlistings" id="soldlistingbtn">Sold and archived listings</a></li>
-			</ul>	
 
-			<h4>Orders</h4>
-			<ul class="nav" id="myTab">
 			<li><a href="#orders" id="orderbtn">All Orders</a></li>
 			<li><a href="#boughtorders"  id="boughtorderbtn">Phones you bought</a></li>
 			<li><a href="#soldorders" id="soldorderbtn">Phones that you've sold</a></li>
-			</ul>
 
-			<h4>Reviews</h4>
-			<ul class="nav" id="myTab">
 			<li><a href="#buyerreview"  id="buyerreviewbtn">Reviews you wrote</a></li>
 			<li><a href="#sellerreview" id="sellerreviewbtn">Feedback as a seller</a></li>
 			</ul>
 		</div>
-		<div class="col-md-9 col-sm-9 col-xs-12 cushion">
+		<div class="col-md-9 col-sm-9 col-xs-12 softshadow white-color dashboard-display">
 				<div id="listings">
-				<h3 class="listing-heading">Hey <span class="propernoun"><%=  current_user.firstname  %></span>, here are all your listings.</h3>
+					<h3 class="listing-heading">Hey <span class="propernoun"><%=  current_user.firstname %></span>, here are all your  listings.</h3>
+		
 				<hr class="gray">
 				<table class="table table-responsive table-condensed">
 					<tr class="active">
@@ -54,20 +45,7 @@
 					</tr>
 					<% @listings.each do |dlisting| %>
 
-					<tr  class='<%=
-					@class = ""
-						if dlisting.status == "Approved"
-						@class = "active"
-					end
-					if
-						dlisting.status == "Pending"
-						@class = "danger"
-					end
-					if dlisting.status == "Sold"
-						@class = "success"
-					end
-
-					 @class %>'><td><%= image_tag dlisting.assets.first.image.url('thumb'), :class =>"owner-image" unless dlisting.assets.first.nil? %></td>
+					<tr><td><%= image_tag dlisting.assets.first.image.url('thumb'), :class =>"owner-image" unless dlisting.assets.first.nil? %></td>
 
 					<td>
 						<a href ="/listings/<%=dlisting.id%>">
@@ -79,7 +57,22 @@
 
 
 				<%= dlisting.askprice.to_i + 20 %></td>
-						<td>
+						<td
+						class='<%=
+						@class = ""
+							if dlisting.status == "Approved"
+							@class = "active"
+						end
+						if
+							dlisting.status == "Pending"
+							@class = "danger"
+						end
+						if dlisting.status == "Sold"
+							@class = "success"
+						end
+
+						 @class %>'
+						>
 							<%= dlisting.status %>
 							</td>
 
@@ -394,7 +387,7 @@
 
 
 				<div id="buyerreview">
-				  	<h2>Here are all the reviews you wrote</h2>
+				  	<h3>Here are all the reviews you wrote</h3>
 				<hr class="gray">
 					<ul class="review-list">
 						<% @orders.each do |o| %>
