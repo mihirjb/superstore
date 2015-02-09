@@ -21,6 +21,10 @@
 #
 
 class User < ActiveRecord::Base
+  
+  after_create :initialize_credits
+  
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -35,5 +39,12 @@ class User < ActiveRecord::Base
           accepts_nested_attributes_for :profile
           
           validates :firstname, presence: true
+          
+          
+private
+def initialize_credits()
+  @newcreds = 100
+  self.update_columns(:credits => @newcreds)
+end 
           
 end

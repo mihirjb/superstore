@@ -1,6 +1,7 @@
 <% content_for :title,  "Welcome, here you can edit listings, view orders & write reviews!" %>
 	<div class="header white-color offshadow">
 		<h1><%=image_tag @profile.avatar.url(:mini), :class => "img-circle owner-image" %> Welcome, <%=@user.firstname %>!</h1>
+		<p>You have <%= current_user.credits %> credits left.</p>
 				<ul class="useful-links centered-text"> <%= link_to "+ List your phone", root_url, :class => "btn btn-sm btn-default" %> 
 				
 

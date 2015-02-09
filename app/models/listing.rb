@@ -42,6 +42,9 @@
 #
 
 class Listing < ActiveRecord::Base
+  
+  after_create :subtract_credits
+  
   is_impressionable :counter_cache => true, :column_name => :impressions_count
   
   validates :headline, :presence => {:message => 'Heading cannot be blank, Listing not saved'}
@@ -125,5 +128,12 @@ private
      Listing.find(lid).update_column("paypalstatus", "UNVERIFIED")
    end
  end
+  
+  def subtract_credits()
+    @user = User.find(self.user_id)
+    @newcreds = @user.credits - 10
+    @user.update_columns(:credits => @newcreds)
+  end
+  
   
 end
