@@ -9,6 +9,7 @@
 
 				
 					<%= form_for @listing, :id => "listing-form",  :role => "form", :html => {:class=>"long-form", :multipart => true } do |f| %>
+					<p>Your code for your verification picture is  <%= @listing.verfication_code unless @listing.verfication_code.blank? %> </p>
 					
 						<% if @listing.errors.full_messages.any? %>
 						<div id="error_explanation">
