@@ -16,10 +16,14 @@ class ListingsController < ApplicationController
   end
 
   def new
-    if !params[:foo]
-    @listing = current_user.listings.new
-    5.times { @listing.assets.build }
-  end
+    if current_user.credits >= 10
+        if !params[:foo]
+            @listing = current_user.listings.new
+            5.times { @listing.assets.build }
+        end
+    else
+      redirect_to "/pages/dashboard", :notice => "You do not have sufficient credits, please add more credits."
+    end
   end
 
   def create
