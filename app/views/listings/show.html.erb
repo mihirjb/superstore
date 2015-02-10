@@ -241,9 +241,7 @@
 
 <div class="col-md-12">
 <div class="white-color offshadow cushion">
-		<% cache @comments do%>
 		<%= render partial: 'listings/comments' %>
-		<% end %>	
 <hr class="gray">
 
 		<div class="comment-form">
@@ -267,7 +265,6 @@
 
 		<% else %>
 		<%= link_to "Log in to comment", new_user_session_path, :class => "btn btn-success" %> 
-
 			<% end %>
 		</div>
 
