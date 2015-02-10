@@ -22,13 +22,13 @@ class UserMailer < ActionMailer::Base
       @listing = listing
       @useremail = User.find(listing.user_id).email
 
-      mail(:to => "#{@useremail}", :subject => "Modify your listing at zalpe.com")
+      mail(:to => "#{@useremail}", :subject => "Modify your listing at phonesalad.com")
 
     end
      def new_comment(listing,user)
         @listing = listing
         @user = user
-        mail(:to => "#{user.email}", :subject => "New comment on your listing on zalpe.com")
+        mail(:to => "#{user.email}", :subject => "New comment on your listing on phonesalad.com")
 
       end
     
