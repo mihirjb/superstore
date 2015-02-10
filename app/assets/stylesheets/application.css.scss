@@ -378,7 +378,7 @@ section.new-how
 
 div.how-it-works-section h2.content-heading{
     color:#fff;
-    margin: 0 0 35px 0;
+    margin: 0 0 95px 0;
     font-weight:700;
 }
 
@@ -408,10 +408,11 @@ div.how-it-works-section h4{
 div.how-it-works-section p{
     margin:0;
 	line-height:1.6em;
-	padding:5px 30px;
-	font-size:16px;
+	padding:15px 30px 5px;
+	font-size:14px;
 	text-align:center;
-	line-height:1.6em;
+	line-height:1.4em;
+	color:#aaa;
 }
 
 
@@ -426,10 +427,10 @@ div.jumbotron.top-space .glyphicon
 div.jumbotron.top-space  p.feature-explanation
 {
 	padding:5px 30px;
-	font-size:16px;
-	color:#888;
+	font-size:14px;
+	color:#000;
 	text-align:center;
-	line-height:1.6em;
+	line-height:1.4em;
 }
 
 div.glyph
@@ -783,6 +784,12 @@ img.owner-image
 {
 	height:40px;
 	margin:5px 10px 0px; 
+	padding:0;
+}
+img.supersmall-image
+{
+	height:20px;
+	margin:1px 2px 0px; 
 	padding:0;
 }
 div.listing-images
