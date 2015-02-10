@@ -1,6 +1,6 @@
 class BuyerMailer < ActionMailer::Base
 
-  default :from => "notifications@zalpe.com"
+  default :from => "notification@phonesalad.com"
 
   def order_confirmation(buyer,seller, order)
     @order = order
