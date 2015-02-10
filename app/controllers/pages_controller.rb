@@ -87,4 +87,7 @@ class PagesController < ApplicationController
   def buyerfaq
   end
   
+  def verificationpictures
+  end
+  
 end

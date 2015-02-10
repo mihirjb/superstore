@@ -1224,6 +1224,21 @@ section div.container div.grid-list-item img
 	margin:20px;
 	text-align:center;
 }
+div#footer div#footer-links ul.footerlinks
+{
+	padding:20px 10px 10px;
+}
+div#footer div#footer-links ul.footerlinks li
+{
+	text-align:left;
+	display:block;
+	float:none;
+	padding:1px;
+}
+div#footer div#footer-links ul.footerlinks li a
+{
+	color:#888;
+}
 
 /* #Buttons
 ==================================================*/

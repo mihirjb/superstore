@@ -57,7 +57,59 @@
 	
 <%= yield %>
 
-<div id="footer">
+<div id="footer" class="softshadow">
+	<div class="container">
+	<div id="footer-links" class="row">
+		<ul class="footerlinks col-md-3 col-sm-3 col-xs-12">
+			<li><a href="/pages/about">About us</a></li>
+			<li><a href="/pages/faq">Frequently Asked Questions</a></li>
+			<li><a href="/pages/terms">Terms and Conditions</a></li>
+			<li><a href="/pages/help">Help</a></li>
+		</ul>
+			<ul class="footerlinks col-md-3 col-sm-3 col-xs-12">
+				<li><a href="<%= root_url %>">Home</a></li>
+				<li><a href="/pages/alliphones">iPhones</a></li>
+				<li><a href="/pages/allipads">iPads</a></li>
+				<li><a href="/phones">All Phones</a></li>
+			</ul>
+			<div class="cushion col-md-6 col-sm-6 col-xs-12">
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+			<div class="fb-share-button" data-layout="button_count"></div>	    <!-- end like -->   
+				<script src="//platform.linkedin.com/in.js" type="text/javascript">
+				  lang: en_US
+				</script>
+				<script type="IN/Share" data-counter="right"></script>
+		    <!-- +1 -->
+		    <div class="plusone">
+		    <!-- Place this tag where you want the +1 button to render -->
+		    <g:plusone size="medium" annotation="none"></g:plusone>
+		    <!-- Place this render call where appropriate -->
+		    <script type="text/javascript">
+		      (function() {
+		        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		        po.src = 'https://apis.google.com/js/plusone.js';
+		        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		      })();
+		    </script>    
+		    </div>
+		    <!-- end +1 -->
+		    <!-- twitter -->
+		    <div class="twitter">
+		   			<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		    </div>
+		    <!-- end twitter -->
+		    <!-- like -->
+			</div>
+	</div>
+</div>
 	<div id="credits" class="centered-text softshadow"><p>All rights reserved.</p></div>
 </div>
 

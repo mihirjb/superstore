@@ -36,6 +36,7 @@ Phoneclone::Application.routes.draw do
   get 'pages/iphones-for-sale' => 'pages#alliphones'
   get 'pages/ipads-for-sale' => 'pages#allipads'
   get "pages/thanksandshare"
+  get 'pages/verification-pictures' => 'pages#verificationpictures'
   
   
   
