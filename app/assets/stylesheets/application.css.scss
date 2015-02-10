@@ -21,10 +21,7 @@ body
 
 /************Navbar*************************/
 
-.navbar-form
-{
-	padding:7px 0px 6px;
-}
+
 /* navbar */
 .navbar-default {
     background-color: #fff;
@@ -1121,8 +1118,31 @@ body#forms form.auth-form label.error
 	margin: 0;
 }
 
-
-
+.navbar-form span.twitter-typeahead,.navbar-form input.tt-hint, .navbar-form input.tt-input
+{
+	margin:0;
+	width:85%;
+	display:inline;
+	float:left;
+	vertical-align:top;
+	
+	
+}
+.navbar-form span.twitter-typeahead input
+{
+	width:100%;
+}
+.navbar-form button.navbar-btn
+{
+	margin:0;
+	width:auto;
+	display:inline;
+	float:left;
+	padding:5px;
+	vertical-align:top;
+	height:33px;
+	
+}
 /************Comments***************/
 
 div.comment
