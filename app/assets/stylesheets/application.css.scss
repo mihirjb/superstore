@@ -1957,7 +1957,12 @@ div.grid-list-item a.btn
   box-shadow: none;
 }
 
+/*************hide initially ***************/
 
+#navsearchform, #orders,#reviews,#listings,#activelistings,#pendinglistings,#soldlistings,#soldorders,#boughtorders,#buyerreview,#sellerreview,#pickupdetails,#shippingdetails
+{
+	display:none;
+}
 
 /*********Media Queries**************/
 
