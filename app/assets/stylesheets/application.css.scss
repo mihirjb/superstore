@@ -113,7 +113,10 @@ border-bottom:2px solid #d35400;
 	box-shadow:none;
 }
 
-
+.sidebar-nav li a
+{
+	padding:2px;
+}
 /***************PRESETS********************/
 
 h1,h2,h3,h4,h5,h6
@@ -2078,4 +2081,10 @@ div.features
 		width:90%;
 		margin:0px 0px 15px;
 	}
+}
+
+
+body section div ul.sidebar-nav li a
+{
+	padding:2px;
 }

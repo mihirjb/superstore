@@ -69,6 +69,6 @@ class PhonesController < ApplicationController
     params.require(:phone).permit(:phonetype, :modelname, :carrier, :image, :image_file_name, :image_content_type, :image_file_size)
    end
    def filtering_params(params)
-     params.slice(:devicecolor, :devicecondition)
+     params.slice(:devicecolor, :devicecondition, :devicestorage)
    end
 end
