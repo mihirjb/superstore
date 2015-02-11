@@ -22,7 +22,8 @@
 $(document).ready(function() {
 	$("#social_share_box").fancybox().trigger('click');
 		
-   
+   $('.tt-hint').addClass('form-control');
+
 		$("#iphones").hide();
 		  $("#ipads").hide();
 			$("#choice").show();
