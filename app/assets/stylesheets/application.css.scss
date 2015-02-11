@@ -333,6 +333,10 @@ h3.content-heading
 	text-align:center;
 	word-spacing:-0.01em;
 }
+.glyphicon 
+{
+	vertical-align:middle;
+}
 
 /*********************homepage styles****************************/
 
@@ -1118,10 +1122,15 @@ body#forms form.auth-form label.error
 	margin: 0;
 }
 
+.navbar-form 
+{
+	width:300px;
+}
+
 .navbar-form span.twitter-typeahead,.navbar-form input.tt-hint, .navbar-form input.tt-input
 {
 	margin:0;
-	width:85%;
+	width:75%;
 	display:inline;
 	float:left;
 	vertical-align:top;
@@ -1134,13 +1143,15 @@ body#forms form.auth-form label.error
 }
 .navbar-form button.navbar-btn
 {
-	margin:0;
-	width:auto;
+	margin:0 0.5%;
+	width:20%;
 	display:inline;
 	float:left;
 	padding:5px;
 	vertical-align:top;
 	height:33px;
+	background-color:#eee;
+	color:#555;
 	
 }
 /************Comments***************/

@@ -30,7 +30,19 @@ $(document).ready(function() {
 			$("#choice").show();
 			$("#pendcomments").hide();
 			 $("#pendlistings").show();
+				$("#navsearchform").hide();
 
+
+
+
+				$( "#searchformshowbtn" ).click(function( event ) {
+
+				    event.preventDefault();
+					
+					$("#navsearchform").toggle("slow");
+
+
+				});
 
 
 		$( "#iphbtn" ).click(function( event ) {

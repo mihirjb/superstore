@@ -34,6 +34,7 @@
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			  
 			      <ul class="nav navbar-nav navbar-right">
+				<li>	<a id="searchformshowbtn" href="#"><span class="glyphicon glyphicon-search orange bold-text bigger-font"></span></a></li>
 			        <li><a href="<%= root_url %>">Home</a></li>
 					<li><a href="/pages/iphones-for-sale">iPhones</a></li>
 					<li><a href="/pages/ipads-for-sale">iPads</a></li>
@@ -50,7 +51,7 @@
 
 						<% end %>
 			      </ul>
-				<form class="navbar-form navbar-right" role="search" action ="/pages/searchresults">
+				<form class="navbar-form navbar-right" id="navsearchform" role="search" action ="/pages/searchresults">
 				<input type="text" name="search" placeholder ="Phone you wanna Buy or Sell" class="typeahead">		      			
 				<button type="submit" class="btn btn-success navbar-btn">Go</button>
 				</form>
