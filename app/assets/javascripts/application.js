@@ -21,8 +21,8 @@
 
 $(document).ready(function() {
 	$("#social_share_box").fancybox().trigger('click');
-    
-
+		
+   
 		$("#iphones").hide();
 		  $("#ipads").hide();
 			$("#choice").show();

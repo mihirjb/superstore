@@ -2087,10 +2087,16 @@ div.features
 	text-align:center;
 }
 
-body section div ul.sidebar-nav li a
+body section div ul.sidebar-nav li a:link, body section div ul.sidebar-nav li a:active
 {
 	padding:5px;
 	text-align:center;
-	color:#666;
+	color:#000;
 	text-transform:uppercase;
+}
+
+body section div ul.sidebar-nav li a:visited
+{
+	color:#888;
+	
 }
