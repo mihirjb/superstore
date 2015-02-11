@@ -7,6 +7,7 @@ class UserMailer < ActionMailer::Base
      @seller = Profile.find_by_user_id(seller.user_id)
      @sellername = User.find(@order.seller_id).firstname
      @useremail = User.find(@order.seller_id).email
+     @listing = seller
      
      mail(:to => "#{@useremail}", :subject => "Order placed on Phonesalad")
    end

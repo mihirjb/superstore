@@ -29,7 +29,7 @@
 			
 			</tr>
 	</table><br/><br/>
-	<% if @listing.deliveryby == "pickuponly" %>
+	<% if @listing.deliveryby == "pickup" %>
 	<h3>Pickup Address</h3>
 	<p><%= @listing.pickupaddress %></p>
 	<% elsif @listing.deliveryby == "courier"  %>
