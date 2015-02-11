@@ -22,11 +22,6 @@
 $(document).ready(function() {
 	$("#social_share_box").fancybox().trigger('click');
     
-	$(".nav a").on("click", function(){
-	   $(".nav").find(".active").removeClass("active");
-	   $(this).parent().addClass("active");
-	});
-
 
 		$("#iphones").hide();
 		  $("#ipads").hide();

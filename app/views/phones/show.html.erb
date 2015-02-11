@@ -9,21 +9,20 @@
 	</div>
 <div class="container white-color softshadow">
 	<div class="row">
-	<div class="col-md-3 col-sm-3 col-xs-12 cushion">
+	<div class="col-md-3 col-sm-3 col-xs-12 cushion sidebar-nav">
 		<h4>Phone Condition</h4>
 		<hr class="gray">
-		<ul class="nav sidebar-nav">
-		<li class="active"><a href="/phones/<%= params[:id] %>?devicecondition=New">New</a></li>
+		<ul class="nav sidebar-nav bigger-font bold-text">
+		<li><a href="/phones/<%= params[:id] %>?devicecondition=New">New</a></li>
 		<li><a href="/phones/<%= params[:id] %>?devicecondition=Mint">Mint</a></li>
 		<li><a href="/phones/<%= params[:id] %>?devicecondition=Good">Good</a></li>
 		<li><a href="/phones/<%= params[:id] %>?devicecondition=Fair">Fair</a></li>
-	</ul>
+	
 	<hr class="gray">
 	<h4>Phone Storage</h4>
 	<hr class="gray">
-	<ul class="nav sidebar-nav">
-	<li class="active"><a href="/phones/<%= params[:id] %>?devicestorage=8gb">8 gb</a></li>
-	<li class="active"><a href="&devicestorage=16gb">16 gb</a></li>
+	<li><a href="/phones/<%= params[:id] %>?devicestorage=8gb">8 gb</a></li>
+	<li><a href="/phones/<%= params[:id] %>?devicestorage=16gb">16 gb</a></li>
 	<li><a href="/phones/<%= params[:id] %>?devicestorage=32gb">32 gb</a></li>
 	<li><a href="/phones/<%= params[:id] %>?devicestorage=64gb">64 gb</a></li>
 	<li><a href="/phones/<%= params[:id] %>?devicestorage=128gb">128 gb</a></li>
