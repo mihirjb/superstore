@@ -29,22 +29,11 @@ class PhonesController < ApplicationController
   def show
     
     @phone = Phone.find(params[:id])
-    if params['sort']
-      if params['sort'] == "l2h"
-      @listings = Listing.where("phone_id = ? AND status iLIKE ?",@phone.id, "Approved").order("askprice ASC").paginate :page => params[:page],:per_page=>30
-    elsif params['sort'] == "h2l"
-      @listings = Listing.where("phone_id = ? AND status iLIKE ?",@phone.id, "Approved").order("askprice DESC").paginate :page => params[:page],:per_page=>30
-    elsif params['sort'] == "n2o"
-      @listings = Listing.where("phone_id = ? AND status iLIKE ?",@phone.id, "Approved").order("created_at DESC").paginate :page => params[:page],:per_page=>30
-    elsif params['sort'] == "o2n"
-      @listings = Listing.where("phone_id = ? AND status iLIKE ?",@phone.id, "Approved").order("created_at ASC").paginate :page => params[:page],:per_page=>30
-    end
-      
-      
-    else
-      @listings = Listing.where("phone_id = ? AND status LIKE ?",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30
-      
-    end
+   
+      @listings = Listing.where("phone_id = ? AND status LIKE ?",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30 
+        filtering_params(params).each do |key, value|
+          @listings = @listings.public_send(key, value).paginate :page => params[:page],:per_page=>30 if value.present?
+        end      
     
       
       respond_to do |format|
@@ -79,5 +68,7 @@ class PhonesController < ApplicationController
    def phone_params
     params.require(:phone).permit(:phonetype, :modelname, :carrier, :image, :image_file_name, :image_content_type, :image_file_size)
    end
-  
+   def filtering_params(params)
+     params.slice(:devicecolor, :devicecondition)
+   end
 end

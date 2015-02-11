@@ -8,6 +8,18 @@
 		</div>
 	</div>
 <div class="container white-color softshadow">
+	<div class="row">
+	<div class="col-md-3 col-sm-3 col-xs-12 cushion">
+		<h4>Phone Condition</h4>
+		<ul class="nav">
+		<li class="active"><a href="/phones/<%= params[:id] %>?devicecondition=New">New</a></li>
+		<li><a href="/phones/<%= params[:id] %>?devicecondition=Mint">Mint</a></li>
+		<li><a href="/phones/<%= params[:id] %>?devicecondition=Good">Good</a></li>
+		<li><a href="/phones/<%= params[:id] %>?devicecondition=Fair">Fair</a></li>
+	</ul>
+	</div>
+	<div class="col-md-9 col-sm-9 col-xs-12">
+	
 	<% if @listings.blank? %>
 	<div class="cushion">
 	<h3 class="">Sorry no results found for <%= @phone.modelname %></h3>
@@ -18,7 +30,7 @@
 		<h3>Meanwhile check these popular listings</h3>
 		<hr class="gray">
 		<div class="row">
-		<% @popularlistings = Listing.where('status iLIKE ?',"Approved").order("impressions_count DESC").limit(6) %>
+		<% @popularlistings = Listing.where('status LIKE ?',"Approved").order("impressions_count DESC").limit(6) %>
 		<% @popularlistings.each do |l| %>
 		<div class="col-md-4 col-sm-4 col-xs-12 grid-list-item">
 			<%= image_tag Phone.find(l.phone_id).image.url(:thumb) %>
@@ -37,6 +49,8 @@
 		<%= will_paginate @listings, renderer: BootstrapPagination::Rails  %>
 		</div>
 		<% end %>
+	</div>
 
+</div>
 </div>
 </section>

@@ -42,6 +42,9 @@
 #
 
 class Listing < ActiveRecord::Base
+  scope :devicecolor, -> (color) { where devicecolor: color }
+  scope :devicecondition, -> (condition) { where devicecondition: condition }
+  scope :devicestorage, -> (storage) { where devicestorage: storage }
   
   after_create :subtract_credits
   
