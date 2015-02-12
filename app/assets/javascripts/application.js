@@ -22,9 +22,8 @@
 $(document).ready(function() {
 	$("#social_share_box").fancybox().trigger('click');
 		
-   $('.tt-hint').addClass('form-control');
 
-		$( ".confirm" ).click(function( event ) {
+	$( ".confirm" ).click(function( event ) {
  
 	if(confirm("Are you sure you want to delete this?")){
 		}
@@ -42,7 +41,8 @@ $(document).ready(function() {
 			 $("#pendlistings").show();
 				$("#navsearchform").hide();
 
-
+				
+					
 
 
 				$( "#searchformshowbtn" ).click(function( event ) {
