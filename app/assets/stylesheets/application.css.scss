@@ -1094,6 +1094,12 @@ body#forms form.auth-form div#error_explanation
 	color:red;
 }
 
+body#forms form.auth-form input.error
+{
+	background-color:#ccc;
+	border:2px solid white;
+}
+
 /************typeahead styles***********/
 
 .navbar-form 
