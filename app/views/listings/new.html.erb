@@ -47,7 +47,7 @@
 					<p><%= f.label :devicecolor, " Device Color" %>
 					<%= f.text_field :devicecolor %></p>
 					<p><%= f.label :devicecondition, " Device Condition" %>
-					<%= f.select :devicecondition , [['New','New'], ['Mint','Mint'], ['Good','Good'], ['Fair','Fair'],  :autofocus => true%></p>
+					<%= f.select :devicecondition , [['New','New'], ['Mint','Mint'], ['Good','Good'], ['Fair','Fair']],  :autofocus => true%></p>
 					<div class="radgrp"><%= f.label :modified, " Has the phone been modified in any way?" %>
 						<div class="btn-group"><div class="radbtns"><%= f.radio_button :modified, :true %> <%= f.label:modified, " Yes" %></div>
 						<div class="radbtns"><%= f.radio_button :modified, :false %> <%= f.label:modified, " No" %></div></div></div>
