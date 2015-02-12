@@ -34,20 +34,19 @@
 	<% if @listings.blank? %>
 	<% if params[:devicecondition].blank? && params[:devicestorage].blank? %>
 	
-	<div class="cushion">
-	<h3 class="">Sorry no results found for <%= @phone.modelname %></h3>
-	<hr class="gray">
+	<div>
+	<h3 class="cushion-1">Sorry no results found for <%= @phone.modelname %></h3>
 	<a class="btn btn-sm orange-flat-button" href="/listings/new?pid=<%= @phone.id %>">Sell <%= @phone.modelname %></a>
 	</div>
-	<div class="cushion">
-		<h3>Meanwhile check these popular listings</h3>
+	<div>
+		<h3 class="cushion-1">Meanwhile check these popular listings</h3>
 		<hr class="gray">
 		<div class="row">
 		<% @popularlistings = Listing.where('status LIKE ?',"Approved").order("impressions_count DESC").limit(6) %>
 		<% @popularlistings.each do |l| %>
 		<div class="col-md-4 col-sm-4 col-xs-12 grid-list-item">
 			<%= image_tag Phone.find(l.phone_id).image.url(:thumb) %>
-		<h4><%= l.devicename %> | <%= l.devicecolor %> | <%= l.devicestorage %> | <%= l.devicecondition %></h4>
+		<h4 class="bigger-font"><%= l.devicename %> | <%= l.devicecolor %> | <%= l.devicestorage %> | <%= l.devicecondition %></h4>
 		<br/>
 		<a class="btn graphite-flat-button" href="/listings/<%= l.id %>">Buy</a>
 	</div>
