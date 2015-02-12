@@ -39,7 +39,7 @@
 	<a class="btn btn-sm orange-flat-button" href="/listings/new?pid=<%= @phone.id %>">Sell <%= @phone.modelname %></a>
 	</div>
 	<div>
-		<h3 class="cushion-1">Meanwhile check these popular listings</h3>
+		<h3 class="cushion-1">or check these popular listings</h3>
 		<hr class="gray">
 		<div class="row">
 		<% @popularlistings = Listing.where('status LIKE ?',"Approved").order("impressions_count DESC").limit(6) %>
