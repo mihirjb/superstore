@@ -48,6 +48,9 @@ class Listing < ActiveRecord::Base
   
   after_create :subtract_credits
   
+  extend FriendlyId
+  friendly_id :headline, use: :slugged
+  
   is_impressionable :counter_cache => true, :column_name => :impressions_count
   
   validates :headline, :presence => {:message => 'Heading cannot be blank, Listing not saved'}

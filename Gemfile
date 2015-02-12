@@ -42,6 +42,7 @@ gem 'will_paginate-bootstrap'
 gem 'paypal-sdk-adaptiveaccounts'
 gem 'rails_12factor'
 gem 'valid_email'
+gem 'friendly_id', '~> 5.1.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 
 gem 'jbuilder', '~> 1.2'

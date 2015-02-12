@@ -107,6 +107,8 @@ GEM
     execjs (2.2.2)
     fancybox-rails (0.2.1)
       railties (>= 3.1.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     hashie (3.3.2)
     hike (1.2.3)
     http-cookie (1.0.2)
@@ -273,6 +275,7 @@ DEPENDENCIES
   country_select
   devise (= 3.0.0.rc)
   fancybox-rails
+  friendly_id (~> 5.1.0)
   impressionist
   jbuilder (~> 1.2)
   jquery-rails

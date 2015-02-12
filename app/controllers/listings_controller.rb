@@ -39,7 +39,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @listing = Listing.find(params[:id])
+    @listing = Listing.friendly.find(params[:id])
     @phone = Phone.find(@listing.phone_id)
     @author = Listing.get_listing_author(@listing.user_id)
     @profile = Listing.get_listing_author_profile(@listing.user_id)
