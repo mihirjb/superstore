@@ -68,10 +68,10 @@ class TransactionsController < ApplicationController
       )
             
              recipients = [{:email => Listing.find(params[:l]).paypalemail,
-               :amount => 0.01,
+               :amount => @listing.askprice,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
-                         :amount => @listing.askprice.to_i + 20,
+                         :amount => 20,
                         :primary => false}
                         ]
             
