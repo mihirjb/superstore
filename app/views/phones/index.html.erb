@@ -18,12 +18,12 @@
 									if @count < 30 %>
 									Showing <%= @count.to_s + " of " + @count.to_s + " total results" %>
 									<%else%>
-									<% !params[:page] %>	
+									<% if !params[:page] %>	
 									Showing <%= "Showing 1-30 of " + @count.to_s + " total results" %>
 									<% else %>
 									<% 
 									@p1 = (params[:page].to_i - 1)*30 + 1 
-									@p2 = (params[:page].to_i + 1)*30 - 1 
+									@p2 = (params[:page].to_i + 1)*30 
 									%>
 									Showing <%= "Showing #{@p1}-#{@p2} of " + @count.to_s + " total results" %>
 
