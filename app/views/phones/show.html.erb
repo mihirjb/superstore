@@ -48,7 +48,7 @@
 			<%= image_tag Phone.find(l.phone_id).image.url(:thumb) %>
 		<h4 class="bigger-font"><%= l.devicename %> | <%= l.devicecolor %> | <%= l.devicestorage %> | <%= l.devicecondition %></h4>
 		<br/>
-		<a class="btn graphite-flat-button" href="/listings/<%= l.id %>">Buy</a>
+		<a class="btn graphite-flat-button" href="/listings/<%= l.slug %>">Buy</a>
 	</div>
 	
 		<% end %>
