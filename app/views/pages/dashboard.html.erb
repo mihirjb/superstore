@@ -49,7 +49,7 @@
 					<tr><td><%= image_tag dlisting.assets.first.image.url('thumb'), :class =>"owner-image" unless dlisting.assets.first.nil? %></td>
 
 					<td>
-						<a href ="/listings/<%=dlisting.id%>">
+						<a href ="/listings/<%=dlisting.slug%>">
 					<%= dlisting.headline %>
 					</a>
 
@@ -77,7 +77,7 @@
 							<%= dlisting.status %>
 							</td>
 
-						<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+						<td><a href="/listings/<%= dlisting.slug%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.slug}", method: "delete" do %>
 	    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
 					<% end %>
 					</table>			
@@ -100,7 +100,7 @@
 					<tr><td><%= image_tag dlisting.assets.first.image.url('thumb'), :class =>"owner-image"  unless dlisting.assets.first.nil? %></td>
 
 					<td>
-						<a href ="/listings/<%=dlisting.id%>">
+						<a href ="/listings/<%=dlisting.slug%>">
 					<%= dlisting.headline %>
 					</a>
 
@@ -113,7 +113,7 @@
 							<%= dlisting.status %>
 							</td>
 
-						<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+						<td><a href="/listings/<%= dlisting.slug%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.slug}", method: "delete" do %>
 		    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
 					<% end %>
 					<%end%>			
@@ -141,7 +141,7 @@
 							<td><%= image_tag dlisting.assets.first.image.url('thumb'), :class =>"owner-image" unless dlisting.assets.first.nil? %></td>
 
 						<td>
-							<a href ="/listings/<%=dlisting.id%>">
+							<a href ="/listings/<%=dlisting.slug%>">
 						<%= dlisting.headline %>
 						</a>
 						</td>
@@ -153,7 +153,7 @@
 								<%= dlisting.status %>
 								</td>
 
-							<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+							<td><a href="/listings/<%= dlisting.slug%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.slug}", method: "delete" do %>
 		    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
 						<% end %>
 						<%end%>			
@@ -182,7 +182,7 @@
 						<tr><td><%= image_tag dlisting.assets.first.image.url('thumb'), :class =>"owner-image" unless dlisting.assets.first.nil? %></td>
 
 						<td>
-							<a href ="/listings/<%=dlisting.id%>">
+							<a href ="/listings/<%=dlisting.slug%>">
 						<%= dlisting.headline %>
 						</a>
 
@@ -195,7 +195,7 @@
 								<%= dlisting.status %>
 								</td>
 
-							<td><a href="/listings/<%= dlisting.id%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.id}", method: "delete" do %>
+							<td><a href="/listings/<%= dlisting.slug%>/edit" ><span class="glyphicon glyphicon-pencil"></span></a></td><td><%= link_to "/listings/#{dlisting.slug}", method: "delete" do %>
 		    <span class="glyphicon glyphicon-remove"></span><% end %></td></tr>
 						<% end %>
 						<%end%>			

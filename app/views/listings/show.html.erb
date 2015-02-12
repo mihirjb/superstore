@@ -116,7 +116,7 @@
 			</p>
 			<% if user_signed_in?  %>
 				<% if current_user.id == @listing.user_id %>
-		<a href="/listings/<%=@listing.id%>/edit" class="bigger-font pull-right">Edit Listing</a>
+		<a href="/listings/<%=@listing.slug%>/edit" class="bigger-font pull-right">Edit Listing</a>
 			    <% end %>
 			<% end %>
 	</div>

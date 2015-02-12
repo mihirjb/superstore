@@ -28,7 +28,7 @@ class PhonesController < ApplicationController
   
   def show
     
-    @phone = Phone.find(params[:id])
+    @phone = Phone.friendly.find(params[:id])
    
       @listings = Listing.where("phone_id = ? AND status LIKE ?",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30 
         filtering_params(params).each do |key, value|
@@ -44,12 +44,12 @@ class PhonesController < ApplicationController
   
   
   def edit
-     @phone = Phone.find(params[:id])
+     @phone = Phone.friendly.find(params[:id])
    end
 
    def update
      
-     @phone = Phone.find(params[:id])
+     @phone = Phone.friendly.find(params[:id])
       if @phone.update(phone_params())
          redirect_to "/adminactions/noimagesphones", :notice => "Congratulations, phone updated Successfully."
        else
@@ -59,7 +59,7 @@ class PhonesController < ApplicationController
 
    def destroy     
      
-     @phone = Phone.find(params[:id]).destroy
+     @phone = Phone.friendly.find(params[:id]).destroy
    end
   
   

@@ -52,7 +52,7 @@ class ListingsController < ApplicationController
 
   def edit
     
-    @listing = current_user.listings.find(params[:id])
+    @listing = current_user.listings.friendly.find(params[:id])
     if @listing.status == "Sold"
       redirect_to :root, :notice => "Listing has already been Sold. Sorry you cannot perform edit on it now."
       else 
@@ -63,10 +63,10 @@ class ListingsController < ApplicationController
 
   def update
     
-    @listing = current_user.listings.find(params[:id])
+    @listing = current_user.listings.friendly.find(params[:id])
      if @listing.update(listing_params())
        Listing.get_paypal_status(@listing.paypalemail,@listing.paypalfname,@listing.paypallname,@listing.id)
-        redirect_to "/listings/#{@listing.id}", :notice => "Congratulations, Listing updated Successfully."
+        redirect_to "/listings/#{@listing.slug}", :notice => "Congratulations, Listing updated Successfully."
       else
         redirect_to :back, :notice => "Alas, Listing could not be updated."
       end
@@ -74,7 +74,7 @@ class ListingsController < ApplicationController
 
   def destroy
     
-    @listing = Listing.find(params[:id]).destroy
+    @listing = Listing.friendly.find(params[:id]).destroy
     redirect_to :back, :notice => "Listing has been removed successfully."
     end
   

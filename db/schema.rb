@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212041512) do
+ActiveRecord::Schema.define(version: 20150212044448) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -192,7 +192,10 @@ ActiveRecord::Schema.define(version: 20150212041512) do
     t.datetime "image_updated_at"
     t.string   "phonetype"
     t.string   "company"
+    t.string   "slug"
   end
+
+  add_index "phones", ["slug"], name: "index_phones_on_slug", unique: true
 
   create_table "profiles", force: true do |t|
     t.string   "fullname"
