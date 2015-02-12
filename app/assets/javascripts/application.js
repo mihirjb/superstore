@@ -24,6 +24,17 @@ $(document).ready(function() {
 		
    $('.tt-hint').addClass('form-control');
 
+		$( ".confirm" ).click(function( event ) {
+ 
+	if(confirm("Are you sure you want to delete this?")){
+		}
+		else
+		{
+		return false;
+	}
+	
+			});
+
 		$("#iphones").hide();
 		  $("#ipads").hide();
 			$("#choice").show();
