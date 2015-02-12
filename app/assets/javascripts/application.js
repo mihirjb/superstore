@@ -146,7 +146,7 @@ $(document).ready(function() {
 			});
 
 
-			$( "#commnetedonbtn" ).click(function( event ) {
+			$( "#commentedonbtn" ).click(function( event ) {
 
 			    event.preventDefault();
 
