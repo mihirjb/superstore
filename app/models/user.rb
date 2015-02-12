@@ -19,8 +19,13 @@
 #  credits                :integer
 #  ref_id                 :integer
 #
+require 'valid_email'
 
 class User < ActiveRecord::Base
+
+
+include ActiveModel::Validations
+  
   
   after_create :initialize_credits
   
@@ -39,6 +44,8 @@ class User < ActiveRecord::Base
           accepts_nested_attributes_for :profile
           
           validates :firstname, presence: true
+          validates :email, :email => {:mx => true, :message => I18n.t('validations.errors.models.user.invalid_email')}
+          validates :email, :email => {:ban_disposable_email => true, :message => I18n.t('validations.errors.models.user.invalid_email')}
           
           
 private

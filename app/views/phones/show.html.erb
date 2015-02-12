@@ -4,7 +4,8 @@
 <section class="silver-color">
 	<div class="container softshadow">
 		<div class="info-bar">
-			<h1 class="listing-heading"><%= @phone.modelname %> for sale in Singapore</h1>
+			<h1 class="listing-heading"><%= image_tag @phone.image.url(:medium), :class=>"owner-image" %>
+			 <%= @phone.modelname %> for sale in Singapore</h1>
 		</div>
 	</div>
 <div class="container white-color softshadow">
@@ -60,6 +61,17 @@
 		</div>
 	</div>
 	<% else %>
+	<div class="listings-count cushion-2">
+	<h4 class="bigger-font"><%
+	@count = @listings.count
+	if @count < 30 %>
+	Showing <%= @count.to_s + " of " + @count.to_s + " total results" %>
+	<%else%>	
+	Showing <%= "Showing 1-30 of " + @count.to_s + " total results" %>
+	<% end %>
+	</h4>
+	</div>
+	
 		<% cache @listings do%>
 		<%= render partial: 'phones/listings' %>
 		<% end %>
