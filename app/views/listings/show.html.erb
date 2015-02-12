@@ -263,7 +263,7 @@
 		<%= f.label :picture, "Upload any additional picture" %><%= f.file_field :picture %>
 		<%= f.hidden_field :listing_id, :value => @listing.id %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
-		<%= f.hidden_field :status, :value => "Pending" %>
+		<%= f.hidden_field :status, :value => "Approved" %>
 		<input type="text" name="foo" style="display: none;">
 		<br/>
 		<%= f.submit "Add a comment", :disable_with => 'Adding...', :class =>"btn red-color submit" %></div>

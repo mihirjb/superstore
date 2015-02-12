@@ -29,7 +29,7 @@ class PagesController < ApplicationController
     @feedbacks = Review.where('profile_id = ?',@profile.id).limit(50)
      @orders = Order.where('seller_id = ? OR user_id = ?', @user.id,@user.id).limit(50)
      @review = @profile.reviews.build
-     @comments = Comment.where('user_id = ?',@user.id)..uniq { |e| e[:listing_id] }
+     @comments = Comment.where('user_id = ?',@user.id).uniq{|e| e[:listing_id] }
      
    
   end
