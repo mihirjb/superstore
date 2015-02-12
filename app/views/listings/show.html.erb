@@ -13,7 +13,7 @@
 		<div class="col-md-8 col-sm-6 col-xs-12">
 			<div class="row cushion">
 					<div class="col-md-12 col-sm-12 col-xs-12">
-					<h4><%= @phone.modelname %> | S$<%= @listing.askprice + 20 %>
+					<h4><%= @phone.modelname %></h4>
 						<hr class="gray">
 					<h4>Listed by <a href="/profiles/<%=@profile.id%>"><%= @author.firstname%></a></h4>
 					</div>
@@ -51,7 +51,7 @@
 		
 		</div>
 		</div>
-		
+		<h4>Price:  S$<%= @listing.askprice + 20 %></h4>
 		
 		<% if @listing.status == "Approved" &&  @listing.deliveryby == "courier" %>
 			<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button buy-btn">Buy now - $<%=@listing.askprice.to_i + 20 %></a></h1>
