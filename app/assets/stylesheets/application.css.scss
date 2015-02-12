@@ -1937,7 +1937,10 @@ div.grid-list-item a.btn
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-
+.graphite-flat-button:hover
+{
+	color:#f1c40f;
+}
 /*************hide initially ***************/
 
 #navsearchform, #orders,#reviews,#listings,#activelistings,#pendinglistings,#soldlistings,#soldorders,#boughtorders,#buyerreview,#sellerreview,#pickupdetails,#shippingdetails
