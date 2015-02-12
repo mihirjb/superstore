@@ -30,7 +30,6 @@ class PagesController < ApplicationController
      @orders = Order.where('seller_id = ? OR user_id = ?', @user.id,@user.id).limit(50)
      @review = @profile.reviews.build
      @comments = Comment.where('user_id = ?',@user.id).limit(50)
-     @comments = @comments.map{|t| t.listing_id}.uniq
      
    
   end
