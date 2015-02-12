@@ -46,12 +46,15 @@
 								<div class="col-md-6 col-sm-6 col-xs-6">
 									Location:<br/><strong><%= @listing.itemlocation %></strong>
 								</div>
+								<div class="col-md-12 col-sm-12 col-xs-12">
+								<h4>Price:  S$<%= @listing.askprice + 20 %></h4>
+								</div>
+								
 				
 			</div>
 		
 		</div>
 		</div>
-		<h4>Price:  S$<%= @listing.askprice + 20 %></h4>
 		
 		<% if @listing.status == "Approved" &&  @listing.deliveryby == "courier" %>
 			<h1><a href="/transactions/initiatetransaction?l=<%=@listing.id%>" class="btn green-sea-flat-button buy-btn">Buy now - $<%=@listing.askprice.to_i + 20 %></a></h1>
