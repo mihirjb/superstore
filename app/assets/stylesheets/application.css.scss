@@ -1084,6 +1084,16 @@ body#forms form.auth-form label.error
 	color:#fff;
 	text-align:left;
 }
+body#forms form.auth-form div#error_explanation
+{
+	padding:30px;
+	width:40%;
+	margin:20px 0px;
+	background-color:white !important;
+	border:2px solid #333;
+	color:red;
+}
+
 /************typeahead styles***********/
 
 .navbar-form 
@@ -1972,6 +1982,11 @@ form input,form.long-form input,form.long-form select, form.long-form textarea, 
 {
 	width:65%;
 }
+body#forms form.auth-form div#error_explanation
+{
+	padding:10px 5px;
+	width:65%;
+}
 div.features
 {
 	width:60%;
@@ -2015,6 +2030,11 @@ div.features
 	form.main-search input[type="text"]
 	{
 		width:100%;
+	}
+	body#forms form.auth-form div#error_explanation
+	{
+		padding:10px 5px;
+		width:85%;
 	}
 	div.features
 	{
