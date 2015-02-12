@@ -44,7 +44,7 @@
 					
 					</tr>
 					<% @comments.each do |c| %>
-				<%	@lst = Listing.find(c.listing_id) %>
+				<%	@lst = Listing.find(c) %>
 					<tr>
 					<td><%=link_to @lst.headline, "/listings/#{@lst.slug}"%></td>
 					</tr>	
