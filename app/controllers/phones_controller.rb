@@ -30,7 +30,7 @@ class PhonesController < ApplicationController
     
     @phone = Phone.friendly.find(params[:id])
    
-      @listings = Listing.where("phone_id = ? AND status LIKE ?",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30 
+      @listings = Listing.friendly.where("phone_id = ? AND status LIKE ?",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30 
         filtering_params(params).each do |key, value|
           @listings = @listings.public_send(key, value).paginate :page => params[:page],:per_page=>30 if value.present?
         end      
