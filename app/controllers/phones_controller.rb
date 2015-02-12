@@ -5,7 +5,7 @@ class PhonesController < ApplicationController
   
   
   def index
-    @phones = Phone.all.paginate :page => params[:page],:per_page=>30
+    @phones = Phone.all.order('updated_at DESC').paginate :page => params[:page],:per_page=>30
     respond_to do |format|
       format.html
       format.json { render json: @phones}
@@ -30,7 +30,7 @@ class PhonesController < ApplicationController
     
     @phone = Phone.friendly.find(params[:id])
    
-      @listings = Listing.friendly.where("phone_id = ? AND status LIKE ?",@phone.id, "Approved").paginate :page => params[:page],:per_page=>30 
+      @listings = Listing.friendly.where("phone_id = ? AND status LIKE ?",@phone.id, "Approved").order('created_at DESC').paginate :page => params[:page],:per_page=>30 
         filtering_params(params).each do |key, value|
           @listings = @listings.public_send(key, value).paginate :page => params[:page],:per_page=>30 if value.present?
         end      
