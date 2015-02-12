@@ -28,9 +28,39 @@
 
 			<li><a href="#buyerreview"  id="buyerreviewbtn">Reviews you wrote</a></li>
 			<li><a href="#sellerreview" id="sellerreviewbtn">Feedback as a seller</a></li>
+			<li><a href="#commentedon" id="commentedonbtn">Listings I've commented on</a></li>
+			
 			</ul>
 		</div>
 		<div class="col-md-9 col-sm-9 col-xs-12 white-color dashboard-display offshadow">
+			
+			
+				<div id="commentedon">
+				<h3 class="listing-heading">Hey <span class="propernoun"><%=  current_user.firstname %></span>, here are all your  active listings.</h3>
+				<hr class="gray">
+				<table class="table table-responsive table-condensed">
+					<tr class="active">
+						<th>Title</th>
+					
+					</tr>
+					<% @comments.each do |c| %>
+				<%	@lst = Listing.find(c.listing_id) %>
+					
+					<td><%=link_to @lst.headline, "/listings/#{@lst.slug}"%></td>
+						
+					<% end %>
+					
+
+					</table>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
 				<div id="listings">
 					<h3 class="listing-heading">Hey <span class="propernoun"><%=  current_user.firstname %></span>, here are all your  listings.</h3>
 		

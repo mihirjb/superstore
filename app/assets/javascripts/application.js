@@ -107,6 +107,7 @@ $(document).ready(function() {
 	  $("#sellerreview").hide();
 		$("#pickupdetails").hide();
 		$("#shippingdetails").hide();
+		$("#commentedon").hide();
 
 	$('input:radio[name="listing[deliveryby]"]').change(
 	    function(){
@@ -145,7 +146,22 @@ $(document).ready(function() {
 			});
 
 
+			$( "#commnetedonbtn" ).click(function( event ) {
 
+			    event.preventDefault();
+
+				$("#orders").hide("slow");
+				  $("#reviews").hide("slow");
+				  $("#listings").hide("slow"); 
+				$("#activelistings").hide("slow");
+				  $("#pendinglistings").hide("slow");
+				  $("#soldlistings").hide("slow");
+				  $("#soldorders").hide("slow");
+				  $("#boughtorders").hide("slow");
+				  $("#buyerreview").hide("slow");
+				  $("#sellerreview").hide("slow");
+				$("#commentedon").show("slow");
+			});
 
 
 
@@ -162,7 +178,7 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 
 	});
 
@@ -179,7 +195,7 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 
 	});
 
@@ -197,7 +213,7 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 
 	});
 
@@ -215,7 +231,7 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 
 	});
 
@@ -234,7 +250,7 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 	});
 	
 	
@@ -251,7 +267,7 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").show("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 	});
 
 
@@ -269,7 +285,7 @@ $(document).ready(function() {
 		  $("#soldorders").show("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 	});
 	
 	
@@ -286,7 +302,7 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 	});
 
 
@@ -303,7 +319,7 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").show("slow");
-		  $("#sellerreview").hide("slow");
+		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
 	});
 
 
