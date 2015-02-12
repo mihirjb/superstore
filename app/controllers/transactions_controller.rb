@@ -71,7 +71,7 @@ class TransactionsController < ApplicationController
                :amount => 0.01,
                         :primary => false},
                        {:email => ENV['PAYPAL_EMAIL'],
-                         :amount => 0.01,
+                         :amount => @listing.askprice.to_i + 20,
                         :primary => false}
                         ]
             
@@ -98,8 +98,8 @@ class TransactionsController < ApplicationController
                 { 
                   :name => "Payment - #{@listing.devicename}",
                   :item_count => 1,
-                  :item_price => 0.01,
-                  :price => 0.01
+                  :item_price => @listing.askprice,
+                  :price => @listing.askprice
                 }
               ]
             }
@@ -112,8 +112,8 @@ class TransactionsController < ApplicationController
                   :name => "Payment for Phonesalad fees",
                   :description => "Phonesalad fees",
                   :item_count => 1,
-                  :item_price => 0.01,
-                  :price => 0.01
+                  :item_price => 20,
+                  :price => 20
                 }
               ]
             }
