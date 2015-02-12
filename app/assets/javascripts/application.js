@@ -302,7 +302,8 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
-		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
+		  $("#sellerreview").hide("slow");
+		$("#commentedon").hide("slow");
 	});
 
 
@@ -319,7 +320,8 @@ $(document).ready(function() {
 		  $("#soldorders").hide("slow");
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").show("slow");
-		  $("#sellerreview").hide("slow");$("#commentedon").hide("slow");
+		  $("#sellerreview").hide("slow");
+		$("#commentedon").hide("slow");
 	});
 
 
@@ -337,6 +339,7 @@ $(document).ready(function() {
 		  $("#boughtorders").hide("slow");
 		  $("#buyerreview").hide("slow");
 		  $("#sellerreview").show("slow");
+		$("#commentedon").hide("slow");
 	});
 
 
