@@ -7,12 +7,11 @@
 	</div>
 	<div class="col-md-7 col-sm-7 col-xs-12"><h2><%= l.headline %></h2>
 		<p><%= l.description %></p>
+		<p class="bold-text pull-right"><%= time_ago_in_words(l.created_at) %> ago</p>
+
 	</div>
 	<div class="col-md-4">
 			<a href="../listings/<%=l.slug%>" class="btn btn-sm red-color pull-right">$<%= l.askprice.to_i + 20 %></a>
-	</div>
-	<div class="col-md-12 col-sm-12 col-xs-12 ">
-		<p class="bold-text pull-right"><%= time_ago_in_words(l.created_at) %> ago</p>
 	</div>
 </div>
 <div class="row summary">
