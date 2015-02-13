@@ -1,0 +1,42 @@
+
+<section class="silver-color">
+	<div class="container softshadow">
+		<div class="info-bar">
+			<h1 class="listing-heading">Hi <%= current_user.firstname %>. You are almost done!</h1>
+		</div>
+	</div>
+<div class="container white-color softshadow">
+	<div class="row">
+
+		<div class="col-md-12 custom-message">	
+					<h3 class="intro">Please select the credits you want to buy.</h3>
+					<hr class="gray">
+						
+				<form name="purchase-form" role="form" action="/pointspayments/processpayment" method="POST" id="purchase_form" class="pointspayments bold-text cushion bigger-font">
+					<div class="radgrp"><label for="credits">Number of Credits</label>
+						<br/>
+											<div class="btn-group">
+											<div class="radbtns"><input id="credits" name="credits" type="radio" value="100"> <label for="credits">100 credits for S$ 10</label></div>
+											<div class="radbtns"><input id="credits" name="credits" type="radio" value="220"> <label for="credits">220 credits for S$ 20</label></div>
+											<div class="radbtns"><input id="credits" name="credits" type="radio" value="600"> <label for="credits">600 credits for S$ 50</label></div>
+										
+											</div>
+											</div>
+											
+												<input type="hidden" name="ammount" value="0.01"><br/>
+												<input class="btn green-sea-flat-button" type="Submit" value="Make Payment">
+											
+											
+					</form>
+
+
+				
+					
+					
+		
+			</div>						
+		</div>						
+
+
+</div>
+</section>

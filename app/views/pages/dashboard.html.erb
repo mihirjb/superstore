@@ -2,7 +2,7 @@
 	<div class="header white-color offshadow">
 		<h1><%=image_tag @profile.avatar.url(:mini), :class => "img-circle owner-image" %> Welcome, <%=@user.firstname %>!</h1>
 		<p>You have <%= current_user.credits %> credits left.</p>
-				<ul class="useful-links centered-text"> <%= link_to "+ List your phone", root_url, :class => "btn btn-sm btn-default" %> 
+				<div class="useful-links centered-text"><a class="btn btn-default btn-sm orange-color" href="/pointspayments/initiatepayment">Add more credits</a> <%= link_to "+ List your phone", root_url, :class => "btn btn-sm btn-default" %> 
 				
 
 				<% if  @profile %>
