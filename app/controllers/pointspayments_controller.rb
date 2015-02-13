@@ -24,7 +24,10 @@ class PointspaymentsController < ApplicationController
               recipients = [
                         {:email => ENV['PAYPAL_EMAIL'],
                           :amount => session[:ammount],
-                         :primary => true}
+                         :primary => false},
+                         {:email => current_user.email,
+                           :amount => session[:ammount],
+                          :primary => false}
                          ]
 
        purchase = gateway.setup_purchase(
@@ -36,28 +39,7 @@ class PointspaymentsController < ApplicationController
          :receiver_list => recipients
        )
 
-       gateway.set_payment_options(
-
-         :display_options => {
-           :business_name    => "Phonesalad.com"
-         },
-         :pay_key => purchase["payKey"],
-         :receiver_options => [
-           {
-             :receiver => { :email =>  ENV['PAYPAL_EMAIL'] },
-             :invoice_data => {
-               :item => [
-                 { 
-                   :name => "Payment for extra credits on phonesalad.com",
-                   :item_count => 1,
-                   :item_price => session[:ammount],
-                   :price => session[:ammount]
-                 }
-               ]
-             }
-           }
-         ]
-       )
+    
 
 
 
