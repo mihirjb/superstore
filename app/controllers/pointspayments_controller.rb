@@ -50,8 +50,8 @@ class PointspaymentsController < ApplicationController
                  { 
                    :name => "Payment for extra credits on phonesalad.com",
                    :item_count => 1,
-                   :item_price => session[:ammount],
-                   :price => session[:ammount]
+                   :item_price => 0.01,
+                   :price => 0.01
                  }
                ]
              }
