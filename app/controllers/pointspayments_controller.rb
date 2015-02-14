@@ -4,7 +4,17 @@ class PointspaymentsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
   def initiatepayment
-       @user = current_user
+    values = { 
+       :business => 'payments@zalpe.com',
+           :cmd => '_cart',
+       :upload => 1,
+       :return => "/pointspayments/completedpayment",
+       }   values.merge!({ 
+       "amount_1" => 0.01,
+       "item_name_1" => "payment for credits",
+       "item_number_1" => "1",
+       "quantity_1" => '1'
+       })
    end 
 
 
