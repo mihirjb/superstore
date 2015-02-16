@@ -11,7 +11,7 @@ class PointspaymentsController < ApplicationController
    def processpayment
      session[:user_id] = current_user.id
      session[:ammount] = params[:ammount] 
-     @ammount = 5   
+     @ammount = 0.01   
      session[:credits] = params[:credits]     
 
      gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
