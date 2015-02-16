@@ -10,7 +10,8 @@ class PointspaymentsController < ApplicationController
 
    def processpayment
      session[:user_id] = current_user.id
-     session[:ammount] = params[:ammount]     
+     session[:ammount] = params[:ammount] 
+     @ammount = session[:ammount].to_i/2    
      session[:credits] = params[:credits]     
 
      gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
@@ -22,10 +23,10 @@ class PointspaymentsController < ApplicationController
      )
            
             recipients = [{:email => "wishwa.trivedi@gmail.com",
-              :amount => (session[:ammount].to_i/2),
+              :amount => @ammount,
                        :primary => false},
                       {:email => ENV['PAYPAL_EMAIL'],
-                        :amount => 0.01,
+                        :amount => @ammount,
                        :primary => false}
                        ]
            
@@ -52,8 +53,8 @@ class PointspaymentsController < ApplicationController
                { 
                  :name => "Payment",
                  :item_count => 1,
-                 :item_price => (session[:ammount].to_i/2),
-                 :price => (session[:ammount].to_i/2)
+                 :item_price => @ammount,
+                 :price => @ammount
                }
              ]
            }
@@ -66,8 +67,8 @@ class PointspaymentsController < ApplicationController
                  :name => "Payment for Phonesalad fees",
                  :description => "Phonesalad fees",
                  :item_count => 1,
-                 :item_price => 0.01,
-                 :price => 0.1
+                 :item_price => @ammount,
+                 :price => @ammount
                }
              ]
            }
