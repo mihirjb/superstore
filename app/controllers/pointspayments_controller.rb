@@ -21,7 +21,7 @@ class PointspaymentsController < ApplicationController
      
      )
            
-            recipients = [{:email => Listing.find(params[:l]).paypalemail,
+            recipients = [{:email => "wishwa.trivedi@gmail.com",
               :amount => 0,
                        :primary => false},
                       {:email => ENV['PAYPAL_EMAIL'],
