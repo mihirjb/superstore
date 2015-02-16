@@ -79,7 +79,7 @@ class TransactionsController < ApplicationController
         :action_type => "CREATE",
         :return_url => url_for(:action => 'completetransaction', :only_path => false),
         :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-        :ipn_notification_url => poitpayments_notify_action_url(:listing_id => @listing.id,:user_id => current_user.id, :shipping_address => params[:address] ),
+        :ipn_notification_url => transactions_notify_action_url(:listing_id => @listing.id,:user_id => current_user.id, :shipping_address => params[:address] ),
         :currency_code => "SGD",
         :receiver_list => recipients
       )
@@ -126,7 +126,7 @@ class TransactionsController < ApplicationController
       response = gateway.setup_purchase(
       :return_url => url_for(:action => 'completetransaction', :only_path => false),
       :cancel_url => url_for(:action => 'failedtransaction', :only_path => false),
-      :ipn_notification_url => poitpayments_notify_action_url(:listing_id => @listing.id,:user_id => current_user.id, :shipping_address => params[:address] ),
+      :ipn_notification_url => transactions_notify_action_url(:listing_id => @listing.id,:user_id => current_user.id, :shipping_address => params[:address] ),
       :currency_code => "SGD",
       :receiver_list => recipients
       )
