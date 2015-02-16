@@ -34,7 +34,7 @@ class PointspaymentsController < ApplicationController
        :action_type => "CREATE",
         :return_url => url_for(:action => 'completedpayment', :only_path => false),
         :cancel_url => url_for(:action => 'failedpayment', :only_path => false),
-        :ipn_notification_url => pointpayments_notify_action_url(:user_id => current_user.id, :credits => params[:credits] ),
+        :ipn_notification_url =>pointspayments_notify_action_url(:user_id => current_user.id, :credits => params[:credits] ),
        :currency_code => "SGD",
        :receiver_list => recipients
      )
@@ -81,7 +81,7 @@ class PointspaymentsController < ApplicationController
      response = gateway.setup_purchase(
      :return_url => url_for(:action => 'completedpayment', :only_path => false),
      :cancel_url => url_for(:action => 'failedpayment', :only_path => false),
-     :ipn_notification_url => pointpayments_notify_action_url(:user_id => current_user.id, :credits => params[:credits] ),
+     :ipn_notification_url => pointspayments_notify_action_url(:user_id => current_user.id, :credits => params[:credits] ),
      :currency_code => "SGD",
      :receiver_list => recipients
      )
