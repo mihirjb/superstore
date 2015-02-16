@@ -99,7 +99,6 @@ class PointspaymentsController < ApplicationController
 
    def completedpayment   
      if session[:user_id]
-    current_user.add_credits
     session[:ammount] = nil
     session[:credits] = nil
      session[:user_id] = nil
@@ -133,8 +132,9 @@ class PointspaymentsController < ApplicationController
         when "VERIFIED"
          if params[:status] == "COMPLETED"
            @user_id = params[:user_id]
-           @credits = params[:credits]
+           @pcredits = params[:credits]
           @user  =  User.find(@user_id)
+          @credits = @user.credits + @pcredits.to_i
           @user.update_column("credits", @credits)
 
        end     
