@@ -13,66 +13,87 @@ class PointspaymentsController < ApplicationController
      session[:ammount] = params[:ammount]     
      session[:credits] = params[:credits]     
 
-    gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-       :login => ENV['PAYPAL_UNAME'],
-       :password => ENV['PAYPAL_PW'],
-       :signature => ENV['PAYPAL_SIGNATURE'],
-       :appid => ENV['PAYPAL_APPID']
-
-       )
-
-              recipients = [
-                        {:email => ENV['PAYPAL_EMAIL'],
-                          :amount => 0.01,
-                         :primary => true}
-                         ]
-
-       purchase = gateway.setup_purchase(
-         :action_type => "CREATE",
-         :return_url => url_for(:action => 'completedpayment', :only_path => false),
-         :cancel_url => url_for(:action => 'failedpayment', :only_path => false),
-         :ipn_notification_url => pointspayments_notify_action_url(:user_id => current_user.id, :credits => session[:credits]),
-         :currency_code => "SGD",
-         :receiver_list => recipients
-       )
-
-       gateway.set_payment_options(
-
-         :display_options => {
-           :business_name    => "Phonesalad.com"
-         },
-         :pay_key => purchase["payKey"],
-         :receiver_options => [
-           {
-             :receiver => { :email =>  ENV['PAYPAL_EMAIL'] },
-             :invoice_data => {
-               :item => [
-                 { 
-                   :name => "Payment for extra credits on phonesalad.com",
-                   :item_count => 1,
-                   :item_price => 0.01,
-                   :price => 0.01
-                 }
-               ]
-             }
-           }
-         ]
-       )
-
-
-
-       response = gateway.setup_purchase(
-       :return_url => url_for(:action => 'completedpayment', :only_path => false),
-       :cancel_url => url_for(:action => 'failedpayment', :only_path => false),
-       :ipn_notification_url => pointspayments_notify_action_url(:user_id => current_user.id, :credits => session[:credits]),
+     gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
+     :login => ENV['PAYPAL_UNAME'],
+     :password => ENV['PAYPAL_PW'],
+     :signature => ENV['PAYPAL_SIGNATURE'],
+     :appid => ENV['PAYPAL_APPID']
+     
+     )
+           
+            recipients = [{:email => Listing.find(params[:l]).paypalemail,
+              :amount => 0,
+                       :primary => false},
+                      {:email => ENV['PAYPAL_EMAIL'],
+                        :amount => 0.01,
+                       :primary => false}
+                       ]
+           
+     purchase = gateway.setup_purchase(
+       :action_type => "CREATE",
+        :return_url => url_for(:action => 'completedpayments', :only_path => false),
+        :cancel_url => url_for(:action => 'failedpayments', :only_path => false),
+        :ipn_notification_url => transactions_notify_action_url(:user_id => current_user.id, :credits => params[:credits] ),
        :currency_code => "SGD",
        :receiver_list => recipients
-       )
+     )
+    
+     gateway.set_payment_options(
+     
+       :display_options => {
+         :business_name    => "Phonesalad.com"
+       },
+       :pay_key => purchase["payKey"],
+       :receiver_options => [
+         {
+           :receiver => { :email =>  "wishwa.trivedi@gmail.com" },
+           :invoice_data => {
+             :item => [
+               { 
+                 :name => "Payment",
+                 :item_count => 1,
+                 :item_price => 0,
+                 :price => 0
+               }
+             ]
+           }
+         },
+         {
+           :receiver => { :email => ENV['PAYPAL_EMAIL'] },
+           :invoice_data => {
+             :item => [
+               { 
+                 :name => "Payment for Phonesalad fees",
+                 :description => "Phonesalad fees",
+                 :item_count => 1,
+                 :item_price => 0.01,
+                 :price => 0.1
+               }
+             ]
+           }
+         }
+       ]
+     )
+     
+     
+    
+     response = gateway.setup_purchase(
+     :return_url => url_for(:action => 'completedpayments', :only_path => false),
+     :cancel_url => url_for(:action => 'failedpayments', :only_path => false),
+     :ipn_notification_url => transactions_notify_action_url(:user_id => current_user.id, :credits => params[:credits] ),
+     :currency_code => "SGD",
+     :receiver_list => recipients
+     )
+     
+    
 
+     redirect_to(gateway.redirect_url_for(purchase["payKey"]))
 
-
-       redirect_to(gateway.redirect_url_for(purchase["payKey"]))
-
+     
+     
+     
+     
+    
    end
 
    def completedpayment   
