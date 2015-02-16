@@ -22,7 +22,7 @@ class PointspaymentsController < ApplicationController
      )
            
             recipients = [{:email => "wishwa.trivedi@gmail.com",
-              :amount => 0.01,
+              :amount => (session[:ammount].to_i/2),
                        :primary => false},
                       {:email => ENV['PAYPAL_EMAIL'],
                         :amount => 0.01,
@@ -52,8 +52,8 @@ class PointspaymentsController < ApplicationController
                { 
                  :name => "Payment",
                  :item_count => 1,
-                 :item_price => 0.01,
-                 :price => 0.01
+                 :item_price => (session[:ammount].to_i/2),
+                 :price => (session[:ammount].to_i/2)
                }
              ]
            }
