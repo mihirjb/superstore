@@ -2,7 +2,9 @@ Phoneclone::Application.routes.draw do
 
 
   get 'pointspayments/initiatepayment'
-  post 'pointspayments/processpayment'
+  post 'pointspayments/bronzeprocesspayment'
+  post 'pointspayments/silverprocesspayment'
+  post 'pointspayments/goldprocesspayment'
   get 'pointspayments/completedpayment'
   get 'pointspayments/failedpayment'
   post 'pointspayments/notify_action'   => 'pointspayments#notify_action'
