@@ -4,9 +4,7 @@
 		<p>You have <%= current_user.credits %> credits left.</p>
 				<div class="useful-links centered-text"> <%= link_to "+ List your phone", root_url, :class => "btn btn-sm btn-default" %> 
 				
-				<!---
 				<a class="btn btn-default btn-sm orange-color" href="/pointspayments/initiatepayment">Add more credits</a>
-				-->
 
 				<% if  @profile %>
 				<%= link_to "Edit Profile", "/profiles/#{@profile.id}/edit", :class =>"btn btn-sm btn-default" %>
