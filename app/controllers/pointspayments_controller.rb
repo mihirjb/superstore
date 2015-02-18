@@ -10,9 +10,8 @@ class PointspaymentsController < ApplicationController
 
    def bronzeprocesspayment
      session[:user_id] = current_user.id
-     session[:ammount] = params[:ammount] 
      @ammount = 0.01   
-     session[:credits] = params[:credits]     
+     session[:credits] = 100    
 
      gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
      :login => ENV['PAYPAL_UNAME'],
@@ -100,9 +99,8 @@ class PointspaymentsController < ApplicationController
    
    def silverprocesspayment
       session[:user_id] = current_user.id
-      session[:ammount] = params[:ammount] 
       @ammount = 10.00  
-      session[:credits] = params[:credits]     
+      session[:credits] = 220    
 
       gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
       :login => ENV['PAYPAL_UNAME'],
@@ -191,9 +189,8 @@ class PointspaymentsController < ApplicationController
     
     def goldprocesspayment
        session[:user_id] = current_user.id
-       session[:ammount] = params[:ammount] 
        @ammount = 25.00   
-       session[:credits] = params[:credits]     
+       session[:credits] = 600    
 
        gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
        :login => ENV['PAYPAL_UNAME'],
@@ -286,7 +283,6 @@ class PointspaymentsController < ApplicationController
 
    def completedpayment   
      if session[:user_id]
-    session[:ammount] = nil
     session[:credits] = nil
      session[:user_id] = nil
      redirect_to "/pages/dashboard", :notice => "Credits added successfully to your account"
@@ -298,7 +294,6 @@ class PointspaymentsController < ApplicationController
 
    def failedpayment
       if session[:user_id]
-        session[:ammount] = nil
         session[:credits] = nil
         session[:user_id] = nil
         redirect_to "/pages/dashboard", :notice => "We could not add credits to your account. Please try agian!"
